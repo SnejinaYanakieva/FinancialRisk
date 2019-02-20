@@ -13,8 +13,39 @@ import java.util.Date;
 public class Instrument {
     private String id;
     private String isin;
-    Currency currency =  Currency.BGN;
-    private Date issueDate = new Date();
-    private Date maturityDate = new Date();
+    Currency currency ;
+    private Date issueDate ;
+    private Date maturityDate ;
+    
+        public Currency getCurrency() {
+		return currency;
+	}
+	public void setCurrency(Currency currency) {
+		this.currency = currency;
+	}
+        public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getIsin() {
+		return isin;
+	}
+	public void setIsin(String isin) {
+		this.isin = isin;
+	}
+	public Date getIssueDate() {
+		return issueDate;
+	}
+	public void setIssueDate(Date issueDate) {
+		this.issueDate = issueDate;
+	}
+	public Date getMaturityDate() {
+		return maturityDate;
+	}
+	public void setMaturityDate(Date maturityDate) {
+		this.maturityDate = maturityDate;
+	}
     
 }

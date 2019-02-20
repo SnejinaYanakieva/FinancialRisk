@@ -7,7 +7,7 @@ package ers.students.utill;
 
 /**
  *
- * @author tester
+ * @author Viktor
  */
  public enum Currency 
 { 
