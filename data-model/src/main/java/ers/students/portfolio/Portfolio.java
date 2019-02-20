@@ -10,7 +10,7 @@ package ers.students.portfolio;
  *
  * @author Viktor
  */
-public class Portdolio {
+public class Portfolio {
     
     private String id;
     private String name;   
