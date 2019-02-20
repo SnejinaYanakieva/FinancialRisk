@@ -12,10 +12,14 @@ package ers.students.instruments;
 public class DebtInstrument {
  private double interestRate;  
 
+public void setInterestRate(double interestRate) {
+    this.interestRate = interestRate;
+}
+public double getInterestRate()
+{ return interestRate; 
+}
 
 
 
-public void setInterestRate(double interestRate) { this.interestRate = interestRate; }
-public double getInterestRate() { return interestRate; }
 }
  
