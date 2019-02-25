@@ -21,9 +21,20 @@ public class AbstractPfc {
   private String parentId;
   private String name;
   Currency currency ;  
+  private List<String> list;
+
+
   
   private Map<CalculationResult, Object> calculationResults;
   
+  
+      public List<String> getList() {
+        return list;
+    }
+
+    public void setList(List<String> list) {
+        this.list = list;
+    }
   
   public String getId() {
 		return id;
