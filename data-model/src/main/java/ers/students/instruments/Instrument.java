@@ -8,7 +8,7 @@ package ers.students.instruments;
 import java.util.Date;
 /**
  *
- * @author tester
+ @author Viktor
  */
 public class Instrument {
     private String id;
