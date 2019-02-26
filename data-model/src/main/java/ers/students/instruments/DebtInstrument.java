@@ -9,7 +9,7 @@ package ers.students.instruments;
  *
   * @author Viktor
  */
-public class DebtInstrument {
+public class DebtInstrument extends Instrument  {
  private double interestRate;  
 
 public void setInterestRate(double interestRate) {

@@ -11,7 +11,7 @@ import java.util.*;
  *
  * @author Viktor
  */
-public class PortfolioPfc {
+public class PortfolioPfc extends AbstractPfc {
     private Portfolio portfolio;
     private List<PortfolioComponent> elements;
 

@@ -9,7 +9,7 @@ package ers.students.instruments;
  *
  * @author Viktor
  */
-public class Credit {
+public class Credit extends DebtInstrument{
     private Frequency amortitationFrequency;
     
 

@@ -7,16 +7,17 @@ package ers.students.pfc;
 import java.util.*;
 import ers.students.utill.Currency;
 import ers.students.portfolio.component.CalculationResult;
+import ers.students.portfolio.component.PortfolioComponent;
 
 /**
  *
  * @author Viktor
  */  
-import ers.students.utill.Currency;
 
 
 
-public class AbstractPfc {
+
+public class AbstractPfc implements PortfolioComponent {
   private String id;
   private String parentId;
   private String name;
@@ -75,5 +76,13 @@ public class AbstractPfc {
 	public void setCalculationResults(Map<CalculationResult, Object> calculationResults) {
 		this.calculationResults = calculationResults;
 	}
+
+    public List<String> getErrors() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void clearAllResults() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
