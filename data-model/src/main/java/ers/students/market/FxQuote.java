@@ -10,7 +10,7 @@ import java.util.*;
  *
  * @author Viktor
  */
-public class FxQuote {
+public class FxQuote implements Market{
     private String id;
     private Currency from;
     private Currency to;
@@ -49,6 +49,14 @@ public double getValue() {
 public void setValue(double value) {
         this.value = value;
 }
+
+    public YieldCurve getYieldCurve() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public FxQuote getFxQuote() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     
