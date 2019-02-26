@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ers.students.pfc;
+package ers.students.portfolio.component;
 import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.component.PortfolioComponent;
 import java.util.*;

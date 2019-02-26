@@ -7,7 +7,7 @@ package ers.students.portfolioComponentCalculatorResolver;
 
 import java.util.*;
 
-import ers.students.pfc.AbstractPfc;
+import ers.students.portfolio.component.AbstractPfc;
 import ers.students.portfolioComponentCalculator.PortfolioComponentCalculator;
 
 /**

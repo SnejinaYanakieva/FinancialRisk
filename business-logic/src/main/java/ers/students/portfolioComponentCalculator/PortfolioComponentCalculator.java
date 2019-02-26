@@ -9,7 +9,7 @@ package ers.students.portfolioComponentCalculator;
 import java.util.Date;
 
 import ers.students.market.Market;
-import ers.students.pfc.AbstractPfc;
+import ers.students.portfolio.component.AbstractPfc;
 
 /**
  *
