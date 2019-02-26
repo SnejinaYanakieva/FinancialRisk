@@ -14,7 +14,7 @@ public class Portfolio {
     
     private String id;
     private String name;   
-    Currency currency ;
+    private Currency currency ;
  
 
 

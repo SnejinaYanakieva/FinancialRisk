@@ -13,7 +13,7 @@ import java.util.Date;
 public class Instrument {
     private String id;
     private String isin;
-    Currency currency ;
+    private Currency currency ;
     private Date issueDate ;
     private Date maturityDate ;
     

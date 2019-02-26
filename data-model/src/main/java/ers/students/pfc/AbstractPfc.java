@@ -21,8 +21,8 @@ public class AbstractPfc implements PortfolioComponent {
   private String id;
   private String parentId;
   private String name;
-  Currency currency ;  
-  private List<String> list;
+  private Currency currency ;  
+  private List<String> errors;
 
 
   
@@ -30,11 +30,11 @@ public class AbstractPfc implements PortfolioComponent {
   
   
       public List<String> getList() {
-        return list;
+        return errors;
     }
 
-    public void setList(List<String> list) {
-        this.list = list;
+    public void setErrorsAtribute(String errors) {
+        this.errors.add(errors);
     }
   
   public String getId() {

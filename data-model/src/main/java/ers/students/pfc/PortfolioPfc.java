@@ -21,12 +21,15 @@ public class PortfolioPfc extends AbstractPfc {
 		}
 		public void setPortfolio(Portfolio portfolio) {
 			this.portfolio = portfolio;
+                        
+                        
+                        
 		}
 		public List<PortfolioComponent> getElements() {
 			return elements;
 		}
-		public void setElements(List<PortfolioComponent> elements) {
-			this.elements = elements;
+		public void setElements(PortfolioComponent elements) {
+			this.elements.add(elements);
 		}
 
 }
