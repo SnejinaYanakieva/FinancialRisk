@@ -8,7 +8,8 @@ package ers.students.crud;
 /**
  *
  * @author Ayhan
+ * @param <Entity>
  */
-public abstract class AbstractSearchingDao <Entity> extends SearchingDao {
+public abstract class AbstractSearchingDao <Entity> extends AbstractCrudDao <Entity> {
     
 }

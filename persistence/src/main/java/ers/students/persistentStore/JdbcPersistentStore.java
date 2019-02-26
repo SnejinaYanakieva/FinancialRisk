@@ -16,26 +16,31 @@ import ers.students.portfolio.Position;
 public class JdbcPersistentStore implements PersistentStore{
 
     public void createDB() {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     public void dropDB() {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     public void startTransaction() {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     public void rollbackTransaction() {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     public void commitTransaction() {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     public SearchingDao<Position> getPositionDao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     public SearchingDao<Portfolio> getPortfolioDao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }

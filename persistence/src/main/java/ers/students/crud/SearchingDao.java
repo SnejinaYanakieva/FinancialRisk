@@ -10,27 +10,13 @@ import java.util.List;
 /**
  *
  * @author Ayhan
+ * @param <Entity>
  */
-public class SearchingDao<Entity> implements CrudDao<Entity>{
-
-    public void save(Entity e) {
-    }
-
-    public void update(Entity e) {
-    }
-
-    public void delete(int id) {
-    }
-
-    public Entity loadById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public List<Entity> loadAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /*public List<Entity>searchByName(String name){
-        
-    }*/
+public interface SearchingDao <Entity> extends CrudDao<Entity> {
+    void save(Entity e);
+    void update(Entity e);
+    void delete(int id);
+    Entity loadById(int id);
+    List<Entity> searchByName(String name);
 }
+
