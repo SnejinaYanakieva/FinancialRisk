@@ -9,8 +9,10 @@ import java.util.*;
 
 import ers.students.calculator.pfc.PortfolioCalculator;
 import ers.students.calculator.pfc.PortfolioComponentCalculator;
+import ers.students.calculator.pfc.PositionCalculator;
 import ers.students.portfolio.component.AbstractPfc;
 import ers.students.portfolio.component.PortfolioPfc;
+import ers.students.portfolio.component.PositionPfc;
 
 /**
  *
@@ -22,7 +24,7 @@ public class PortfolioComponentCalculatorResolver {
 
     static {
         portfolioComponentCalculators.put(PortfolioPfc.class, new PortfolioCalculator());
-        //portfolioComponentCalculators.put(PositionPfc.class, new PositionCalculator());
+        portfolioComponentCalculators.put(PositionPfc.class, new PositionCalculator());
     }
 
     public PortfolioComponentCalculator getPfcCalculator(Object object) throws UnsupportedOperationException {
