@@ -11,7 +11,7 @@ import ers.students.portfolio.Position;
  *
  * @author Viktor
  */
-public class PostitionPfc extends AbstractPfc {
+public class PositionPfc extends AbstractPfc {
 
     private Position position;
     private double volume;
