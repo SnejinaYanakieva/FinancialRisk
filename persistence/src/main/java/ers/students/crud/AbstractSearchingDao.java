@@ -15,6 +15,31 @@ import java.util.List;
 public abstract class AbstractSearchingDao <Entity> extends AbstractCrudDao <Entity> 
         implements SearchingDao <Entity> {
     
+    @Override
+    public void save(Entity e){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    @Override
+    public void update(Entity e){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    @Override
+    public void delete(int id){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    @Override
+    public Entity loadById(int id){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    @Override
+    public List<Entity> loadAll(){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
     public List<Entity> searchByName(String name) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
