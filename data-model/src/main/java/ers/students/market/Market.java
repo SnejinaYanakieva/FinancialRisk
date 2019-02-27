@@ -11,7 +11,7 @@ package ers.students.market;
  */
 public interface Market {
 
-    public YieldCurve getYieldCurve();
+    YieldCurve getYieldCurve();
 
-    public FxQuote getFxQuote();
+    FxQuote getFxQuote();
 }

@@ -14,18 +14,18 @@ import ers.students.utill.Currency;
  */
 public interface PortfolioComponent {
 
-    public String getId();
+    String getId();
 
-    public String getParentId();
+    String getParentId();
 
-    public Map<CalculationResult, Object> getCalculationResults();
+    Map<CalculationResult, Object> getCalculationResults();
 
-    public List<String> getErrors();
+    List<String> getErrors();
 
-    public void clearAllResults();
+    void clearAllResults();
 
-    public String getName();
+    String getName();
 
-    public Currency getCurrency();
+    Currency getCurrency();
 
 }

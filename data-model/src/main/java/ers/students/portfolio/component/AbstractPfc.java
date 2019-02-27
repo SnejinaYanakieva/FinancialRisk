@@ -22,10 +22,6 @@ public class AbstractPfc implements PortfolioComponent {
 
     private Map<CalculationResult, Object> calculationResults;
 
-    public List<String> getList() {
-        return errors;
-    }
-
     public void setErrorsAtribute(String errors) {
         this.errors.add(errors);
     }
@@ -71,11 +67,11 @@ public class AbstractPfc implements PortfolioComponent {
     }
 
     public List<String> getErrors() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return errors;
     }
 
     public void clearAllResults() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        calculationResults = null;
     }
 
 }

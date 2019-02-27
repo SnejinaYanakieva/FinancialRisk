@@ -9,7 +9,7 @@ package ers.students.market;
  *
  * @author Viktor
  */
-public class YieldCurve implements Market {
+public class YieldCurve {
 
     private String id;
     private String name;
@@ -118,14 +118,6 @@ public class YieldCurve implements Market {
 
     public void setYield30year(double yield30year) {
         this.yield30year = yield30year;
-    }
-
-    public YieldCurve getYieldCurve() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public FxQuote getFxQuote() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

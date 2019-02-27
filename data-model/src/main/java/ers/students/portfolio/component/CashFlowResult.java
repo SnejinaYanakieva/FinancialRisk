@@ -13,7 +13,7 @@ public enum CashFlowResult implements CalculationResult {
     INTEREST_PAYMENTS, AMORTITATION_PAYMENT;
 
     public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.name();
     }
 
 }
