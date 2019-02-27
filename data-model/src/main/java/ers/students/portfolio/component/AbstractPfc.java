@@ -19,8 +19,8 @@ public class AbstractPfc implements PortfolioComponent {
     private String name;
     private Currency currency;
     private List<String> errors;
-
-    private Map<CalculationResult, Object> calculationResults;
+ 
+    private Map<CalculationResult, Object> calculationResults;  
 
     public void setErrorsAtribute(String errors) {
         this.errors.add(errors);
@@ -68,6 +68,11 @@ public class AbstractPfc implements PortfolioComponent {
 
     public List<String> getErrors() {
         return errors;
+    }
+
+    public void setErrors(String errors) {
+
+        this.errors.add(errors);
     }
 
     public void clearAllResults() {

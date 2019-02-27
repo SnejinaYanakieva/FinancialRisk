@@ -11,5 +11,5 @@ package ers.students.portfolio.component;
  */
 public interface CalculationResult {
 
-     String getName();
+    String getName();
 }
