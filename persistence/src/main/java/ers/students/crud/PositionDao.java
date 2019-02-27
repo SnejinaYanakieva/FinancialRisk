@@ -9,6 +9,7 @@ package ers.students.crud;
  *
  * @author Ayhan
  */
+
 public class PositionDao extends AbstractSearchingDao {
     
 }

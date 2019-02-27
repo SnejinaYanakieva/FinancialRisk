@@ -12,6 +12,7 @@ import java.util.List;
  * @author Ayhan
  * @param <Entity>
  */
+
 public interface SearchingDao <Entity> extends CrudDao<Entity> {
     void save(Entity e);
     void update(Entity e);

@@ -10,11 +10,13 @@ import java.util.List;
 /**
  *
  * @author Ayhan
+ * @param <Entity>
  */
+
 public interface CrudDao <Entity>{
-    public void save(Entity e);
-    public void update(Entity e);
-    public void delete(int id);
-    public Entity loadById(int id);
-    public List<Entity> loadAll();
+    void save(Entity e);
+    void update(Entity e);
+    void delete(int id);
+    Entity loadById(int id);
+    List<Entity> loadAll();
 }

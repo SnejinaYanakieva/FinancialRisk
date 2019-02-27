@@ -14,11 +14,11 @@ import ers.students.portfolio.Position;
  * @author Ayhan
  */
 public interface PersistentStore{
-    public void createDB();
-    public void dropDB();
-    public void startTransaction();
-    public void rollbackTransaction();
-    public void commitTransaction();
-    public SearchingDao<Portfolio> getPortfolioDao();
-    public SearchingDao<Position> getPositionDao();
+    void createDB();
+    void dropDB();
+    void startTransaction();
+    void rollbackTransaction();
+    void commitTransaction();
+    SearchingDao<Portfolio> getPortfolioDao();
+    SearchingDao<Position> getPositionDao();
 }
