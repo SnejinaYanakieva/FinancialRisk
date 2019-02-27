@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package ers.students.portfolioComponentCalculator;
+package ers.students.calculator.pfc;
 
 import java.util.Date;
 
@@ -16,8 +15,8 @@ import ers.students.portfolio.component.AbstractPfc;
  * @author Irina
  */
 public interface PortfolioComponentCalculator {
-    
-	void calculatePresentValue(AbstractPfc pfc, Market market, Date evalDate);
+
+    void calculatePresentValue(AbstractPfc pfc, Market market, Date evalDate);
 
     void calculateProfitLoss(AbstractPfc pfc, Market market, Date evalDate);
 

@@ -16,5 +16,5 @@ import ers.students.portfolio.component.PortfolioComponent;
  */
 public interface Calculator {
 
-	public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate);
+    public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate);
 }

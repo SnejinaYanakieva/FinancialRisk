@@ -16,8 +16,9 @@ import ers.students.portfolio.component.PortfolioComponent;
  */
 public class ProfitLossCalculator implements Calculator {
 
-	public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate)
-			throws UnsupportedOperationException {
-
-	}
+    @Override
+    public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate)
+            throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Unsupported operation.");
+    }
 }

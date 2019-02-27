@@ -16,8 +16,9 @@ import ers.students.portfolio.component.PortfolioComponent;
  */
 public class CashFlowCalculator implements Calculator {
 
-	public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate) {
+    @Override
+    public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate) {
+        throw new UnsupportedOperationException("Unsupported operation.");
+    }
 
-	}
-	
 }
