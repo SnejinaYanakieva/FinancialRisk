@@ -10,6 +10,8 @@ package ers.students.market;
  * @author Viktor
  */
 public interface Market {
-public YieldCurve getYieldCurve();
-public FxQuote getFxQuote();
+
+    public YieldCurve getYieldCurve();
+
+    public FxQuote getFxQuote();
 }

@@ -10,6 +10,5 @@ package ers.students.instruments;
  * @author Viktor
  */
 public class Deposit extends DebtInstrument {
-    
+
 }
- 

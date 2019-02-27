@@ -4,22 +4,23 @@
  * and open the template in the editor.
  */
 package ers.students.instruments;
- import ers.students.utill.Frequency;
+
+import ers.students.utill.Frequency;
+
 /**
  *
  * @author Viktor
  */
-public class Credit extends DebtInstrument{
+public class Credit extends DebtInstrument {
+
     private Frequency amortitationFrequency;
-    
 
-public Frequency getAmortitationFrequency() {
+    public Frequency getAmortitationFrequency() {
         return amortitationFrequency;
-}
+    }
 
-public void setAmortitationFrequency(Frequency amortitationFrequency) {
+    public void setAmortitationFrequency(Frequency amortitationFrequency) {
         this.amortitationFrequency = amortitationFrequency;
-}
-
+    }
 
 }

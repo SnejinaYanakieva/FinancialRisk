@@ -9,8 +9,8 @@ package ers.students.portfolio.component;
  *
  * @author Viktor
  */
-public enum CashFlowResult implements  CalculationResult {
-    INTEREST_PAYMENTS,AMORTITATION_PAYMENT;
+public enum CashFlowResult implements CalculationResult {
+    INTEREST_PAYMENTS, AMORTITATION_PAYMENT;
 
     public String getName() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

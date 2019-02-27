@@ -4,39 +4,41 @@
  * and open the template in the editor.
  */
 package ers.students.portfolio;
+
 import ers.students.utill.Currency;
- 
+
 /**
  *
  * @author Viktor
  */
 public class Portfolio {
-    
+
     private String id;
-    private String name;   
-    private Currency currency ;
- 
+    private String name;
+    private Currency currency;
 
+    public String getId() {
+        return id;
+    }
 
-public String getId() {
-    return id;
-}
-public void setId(String id) {
-    this.id = id;
-}
-public String getName() {
-    return name;
-}
-public void setName(String name) {
-    this.name = name;
-} 
-public Currency getCurrency() {
-    return currency;
-}
-public void setCurrency(Currency currency) {
-    this.currency = currency;
-}
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
 
 }

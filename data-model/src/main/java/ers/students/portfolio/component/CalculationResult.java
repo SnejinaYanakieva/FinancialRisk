@@ -10,5 +10,6 @@ package ers.students.portfolio.component;
  * @author Viktor
  */
 public interface CalculationResult {
+
     public String getName();
 }

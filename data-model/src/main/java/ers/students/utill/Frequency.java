@@ -9,33 +9,39 @@ package ers.students.utill;
  *
  * @author Viktor
  */
+public enum Frequency {
+    MONTHLY("Calendar.Month", 1),
+    TWO_MONTHS("Calendar.Month", 2),
+    QUATERLY("Calendar.Month", 3),
+    FOUR_MONTHS("Calendar.Month", 4),
+    SEMI_ANUAL("Calendar.Month", 6),
+    ANUAL("Calendar.Year", 1),
+    TWO_YEARS("Calendar.Year", 2);
 
- public enum Frequency
-{ 
-    MONTHLY, TWO_MONTHS, QUATERLY, FOUR_MONTHS, SEMI_ANUAL, ANUAL, TWO_YEARS; 
-    
-    
-    
-private int type ;
-private int period;
+    private String type;
+    private int period;
 
-
-
-public int getType() {
-        return type;
-}
-public void setType(int type) {
+    Frequency(String type, int period) {
         this.type = type;
-}
-
-
-public int getPeriod() {
-        return period;
-}
-public void setPeriod(int period) {
         this.period = period;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(int period) {
+        this.period = period;
+    }
 }
-} 
 /*public class Frequency(){
 
 

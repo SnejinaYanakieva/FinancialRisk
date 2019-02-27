@@ -9,10 +9,6 @@ package ers.students.utill;
  *
  * @author Viktor
  */
- public enum Currency 
-{ 
-    CHF, AUD, GBP, BGN, USD; 
-} 
-
-
-
+public enum Currency {
+    CHF, AUD, GBP, BGN, USD;
+}

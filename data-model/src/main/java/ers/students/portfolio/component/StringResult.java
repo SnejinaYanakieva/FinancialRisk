@@ -9,8 +9,8 @@ package ers.students.portfolio.component;
  *
  * @author Viktor
  */
-public enum StringResult implements  CalculationResult {
- NAME,DESCRIPTION ,INSTRYMENT_ISIN,CURRENCY;
+public enum StringResult implements CalculationResult {
+    NAME, DESCRIPTION, INSTRYMENT_ISIN, CURRENCY;
 
     public String getName() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

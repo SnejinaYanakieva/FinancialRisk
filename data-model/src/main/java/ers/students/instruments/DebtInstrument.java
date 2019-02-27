@@ -7,19 +7,18 @@ package ers.students.instruments;
 
 /**
  *
-  * @author Viktor
+ * @author Viktor
  */
-public class DebtInstrument extends Instrument  {
- private double interestRate;  
+public class DebtInstrument extends Instrument {
 
-public void setInterestRate(double interestRate) {
-    this.interestRate = interestRate;
+    private double interestRate;
+
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
+
+    public double getInterestRate() {
+        return interestRate;
+    }
+
 }
-public double getInterestRate()
-{ return interestRate; 
-}
-
-
-
-}
- 
