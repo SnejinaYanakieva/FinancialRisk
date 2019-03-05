@@ -18,15 +18,12 @@ public class PositionVolumeCalculator implements Calculator {
 
     /**
      *
-     * @param portfolioComponent the component used to group positions
-     * @param market provides information about the market yield of financial
-     * instruments
+     * @param portfolioComponent
+     * @param market provides information about the market
      * @param evalDate
-     * @throws UnsupportedOperationException
      */
     @Override
-    public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate)
-            throws UnsupportedOperationException {
+    public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Unsupported operation.");
     }
 }

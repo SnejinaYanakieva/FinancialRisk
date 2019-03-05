@@ -28,11 +28,10 @@ public class PortfolioComponentCalculatorResolver {
     }
     /**
      * 
-     * @param object
-     * @return
-     * @throws UnsupportedOperationException 
+     * @param pfcClass
+     * @return 
      */
-    public PortfolioComponentCalculator getPfcCalculator(Object object) throws UnsupportedOperationException {
-        throw new UnsupportedOperationException("Unsupported operation.");
+    public PortfolioComponentCalculator getPfcCalculator(Class<? extends AbstractPfc> pfcClass)  {
+        return portfolioComponentCalculators.get(pfcClass);
     }
 }

@@ -16,9 +16,14 @@ import ers.students.portfolio.component.PortfolioComponent;
  */
 public class PresentValueCalculator implements Calculator {
 
+    /**
+     *
+     * @param portfolioComponent
+     * @param market provides information about the market
+     * @param evalDate
+     */
     @Override
-    public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate)
-            throws UnsupportedOperationException {
+    public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Unsupported operation.");
     }
 }
