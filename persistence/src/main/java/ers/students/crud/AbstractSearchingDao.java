@@ -22,9 +22,7 @@ public abstract class AbstractSearchingDao <Entity> extends AbstractCrudDao <Ent
     public abstract void update(Entity e);
     
     @Override
-    public void delete(int id){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public abstract void delete(int id);
     
     @Override
     public Entity loadById(int id){
