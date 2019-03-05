@@ -25,18 +25,12 @@ public abstract class AbstractSearchingDao <Entity> extends AbstractCrudDao <Ent
     public abstract void delete(int id);
     
     @Override
-    public Entity loadById(int id){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public abstract Entity loadById(int id);
     
     @Override
-    public List<Entity> loadAll(){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public abstract List<Entity> loadAll();
     
     @Override
-    public List<Entity> searchByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public abstract List<Entity> searchByName(String name);
     
 }

@@ -43,5 +43,10 @@ public class PortfolioDao extends AbstractSearchingDao{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public List searchByName(String name) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 
 }

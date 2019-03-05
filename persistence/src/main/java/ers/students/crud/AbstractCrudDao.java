@@ -29,13 +29,9 @@ public abstract class AbstractCrudDao <Entity> implements CrudDao<Entity>{
     public abstract void delete(int id);
 
     @Override
-    public Entity loadById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
+    public abstract Entity loadById(int id);
 
     @Override
-    public List<Entity> loadAll() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
+    public abstract List<Entity> loadAll();
     
 }
