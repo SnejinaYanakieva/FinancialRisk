@@ -26,7 +26,12 @@ public class PortfolioComponentCalculatorResolver {
         portfolioComponentCalculators.put(PortfolioPfc.class, new PortfolioCalculator());
         portfolioComponentCalculators.put(PositionPfc.class, new PositionCalculator());
     }
-
+    /**
+     * 
+     * @param object
+     * @return
+     * @throws UnsupportedOperationException 
+     */
     public PortfolioComponentCalculator getPfcCalculator(Object object) throws UnsupportedOperationException {
         throw new UnsupportedOperationException("Unsupported operation.");
     }
