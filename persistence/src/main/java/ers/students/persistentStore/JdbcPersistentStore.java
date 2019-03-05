@@ -13,42 +13,41 @@ import ers.students.portfolio.Position;
  *
  * @author Ayhan
  */
-
-public class JdbcPersistentStore implements PersistentStore{
+public class JdbcPersistentStore implements PersistentStore {
 
     @Override
-    public void createDB() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public void createDB() {    // creates the database
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void dropDB() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public void dropDB() {      // deletes the database
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void startTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void rollbackTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public void rollbackTransaction() {     // reverts back to a previous state of the DB
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void commitTransaction() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public void commitTransaction() {       // confirms/saves changes in DB
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public SearchingDao<Position> getPositionDao() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public SearchingDao<Portfolio> getPortfolioDao() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
 }

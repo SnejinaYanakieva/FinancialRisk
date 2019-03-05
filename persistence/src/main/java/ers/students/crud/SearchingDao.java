@@ -12,12 +12,22 @@ import java.util.List;
  * @author Ayhan
  * @param <Entity>
  */
+public interface SearchingDao<Entity> extends CrudDao<Entity> {
 
-public interface SearchingDao <Entity> extends CrudDao<Entity> {
-    void save(Entity e);
-    void update(Entity e);
-    void delete(int id);
-    Entity loadById(int id);
-    List<Entity> searchByName(String name);
+    @Override
+    void save(Entity e);        // saves/inserts row in DB
+
+    @Override
+    void update(Entity e);      // updates row in DB
+
+    @Override
+    void delete(int id);        // deletes row in DB
+
+    @Override
+    Entity loadById(int id);       // returns the object with the given id
+
+    @Override
+    List<Entity> loadAll();         // returns a list of all the objects
+
+    List<Entity> searchByName(String name); // returns a list of the objects with the given name
 }
-

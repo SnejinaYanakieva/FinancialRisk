@@ -12,26 +12,25 @@ import java.util.List;
  * @author Ayhan
  * @param <Entity>
  */
+public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
-public abstract class AbstractCrudDao <Entity> implements CrudDao<Entity>{
-    
     /**
      *
      * @param e
      */
     @Override
-    public abstract void save(Entity e);
+    public abstract void save(Entity e);    // saves/inserts row in DB
 
     @Override
-    public abstract void update(Entity e);
+    public abstract void update(Entity e);  // updates row in DB
 
     @Override
-    public abstract void delete(int id);
+    public abstract void delete(int id);    // deletes row in DB
 
     @Override
-    public abstract Entity loadById(int id);
+    public abstract Entity loadById(int id);    // returns the object with the given id 
 
     @Override
-    public abstract List<Entity> loadAll();
-    
+    public abstract List<Entity> loadAll();     // returns a list of all the objects
+
 }

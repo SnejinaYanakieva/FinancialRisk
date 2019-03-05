@@ -12,11 +12,15 @@ import java.util.List;
  * @author Ayhan
  * @param <Entity>
  */
+public interface CrudDao<Entity> {
 
-public interface CrudDao <Entity>{
-    void save(Entity e);
-    void update(Entity e);
-    void delete(int id);
-    Entity loadById(int id);
-    List<Entity> loadAll();
+    void save(Entity e);    // saves/inserts row in DB
+
+    void update(Entity e);  // updates row in DB
+
+    void delete(int id);    // deletes row in DB
+
+    Entity loadById(int id);    // returns the object with the given id 
+
+    List<Entity> loadAll();     // returns a list of all the objects
 }

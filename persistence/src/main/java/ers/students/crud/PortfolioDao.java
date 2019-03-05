@@ -12,41 +12,36 @@ import java.util.List;
  *
  * @author Ayhan
  */
-public class PortfolioDao extends AbstractSearchingDao{
-    
+public class PortfolioDao extends AbstractSearchingDao {
+
     @Override
-    public void save(Object e) {
+    public void save(Object e) {    // saves/inserts row in DB
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void update(Object e) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-    
-    @Override
-    public void delete (int id){
+    public void update(Object e) {  // updates row in DB
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public Portfolio loadById(int id){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
-    @Override
-    public List<Portfolio> loadAll(){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
-    public List<Portfolio> seachByName(){
+    public void delete(int id) {    // deletes row in DB
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public List searchByName(String name) {
+    public Portfolio loadById(int id) {    // returns the object with the given id 
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public List<Portfolio> loadAll() {     // returns a list of all the objects
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Portfolio> searchByName(String name) { // returns a list of the objects with the given name
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 }
