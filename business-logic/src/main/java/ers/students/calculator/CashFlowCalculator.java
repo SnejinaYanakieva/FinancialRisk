@@ -11,13 +11,24 @@ import ers.students.market.Market;
 import ers.students.portfolio.component.PortfolioComponent;
 
 /**
+ * The CashFlowCalculator class is a class that provides method for calculating
+ * cash flow. The cash flow refers to the cash amounts to be paid or received at
+ * certain dates as a result of current or past financial operations.
  *
  * @author Irina
  */
 public class CashFlowCalculator implements Calculator {
 
+    /**
+     *
+     * @param portfolioComponent the component used to group positions
+     * @param market provides information about the market yield of financial
+     * instruments
+     * @param evalDate
+     * @throws UnsupportedOperationException
+     */
     @Override
-    public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate) {
+    public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate) throws UnsupportedOperationException {
         throw new UnsupportedOperationException("Unsupported operation.");
     }
 
