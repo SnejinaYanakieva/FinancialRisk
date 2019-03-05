@@ -16,14 +16,10 @@ public abstract class AbstractSearchingDao <Entity> extends AbstractCrudDao <Ent
         implements SearchingDao <Entity> {
     
     @Override
-    public void save(Entity e){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public abstract void save(Entity e);
     
     @Override
-    public void update(Entity e){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public abstract void update(Entity e);
     
     @Override
     public void delete(int id){
@@ -40,6 +36,7 @@ public abstract class AbstractSearchingDao <Entity> extends AbstractCrudDao <Ent
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
+    @Override
     public List<Entity> searchByName(String name) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

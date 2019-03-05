@@ -15,22 +15,25 @@ import java.util.List;
 
 public abstract class AbstractCrudDao <Entity> implements CrudDao<Entity>{
     
-    public void save(Entity e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    /**
+     *
+     * @param e
+     */
+    @Override
+    public abstract void save(Entity e);
 
-    public void update(Entity e) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
+    @Override
+    public abstract void update(Entity e);
 
-    public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
+    @Override
+    public abstract void delete(int id);
 
+    @Override
     public Entity loadById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 
+    @Override
     public List<Entity> loadAll() {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
