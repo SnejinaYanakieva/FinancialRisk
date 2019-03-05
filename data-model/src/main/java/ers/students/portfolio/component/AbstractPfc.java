@@ -62,9 +62,8 @@ public class AbstractPfc implements PortfolioComponent {
         return calculationResults;
     }
 
-    public void setCalculationResults(Map<CalculationResult, Object> calculationResults,CalculationResult key) {
-        this.calculationResults.put (key,calculationResults);
-      
+    public void setCalculationResults(Map<CalculationResult, Object> calculationResults, CalculationResult key) {
+        this.calculationResults.put(key, calculationResults);
     }
 
     public List<String> getErrors() {
