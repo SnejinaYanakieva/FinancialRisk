@@ -5,6 +5,9 @@
  */
 package ers.students.crud;
 
+import ers.students.portfolio.Position;
+import java.util.List;
+
 /**
  *
  * @author Ayhan
@@ -24,6 +27,21 @@ public class PositionDao extends AbstractSearchingDao {
     
     @Override
     public void delete(int id){
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+    
+    @Override
+    public Position loadById(int id){
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+    
+    @Override
+    public List<Position> loadAll(){
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+    
+    @Override
+    public List<Position> searchByName(String name){
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 }
