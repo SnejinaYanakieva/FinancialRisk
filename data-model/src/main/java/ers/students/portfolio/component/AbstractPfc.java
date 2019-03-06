@@ -6,7 +6,7 @@
 package ers.students.portfolio.component;
 
 import java.util.*;
-import ers.students.utill.Currency;
+import ers.students.util.Currency;
 
 /**
  *
@@ -18,14 +18,17 @@ public class AbstractPfc implements PortfolioComponent {
     private String parentId;
     private String name;
     private Currency currency;
-    private List<String> errors;
+    private List<String> errors =  new ArrayList<String>();
 
-    private Map<CalculationResult, Object> calculationResults;
+
+
+    private Map<CalculationResult, Object> calculationResults = new HashMap<CalculationResult, Object>() ;
 
     public void setErrorsAtribute(String errors) {
         this.errors.add(errors);
     }
 
+    @Override
     public String getId() {
         return id;
     }
@@ -34,6 +37,7 @@ public class AbstractPfc implements PortfolioComponent {
         this.id = id;
     }
 
+    @Override
     public String getParentId() {
         return parentId;
     }
@@ -42,6 +46,7 @@ public class AbstractPfc implements PortfolioComponent {
         this.parentId = parentId;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -50,6 +55,7 @@ public class AbstractPfc implements PortfolioComponent {
         this.name = name;
     }
 
+    @Override
     public Currency getCurrency() {
         return currency;
     }
@@ -58,23 +64,26 @@ public class AbstractPfc implements PortfolioComponent {
         this.currency = currency;
     }
 
+    @Override
     public Map<CalculationResult, Object> getCalculationResults() {
         return calculationResults;
     }
 
-    public void setCalculationResults(Map<CalculationResult, Object> calculationResults, CalculationResult key) {
-        this.calculationResults.put(key, calculationResults);
+  public void setCalculationResults(Map<CalculationResult, Object> calculationResults, CalculationResult key) {
+     this.calculationResults.put(key, calculationResults);
     }
 
+    @Override
     public List<String> getErrors() {
         return errors;
     }
 
-    public void setErrors(String errors) {
+    public void addErrors(String errors) {
 
         this.errors.add(errors);
     }
 
+    @Override
     public void clearAllResults() {
         calculationResults = null;
     }

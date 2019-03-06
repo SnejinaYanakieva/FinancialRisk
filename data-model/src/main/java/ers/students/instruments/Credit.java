@@ -5,7 +5,7 @@
  */
 package ers.students.instruments;
 
-import ers.students.utill.Frequency;
+import ers.students.util.Frequency;
 
 /**
  *

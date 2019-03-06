@@ -5,7 +5,7 @@
  */
 package ers.students.instruments;
 
-import ers.students.utill.Currency;
+import ers.students.util.Currency;
 import java.util.Date;
 
 /**

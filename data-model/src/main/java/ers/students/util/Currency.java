@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ers.students.utill;
+package ers.students.util;
 
 /**
- *test
+ * test
+ *
  * @author Viktor
  */
 public enum Currency {
-    CHF, AUD, GBP, BGN, USD;
+    CHF,
+    AUD, 
+    GBP,
+    BGN, 
+    USD;
 }

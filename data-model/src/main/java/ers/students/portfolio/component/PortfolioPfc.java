@@ -15,7 +15,7 @@ import java.util.*;
 public class PortfolioPfc extends AbstractPfc {
 
     private Portfolio portfolio;
-    private List<PortfolioComponent> elements;
+    private List<PortfolioComponent> elements = new ArrayList();;
 
     public Portfolio getPortfolio() {
         return portfolio;
@@ -30,7 +30,7 @@ public class PortfolioPfc extends AbstractPfc {
         return elements;
     }
 
-    public void setElements(PortfolioComponent elements) {
+    public void addElements(PortfolioComponent elements) {
         this.elements.add(elements);
     }
 

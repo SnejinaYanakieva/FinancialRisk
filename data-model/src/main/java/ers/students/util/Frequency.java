@@ -3,34 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ers.students.utill;
+package ers.students.util;
 
 /**
  *
  * @author Viktor
  */
 public enum Frequency {
-    MONTHLY("Calendar.Month", 1),
-    TWO_MONTHS("Calendar.Month", 2),
-    QUATERLY("Calendar.Month", 3),
-    FOUR_MONTHS("Calendar.Month", 4),
-    SEMI_ANUAL("Calendar.Month", 6),
-    ANUAL("Calendar.Year", 1),
-    TWO_YEARS("Calendar.Year", 2);
+    MONTHLY(1, 1),
+    TWO_MONTHS(1, 2),
+    QUATERLY(1, 3),
+    FOUR_MONTHS(1, 4),
+    SEMI_ANUAL(1, 6),
+    ANUAL(2, 1),
+    TWO_YEARS(2, 2);
 
-    private String type;
+    private int type;
     private int period;
 
-    Frequency(String type, int period) {
+    Frequency(int type, int period) {
         this.type = type;
         this.period = period;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 

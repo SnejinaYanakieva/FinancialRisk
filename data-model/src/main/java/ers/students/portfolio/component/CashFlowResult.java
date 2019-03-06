@@ -10,8 +10,10 @@ package ers.students.portfolio.component;
  * @author Viktor
  */
 public enum CashFlowResult implements CalculationResult {
-    INTEREST_PAYMENTS, AMORTITATION_PAYMENT;
+    INTEREST_PAYMENTS, 
+    AMORTITATION_PAYMENT;
 
+    @Override
     public String getName() {
         return this.name();
     }

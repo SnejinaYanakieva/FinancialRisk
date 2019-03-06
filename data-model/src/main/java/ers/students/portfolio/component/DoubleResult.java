@@ -10,8 +10,11 @@ package ers.students.portfolio.component;
  * @author Viktor
  */
 public enum DoubleResult implements CalculationResult {
-    PV, PROFIT_LOSS, POSITION_VOLUME;
+    PV,
+    PROFIT_LOSS,
+    POSITION_VOLUME;
 
+    @Override
     public String getName() {
         return this.name();
     }
