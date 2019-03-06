@@ -10,8 +10,7 @@ import java.util.List;
 /**
  *
  * @author Ayhan
- * @param <Entity>
- * saves/inserts row in DB updates row in DB deletes row in DB
+ * @param <Entity> saves/inserts row in DB updates row in DB deletes row in DB
  * returns the object with the given id returns a list of all the objects
  * returns a list of the objects with the given name
  */
@@ -19,33 +18,8 @@ public abstract class AbstractSearchingDao<Entity> extends AbstractCrudDao<Entit
         implements SearchingDao<Entity> {
 
     @Override
-    public void save(Entity e) {
-        
-    }
-
-    @Override
-    public void update(Entity e) {
-        
-    }
-
-    @Override
-    public void delete(int id){
-        
-    }
-
-    @Override
-    public Entity loadById(int id){
-         throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public List<Entity> loadAll(){
-         throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public List<Entity> searchByName(String name){
-         throw new UnsupportedOperationException("Not supported yet.");
+    public List<Entity> searchByName(String name) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

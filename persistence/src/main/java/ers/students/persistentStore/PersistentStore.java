@@ -15,17 +15,17 @@ import ers.students.portfolio.Position;
  */
 public interface PersistentStore {
 
-    void createDB();    // creates the database
+    void createDB();
 
-    void dropDB();      // deletes the database
+    void dropDB(); 
 
-    void startTransaction();    // opens DB to begin
+    void startTransaction();
 
-    void rollbackTransaction(); // reverts back to a previous state of the DB
+    void rollbackTransaction();
 
-    void commitTransaction();   // confirms/saves changes in DB
+    void commitTransaction();
 
-    SearchingDao<Portfolio> getPortfolioDao();  // 
+    SearchingDao<Portfolio> getPortfolioDao(); 
 
-    SearchingDao<Position> getPositionDao();    // 
+    SearchingDao<Position> getPositionDao(); 
 }

@@ -10,28 +10,39 @@ import java.util.List;
 /**
  *
  * @author Ayhan
- * @param <Entity>
- * saves/inserts row in DB
- * updates row in DB
- * deletes row in DB
- * returns the objects with the given ID
- * returns a list of all the objects
+ * @param <Entity> saves/inserts row in DB updates row in DB deletes row in DB
+ * returns the objects with the given ID returns a list of all the objects
  */
 public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
     /**
      *
      * @param e
-     * 
+     *
      */
-    public abstract void save(Entity e);
+    @Override
+    public void save(Entity e) {
+        
+    }
 
-    public abstract void update(Entity e);
+    @Override
+    public void update(Entity e) {
+        
+    }
 
-    public abstract void delete(int id); 
+    @Override
+    public void delete(int id) {
+        
+    }
 
-    public abstract Entity loadById(int id);  
+    @Override
+    public Entity loadById(int id) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
-    public abstract List<Entity> loadAll();
+    @Override
+    public List<Entity> loadAll() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 }

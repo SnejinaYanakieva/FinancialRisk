@@ -15,19 +15,19 @@ import java.util.List;
 public interface SearchingDao<Entity> extends CrudDao<Entity> {
 
     @Override
-    void save(Entity e);        // saves/inserts row in DB
+    void save(Entity e);
 
     @Override
-    void update(Entity e);      // updates row in DB
+    void update(Entity e);
 
     @Override
-    void delete(int id);        // deletes row in DB
+    void delete(int id);
 
     @Override
-    Entity loadById(int id);       // returns the object with the given id
+    Entity loadById(int id);
 
     @Override
-    List<Entity> loadAll();         // returns a list of all the objects
+    List<Entity> loadAll();
 
-    List<Entity> searchByName(String name); // returns a list of the objects with the given name
+    List<Entity> searchByName(String name);
 }

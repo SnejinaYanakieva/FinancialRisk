@@ -5,8 +5,6 @@
  */
 package ers.students.crud;
 
-import ers.students.portfolio.Portfolio;
-import java.util.List;
 
 /**
  *
@@ -14,8 +12,4 @@ import java.util.List;
  */
 public class PortfolioDao extends AbstractSearchingDao {
     
-    @Override
-    public List<Portfolio> searchByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }
