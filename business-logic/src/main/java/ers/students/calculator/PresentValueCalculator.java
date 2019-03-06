@@ -11,6 +11,11 @@ import ers.students.market.Market;
 import ers.students.portfolio.component.PortfolioComponent;
 
 /**
+ * The PresentValueCalculator class is a class that provides method for
+ * calculating the Present Value which refers to the current value of a future
+ * sum of money or stream of cash flows given a specified rate of return. A rate
+ * of return (RoR) is the net gain or loss on an investment over a specified
+ * time period, expressed as a percentage of the investment’s initial cost.
  *
  * @author Irina
  */
@@ -18,7 +23,8 @@ public class PresentValueCalculator implements Calculator {
 
     /**
      *
-     * @param portfolioComponent
+     * @param portfolioComponent provides information about investments held by
+     * an investment company. It represents a group of financial assets.
      * @param market provides information about the market
      * @param evalDate
      */

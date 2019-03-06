@@ -5,7 +5,7 @@
  */
 package ers.students.calculator;
 
-import java.util.*;
+import java.util.Date;
 
 import ers.students.market.Market;
 import ers.students.portfolio.component.PortfolioComponent;
@@ -21,7 +21,8 @@ public class CashFlowCalculator implements Calculator {
 
     /**
      *
-     * @param portfolioComponent
+     * @param portfolioComponent provides information about investments held by
+     * an investment company. It represents a group of financial assets.
      * @param market provides information about the market
      * @param evalDate
      */
