@@ -18,14 +18,17 @@ public class AbstractPfc implements PortfolioComponent {
     private String parentId;
     private String name;
     private Currency currency;
-    private List<String> errors =  new ArrayList<String>();
+    private List<String> errors = new ArrayList<String>();
 
+    private Map<CalculationResult, Object> calculationResults = new HashMap<CalculationResult, Object>();
 
+    @Override
+    public Map<CalculationResult, Object> getCalculationResults() {
+        return calculationResults;
+    }
 
-    private Map<CalculationResult, Object> calculationResults = new HashMap<CalculationResult, Object>() ;
-
-    public void setErrorsAtribute(String errors) {
-        this.errors.add(errors);
+    public void addCalculationResults(Map<CalculationResult, Object> calculationResults, CalculationResult value, Object key) {
+        this.calculationResults.put(value, key);
     }
 
     @Override
@@ -65,15 +68,6 @@ public class AbstractPfc implements PortfolioComponent {
     }
 
     @Override
-    public Map<CalculationResult, Object> getCalculationResults() {
-        return calculationResults;
-    }
-
-  public void setCalculationResults(Map<CalculationResult, Object> calculationResults, CalculationResult key) {
-     this.calculationResults.put(key, calculationResults);
-    }
-
-    @Override
     public List<String> getErrors() {
         return errors;
     }
@@ -85,7 +79,7 @@ public class AbstractPfc implements PortfolioComponent {
 
     @Override
     public void clearAllResults() {
-        calculationResults = null;
+        calculationResults.clear();
     }
 
 }

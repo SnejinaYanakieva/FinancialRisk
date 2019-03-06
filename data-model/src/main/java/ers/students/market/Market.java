@@ -5,7 +5,6 @@
  */
 package ers.students.market;
 
-
 /**
  *
  * @author Viktor

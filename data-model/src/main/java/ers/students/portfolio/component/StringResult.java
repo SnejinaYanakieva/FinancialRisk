@@ -10,9 +10,9 @@ package ers.students.portfolio.component;
  * @author Viktor
  */
 public enum StringResult implements CalculationResult {
-    NAME, 
+    NAME,
     DESCRIPTION,
-    INSTRYMENT_ISIN, 
+    INSTRYMENT_ISIN,
     CURRENCY;
 
     @Override

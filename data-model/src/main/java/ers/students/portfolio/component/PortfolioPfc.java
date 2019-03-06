@@ -15,7 +15,7 @@ import java.util.*;
 public class PortfolioPfc extends AbstractPfc {
 
     private Portfolio portfolio;
-    private List<PortfolioComponent> elements = new ArrayList();;
+    private List<PortfolioComponent> elements = new ArrayList();
 
     public Portfolio getPortfolio() {
         return portfolio;

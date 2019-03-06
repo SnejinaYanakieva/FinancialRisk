@@ -6,14 +6,13 @@
 package ers.students.util;
 
 /**
- * test
  *
  * @author Viktor
  */
 public enum Currency {
     CHF,
-    AUD, 
+    AUD,
     GBP,
-    BGN, 
+    BGN,
     USD;
 }
