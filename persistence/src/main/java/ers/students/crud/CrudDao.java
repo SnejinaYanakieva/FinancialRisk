@@ -11,16 +11,21 @@ import java.util.List;
  *
  * @author Ayhan
  * @param <Entity>
+ * saves/inserts row in DB
+ * updates row in DB
+ * deletes row in DB
+ * returns the object with the given ID
+ * returns a list of all the objects
  */
 public interface CrudDao<Entity> {
 
-    void save(Entity e);    // saves/inserts row in DB
+    void save(Entity e);
 
-    void update(Entity e);  // updates row in DB
+    void update(Entity e);
 
-    void delete(int id);    // deletes row in DB
+    void delete(int id);
 
-    Entity loadById(int id);    // returns the object with the given id 
+    Entity loadById(int id);
 
-    List<Entity> loadAll();     // returns a list of all the objects
+    List<Entity> loadAll();
 }

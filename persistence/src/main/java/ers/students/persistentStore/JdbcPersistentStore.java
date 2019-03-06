@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Interface that provides methods for creating a database and 
  */
 package ers.students.persistentStore;
 
@@ -12,16 +10,23 @@ import ers.students.portfolio.Position;
 /**
  *
  * @author Ayhan
+ * creates the database
+ * deletes the database
+ * startTransaction
+ * reverts back to a previous state of the DB
+ * confirms/saves changes in DB
+ * getPositionDao
+ * getPortfolioDao
  */
 public class JdbcPersistentStore implements PersistentStore {
 
     @Override
-    public void createDB() {    // creates the database
+    public void createDB() {  
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void dropDB() {      // deletes the database
+    public void dropDB() { 
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -31,12 +36,12 @@ public class JdbcPersistentStore implements PersistentStore {
     }
 
     @Override
-    public void rollbackTransaction() {     // reverts back to a previous state of the DB
+    public void rollbackTransaction() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void commitTransaction() {       // confirms/saves changes in DB
+    public void commitTransaction() { 
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
