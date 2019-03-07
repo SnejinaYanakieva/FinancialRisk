@@ -29,6 +29,7 @@
       <groupId>ers.students</groupId>
       <artifactId>data-model</artifactId>
       <version>1.0-SNAPSHOT</version>
+      <type>jar</type>
     </dependency>
 	
     <dependency>
