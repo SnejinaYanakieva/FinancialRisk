@@ -12,6 +12,9 @@ import ers.students.portfolio.Position;
 /**
  *
  * @author Ayhan
+ * This interface provides methods to create and delete a database,
+ * begin, end and revert transactions and return PortfolioDao and PositionDao
+ * in the form of SearchingDao interface with the respective template class.
  */
 public interface PersistentStore {
 

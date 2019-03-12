@@ -10,19 +10,14 @@ import ers.students.portfolio.Position;
 /**
  *
  * @author Ayhan
- * creates the database
- * deletes the database
- * startTransaction
- * reverts back to a previous state of the DB
+ * 
+ * This class implements the PersistentStore interface and overrides the methods for
+ * creating and deleting a database, starting, ending reverting back a transaction
  * confirms/saves changes in DB
- * getPositionDao
- * getPortfolioDao
  */
+
 public class JdbcPersistentStore implements PersistentStore {
 
-    /**
-     *
-     */
     @Override
     public void createDB() {  
         throw new UnsupportedOperationException("Not supported yet.");

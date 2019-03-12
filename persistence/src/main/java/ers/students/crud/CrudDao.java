@@ -8,6 +8,11 @@ package ers.students.crud;
 import java.util.List;
 
 /**
+ * CrudDao interface provides methods to perform CRUD type operations
+ * on rows of the database.
+ */
+
+/**
  *
  * @author Ayhan
  * @param <Entity>

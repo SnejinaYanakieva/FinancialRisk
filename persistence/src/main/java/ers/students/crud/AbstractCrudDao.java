@@ -10,16 +10,19 @@ import java.util.List;
 /**
  *
  * @author Ayhan
- * @param <Entity> saves/inserts row in DB updates row in DB deletes row in DB
- * returns the objects with the given ID returns a list of all the objects
+ * AbstractCrudDao implements the CrudDao interface, implementing its methods
+ * used for CRUD based operations on the DB.
+ * 
+ * @param <Entity> - template class
+ * saves/inserts row in DB
+ * updates row in DB
+ * deletes row in DB
+ * returns the objects with the given ID
+ * returns a list of all the objects
  */
+
 public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
-    /**
-     *
-     * @param e
-     *
-     */
     @Override
     public void save(Entity e) {
         
