@@ -10,6 +10,7 @@ package ers.students.crud;
  * @author Ayhan
  * 
  * This class is used for queries to database
+ * using inherited methods.
  */
 public class PositionDao extends AbstractSearchingDao {
     

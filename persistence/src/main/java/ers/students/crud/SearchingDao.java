@@ -13,9 +13,14 @@ import java.util.List;
  * based on their name
  * 
  * @author Ayhan
- * @param <Entity>
+ * @param <Entity> template class
  */
 public interface SearchingDao<Entity> extends CrudDao<Entity> {
 
+    /**
+     * For looking up data by name
+     * @param name
+     * @return List of objects of template class
+     */
     List<Entity> searchByName(String name);
 }

@@ -8,15 +8,19 @@ package ers.students.crud;
 import java.util.List;
 
 /**
+ * Provides a method for looking up objects by name
  *
  * @author Ayhan
- * @param <Entity> saves/inserts row in DB updates row in DB deletes row in DB
- * returns the object with the given id returns a list of all the objects
- * returns a list of the objects with the given name
+ * @param <Entity> template class
  */
 public abstract class AbstractSearchingDao<Entity> extends AbstractCrudDao<Entity>
         implements SearchingDao<Entity> {
 
+    /**
+     * 
+     * @param name - name to use for searching in DB
+     * @return list of objects of template class
+     */
     @Override
     public List<Entity> searchByName(String name) {
         throw new UnsupportedOperationException("Not supported yet.");

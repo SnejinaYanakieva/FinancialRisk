@@ -10,27 +10,40 @@ import java.util.List;
 /**
  * CrudDao interface provides methods to perform CRUD type operations
  * on rows of the database.
- */
-
-/**
- *
+ * 
  * @author Ayhan
- * @param <Entity>
- * saves/inserts row in DB
- * updates row in DB
- * deletes row in DB
- * returns the object with the given ID
- * returns a list of all the objects
+ * @param <Entity> template class
  */
 public interface CrudDao<Entity> {
 
+    /**
+     * saves/inserts row in DB
+     * @param e - object of template class to save
+     */
     void save(Entity e);
 
+    /**
+     * updates row in DB
+     * @param e - object of template class to update
+     */
     void update(Entity e);
-
+    
+    /**
+     * deletes row in DB
+     * @param id - id of row to delete
+     */
     void delete(int id);
 
+    /**
+     * loads object with the given ID
+     * @param id
+     * @return object of template class
+     */
     Entity loadById(int id);
 
+    /**
+     * loads all data
+     * @return list of objects of template class
+     */
     List<Entity> loadAll();
 }
