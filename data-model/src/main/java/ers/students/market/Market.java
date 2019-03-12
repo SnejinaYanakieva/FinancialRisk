@@ -6,7 +6,7 @@
 package ers.students.market;
 
 /**
- *
+ *Interface fir the FxQuote and YeldCurve getters
  * @author Viktor
  */
 public interface Market {

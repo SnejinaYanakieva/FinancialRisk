@@ -9,7 +9,7 @@ import ers.students.util.Currency;
 import java.util.Date;
 
 /**
- *
+ *   Class contains the id , what is in the instrument isin the currency ,the currency and the Date of maturity and issue.
  * @author Viktor
  */
 public class Instrument {

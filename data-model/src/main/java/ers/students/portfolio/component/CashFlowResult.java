@@ -6,7 +6,7 @@
 package ers.students.portfolio.component;
 
 /**
- *
+ *The result of a cash flow.
  * @author Viktor
  */
 public enum CashFlowResult implements CalculationResult {
@@ -15,7 +15,7 @@ public enum CashFlowResult implements CalculationResult {
 
     @Override
     public String getName() {
-        return this.name();
+        return name();
     }
 
 }

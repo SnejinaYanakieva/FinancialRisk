@@ -6,7 +6,7 @@
 package ers.students.instruments;
 
 /**
- *
+ * class extending instrument with adding interestRate variable
  * @author Viktor
  */
 public class DebtInstrument extends Instrument {

@@ -9,7 +9,7 @@ import ers.students.portfolio.Portfolio;
 import java.util.*;
 
 /**
- *
+ * PortfolioPfc is a portfolio component that have a variable portfolio and list of portfolio components  called elements
  * @author Viktor
  */
 public class PortfolioPfc extends AbstractPfc {
@@ -30,7 +30,7 @@ public class PortfolioPfc extends AbstractPfc {
         return elements;
     }
 
-    public void addElements(PortfolioComponent elements) {
+    public void addElement(PortfolioComponent elements) {
         this.elements.add(elements);
     }
 

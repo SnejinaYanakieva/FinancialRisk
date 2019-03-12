@@ -6,7 +6,7 @@
 package ers.students.instruments;
 
 /**
- *
+ *A type of DebtInstrument. Type Deposit.
  * @author Viktor
  */
 public class Deposit extends DebtInstrument {

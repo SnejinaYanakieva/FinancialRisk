@@ -8,7 +8,7 @@ package ers.students.portfolio;
 import java.util.Date;
 
 /**
- *
+ *the class with the information of the positionId ,the payer and receiver with the date of it. 
  * @author Viktor
  */
 public class Transaction {
@@ -16,7 +16,7 @@ public class Transaction {
     private String id;
     private String positionId;
     private String payer;
-    private String reciver;
+    private String receiver;
     private Date date;
 
     public String getId() {
@@ -44,11 +44,11 @@ public class Transaction {
     }
 
     public String getReciver() {
-        return reciver;
+        return receiver;
     }
 
-    public void setReciver(String reciver) {
-        this.reciver = reciver;
+    public void setReciver(String receiver) {
+        this.receiver = receiver;
     }
 
     public Date getDate() {

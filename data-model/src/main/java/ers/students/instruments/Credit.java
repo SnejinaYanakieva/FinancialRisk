@@ -8,7 +8,7 @@ package ers.students.instruments;
 import ers.students.util.Frequency;
 
 /**
- *
+ * A type of DebtInstrument. Type credit.
  * @author Viktor
  */
 public class Credit extends DebtInstrument {

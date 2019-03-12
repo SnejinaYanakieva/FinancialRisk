@@ -33,12 +33,12 @@ public class AbstractPfc implements PortfolioComponent {
 
     /**
      *
-     * @param calculationResults
+     * @param calculationResult
      * @param value
      * @param key
      */
-    public void addCalculationResults(Map<CalculationResult, Object> calculationResults, CalculationResult value, Object key) {
-        this.calculationResults.put(value, key);
+    public void addCalculationResult(CalculationResult key, Object value) {
+        this.calculationResults.put(key,value);
     }
 
     /**
@@ -122,7 +122,7 @@ public class AbstractPfc implements PortfolioComponent {
      *
      * @param errors
      */
-    public void addErrors(String errors) {
+    public void addError(String errors) {
 
         this.errors.add(errors);
     }

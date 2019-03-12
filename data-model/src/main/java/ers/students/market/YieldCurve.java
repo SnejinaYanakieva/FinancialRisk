@@ -6,7 +6,7 @@
 package ers.students.market;
 
 /**
- *
+ *YieldCurve shows the yield at periods.
  * @author Viktor
  */
 public class YieldCurve {

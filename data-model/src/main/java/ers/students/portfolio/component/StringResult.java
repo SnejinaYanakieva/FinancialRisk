@@ -17,7 +17,7 @@ public enum StringResult implements CalculationResult {
 
     @Override
     public String getName() {
-        return this.name();
+        return name();
     }
 
 }

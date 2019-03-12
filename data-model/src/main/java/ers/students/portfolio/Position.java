@@ -8,7 +8,7 @@ package ers.students.portfolio;
 import ers.students.instruments.Instrument;
 
 /**
- *
+ *  
  * @author Viktor
  */
 public class Position {

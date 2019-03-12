@@ -9,7 +9,7 @@ import ers.students.util.Currency;
 import java.util.*;
 
 /**
- *
+ *' 
  * @author Viktor
  */
 public class FxQuote {
