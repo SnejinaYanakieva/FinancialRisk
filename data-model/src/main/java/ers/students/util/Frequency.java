@@ -42,7 +42,3 @@ public enum Frequency {
         this.period = period;
     }
 }
-/*public class Frequency(){
-
-
-}*/

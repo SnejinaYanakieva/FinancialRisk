@@ -22,61 +22,114 @@ public class AbstractPfc implements PortfolioComponent {
 
     private Map<CalculationResult, Object> calculationResults = new HashMap<CalculationResult, Object>();
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Map<CalculationResult, Object> getCalculationResults() {
         return calculationResults;
     }
 
+    /**
+     *
+     * @param calculationResults
+     * @param value
+     * @param key
+     */
     public void addCalculationResults(Map<CalculationResult, Object> calculationResults, CalculationResult value, Object key) {
         this.calculationResults.put(value, key);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(String id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getParentId() {
         return parentId;
     }
 
+    /**
+     *
+     * @param parentId
+     */
     public void setParentId(String parentId) {
         this.parentId = parentId;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Currency getCurrency() {
         return currency;
     }
 
+    /**
+     *
+     * @param currency
+     */
     public void setCurrency(Currency currency) {
         this.currency = currency;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<String> getErrors() {
         return errors;
     }
 
+    /**
+     *
+     * @param errors
+     */
     public void addErrors(String errors) {
 
         this.errors.add(errors);
     }
 
+    /**
+     * @Clearing the calculationResults
+     */
     @Override
     public void clearAllResults() {
         calculationResults.clear();
