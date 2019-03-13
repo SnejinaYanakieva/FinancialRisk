@@ -8,7 +8,7 @@ package ers.students.portfolio;
 import ers.students.instruments.Instrument;
 
 /**
- *  Is about who gives money to who and if its a deposit or a credit 
+ *  Is about who gives money to who and the instrument
  * @author Viktor
  */
 public class Position {

@@ -6,7 +6,7 @@
 package ers.students.instruments;
 
 /**
- *  Its an instrument about credits and deposits where there is money being given .
+ * Debt instrument is when someone is getting into a debt
  * @author Viktor
  */
 public class DebtInstrument extends Instrument {

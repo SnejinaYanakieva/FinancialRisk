@@ -8,20 +8,21 @@ package ers.students.instruments;
 import ers.students.util.Frequency;
 
 /**
- * A type of DebtInstrument.
- * Credit is when a Debtor take money from the Creditor and have to return in within the agreements boundaries .
+ * 
+ *Credit is when someone is given money and he have to return it with interest.
+ * 
  * @author Viktor
  */
 public class Credit extends DebtInstrument {
 
-    private Frequency amortitationFrequency;
+    private Frequency amortizationFrequency;
 
     public Frequency getAmortitationFrequency() {
-        return amortitationFrequency;
+        return amortizationFrequency;
     }
 
-    public void setAmortitationFrequency(Frequency amortitationFrequency) {
-        this.amortitationFrequency = amortitationFrequency;
+    public void setAmortitationFrequency(Frequency amortizationFrequency) {
+        this.amortizationFrequency = amortizationFrequency;
     }
 
 }

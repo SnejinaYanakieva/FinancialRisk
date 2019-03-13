@@ -9,7 +9,7 @@ import ers.students.util.Currency;
 import java.util.Date;
 
 /**
- *   
+ * Instrument is asset that can be traded.
  * @author Viktor
  */
 public class Instrument {

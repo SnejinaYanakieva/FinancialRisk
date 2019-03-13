@@ -8,7 +8,7 @@ package ers.students.portfolio.component;
 import ers.students.portfolio.Position;
 
 /**
- *Position of the portfolio witch have position and a volume variable 
+ *A component of the portfolio
  * @author Viktor
  */
 public class PositionPfc extends AbstractPfc {

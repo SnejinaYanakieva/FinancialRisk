@@ -18,9 +18,9 @@ public class AbstractPfc implements PortfolioComponent {
     private String parentId;
     private String name;
     private Currency currency;
-    private List<String> errors = new ArrayList<String>();
+    private final List<String> errors = new ArrayList<String>();
 
-    private Map<CalculationResult, Object> calculationResults = new HashMap<CalculationResult, Object>();
+    private final Map<CalculationResult, Object> calculationResults = new HashMap<CalculationResult, Object>();
 
     /**
      *

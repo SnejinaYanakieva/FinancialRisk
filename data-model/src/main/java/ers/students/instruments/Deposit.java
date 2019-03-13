@@ -6,7 +6,7 @@
 package ers.students.instruments;
 
 /**
- *Deposit is when the short side give money to the long side for safe keep while gaining a % of the sum on top of the sum .
+ *Deposit is when the short side give money to the long side for safe keep while gaining interest.
  * @author Viktor
  */
 public class Deposit extends DebtInstrument {
