@@ -9,7 +9,7 @@ package ers.students.crud;
  *
  * @author Ayhan
  *
- * Saves data retrieved from CRUD operations
+ * Stores data retrieved from CRUD operations
  */
 public class PositionDao extends AbstractSearchingDao {
 
