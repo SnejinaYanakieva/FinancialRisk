@@ -8,7 +8,8 @@ package ers.students.instruments;
 import ers.students.util.Frequency;
 
 /**
- * A type of DebtInstrument. Type credit.
+ * A type of DebtInstrument.
+ * Credit is when a Debtor take money from the Creditor and have to return in within the agreements boundaries .
  * @author Viktor
  */
 public class Credit extends DebtInstrument {

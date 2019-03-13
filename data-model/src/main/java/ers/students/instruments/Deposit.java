@@ -6,7 +6,7 @@
 package ers.students.instruments;
 
 /**
- *A type of DebtInstrument. Type Deposit.
+ *Deposit is when the short side give money to the long side for safe keep while gaining a % of the sum on top of the sum .
  * @author Viktor
  */
 public class Deposit extends DebtInstrument {

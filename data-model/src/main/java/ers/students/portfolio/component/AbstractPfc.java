@@ -9,7 +9,7 @@ import java.util.*;
 import ers.students.util.Currency;
 
 /**
- *
+ * used as a basis for creating the Pfc
  * @author Viktor
  */
 public class AbstractPfc implements PortfolioComponent {
@@ -122,9 +122,9 @@ public class AbstractPfc implements PortfolioComponent {
      *
      * @param errors
      */
-    public void addError(String errors) {
+    public void addError(String error) {
 
-        this.errors.add(errors);
+        this.errors.add(error);
     }
 
     /**

@@ -30,8 +30,8 @@ public class PortfolioPfc extends AbstractPfc {
         return elements;
     }
 
-    public void addElement(PortfolioComponent elements) {
-        this.elements.add(elements);
+    public void addElement(PortfolioComponent element) {
+        this.elements.add(element);
     }
 
 }

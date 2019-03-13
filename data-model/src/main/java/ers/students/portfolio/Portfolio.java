@@ -8,7 +8,7 @@ package ers.students.portfolio;
 import ers.students.util.Currency;
 
 /**
- *Class containing the name ,id and currency of the portfolio.
+ *Its used for having a range of investments 
  * @author Viktor
  */
 public class Portfolio {

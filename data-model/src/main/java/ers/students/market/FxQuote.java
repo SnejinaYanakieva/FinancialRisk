@@ -9,7 +9,7 @@ import ers.students.util.Currency;
 import java.util.*;
 
 /**
- *' 
+ *' Its the Currency to Currency rate of exchange for a certain date.
  * @author Viktor
  */
 public class FxQuote {
