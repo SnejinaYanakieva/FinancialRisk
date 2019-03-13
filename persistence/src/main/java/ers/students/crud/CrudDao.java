@@ -8,8 +8,7 @@ package ers.students.crud;
 import java.util.List;
 
 /**
- * CrudDao interface provides methods to perform CRUD type operations
- * on rows of the database.
+ * CrudDao interface provides methods to perform CRUD type operations in the database
  * 
  * @author Ayhan
  * @param <Entity> template class
@@ -18,32 +17,32 @@ public interface CrudDao<Entity> {
 
     /**
      * saves/inserts row in DB
-     * @param e - object of template class to save
+     * @param e - entity
      */
     void save(Entity e);
 
     /**
      * updates row in DB
-     * @param e - object of template class to update
+     * @param e - entity
      */
     void update(Entity e);
     
     /**
      * deletes row in DB
-     * @param id - id of row to delete
+     * @param id - id of row to delete data from
      */
     void delete(int id);
 
     /**
      * loads object with the given ID
      * @param id
-     * @return object of template class
+     * @return entity
      */
     Entity loadById(int id);
 
     /**
      * loads all data
-     * @return list of objects of template class
+     * @return list of entities
      */
     List<Entity> loadAll();
 }

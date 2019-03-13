@@ -10,17 +10,16 @@ import java.util.List;
 /**
  *
  * @author Ayhan
- * AbstractCrudDao implements the CrudDao interface, implementing its methods
- * used for CRUD based operations on the DB.
+ * AbstractCrudDao implements methods used for CRUD based operations on the DB.
  * 
- * @param <Entity> - template class
+ * @param <Entity> - entity
  */
 
 public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
     /**
      * Saves/inserts row in DB
-     * @param e object of template class to insert
+     * @param e entity to insert
      */
     @Override
     public void save(Entity e) {
@@ -29,7 +28,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
     /**
      * Updates row in DB
-     * @param e object of template class to update
+     * @param e entity to update
      */
     @Override
     public void update(Entity e) {
@@ -38,7 +37,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
     /**
      * Deletes row in DB
-     * @param id - id of row to delete
+     * @param id - id of row to delete data from
      */
     @Override
     public void delete(int id) {
@@ -46,9 +45,9 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     }
 
     /**
-     * Returns the objects with the given ID
+     * Loads entity based on ID
      * @param id - id of object to return
-     * @return object of template class
+     * @return entity
      */
     @Override
     public Entity loadById(int id) {
@@ -56,8 +55,8 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     }
 
     /**
-     * Returns a list of all the objects
-     * @return List of objects of template class
+     * Loads all entities in a List
+     * @return List of entities of template class
      */
     @Override
     public List<Entity> loadAll() {

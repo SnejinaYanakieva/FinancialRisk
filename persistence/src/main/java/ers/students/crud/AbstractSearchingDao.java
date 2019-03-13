@@ -8,18 +8,18 @@ package ers.students.crud;
 import java.util.List;
 
 /**
- * Provides a method for looking up objects by name
+ * Provides a method for looking up objects by string
  *
  * @author Ayhan
- * @param <Entity> template class
+ * @param <Entity> entity
  */
 public abstract class AbstractSearchingDao<Entity> extends AbstractCrudDao<Entity>
         implements SearchingDao<Entity> {
 
     /**
      * 
-     * @param name - name to use for searching in DB
-     * @return list of objects of template class
+     * @param name - string to use for searching in DB
+     * @return list of entities
      */
     @Override
     public List<Entity> searchByName(String name) {

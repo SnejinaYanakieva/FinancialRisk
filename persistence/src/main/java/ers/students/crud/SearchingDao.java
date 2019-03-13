@@ -8,19 +8,17 @@ package ers.students.crud;
 import java.util.List;
 
 /**
- * SearchingDao Interface provides method searchByName
- * which is for searching and returning a List of objects
- * based on their name
+ * This interface provides methods for searching data in the DB
  * 
  * @author Ayhan
- * @param <Entity> template class
+ * @param <Entity> entity
  */
 public interface SearchingDao<Entity> extends CrudDao<Entity> {
 
     /**
-     * For looking up data by name
+     * For looking up data by a string
      * @param name
-     * @return List of objects of template class
+     * @return List of entities
      */
     List<Entity> searchByName(String name);
 }

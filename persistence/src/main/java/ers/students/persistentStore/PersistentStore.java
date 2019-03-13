@@ -45,13 +45,13 @@ public interface PersistentStore {
     void commitTransaction();
 
     /**
-     * gets the Portfolio DAO
+     * Uses lazy initialization
      * @return 
      */
     SearchingDao<Portfolio> getPortfolioDao(); 
 
     /**
-     * gets the Position DAO
+     * Uses lazy initialization
      * @return 
      */
     SearchingDao<Position> getPositionDao(); 

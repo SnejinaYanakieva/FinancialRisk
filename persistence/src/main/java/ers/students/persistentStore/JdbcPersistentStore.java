@@ -58,7 +58,7 @@ public class JdbcPersistentStore implements PersistentStore {
     }
 
     /**
-     * gets the position DAO
+     * Uses lazy initialization
      * @return 
      */
     @Override
@@ -67,7 +67,7 @@ public class JdbcPersistentStore implements PersistentStore {
     }
 
     /**
-     * gets the portfolio DAO
+     * Uses lazy initialization
      * @return 
      */
     @Override
