@@ -17,7 +17,7 @@ import ers.students.portfolio.Position;
 public class JdbcPersistentStore implements PersistentStore {
 
     /**
-     * creates the DB
+     * Creates the DB
      */
     @Override
     public void createDB() {  
@@ -25,7 +25,7 @@ public class JdbcPersistentStore implements PersistentStore {
     }
 
     /**
-     * deletes the DB
+     * Deletes the DB
      */
     @Override
     public void dropDB() { 
@@ -33,7 +33,7 @@ public class JdbcPersistentStore implements PersistentStore {
     }
 
     /**
-     * begin transaction
+     * Begin transaction
      */
     @Override
     public void startTransaction() {
@@ -41,7 +41,7 @@ public class JdbcPersistentStore implements PersistentStore {
     }
 
     /**
-     * reverts back to the previous state of the database
+     * Reverts back to the previous state of the database
      * changes made in DB aren't saved
      */
     @Override
@@ -50,7 +50,7 @@ public class JdbcPersistentStore implements PersistentStore {
     }
 
     /**
-     * saves transaction
+     * Saves transaction
      */
     @Override
     public void commitTransaction() { 

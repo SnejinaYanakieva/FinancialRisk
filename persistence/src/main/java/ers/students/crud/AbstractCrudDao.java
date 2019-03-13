@@ -10,7 +10,7 @@ import java.util.List;
 /**
  *
  * @author Ayhan
- * AbstractCrudDao implements methods used for CRUD based operations on the DB.
+ * Implements methods used for CRUD based operations on the DB.
  * 
  * @param <Entity> - entity
  */
@@ -19,7 +19,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
     /**
      * Saves/inserts row in DB
-     * @param e entity to insert
+     * @param e entity to save/insert
      */
     @Override
     public void save(Entity e) {
@@ -36,27 +36,27 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     }
 
     /**
-     * Deletes row in DB
+     * Deletes from row in DB
      * @param id - id of row to delete data from
      */
     @Override
-    public void delete(int id) {
+    public void delete(String id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      * Loads entity based on ID
-     * @param id - id of object to return
+     * @param id - id of entity
      * @return entity
      */
     @Override
-    public Entity loadById(int id) {
+    public Entity loadById(String id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      * Loads all entities in a List
-     * @return List of entities of template class
+     * @return List of entities
      */
     @Override
     public List<Entity> loadAll() {

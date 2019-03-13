@@ -8,7 +8,7 @@ package ers.students.crud;
 import java.util.List;
 
 /**
- * Provides a method for looking up objects by string
+ * Provides a method for looking up entities by name
  *
  * @author Ayhan
  * @param <Entity> entity

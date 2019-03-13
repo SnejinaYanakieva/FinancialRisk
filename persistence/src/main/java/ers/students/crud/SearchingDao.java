@@ -16,7 +16,7 @@ import java.util.List;
 public interface SearchingDao<Entity> extends CrudDao<Entity> {
 
     /**
-     * For looking up data by a string
+     * For looking up data by name
      * @param name
      * @return List of entities
      */

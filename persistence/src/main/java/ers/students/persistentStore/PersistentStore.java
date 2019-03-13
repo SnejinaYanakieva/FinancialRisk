@@ -19,28 +19,28 @@ import ers.students.portfolio.Position;
 public interface PersistentStore {
 
     /**
-     * creates database
+     * Creates database
      */
     void createDB();
 
     /**
-     * deletes database
+     * Deletes database
      */
     void dropDB(); 
 
     /**
-     * begins transaction
+     * Begins transaction
      */
     void startTransaction();
 
     /**
-     * reverts back to the previous state of the database
+     * Reverts back to the previous state of the database
      * changes made in DB aren't saved
      */
     void rollbackTransaction();
 
     /**
-     * saves transaction
+     * Saves transaction
      */
     void commitTransaction();
 
