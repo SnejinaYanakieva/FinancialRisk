@@ -19,6 +19,11 @@ import ers.students.portfolio.component.AbstractPfc;
 public class PositionCalculator implements PortfolioComponentCalculator {
 
     /**
+     * The Present Value is calculated by the formula:
+     * Present Value = FV / ( 1 + r )^n, where 
+     * FV = future value 
+     * r = rate of return 
+     * n = number of periods
      *
      * @param pfc component on which will be executed calculation
      * @param market
@@ -30,7 +35,9 @@ public class PositionCalculator implements PortfolioComponentCalculator {
     }
 
     /**
-     *
+     * The Profit & Loss is calculated by the formula:
+     * Profit / Loss = Present Value - Notional amount
+     * 
      * @param pfc component on which will be executed calculation
      * @param market
      * @param evalDate date of calculation
@@ -41,9 +48,9 @@ public class PositionCalculator implements PortfolioComponentCalculator {
     }
 
     /**
-     *
+     * 
      * @param pfc component on which will be executed calculation
-     * @param market 
+     * @param market
      * @param evalDate date of calculation
      */
     @Override
@@ -52,9 +59,11 @@ public class PositionCalculator implements PortfolioComponentCalculator {
     }
 
     /**
-     *
+     * The Cash Flow is calculated by the formula:
+     * Beginning cash + projected inflows – projected outflows = Ending cash
+     * 
      * @param pfc component on which will be executed calculation
-     * @param market 
+     * @param market
      * @param evalDate date of calculation
      */
     @Override
