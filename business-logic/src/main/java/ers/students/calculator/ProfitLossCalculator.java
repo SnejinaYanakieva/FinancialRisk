@@ -22,10 +22,9 @@ public class ProfitLossCalculator implements Calculator {
 
     /**
      *
-     * @param portfolioComponent provides information about investments held by
-     * an investment company. It represents a group of financial assets.
-     * @param market provides information about the market
-     * @param evalDate
+     * @param portfolioComponent component on which will be executed calculation
+     * @param market 
+     * @param evalDate date of calculation
      */
     @Override
     public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate) {

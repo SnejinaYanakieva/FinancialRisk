@@ -15,21 +15,21 @@ import ers.students.portfolio.component.PortfolioPfc;
 import ers.students.portfolio.component.PositionPfc;
 
 /**
- * The PortfolioComponentCalculatorResolver class is a class that is based on
- * the Registry Design Pattern. It provides information about the portfolio
- * component calculators.
+ * The PortfolioComponentCalculatorResolver is a class that resolves by given
+ * AbstractPfc class corresponding portfolio component calculator.
  *
  * @author Irina
  */
 public class PortfolioComponentCalculatorResolver {
 
     /**
-     * Contains PortfolioComponentCalculator objects by given AbstractPfc class.
+     * Contains PortfolioComponentCalculator objects by given corresponding AbstractPfc class.
      */
     private final static Map<Class<? extends AbstractPfc>, PortfolioComponentCalculator> portfolioComponentCalculators = new HashMap<Class<? extends AbstractPfc>, PortfolioComponentCalculator>();
 
     /**
-     * Map initialization with Portfolio Component Calculators.
+     * Map initialization with Portfolio Component Calculators and corresponding
+     * AbstractPfc class.
      */
     static {
         portfolioComponentCalculators.put(PortfolioPfc.class, new PortfolioCalculator());
@@ -38,8 +38,9 @@ public class PortfolioComponentCalculatorResolver {
 
     /**
      *
-     * @param pfcClass a key to search a portfolio component calculator.
-     * @return by given key returns corresponding portfolio component calculator.
+     * @param pfcClass a key to resolve a portfolio component calculator.
+     * @return by given AbstractPfc class key returns corresponding portfolio
+     * component calculator.
      */
     public PortfolioComponentCalculator getPfcCalculator(Class<? extends AbstractPfc> pfcClass) {
         return portfolioComponentCalculators.get(pfcClass);

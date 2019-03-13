@@ -12,7 +12,7 @@ import ers.students.portfolio.component.AbstractPfc;
 
 /**
  * This interface imposes calculation methods for each class that implements it.
- * 
+ *
  * @author Irina
  */
 public interface PortfolioComponentCalculator {

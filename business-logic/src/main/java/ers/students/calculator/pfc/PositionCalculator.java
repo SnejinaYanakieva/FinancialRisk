@@ -20,9 +20,9 @@ public class PositionCalculator implements PortfolioComponentCalculator {
 
     /**
      *
-     * @param pfc represents a group of financial assets
-     * @param market provides information about the market
-     * @param evalDate
+     * @param pfc component on which will be executed calculation
+     * @param market
+     * @param evalDate date of calculation
      */
     @Override
     public void calculatePresentValue(AbstractPfc pfc, Market market, Date evalDate) {
@@ -31,9 +31,9 @@ public class PositionCalculator implements PortfolioComponentCalculator {
 
     /**
      *
-     * @param pfc represents a group of financial assets
-     * @param market provides information about the market
-     * @param evalDate
+     * @param pfc component on which will be executed calculation
+     * @param market
+     * @param evalDate date of calculation
      */
     @Override
     public void calculateProfitLoss(AbstractPfc pfc, Market market, Date evalDate) {
@@ -42,9 +42,9 @@ public class PositionCalculator implements PortfolioComponentCalculator {
 
     /**
      *
-     * @param pfc represents a group of financial assets
-     * @param market provides information about the market
-     * @param evalDate
+     * @param pfc component on which will be executed calculation
+     * @param market 
+     * @param evalDate date of calculation
      */
     @Override
     public void calculatePositionVolume(AbstractPfc pfc, Market market, Date evalDate) {
@@ -53,9 +53,9 @@ public class PositionCalculator implements PortfolioComponentCalculator {
 
     /**
      *
-     * @param pfc represents a group of financial assets
-     * @param market provides information about the market
-     * @param evalDate
+     * @param pfc component on which will be executed calculation
+     * @param market 
+     * @param evalDate date of calculation
      */
     @Override
     public void calculateCashFlow(AbstractPfc pfc, Market market, Date evalDate) {
