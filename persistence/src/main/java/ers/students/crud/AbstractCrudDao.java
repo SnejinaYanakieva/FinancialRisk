@@ -18,7 +18,7 @@ import java.util.List;
 public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
     /**
-     * Saves/inserts row in DB
+     * Saves/inserts entity in DB
      * @param e entity to save/insert
      */
     @Override
@@ -27,7 +27,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     }
 
     /**
-     * Updates row in DB
+     * Updates entity in DB
      * @param e entity to update
      */
     @Override
@@ -36,7 +36,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     }
 
     /**
-     * Deletes from row in DB
+     * Deletes from entity in DB
      * @param id - id of row to delete data from
      */
     @Override

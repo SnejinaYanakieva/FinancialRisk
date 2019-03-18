@@ -16,19 +16,19 @@ import java.util.List;
 public interface CrudDao<Entity> {
 
     /**
-     * Saves/inserts row in DB
+     * Saves/inserts entity in DB
      * @param e - entity
      */
     void save(Entity e);
 
     /**
-     * Updates row in DB
+     * Updates entity in DB
      * @param e - entity
      */
     void update(Entity e);
     
     /**
-     * Deletes from row in DB
+     * Deletes from entity in DB
      * @param id - ID of row to delete data from
      */
     void delete(String id);
