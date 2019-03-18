@@ -60,7 +60,10 @@ public class PositionCalculator implements PortfolioComponentCalculator {
 
     /**
      * The Cash Flow is calculated by the formula:
-     * Beginning cash + projected inflows – projected outflows = Ending cash
+     * CFi = Ci . RDI   where
+     * CFi value of cash flow 
+     * Ci interest payment for the period
+     * RDi residual debt
      * 
      * @param pfc component on which will be executed calculation
      * @param market

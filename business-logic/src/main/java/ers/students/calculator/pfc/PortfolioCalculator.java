@@ -19,9 +19,10 @@ import ers.students.portfolio.component.AbstractPfc;
 public class PortfolioCalculator implements PortfolioComponentCalculator {
 
     /**
+     * Calculates the sum of all Present Values.
      *
      * @param pfc component on which will be executed calculation
-     * @param market 
+     * @param market
      * @param evalDate date of calculation
      */
     @Override
@@ -30,9 +31,10 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
     }
 
     /**
+     * Calculates the sum of all Profit/Loss values.
      *
      * @param pfc component on which will be executed calculation
-     * @param market 
+     * @param market
      * @param evalDate date of calculation
      */
     @Override
@@ -41,9 +43,10 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
     }
 
     /**
+     * Calculates the number of contracts (positions) traded in a given period.
      *
      * @param pfc component on which will be executed calculation
-     * @param market 
+     * @param market
      * @param evalDate date of calculation
      */
     @Override
@@ -54,7 +57,7 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
     /**
      *
      * @param pfc component on which will be executed calculation
-     * @param market 
+     * @param market
      * @param evalDate date of calculation
      */
     @Override
