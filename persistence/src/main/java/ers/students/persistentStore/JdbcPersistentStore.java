@@ -3,9 +3,12 @@
  */
 package ers.students.persistentStore;
 
+import ers.students.crud.PortfolioDao;
+import ers.students.crud.PositionDao;
 import ers.students.crud.SearchingDao;
 import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
+import java.sql.Connection;
 
 /**
  *
@@ -15,6 +18,12 @@ import ers.students.portfolio.Position;
  */
 
 public class JdbcPersistentStore implements PersistentStore {
+    
+    Connection connection;
+    String userName;
+    String password;
+    PortfolioDao portfolioDao;
+    PositionDao positionDao;
 
     /**
      * Creates the DB
