@@ -20,7 +20,12 @@ import ers.students.portfolio.component.PortfolioComponent;
 public class CashFlowCalculator implements Calculator {
 
     /**
-     *
+     * The Cash Flow is calculated by the formula:
+     * CFi = Ci . RDI   where
+     * CFi value of cash flow 
+     * Ci interest payment for the period
+     * RDi residual debt
+     * 
      * @param portfolioComponent component on which will be executed calculation
      * @param market
      * @param evalDate date of calculation

@@ -12,16 +12,16 @@ import ers.students.portfolio.component.PortfolioComponent;
 
 /**
  * The ProfitLossCalculator class is a class that provides method for
- * calculating the profit and loss from an investment. The profit and loss (P&L)
- * statement is a financial statement which summarizes the revenue and costs
- * incurred during a specified period.
+ * calculating the profit and loss from an investment. 
  *
  * @author Irina
  */
 public class ProfitLossCalculator implements Calculator {
 
     /**
-     *
+     * The Profit & Loss is calculated by the formula:
+     * Profit / Loss = Present Value - Notional amount
+     * 
      * @param portfolioComponent component on which will be executed calculation
      * @param market 
      * @param evalDate date of calculation

@@ -48,6 +48,7 @@ public class PositionCalculator implements PortfolioComponentCalculator {
     }
 
     /**
+     * Calculates the number of contracts (positions) traded in a given period
      * 
      * @param pfc component on which will be executed calculation
      * @param market
