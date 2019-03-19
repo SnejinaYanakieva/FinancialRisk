@@ -12,45 +12,64 @@ import javax.ws.rs.GET;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 /**
  *
  * @author martinstoynov
  */
 
-// The Java class will be hosted at the URI path "/position"
-@Path("/position")
-
-//The @Consumes annotation is used to specify which MIME media types of
-//representations a resource can accept, or consume, from the client.
-@Consumes({"application/json"})
-
+@Path("/positions")
+@Consumes("application/json")
+@Produces("application/json")
 public interface PositionRestService {
-    // The Java methods will process HTTP POST/GET/PUT/DELETE requests
     
+    /**
+    * Sends information to the server
+    * about Position to create a resource
+    */
     @POST
     @Path("/create")
-    Response create(Position portfolio);
+    Response create(Position position);
     
+    /**
+    * Replaces all current representations of the target
+    * resource with the uploaded content.
+    */
     @PUT
     @Path("/update")
-    Response update(Position portfolio);
+    Response update(Position position);
     
+    /**
+    * Retrieves information about resources,
+    * specified by ID, from the server.
+    */
     @GET
-    @Path("/load/{id}")
-    Response loadById(@PathParam("id") String id);
+    @Path("/loadById")
+    Response loadById(String id);
     
+    /**
+    * Removes all current representations of the target
+    * resource, specified by ID.
+    */
     @DELETE
-    @Path("/delete/{id}")
-    Response deleteById(@PathParam("id") String id);
+    @Path("/deleteById")
+    Response deleteById(String id);
     
+    /**
+    * Retrieves information about all
+    * resources from the server using a given URI.
+    */
     @GET
-    @Path("/load")
+    @Path("/loadAll")
     Response loadAll();
     
+    /**
+    * Retrieves information about resources,
+    * specified by name, from the server.
+    */
     @GET
-    @Path("/search/{name}")
-    Response searchByName(@PathParam("name") String name);
+    @Path("/searchByName")
+    Response searchByName(String name);
 
 }
