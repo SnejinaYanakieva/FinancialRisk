@@ -17,11 +17,5 @@ import ers.students.portfolio.component.PortfolioComponent;
  */
 public interface Calculator {
 
-    /**
-     * 
-     * @param portfolioComponent  component on which will be executed calculation
-     * @param market 
-     * @param evalDate date of calculation
-     */
     public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate);
 }

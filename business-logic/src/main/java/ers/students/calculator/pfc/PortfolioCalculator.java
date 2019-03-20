@@ -43,7 +43,7 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
     }
 
     /**
-     * Calculates the number of contracts (positions) traded in a given period
+     * Calculates the amount of transactions.
      *
      * @param pfc component on which will be executed calculation
      * @param market
@@ -55,7 +55,7 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
     }
 
     /**
-     *
+     * Calculates the interest and principal payments.
      *
      * @param pfc component on which will be executed calculation
      * @param market

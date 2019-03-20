@@ -19,7 +19,7 @@ import ers.students.portfolio.component.PortfolioComponent;
 public class PositionVolumeCalculator implements Calculator {
 
     /**
-     * Calculates the number of contracts (positions) traded in a given period
+     * Calculates the amount of transactions
      *
      * @param portfolioComponent component on which will be executed calculation
      * @param market

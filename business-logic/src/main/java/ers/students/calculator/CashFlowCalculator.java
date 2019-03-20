@@ -11,9 +11,8 @@ import ers.students.market.Market;
 import ers.students.portfolio.component.PortfolioComponent;
 
 /**
- * The CashFlowCalculator class is a class that provides method for calculating
- * cash flow. The cash flow refers to the cash amounts to be paid or received at
- * certain dates as a result of current or past financial operations.
+ * The CashFlowCalculator class provides method for calculating
+ * cash flow. The cash flow is a result of a signed contract.
  *
  * @author Irina
  */
