@@ -36,7 +36,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     }
 
     /**
-     * Deletes from entity in DB
+     * Deletes entity in DB
      * @param id - id of row to delete data from
      */
     @Override

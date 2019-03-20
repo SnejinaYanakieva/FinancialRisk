@@ -28,7 +28,7 @@ public interface CrudDao<Entity> {
     void update(Entity e);
     
     /**
-     * Deletes from entity in DB
+     * Deletes entity in DB
      * @param id - ID of row to delete data from
      */
     void delete(String id);
