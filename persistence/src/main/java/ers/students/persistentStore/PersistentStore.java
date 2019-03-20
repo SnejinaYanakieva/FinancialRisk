@@ -12,8 +12,7 @@ import ers.students.portfolio.Position;
 /**
  *
  * @author Ayhan
- * This interface provides methods to create and delete a database,
- * begin, end and revert transactions
+ * This interface provides methods for working with database and transactions
  */
 
 public interface PersistentStore {

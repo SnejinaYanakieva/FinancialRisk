@@ -72,6 +72,9 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Position> getPositionDao() {
+        if(this.positionDao==null){
+            
+        }
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -81,6 +84,9 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Portfolio> getPortfolioDao() {
+        if(this.portfolioDao==null){
+            
+        }
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

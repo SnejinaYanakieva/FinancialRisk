@@ -5,6 +5,8 @@
  */
 package ers.students.crud;
 
+import ers.students.portfolio.Portfolio;
+
 /**
  *
  * @author Ayhan
@@ -12,5 +14,5 @@ package ers.students.crud;
  * Stores data retrieved from CRUD operations
  */
 public class PortfolioDao extends AbstractSearchingDao {
-
+    Portfolio portfolio;
 }
