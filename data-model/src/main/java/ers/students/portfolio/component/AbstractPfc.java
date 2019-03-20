@@ -18,9 +18,9 @@ public class AbstractPfc implements PortfolioComponent {
     private String parentId;
     private String name;
     private Currency currency;
-    private final List<String> errors = new ArrayList<String>();
+    private final List<String> errors = new ArrayList<>();
 
-    private final Map<CalculationResult, Object> calculationResults = new HashMap<CalculationResult, Object>();
+    private final Map<CalculationResult, Object> calculationResults = new HashMap<>();
 
     /**
      *
@@ -33,7 +33,6 @@ public class AbstractPfc implements PortfolioComponent {
 
     /**
      *
-     * @param calculationResult
      * @param value
      * @param key
      */
@@ -120,7 +119,7 @@ public class AbstractPfc implements PortfolioComponent {
 
     /**
      *
-     * @param errors
+     * @param error
      */
     public void addError(String error) {
 
