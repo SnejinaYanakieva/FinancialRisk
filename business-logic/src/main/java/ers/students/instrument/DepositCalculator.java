@@ -13,18 +13,19 @@ import java.util.Date;
 import java.util.Map;
 
 /**
+ * Deposit calculator is used to calculate the price of a deposit offer.
  *
  * @author Irina
  */
 public class DepositCalculator implements InstrumentCalculator {
 
     /**
-     * 
-     * @param instrument
-     * @param positionVolume
+     *
+     * @param instrument a set of contractual terms
+     * @param positionVolume amount of transactions
      * @param market
-     * @param evalDate
-     * @return 
+     * @param evalDate  date of calculation
+     * @return
      */
     @Override
     public double calculatePresentValue(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
@@ -32,11 +33,11 @@ public class DepositCalculator implements InstrumentCalculator {
     }
 
     /**
-     * 
-     * @param instrument
-     * @param positionVolume
+     *
+     * @param instrument a set of contractual terms
+     * @param positionVolume amount of transactions
      * @param market
-     * @param evalDate 
+     * @param evalDate date of calculation
      */
     @Override
     public void buildCashFlow(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
@@ -44,8 +45,8 @@ public class DepositCalculator implements InstrumentCalculator {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public Map<Calendar, Double> getInvestmentPayments() {
@@ -53,8 +54,8 @@ public class DepositCalculator implements InstrumentCalculator {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public Map<Calendar, Double> getAmortizationPayments() {
@@ -62,12 +63,12 @@ public class DepositCalculator implements InstrumentCalculator {
     }
 
     /**
-     * 
-     * @param instrument
-     * @param positionVolume
+     *
+     * @param instrument a set of contractual terms
+     * @param positionVolume amount of transactions
      * @param market
-     * @param evalDate
-     * @return 
+     * @param evalDate date of calculation
+     * @return
      */
     @Override
     public double calculateProfitLoss(Instrument instrument, Position positionVolume, Market market, Date evalDate) {

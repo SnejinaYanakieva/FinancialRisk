@@ -13,18 +13,20 @@ import java.util.Date;
 import java.util.Map;
 
 /**
+ * Credit calculator is used to calculate the price of a credit offer.
  *
  * @author Irina
  */
 public class CreditCalculator implements InstrumentCalculator {
 
     /**
-     * 
-     * @param instrument
-     * @param positionVolume
+     * Calculates the discounted value of all incomes.
+     *
+     * @param instrument a set of contractual terms
+     * @param positionVolume amount of transactions
      * @param market
-     * @param evalDate
-     * @return 
+     * @param evalDate date of calculation
+     * @return
      */
     @Override
     public double calculatePresentValue(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
@@ -32,11 +34,12 @@ public class CreditCalculator implements InstrumentCalculator {
     }
 
     /**
-     * 
-     * @param instrument
-     * @param positionVolume
+     * Represents the interest and principal payments.
+     *
+     * @param instrument a set of contractual terms
+     * @param positionVolume amount of transactions
      * @param market
-     * @param evalDate 
+     * @param evalDate date of calculation
      */
     @Override
     public void buildCashFlow(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
@@ -44,8 +47,8 @@ public class CreditCalculator implements InstrumentCalculator {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public Map<Calendar, Double> getInvestmentPayments() {
@@ -53,8 +56,8 @@ public class CreditCalculator implements InstrumentCalculator {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public Map<Calendar, Double> getAmortizationPayments() {
@@ -62,12 +65,12 @@ public class CreditCalculator implements InstrumentCalculator {
     }
 
     /**
-     * 
-     * @param instrument
-     * @param positionVolume
+     *
+     * @param instrument a set of contractual terms
+     * @param positionVolume amount of transactions
      * @param market
-     * @param evalDate
-     * @return 
+     * @param evalDate date of calculation
+     * @return
      */
     @Override
     public double calculateProfitLoss(Instrument instrument, Position positionVolume, Market market, Date evalDate) {

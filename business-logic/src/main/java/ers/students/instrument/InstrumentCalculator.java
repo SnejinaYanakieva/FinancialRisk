@@ -12,21 +12,20 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
-
-
 /**
+ * This interface imposes methods for each class that implements it.
  *
  * @author Irina
  */
 public interface InstrumentCalculator {
-    
+
     double calculatePresentValue(Instrument instrument, Position positionVolume, Market market, Date evalDate);
-    
+
     void buildCashFlow(Instrument instrument, Position positionVolume, Market market, Date evalDate);
-    
+
     Map<Calendar, Double> getInvestmentPayments();
-    
+
     Map<Calendar, Double> getAmortizationPayments();
-    
+
     double calculateProfitLoss(Instrument instrument, Position positionVolume, Market market, Date evalDate);
 }
