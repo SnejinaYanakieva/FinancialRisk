@@ -4,19 +4,19 @@
  * and open the template in the editor.
  */
 package ers.students.util;
-
+import java.util.Calendar;
 /**
  *
  * @author Viktor
  */
 public enum Frequency {
-    MONTHLY(1, 1),
-    TWO_MONTHS(1, 2),
-    QUATERLY(1, 3),
-    FOUR_MONTHS(1, 4),
-    SEMI_ANUAL(1, 6),
-    ANUAL(2, 1),
-    TWO_YEARS(2, 2);
+    MONTHLY(Calendar.MONTH, 1),
+    TWO_MONTHS(Calendar.MONTH, 2),
+    QUATERLY(Calendar.MONTH, 3),
+    FOUR_MONTHS(Calendar.MONTH, 4),
+    SEMI_ANUAL(Calendar.MONTH, 6),
+    ANUAL(Calendar.YEAR, 1),
+    TWO_YEARS(Calendar.YEAR, 2);
 
     private int type;
     private int period;
