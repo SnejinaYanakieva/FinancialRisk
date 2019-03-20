@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package ers.students.validate;
+
 import java.util.List;
+
 /**
  *
  * @author tester
  */
 public interface Validatable {
- 
+
     List<String> validate();
 }

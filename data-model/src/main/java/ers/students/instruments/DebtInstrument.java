@@ -5,11 +5,14 @@
  */
 package ers.students.instruments;
 
+import ers.students.validate.Validatable;
+import java.util.List;
+
 /**
  * Debt instrument is when someone is getting into a debt
  * @author Viktor
  */
-public class DebtInstrument extends Instrument {
+public class DebtInstrument extends Instrument implements Validatable {
 
     private double interestRate;
 
@@ -20,5 +23,10 @@ public class DebtInstrument extends Instrument {
     public double getInterestRate() {
         return interestRate;
     }
+ public List<String> validate() {
 
+        throw new UnsupportedOperationException("Unsupported operation.");
+    }
+
+    
 }

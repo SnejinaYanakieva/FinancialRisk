@@ -5,10 +5,16 @@
  */
 package ers.students.instruments;
 
+import ers.students.validate.Validatable;
+import java.util.List;
+
 /**
  *Deposit is when the short side give money to the long side for safe keep while gaining interest.
  * @author Viktor
  */
-public class Deposit extends DebtInstrument {
+public class Deposit extends DebtInstrument implements Validatable {
+   public List<String> validate() {
 
+        throw new UnsupportedOperationException("Unsupported operation.");
+    }
 }

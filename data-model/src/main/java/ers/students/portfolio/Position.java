@@ -6,12 +6,14 @@
 package ers.students.portfolio;
 
 import ers.students.instruments.Instrument;
+import ers.students.validate.Validatable;
+import java.util.List;
 
 /**
  *  Is about who gives money to who and the instrument
  * @author Viktor
  */
-public class Position {
+public class Position implements Validatable{
 
     private String id;
     private String name;
@@ -66,5 +68,9 @@ public class Position {
 
     public void setPortfolioId(String portfolioId) {
         this.portfolioId = portfolioId;
+    }
+     public List<String> validate() {
+
+        throw new UnsupportedOperationException("Unsupported operation.");
     }
 }

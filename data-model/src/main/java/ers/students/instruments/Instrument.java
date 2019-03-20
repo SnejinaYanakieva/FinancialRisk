@@ -6,13 +6,15 @@
 package ers.students.instruments;
 
 import ers.students.util.Currency;
+import ers.students.validate.Validatable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Instrument is asset that can be traded.
  * @author Viktor
  */
-public class Instrument {
+public class Instrument implements Validatable {
 
     private String id;
     private String isin;
@@ -59,5 +61,8 @@ public class Instrument {
     public void setMaturityDate(Date maturityDate) {
         this.maturityDate = maturityDate;
     }
+   public List<String> validate() {
 
+        throw new UnsupportedOperationException("Unsupported operation.");
+    }
 }

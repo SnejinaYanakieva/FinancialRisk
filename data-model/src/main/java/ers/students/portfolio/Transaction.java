@@ -5,13 +5,15 @@
  */
 package ers.students.portfolio;
 
+import ers.students.validate.Validatable;
 import java.util.Date;
+import java.util.List;
 
 /**
  *the class with the information of the positionId ,the payer and receiver with the date of it. 
  * @author Viktor
  */
-public class Transaction {
+public class Transaction implements Validatable{
 
     private String id;
     private String positionId;
@@ -57,6 +59,10 @@ public class Transaction {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+     public List<String> validate() {
+
+        throw new UnsupportedOperationException("Unsupported operation.");
     }
 
 }

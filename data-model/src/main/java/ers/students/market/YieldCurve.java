@@ -5,11 +5,14 @@
  */
 package ers.students.market;
 
+import ers.students.validate.Validatable;
+import java.util.List;
+
 /**
  *YieldCurve shows the yield at periods.
  * @author Viktor
  */
-public class YieldCurve {
+public class YieldCurve implements Validatable{
 
     private String id;
     private String name;
@@ -119,5 +122,8 @@ public class YieldCurve {
     public void setYield30year(double yield30year) {
         this.yield30year = yield30year;
     }
+ public List<String> validate() {
 
+        throw new UnsupportedOperationException("Unsupported operation.");
+    }
 }

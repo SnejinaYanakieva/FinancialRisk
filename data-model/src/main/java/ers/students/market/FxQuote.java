@@ -6,13 +6,14 @@
 package ers.students.market;
 
 import ers.students.util.Currency;
+import ers.students.validate.Validatable;
 import java.util.*;
 
 /**
  *' Its the Currency to Currency rate of exchange for a certain date.
  * @author Viktor
  */
-public class FxQuote {
+public class FxQuote implements Validatable {
 
     private String id;
     private Currency from;
@@ -59,5 +60,8 @@ public class FxQuote {
     public void setValue(double value) {
         this.value = value;
     }
+ public List<String> validate() {
 
+        throw new UnsupportedOperationException("Unsupported operation.");
+    }
 }

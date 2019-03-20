@@ -6,12 +6,14 @@
 package ers.students.portfolio;
 
 import ers.students.util.Currency;
+import ers.students.validate.Validatable;
+import java.util.List;
 
 /**
  *Its used for having a range of investments 
  * @author Viktor
  */
-public class Portfolio {
+public class Portfolio implements Validatable{
 
     private String id;
     private String name;
@@ -40,5 +42,8 @@ public class Portfolio {
     public void setCurrency(Currency currency) {
         this.currency = currency;
     }
+ public List<String> validate() {
 
+        throw new UnsupportedOperationException("Unsupported operation.");
+    }
 }
