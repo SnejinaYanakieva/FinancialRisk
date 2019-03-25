@@ -8,6 +8,8 @@ package ers.students.crud;
 /**
  *
  * @author Ayhan
+ * 
+ * Stores data retrieved from CRUD operations
  */
 public class FxQuoteDao extends AbstractCrudDao {
     
