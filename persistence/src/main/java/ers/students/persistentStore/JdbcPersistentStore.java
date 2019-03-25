@@ -3,6 +3,7 @@
  */
 package ers.students.persistentStore;
 
+import ers.students.crud.CrudDao;
 import ers.students.crud.PortfolioDao;
 import ers.students.crud.PositionDao;
 import ers.students.crud.SearchingDao;
@@ -17,12 +18,11 @@ import java.sql.Connection;
 /**
  *
  * @author Ayhan
- * 
+ *
  * Implements methods for working with database and transactions
  */
-
 public class JdbcPersistentStore implements PersistentStore {
-    
+
     Connection connection;
     String userName;
     String password;
@@ -37,7 +37,7 @@ public class JdbcPersistentStore implements PersistentStore {
      * Creates the DB
      */
     @Override
-    public void createDB() {  
+    public void createDB() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -45,7 +45,7 @@ public class JdbcPersistentStore implements PersistentStore {
      * Deletes the DB
      */
     @Override
-    public void dropDB() { 
+    public void dropDB() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -58,8 +58,8 @@ public class JdbcPersistentStore implements PersistentStore {
     }
 
     /**
-     * Reverts back to the previous state of the database
-     * changes made in DB aren't saved
+     * Reverts back to the previous state of the database changes made in DB
+     * aren't saved
      */
     @Override
     public void rollbackTransaction() {
@@ -70,69 +70,68 @@ public class JdbcPersistentStore implements PersistentStore {
      * Saves transaction
      */
     @Override
-    public void commitTransaction() { 
+    public void commitTransaction() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      * Uses lazy initialization
-     * @return 
+     *
+     * @return
      */
     @Override
     public SearchingDao<Position> getPositionDao() {
-        if(this.positionDao==null){
-            
-        }
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      * Uses lazy initialization
-     * @return 
+     *
+     * @return
      */
     @Override
     public SearchingDao<Portfolio> getPortfolioDao() {
-        if(this.portfolioDao==null){
-            
-        }
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      * Uses lazy initialization
-     * @return 
+     *
+     * @return
      */
     @Override
     public SearchingDao<Transaction> getTransactionDao() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    /**
-     * Uses lazy initialization
-     * @return 
-     */
-    @Override
-    public SearchingDao<Instrument> getInstrumentDao() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    /**
-     * Uses lazy initialization
-     * @return 
-     */
-    @Override
-    public SearchingDao<YieldCurve> getYieldCurveDao() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    /**
-     * Uses lazy initialization
-     * @return 
-     */
-    @Override
-    public SearchingDao<FxQuote> getFxQuote() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-   
+    /**
+     * Uses lazy initialization
+     *
+     * @return
+     */
+    @Override
+    public SearchingDao<Instrument> getInstrumentDao() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    /**
+     * Uses lazy initialization
+     *
+     * @return
+     */
+    @Override
+    public CrudDao<YieldCurve> getYieldCurveDao() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    /**
+     * Uses lazy initialization
+     *
+     * @return
+     */
+    @Override
+    public CrudDao<FxQuote> getFxQuote() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

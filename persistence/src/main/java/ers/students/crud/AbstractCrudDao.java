@@ -5,6 +5,7 @@
  */
 package ers.students.crud;
 
+import ers.students.persistentStore.JdbcPersistentStore;
 import java.util.List;
 
 /**
@@ -16,6 +17,11 @@ import java.util.List;
  */
 
 public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
+    
+    /**
+     * For transactions using JDBC
+     */
+    JdbcPersistentStore JDBCPersistentStore;
 
     /**
      * Saves/inserts entity in DB

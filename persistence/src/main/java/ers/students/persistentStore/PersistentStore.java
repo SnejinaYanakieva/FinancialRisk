@@ -5,6 +5,7 @@
  */
 package ers.students.persistentStore;
 
+import ers.students.crud.CrudDao;
 import ers.students.crud.SearchingDao;
 import ers.students.instruments.Instrument;
 import ers.students.market.FxQuote;
@@ -75,11 +76,11 @@ public interface PersistentStore {
      * Uses lazy initialization
      * @return 
      */
-    SearchingDao<YieldCurve> getYieldCurveDao();
+    CrudDao<YieldCurve> getYieldCurveDao();
     
     /**
      * Uses lazy initialization
      * @return 
      */
-    SearchingDao<FxQuote> getFxQuote();
+    CrudDao<FxQuote> getFxQuote();
 }
