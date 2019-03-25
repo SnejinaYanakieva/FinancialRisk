@@ -6,21 +6,33 @@
 package ers.students.crud.provider.searching;
 
 import ers.students.crud.CrudDao;
+import ers.students.crud.results.LoadResults;
 import ers.students.instruments.Instrument;
 
 /**
  *
  * @author Irina
  */
-public class InstrumentCrudProvider extends SearchingCrudProvider {
+public class InstrumentCrudProvider extends SearchingCrudProvider<Instrument> {
 
     /**
      * Provides DAO interface for Instrument.
      *
      * @return
      */
-    CrudDao<Instrument> getDao() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public CrudDao<Instrument> getDao() {
+        return persistentStore.getInstrumentDao();
+    }
+
+    /**
+     *
+     * @param name
+     * @return
+     */
+    public LoadResults<Instrument> searchByName(String name) {
+        LoadResults<Instrument> instrumentResults = new LoadResults<>();
+        instrumentResults.setEntities(persistentStore.getInstrumentDao().searchByName(name));
+        return instrumentResults;
     }
 
 }

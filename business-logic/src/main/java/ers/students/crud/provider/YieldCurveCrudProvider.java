@@ -12,7 +12,7 @@ import ers.students.market.YieldCurve;
  *
  * @author Irina
  */
-public class YieldCurveCrudProvider extends AbstactCrudProvider {
+public class YieldCurveCrudProvider extends AbstactCrudProvider<YieldCurve> {
 
     /**
      * Provides DAO interface for YieldCurve.
@@ -20,7 +20,7 @@ public class YieldCurveCrudProvider extends AbstactCrudProvider {
      * @return
      */
     @Override
-    CrudDao<YieldCurve> getDao() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    protected CrudDao<YieldCurve> getDao() {
+        return persistentStore.getYieldCurveDao();
     }
 }

@@ -12,7 +12,7 @@ import ers.students.market.FxQuote;
  *
  * @author Irina
  */
-public class FxCrudProvider extends AbstactCrudProvider {
+public class FxCrudProvider extends AbstactCrudProvider<FxQuote> {
 
     /**
      * Provides DAO interface for FxQuote.
@@ -20,7 +20,7 @@ public class FxCrudProvider extends AbstactCrudProvider {
      * @return
      */
     @Override
-    CrudDao<FxQuote> getDao() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    protected CrudDao<FxQuote> getDao() {
+        return persistentStore.getFxQuote();
     }
 }

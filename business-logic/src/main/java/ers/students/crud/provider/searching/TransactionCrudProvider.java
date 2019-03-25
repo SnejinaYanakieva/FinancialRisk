@@ -6,20 +6,29 @@
 package ers.students.crud.provider.searching;
 
 import ers.students.crud.CrudDao;
+import ers.students.crud.results.LoadResults;
 import ers.students.portfolio.Transaction;
 
 /**
  *
  * @author Irina
  */
-public class TransactionCrudProvider extends SearchingCrudProvider {
+public class TransactionCrudProvider extends SearchingCrudProvider<Transaction> {
 
     /**
      * Provides DAO interface for Transaction.
      *
      * @return
      */
-    CrudDao<Transaction> getDao() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public CrudDao<Transaction> getDao() {
+        return persistentStore.getTransactionDao();
     }
+
+    @Override
+    protected LoadResults<Transaction> searchByName(String name) {
+        LoadResults<Transaction> transactionResults = new LoadResults<>();
+        transactionResults.setEntities(persistentStore.getTransactionDao().searchByName(name));
+        return transactionResults;
+    }
+
 }

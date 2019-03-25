@@ -18,6 +18,23 @@ import java.util.Map;
  */
 public class LoadResults<E> {
 
-    List<E> entities = new ArrayList<>();
-    Map<ErrorCode, List<String>> errors = new HashMap<>();
+    private List<E> entities = new ArrayList<>();
+    private Map<ErrorCode, List<String>> errors = new HashMap<>();
+
+    public List<E> getEntities() {
+        return entities;
+    }
+
+    public void setEntities(List<E> entities) {
+        this.entities = entities;
+    }
+
+    public Map<ErrorCode, List<String>> getErrors() {
+        return errors;
+    }
+
+    public void setErrors(Map<ErrorCode, List<String>> errors) {
+        this.errors = errors;
+    }
+    
 }
