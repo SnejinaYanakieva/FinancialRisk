@@ -6,6 +6,7 @@
 package ers.students.instruments;
 
 import ers.students.validate.Validatable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,8 +25,14 @@ public class DebtInstrument extends Instrument implements Validatable {
         return interestRate;
     }
  public List<String> validate() {
-
-        throw new UnsupportedOperationException("Unsupported operation.");
+  List<String> validationList = new ArrayList<>();
+        if(interestRate>0){
+            validationList.add("interestRate is valid");
+        }
+        else{
+              validationList.add("interestRate is invalid");
+        }
+        return validationList;
     }
 
     

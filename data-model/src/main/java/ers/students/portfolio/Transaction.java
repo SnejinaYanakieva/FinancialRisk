@@ -6,14 +6,17 @@
 package ers.students.portfolio;
 
 import ers.students.validate.Validatable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- *the class with the information of the positionId ,the payer and receiver with the date of it. 
+ * the class with the information of the positionId ,the payer and receiver with
+ * the date of it.
+ *
  * @author Viktor
  */
-public class Transaction implements Validatable{
+public class Transaction implements Validatable {
 
     private String id;
     private String positionId;
@@ -60,9 +63,61 @@ public class Transaction implements Validatable{
     public void setDate(Date date) {
         this.date = date;
     }
-     public List<String> validate() {
 
-        throw new UnsupportedOperationException("Unsupported operation.");
+    public List<String> validate() {
+
+        List<String> validationList = new ArrayList<>();
+        //ID 
+        try {
+
+            Integer.parseInt(id);
+            validationList.add("id is valid");
+
+        } catch (NumberFormatException e) {
+            validationList.add("id is invalid");
+        } catch (NullPointerException e) {
+            validationList.add("id is null");
+        }
+
+        //portfolioId
+        try {
+
+            Integer.parseInt(positionId);
+            validationList.add("positionId is valid");
+
+        } catch (NumberFormatException e) {
+            validationList.add("positionId is invalid");
+        } catch (NullPointerException e) {
+            validationList.add("positionId is null");
+        }
+        //payer
+
+        if (payer == receiver) {
+            validationList.add("payer = receiver");
+
+        } else if (payer == null) {
+
+            validationList.add("payer is null");
+        } else {
+            validationList.add("payer is valid");
+        }
+
+        //receiver
+        if (receiver == payer) {
+            validationList.add("receiver = payer");
+
+        } else if (receiver == null) {
+
+            validationList.add("receiver is null");
+        } else {
+            validationList.add("receiver is valid");
+        }
+        //date
+        if (date == null) {
+
+            validationList.add("date is null");
+        }
+        return validationList;
     }
 
 }

@@ -7,13 +7,15 @@ package ers.students.portfolio;
 
 import ers.students.util.Currency;
 import ers.students.validate.Validatable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- *Its used for having a range of investments 
+ * Its used for having a range of investments
+ *
  * @author Viktor
  */
-public class Portfolio implements Validatable{
+public class Portfolio implements Validatable {
 
     private String id;
     private String name;
@@ -42,8 +44,33 @@ public class Portfolio implements Validatable{
     public void setCurrency(Currency currency) {
         this.currency = currency;
     }
- public List<String> validate() {
 
-        throw new UnsupportedOperationException("Unsupported operation.");
+    public List<String> validate() {
+        List<String> validationList = new ArrayList<>();
+        //id 
+        try {
+            Integer.parseInt(id);
+            validationList.add("id is valid");
+
+        } catch (NumberFormatException e) {
+            validationList.add("id is invalid");
+        } catch (NullPointerException e) {
+            validationList.add("id is null");
+        }
+//name
+
+        if (name == null) {
+
+            validationList.add("name is null");
+        } else {
+            validationList.add("name is valid");
+        }
+ //Currency         
+        if (currency == null) {
+
+            validationList.add("currency is null");
+        }
+        
+        return validationList;
     }
 }

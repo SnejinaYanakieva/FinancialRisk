@@ -7,13 +7,15 @@ package ers.students.portfolio;
 
 import ers.students.instruments.Instrument;
 import ers.students.validate.Validatable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  Is about who gives money to who and the instrument
+ * Is about who gives money to who and the instrument
+ *
  * @author Viktor
  */
-public class Position implements Validatable{
+public class Position implements Validatable {
 
     private String id;
     private String name;
@@ -69,8 +71,67 @@ public class Position implements Validatable{
     public void setPortfolioId(String portfolioId) {
         this.portfolioId = portfolioId;
     }
-     public List<String> validate() {
 
-        throw new UnsupportedOperationException("Unsupported operation.");
+    public List<String> validate() {
+        List<String> validationList = new ArrayList<>();
+        //ID 
+        try {
+
+            Integer.parseInt(id);
+            validationList.add("id is valid");
+
+        } catch (NumberFormatException e) {
+            validationList.add("id is invalid");
+        } catch (NullPointerException e) {
+            validationList.add("id is null");
+        }
+
+        //Currency         
+        if (name == null) {
+
+            validationList.add("name is null");
+        }
+        //portfolioId
+
+        try {
+
+            Integer.parseInt(portfolioId);
+            validationList.add("portfolioId is valid");
+
+        } catch (NumberFormatException e) {
+            validationList.add("portfolioId is invalid");
+        } catch (NullPointerException e) {
+            validationList.add("portfolioId is null");
+        }
+
+        //shortSide
+        if (shortSide == longSide) {
+            validationList.add("shortSide = longSide");
+
+        } else if (shortSide == null) {
+
+            validationList.add("shortSide is null");
+        } else {
+            validationList.add("shortSide is valid");
+        }
+
+        //longSide
+        if (longSide == shortSide) {
+            validationList.add("longSide = shortSide");
+
+        } else if (longSide == null) {
+
+            validationList.add("longSide is null");
+        } else {
+            validationList.add("longSide is valid");
+        }
+
+        //Currency         
+        if (instrument == null) {
+
+            validationList.add("instrument is null");
+        }
+
+        return validationList;
     }
 }

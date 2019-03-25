@@ -7,11 +7,13 @@ package ers.students.instruments;
 
 import ers.students.util.Currency;
 import ers.students.validate.Validatable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Instrument is asset that can be traded.
+ *
  * @author Viktor
  */
 public class Instrument implements Validatable {
@@ -61,8 +63,45 @@ public class Instrument implements Validatable {
     public void setMaturityDate(Date maturityDate) {
         this.maturityDate = maturityDate;
     }
-   public List<String> validate() {
 
-        throw new UnsupportedOperationException("Unsupported operation.");
+    public List<String> validate() {
+        List<String> validationList = new ArrayList<>();
+
+        //ID 
+        try {
+
+            Integer.parseInt(id);
+            validationList.add("id is valid");
+
+        } catch (NumberFormatException e) {
+            validationList.add("id is invalid");
+        } catch (NullPointerException e) {
+            validationList.add("id is null");
+        }
+
+        //ISIN
+        if (isin == null) {
+
+            validationList.add("isin is null");
+        }
+
+        //Currency         
+        if (currency == null) {
+
+            validationList.add("currency is null");
+        }
+
+        //issueDate
+        if (issueDate == null) {
+
+            validationList.add("issueDate is null");
+        }
+        //maturityDate
+        if (maturityDate == null) {
+
+            validationList.add("maturityDate is null");
+        }
+
+        return validationList;
     }
 }
