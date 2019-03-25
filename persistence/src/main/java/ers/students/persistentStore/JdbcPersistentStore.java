@@ -6,8 +6,12 @@ package ers.students.persistentStore;
 import ers.students.crud.PortfolioDao;
 import ers.students.crud.PositionDao;
 import ers.students.crud.SearchingDao;
+import ers.students.instruments.Instrument;
+import ers.students.market.FxQuote;
+import ers.students.market.YieldCurve;
 import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
+import ers.students.portfolio.Transaction;
 import java.sql.Connection;
 
 /**
@@ -24,6 +28,10 @@ public class JdbcPersistentStore implements PersistentStore {
     String password;
     PortfolioDao portfolioDao;
     PositionDao positionDao;
+    Transaction transactionDao;
+    Instrument instrumentDao;
+    YieldCurve yieldCurve;
+    FxQuote FxQuote;
 
     /**
      * Creates the DB
@@ -90,4 +98,41 @@ public class JdbcPersistentStore implements PersistentStore {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     * Uses lazy initialization
+     * @return 
+     */
+    @Override
+    public SearchingDao<Transaction> getTransactionDao() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    /**
+     * Uses lazy initialization
+     * @return 
+     */
+    @Override
+    public SearchingDao<Instrument> getInstrumentDao() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    /**
+     * Uses lazy initialization
+     * @return 
+     */
+    @Override
+    public SearchingDao<YieldCurve> getYieldCurveDao() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    /**
+     * Uses lazy initialization
+     * @return 
+     */
+    @Override
+    public SearchingDao<FxQuote> getFxQuote() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+   
 }
