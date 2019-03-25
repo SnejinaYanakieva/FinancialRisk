@@ -14,6 +14,12 @@ import ers.students.market.YieldCurve;
  */
 public class YieldCurveCrudProvider extends AbstactCrudProvider {
 
+    /**
+     * Provides DAO interface for YieldCurve.
+     *
+     * @return
+     */
+    @Override
     CrudDao<YieldCurve> getDao() {
         throw new UnsupportedOperationException("Not supported yet.");
     }

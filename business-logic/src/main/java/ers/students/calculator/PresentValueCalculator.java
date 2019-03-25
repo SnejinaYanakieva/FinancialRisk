@@ -11,8 +11,8 @@ import ers.students.market.Market;
 import ers.students.portfolio.component.PortfolioComponent;
 
 /**
- * The PresentValueCalculator class is a class that provides method for
- * calculating the Present Value.
+ * The PresentValueCalculator class provides method for calculating the Present
+ * Value.
  *
  * @author Irina
  */

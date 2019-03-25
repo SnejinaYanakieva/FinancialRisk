@@ -14,6 +14,11 @@ import ers.students.portfolio.Portfolio;
  */
 public class PortfolioCrudProvider extends SearchingCrudProvider {
 
+    /**
+     * Provides DAO interface for Portfolio.
+     *
+     * @return
+     */
     CrudDao<Portfolio> getDao() {
         throw new UnsupportedOperationException("Not supported yet.");
     }

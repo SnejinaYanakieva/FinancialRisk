@@ -14,6 +14,11 @@ import ers.students.portfolio.Position;
  */
 public class PositionCrudProvider extends SearchingCrudProvider {
 
+    /**
+     * Provides DAO interface for Position.
+     *
+     * @return
+     */
     CrudDao<Position> getDao() {
         throw new UnsupportedOperationException("Not supported yet.");
     }

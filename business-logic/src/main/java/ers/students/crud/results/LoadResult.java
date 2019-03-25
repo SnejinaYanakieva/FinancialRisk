@@ -10,10 +10,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * The LoadResult class provides by given ErrorCode corresponding list of
+ * errors. It also contains information about loaded entity.
  *
  * @author Irina
  */
-public class LoadResult <E> {
+public class LoadResult<E> {
+
     E entity;
-    Map<ErrorCode, List<String> > errors = new HashMap<>();
+    Map<ErrorCode, List<String>> errors = new HashMap<>();
 }

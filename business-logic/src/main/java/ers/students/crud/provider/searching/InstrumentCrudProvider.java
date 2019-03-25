@@ -12,10 +12,15 @@ import ers.students.instruments.Instrument;
  *
  * @author Irina
  */
-public class InstrumentCrudProvider extends SearchingCrudProvider{
+public class InstrumentCrudProvider extends SearchingCrudProvider {
 
+    /**
+     * Provides DAO interface for Instrument.
+     *
+     * @return
+     */
     CrudDao<Instrument> getDao() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
 }

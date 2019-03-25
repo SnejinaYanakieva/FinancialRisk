@@ -20,12 +20,13 @@ import java.util.Map;
 public class DepositCalculator implements InstrumentCalculator {
 
     /**
+     * Calculates the discounted value of all incomes.
      *
      * @param instrument a set of contractual terms
      * @param positionVolume amount of transactions
      * @param market
-     * @param evalDate  date of calculation
-     * @return
+     * @param evalDate date of calculation
+     * @return present value
      */
     @Override
     public double calculatePresentValue(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
@@ -33,6 +34,7 @@ public class DepositCalculator implements InstrumentCalculator {
     }
 
     /**
+     * Represents the interest payments.
      *
      * @param instrument a set of contractual terms
      * @param positionVolume amount of transactions
@@ -46,7 +48,7 @@ public class DepositCalculator implements InstrumentCalculator {
 
     /**
      *
-     * @return
+     * @return pairs of corresponding date and investment payment
      */
     @Override
     public Map<Calendar, Double> getInvestmentPayments() {
@@ -55,7 +57,7 @@ public class DepositCalculator implements InstrumentCalculator {
 
     /**
      *
-     * @return
+     * @return pairs of corresponding date and amortization payment
      */
     @Override
     public Map<Calendar, Double> getAmortizationPayments() {
@@ -68,7 +70,7 @@ public class DepositCalculator implements InstrumentCalculator {
      * @param positionVolume amount of transactions
      * @param market
      * @param evalDate date of calculation
-     * @return
+     * @return profit/loss
      */
     @Override
     public double calculateProfitLoss(Instrument instrument, Position positionVolume, Market market, Date evalDate) {

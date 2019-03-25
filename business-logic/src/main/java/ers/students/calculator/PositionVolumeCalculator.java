@@ -11,8 +11,8 @@ import ers.students.market.Market;
 import ers.students.portfolio.component.PortfolioComponent;
 
 /**
- * The PositionVolumeCalculator class is a class that provides method for
- * calculating the volume.
+ * The PositionVolumeCalculator class provides method for calculating the
+ * volume.
  *
  * @author Irina
  */

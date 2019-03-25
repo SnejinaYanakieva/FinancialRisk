@@ -26,7 +26,7 @@ public class CreditCalculator implements InstrumentCalculator {
      * @param positionVolume amount of transactions
      * @param market
      * @param evalDate date of calculation
-     * @return
+     * @return present value
      */
     @Override
     public double calculatePresentValue(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
@@ -48,7 +48,7 @@ public class CreditCalculator implements InstrumentCalculator {
 
     /**
      *
-     * @return
+     * @return pairs of corresponding date and investment payment
      */
     @Override
     public Map<Calendar, Double> getInvestmentPayments() {
@@ -57,7 +57,7 @@ public class CreditCalculator implements InstrumentCalculator {
 
     /**
      *
-     * @return
+     * @return pairs of corresponding date and amortization payment
      */
     @Override
     public Map<Calendar, Double> getAmortizationPayments() {
@@ -70,7 +70,7 @@ public class CreditCalculator implements InstrumentCalculator {
      * @param positionVolume amount of transactions
      * @param market
      * @param evalDate date of calculation
-     * @return
+     * @return profit/loss
      */
     @Override
     public double calculateProfitLoss(Instrument instrument, Position positionVolume, Market market, Date evalDate) {

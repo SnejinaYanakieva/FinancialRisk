@@ -14,6 +14,11 @@ import ers.students.portfolio.Transaction;
  */
 public class TransactionCrudProvider extends SearchingCrudProvider {
 
+    /**
+     * Provides DAO interface for Transaction.
+     *
+     * @return
+     */
     CrudDao<Transaction> getDao() {
         throw new UnsupportedOperationException("Not supported yet.");
     }

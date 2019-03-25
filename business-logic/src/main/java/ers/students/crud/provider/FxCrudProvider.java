@@ -14,6 +14,12 @@ import ers.students.market.FxQuote;
  */
 public class FxCrudProvider extends AbstactCrudProvider {
 
+    /**
+     * Provides DAO interface for FxQuote.
+     *
+     * @return
+     */
+    @Override
     CrudDao<FxQuote> getDao() {
         throw new UnsupportedOperationException("Not supported yet.");
     }

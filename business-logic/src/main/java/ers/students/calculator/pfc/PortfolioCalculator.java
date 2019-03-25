@@ -11,8 +11,8 @@ import ers.students.market.Market;
 import ers.students.portfolio.component.AbstractPfc;
 
 /**
- * The PortfolioCalculator class is a class that provides methods for
- * calculating cash flow, present value, profit and loss, position volume.
+ * The PortfolioCalculator class provides methods for calculating cash flow,
+ * present value, profit and loss, position volume.
  *
  * @author Irina
  */

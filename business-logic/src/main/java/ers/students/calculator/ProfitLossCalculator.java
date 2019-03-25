@@ -11,7 +11,7 @@ import ers.students.market.Market;
 import ers.students.portfolio.component.PortfolioComponent;
 
 /**
- * The ProfitLossCalculator class is a class that provides method for
+ * The ProfitLossCalculator class provides method for
  * calculating the profit and loss from an investment. 
  *
  * @author Irina
