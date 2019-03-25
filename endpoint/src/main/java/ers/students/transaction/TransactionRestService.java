@@ -3,73 +3,76 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ers.students.services;
 
-import ers.students.portfolio.Position;
+package ers.students.transaction;
+
+import ers.students.portfolio.Transaction;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.GET;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+
 /**
  *
  * @author martinstoynov
  */
 
-@Path("/positions")
+@Path("/transaction")
 @Consumes("application/json")
 @Produces("application/json")
-public interface PositionRestService {
+public interface TransactionRestService {
     
     /**
     * Sends information to the server
-    * about Position to create a resource
-    */
+    * about Transaction to create a resource
+    */    
     @POST
     @Path("/create")
-    Response create(Position position);
+    Response create(Transaction transaction);
     
     /**
     * Replaces all current representations of the target
     * resource with the uploaded content.
-    */
+    */    
     @PUT
     @Path("/update")
-    Response update(Position position);
+    Response update(Transaction transaction);
     
     /**
-    * Retrieves information about resources,
+    * Retrieves information about a resource,
     * specified by ID, from the server.
-    */
+    */    
     @GET
-    @Path("/loadById")
-    Response loadById(String id);
+    @Path("/loadById/{id}")
+    Response loadById(@PathParam("id") String id);
     
     /**
     * Removes all current representations of the target
     * resource, specified by ID.
-    */
+    */    
     @DELETE
-    @Path("/deleteById")
-    Response deleteById(String id);
+    @Path("/deleteById/{id}")
+    Response deleteById(@PathParam("id") String id);
     
     /**
     * Retrieves information about all
     * resources from the server using a given URI.
-    */
+    */    
     @GET
     @Path("/loadAll")
     Response loadAll();
     
     /**
-    * Retrieves information about resources,
-    * specified by name, from the server.
-    */
+    * Retrieves information about a resource,
+    * specified by position ID, from the server.
+    */    
     @GET
-    @Path("/searchByName")
-    Response searchByName(String name);
-
+    @Path("/searchByPositionId/{positionId}")
+    Response searchByPositionId(@PathParam("positionId") String positionId);
+    
 }

@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ers.students.services;
+package ers.students.portfolio;
 
-import ers.students.instruments.Instrument;
+import ers.students.portfolio.Portfolio;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.GET;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
@@ -20,18 +21,18 @@ import javax.ws.rs.core.Response;
  * @author martinstoynov
  */
 
-@Path("/instruments")
+@Path("/portfolio")
 @Consumes("application/json")
 @Produces("application/json")
-public interface InstrumentRestService {
-
+public interface PortfolioRestService {
+    
     /**
     * Sends information to the server
-    * about Instrument to create a resource
+    * about Portfolio to create a resource
     */
     @POST
     @Path("/create")
-    Response create(Instrument instrument);
+    Response create(Portfolio portfolio);
     
     /**
     * Replaces all current representations of the target
@@ -39,23 +40,23 @@ public interface InstrumentRestService {
     */
     @PUT
     @Path("/update")
-    Response update(Instrument instrument);
+    Response update(Portfolio portfolio);
     
     /**
-    * Retrieves information about resources,
+    * Retrieves information about a resource,
     * specified by ID, from the server.
     */
     @GET
-    @Path("/loadById")
-    Response loadById(String id);
+    @Path("/loadById/{id}")
+    Response loadById(@PathParam("id") String id);
     
     /**
     * Removes all current representations of the target
     * resource, specified by ID.
     */
     @DELETE
-    @Path("/deleteById")
-    Response deleteById(String id);
+    @Path("/deleteById/{id}")
+    Response deleteById(@PathParam("id") String id);
     
     /**
     * Retrieves information about all
@@ -66,11 +67,11 @@ public interface InstrumentRestService {
     Response loadAll();
     
     /**
-    * Retrieves information about resources,
-    * specified by isin, from the server.
+    * Retrieves information about a resource,
+    * specified by name, from the server.
     */
     @GET
-    @Path("/searchByIsin")
-    Response searchByIsin(String isin);
-    
+    @Path("/searchByName/{name}")
+    Response searchByName(@PathParam("name") String name);
+
 }
