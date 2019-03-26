@@ -23,15 +23,15 @@ import java.sql.Connection;
  */
 public class JdbcPersistentStore implements PersistentStore {
 
-    Connection connection;
-    String userName;
-    String password;
-    PortfolioDao portfolioDao;
-    PositionDao positionDao;
-    Transaction transactionDao;
-    Instrument instrumentDao;
-    YieldCurve yieldCurve;
-    FxQuote FxQuote;
+    private Connection connection;
+    private String userName;
+    private String password;
+    private PortfolioDao portfolioDao;
+    private PositionDao positionDao;
+    private Transaction transactionDao;
+    private Instrument instrumentDao;
+    private YieldCurve yieldCurve;
+    private FxQuote FxQuote;
 
     /**
      * Creates the DB
