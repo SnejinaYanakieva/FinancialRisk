@@ -6,13 +6,15 @@
 package ers.students.market;
 
 import ers.students.validate.Validatable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- *YieldCurve shows the yield at periods.
+ * YieldCurve shows the yield at periods.
+ *
  * @author Viktor
  */
-public class YieldCurve implements Validatable{
+public class YieldCurve implements Validatable {
 
     private String id;
     private String name;
@@ -122,8 +124,27 @@ public class YieldCurve implements Validatable{
     public void setYield30year(double yield30year) {
         this.yield30year = yield30year;
     }
- public List<String> validate() {
 
-        throw new UnsupportedOperationException("Unsupported operation.");
+    @Override
+    public List<String> validate() {
+        List<String> validationList = new ArrayList<>();
+        if (id == null) {
+
+            validationList.add("id is null");
+        } else if ("".equals(id)) {
+
+            validationList.add("id is empty");
+        }
+
+        //name
+        if (name == null) {
+
+            validationList.add("name is null");
+        } else if ("".equals(name)) {
+
+            validationList.add("name is empty");
+        }
+
+        return validationList;
     }
 }

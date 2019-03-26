@@ -26,37 +26,18 @@ public class Credit extends DebtInstrument implements Validatable {
     }
 
     public void setAmortitationFrequency(Frequency amortizationFrequency) {
+        //this.amortizationFrequency= Frequency.MONTHLY;
         this.amortizationFrequency = amortizationFrequency;
     }
 
+    @Override
     public List<String> validate() {
         List<String> validationList = new ArrayList<>();
 
-        //type
-        if (amortizationFrequency.getType() != Calendar.MONTH && amortizationFrequency.getType() != Calendar.YEAR) {
-            validationList.add("type is invalid");
-
-        } else {
-            validationList.add("type is valid");
+        if (amortizationFrequency == null) {
+            validationList.add("interestRate is null");
         }
-        //period
-
-        //For month
-        if (amortizationFrequency.getType() == Calendar.MONTH && amortizationFrequency.getPeriod() >= 1 && amortizationFrequency.getPeriod() != 5 && amortizationFrequency.getPeriod() <= 6) {
-            validationList.add("period is valid");
-
-        } else {
-            validationList.add("period for MONTH is out of bounds");
-        }
-
-        //for year
-        if (amortizationFrequency.getType() == Calendar.YEAR && (amortizationFrequency.getPeriod() == 1 || amortizationFrequency.getPeriod() == 2)) {
-            validationList.add("period is valid");
-
-        } else {
-            validationList.add("period for YEAR is out of bounds");
-        }
-
+        validationList.addAll(super.validate());
         return validationList;
     }
 

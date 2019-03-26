@@ -64,25 +64,25 @@ public class Instrument implements Validatable {
         this.maturityDate = maturityDate;
     }
 
+    @Override
     public List<String> validate() {
         List<String> validationList = new ArrayList<>();
 
         //ID 
-        try {
+        if (id == null) {
 
-            Integer.parseInt(id);
-            validationList.add("id is valid");
-
-        } catch (NumberFormatException e) {
-            validationList.add("id is invalid");
-        } catch (NullPointerException e) {
             validationList.add("id is null");
-        }
+        } else if ("".equals(id)) {
 
+            validationList.add("id is empty");
+        }
         //ISIN
         if (isin == null) {
 
             validationList.add("isin is null");
+        } else if ("".equals(isin)) {
+
+            validationList.add("isin is empty");
         }
 
         //Currency         
@@ -91,12 +91,12 @@ public class Instrument implements Validatable {
             validationList.add("currency is null");
         }
 
-        //issueDate
+        //issueDate ++
         if (issueDate == null) {
 
             validationList.add("issueDate is null");
         }
-        //maturityDate
+        //maturityDate ++
         if (maturityDate == null) {
 
             validationList.add("maturityDate is null");

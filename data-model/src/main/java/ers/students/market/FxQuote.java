@@ -10,7 +10,8 @@ import ers.students.validate.Validatable;
 import java.util.*;
 
 /**
- *' Its the Currency to Currency rate of exchange for a certain date.
+ * ' Its the Currency to Currency rate of exchange for a certain date.
+ *
  * @author Viktor
  */
 public class FxQuote implements Validatable {
@@ -60,8 +61,41 @@ public class FxQuote implements Validatable {
     public void setValue(double value) {
         this.value = value;
     }
- public List<String> validate() {
 
-        throw new UnsupportedOperationException("Unsupported operation.");
+    public List<String> validate() {
+
+        List<String> validationList = new ArrayList<>();
+        //id
+        if (id == null) {
+
+            validationList.add("id is null");
+        } else if ("".equals(id)) {
+
+            validationList.add("id is empty");
+        }
+//curr
+        if (from == null) {
+
+            validationList.add("from is null");
+        }
+        if (from.equals(to)) {
+            validationList.add("from is equals to");
+
+        }
+        if (to == null) {
+
+            validationList.add("to is null");
+        }
+//date
+        if (date == null) {
+
+            validationList.add("date is null");
+        }
+        // value
+        if (value > 0 && value < 100) {
+
+            validationList.add("date is out of bound");
+        }
+        return validationList;
     }
 }

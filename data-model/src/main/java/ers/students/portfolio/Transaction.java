@@ -23,6 +23,7 @@ public class Transaction implements Validatable {
     private String payer;
     private String receiver;
     private Date date;
+    private double amount;
 
     public String getId() {
         return id;
@@ -64,58 +65,64 @@ public class Transaction implements Validatable {
         this.date = date;
     }
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    @Override
     public List<String> validate() {
 
         List<String> validationList = new ArrayList<>();
         //ID 
-        try {
+        if (id == null) {
 
-            Integer.parseInt(id);
-            validationList.add("id is valid");
-
-        } catch (NumberFormatException e) {
-            validationList.add("id is invalid");
-        } catch (NullPointerException e) {
             validationList.add("id is null");
+        } else if ("".equals(id)) {
+
+            validationList.add("id is empty");
         }
 
-        //portfolioId
-        try {
+        //positionId
+        if (positionId == null) {
 
-            Integer.parseInt(positionId);
-            validationList.add("positionId is valid");
-
-        } catch (NumberFormatException e) {
-            validationList.add("positionId is invalid");
-        } catch (NullPointerException e) {
             validationList.add("positionId is null");
+        } else if ("".equals(positionId)) {
+
+            validationList.add("positionId is empty");
         }
         //payer
 
-        if (payer == receiver) {
-            validationList.add("payer = receiver");
+        if (payer.equals(receiver)) {
+            validationList.add("payer = longSide");
 
         } else if (payer == null) {
 
             validationList.add("payer is null");
-        } else {
-            validationList.add("payer is valid");
+
+        } else if ("".equals(payer)) {
+            validationList.add("payer is empty");
         }
 
         //receiver
-        if (receiver == payer) {
-            validationList.add("receiver = payer");
-
-        } else if (receiver == null) {
+        if (receiver == null) {
 
             validationList.add("receiver is null");
         } else {
             validationList.add("receiver is valid");
         }
+
         //date
         if (date == null) {
 
             validationList.add("date is null");
+        }
+        if (amount < 0) {
+
+            validationList.add("amount is invalid");
         }
         return validationList;
     }

@@ -75,63 +75,59 @@ public class Position implements Validatable {
     public List<String> validate() {
         List<String> validationList = new ArrayList<>();
         //ID 
-        try {
+        if (id == null) {
 
-            Integer.parseInt(id);
-            validationList.add("id is valid");
-
-        } catch (NumberFormatException e) {
-            validationList.add("id is invalid");
-        } catch (NullPointerException e) {
             validationList.add("id is null");
+        } else if ("".equals(id)) {
+
+            validationList.add("id is empty");
         }
 
-        //Currency         
+        //name         
         if (name == null) {
 
             validationList.add("name is null");
-        }
-        //portfolioId
+        } else if ("".equals(name)) {
 
-        try {
-
-            Integer.parseInt(portfolioId);
-            validationList.add("portfolioId is valid");
-
-        } catch (NumberFormatException e) {
-            validationList.add("portfolioId is invalid");
-        } catch (NullPointerException e) {
-            validationList.add("portfolioId is null");
+            validationList.add("name is empty");
         }
 
         //shortSide
-        if (shortSide == longSide) {
+        if (shortSide.equals(longSide)) {
             validationList.add("shortSide = longSide");
 
-        } else if (shortSide == null) {
+        } 
+        if (shortSide == null) {
 
             validationList.add("shortSide is null");
-        } else {
-            validationList.add("shortSide is valid");
+
+        } else if ("".equals(shortSide)) {
+            validationList.add("shortSide is empty");
         }
 
         //longSide
-        if (longSide == shortSide) {
-            validationList.add("longSide = shortSide");
-
-        } else if (longSide == null) {
+        if (longSide == null) {
 
             validationList.add("longSide is null");
         } else {
             validationList.add("longSide is valid");
         }
 
-        //Currency         
+        //portfolioId
+        if (portfolioId == null) {
+
+            validationList.add("portfolioId is null");
+        } else if ("".equals(portfolioId)) {
+
+            validationList.add("portfolioId is empty");
+        }
+        //instrument         
         if (instrument == null) {
 
             validationList.add("instrument is null");
         }
 
+        validationList.addAll(instrument.validate());
         return validationList;
     }
 }

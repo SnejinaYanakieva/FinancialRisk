@@ -48,29 +48,27 @@ public class Portfolio implements Validatable {
     public List<String> validate() {
         List<String> validationList = new ArrayList<>();
         //id 
-        try {
-            Integer.parseInt(id);
-            validationList.add("id is valid");
+        if (id == null) {
 
-        } catch (NumberFormatException e) {
-            validationList.add("id is invalid");
-        } catch (NullPointerException e) {
             validationList.add("id is null");
-        }
-//name
+        } else if ("".equals(id)) {
 
+            validationList.add("id is empty");
+        }
+
+        //name
         if (name == null) {
 
             validationList.add("name is null");
         } else {
             validationList.add("name is valid");
         }
- //Currency         
+        //Currency         
         if (currency == null) {
 
             validationList.add("currency is null");
         }
-        
+
         return validationList;
     }
 }
