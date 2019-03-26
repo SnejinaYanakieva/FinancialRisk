@@ -13,6 +13,7 @@ import ers.students.validate.Validatable;
  * Provides method for searching entities in DB.
  *
  * @author Irina
+ * @param <E>
  */
 public abstract class SearchingCrudProvider<E extends Validatable> extends AbstactCrudProvider<E> {
 

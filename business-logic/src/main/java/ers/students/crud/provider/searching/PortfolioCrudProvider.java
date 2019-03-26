@@ -20,6 +20,7 @@ public class PortfolioCrudProvider extends SearchingCrudProvider<Portfolio> {
      *
      * @return
      */
+    @Override
     public CrudDao<Portfolio> getDao() {
         return persistentStore.getPortfolioDao();
     }
@@ -29,6 +30,7 @@ public class PortfolioCrudProvider extends SearchingCrudProvider<Portfolio> {
      * @param name
      * @return
      */
+    @Override
     public LoadResults<Portfolio> searchByName(String name) {
         LoadResults<Portfolio> portfolioResults = new LoadResults<>();
         portfolioResults.setEntities(persistentStore.getPortfolioDao().searchByName(name));

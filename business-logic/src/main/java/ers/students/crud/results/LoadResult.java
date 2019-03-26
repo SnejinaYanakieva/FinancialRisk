@@ -19,4 +19,20 @@ public class LoadResult<E> {
 
     private E entity;
     private Map<ErrorCode, List<String>> errors = new HashMap<>();
+
+    public E getEntity() {
+        return entity;
+    }
+
+    public void setEntity(E entity) {
+        this.entity = entity;
+    }
+
+    public Map<ErrorCode, List<String>> getErrors() {
+        return errors;
+    }
+
+    public void setErrors(Map<ErrorCode, List<String>> errors) {
+        this.errors = errors;
+    }
 }

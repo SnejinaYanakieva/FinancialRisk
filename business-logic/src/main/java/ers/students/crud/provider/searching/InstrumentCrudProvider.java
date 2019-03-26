@@ -20,6 +20,7 @@ public class InstrumentCrudProvider extends SearchingCrudProvider<Instrument> {
      *
      * @return
      */
+    @Override
     public CrudDao<Instrument> getDao() {
         return persistentStore.getInstrumentDao();
     }
@@ -29,6 +30,7 @@ public class InstrumentCrudProvider extends SearchingCrudProvider<Instrument> {
      * @param name
      * @return
      */
+    @Override
     public LoadResults<Instrument> searchByName(String name) {
         LoadResults<Instrument> instrumentResults = new LoadResults<>();
         instrumentResults.setEntities(persistentStore.getInstrumentDao().searchByName(name));

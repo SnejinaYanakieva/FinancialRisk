@@ -20,6 +20,7 @@ public class TransactionCrudProvider extends SearchingCrudProvider<Transaction> 
      *
      * @return
      */
+    @Override
     public CrudDao<Transaction> getDao() {
         return persistentStore.getTransactionDao();
     }

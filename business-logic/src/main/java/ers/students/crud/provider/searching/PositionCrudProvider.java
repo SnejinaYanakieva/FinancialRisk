@@ -20,6 +20,7 @@ public class PositionCrudProvider extends SearchingCrudProvider<Position> {
      *
      * @return
      */
+    @Override
     public CrudDao<Position> getDao() {
         return persistentStore.getPositionDao();
     }
@@ -29,6 +30,7 @@ public class PositionCrudProvider extends SearchingCrudProvider<Position> {
      * @param name
      * @return
      */
+    @Override
     public LoadResults<Position> searchByName(String name) {
         LoadResults<Position> positionResults = new LoadResults<>();
         positionResults.setEntities(persistentStore.getPositionDao().searchByName(name));
