@@ -21,7 +21,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     /**
      * For transactions using JDBC
      */
-    JdbcPersistentStore JDBCPersistentStore;
+    private final JdbcPersistentStore JDBCPersistentStore;
 
     /**
      * Saves/inserts entity in DB
