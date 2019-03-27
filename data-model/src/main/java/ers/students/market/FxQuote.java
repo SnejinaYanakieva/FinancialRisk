@@ -66,20 +66,15 @@ public class FxQuote implements Validatable {
 
         List<String> validationList = new ArrayList<>();
         //id
-        if (id == null) {
+        if (id == null||"".equals(id)) {
 
-            validationList.add("id is null");
-        } else if ("".equals(id)) {
-
-            validationList.add("id is empty");
-        }
+            validationList.add("id is not valid");
+           }
 //curr
-        if (from == null) {
+        if (from == null||from.equals(to)) {
 
-            validationList.add("from is null");
-        }
-        if (from.equals(to)) {
-            validationList.add("from is equals to");
+            validationList.add("from is not valid");
+     
 
         }
         if (to == null) {
@@ -92,7 +87,7 @@ public class FxQuote implements Validatable {
             validationList.add("date is null");
         }
         // value
-        if (value > 0 && value < 100) {
+        if (value < 0 && value > 100) {
 
             validationList.add("date is out of bound");
         }

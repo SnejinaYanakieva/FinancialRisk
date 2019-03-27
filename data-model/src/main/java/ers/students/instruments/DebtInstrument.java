@@ -5,7 +5,6 @@
  */
 package ers.students.instruments;
 
-import ers.students.validate.Validatable;
 import ers.students.util.Frequency;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,15 +37,15 @@ public class DebtInstrument extends Instrument {
 
     @Override
     public List<String> validate() {
-        List<String> validationList = new ArrayList<>();
 
+        List<String> validationList = new ArrayList<>();
+        validationList.addAll(super.validate());
         if (interestRate > 0 && interestRate < 100) {
             validationList.add("interestRate is invalid");
         }
         if (interestFrequency == null) {
             validationList.add("interestFrequency is null");
         }
-        validationList.addAll(super.validate());
 
         return validationList;
     }

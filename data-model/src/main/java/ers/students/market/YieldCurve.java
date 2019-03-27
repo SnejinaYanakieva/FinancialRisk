@@ -128,21 +128,14 @@ public class YieldCurve implements Validatable {
     @Override
     public List<String> validate() {
         List<String> validationList = new ArrayList<>();
-        if (id == null) {
+        if (id == null || "".equals(id)) {
 
-            validationList.add("id is null");
-        } else if ("".equals(id)) {
-
-            validationList.add("id is empty");
+            validationList.add("id is invalid");
         }
 
-        //name
-        if (name == null) {
+        if (name == null || "".equals(name)) {
 
-            validationList.add("name is null");
-        } else if ("".equals(name)) {
-
-            validationList.add("name is empty");
+            validationList.add("name is invalid");
         }
 
         return validationList;

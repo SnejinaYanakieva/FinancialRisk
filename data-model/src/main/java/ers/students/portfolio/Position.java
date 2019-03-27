@@ -72,54 +72,42 @@ public class Position implements Validatable {
         this.portfolioId = portfolioId;
     }
 
+    @Override
     public List<String> validate() {
         List<String> validationList = new ArrayList<>();
+        validationList.addAll(instrument.validate());
         //ID 
-        if (id == null) {
+        if (id == null || "".equals(id)) {
 
-            validationList.add("id is null");
-        } else if ("".equals(id)) {
-
-            validationList.add("id is empty");
+            validationList.add("id is invalid");
         }
 
-        //name         
-        if (name == null) {
+        if (name == null || "".equals(name)) {
 
-            validationList.add("name is null");
-        } else if ("".equals(name)) {
-
-            validationList.add("name is empty");
+            validationList.add("name is invalid");
         }
 
         //shortSide
         if (shortSide.equals(longSide)) {
-            validationList.add("shortSide = longSide");
+            validationList.add("shortSide and longSide should not be the same");
 
-        } 
-        if (shortSide == null) {
+        }
+        if (shortSide == null || "".equals(shortSide)) {
 
-            validationList.add("shortSide is null");
+            validationList.add("shortSide is invalid");
 
-        } else if ("".equals(shortSide)) {
-            validationList.add("shortSide is empty");
         }
 
         //longSide
-        if (longSide == null) {
+        if (longSide == null || "".equals(longSide)) {
 
-            validationList.add("longSide is null");
-        } else {
-            validationList.add("longSide is valid");
+            validationList.add("longSide is invalid");
         }
 
         //portfolioId
-        if (portfolioId == null) {
+        if (portfolioId == null || "".equals(portfolioId)) {
 
-            validationList.add("portfolioId is null");
-        } else if ("".equals(portfolioId)) {
-
-            validationList.add("portfolioId is empty");
+            validationList.add("portfolioId is invalid");
         }
         //instrument         
         if (instrument == null) {
@@ -127,7 +115,6 @@ public class Position implements Validatable {
             validationList.add("instrument is null");
         }
 
-        validationList.addAll(instrument.validate());
         return validationList;
     }
 }

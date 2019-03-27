@@ -69,20 +69,14 @@ public class Instrument implements Validatable {
         List<String> validationList = new ArrayList<>();
 
         //ID 
-        if (id == null) {
+        if (id == null || "".equals(id)) {
 
-            validationList.add("id is null");
-        } else if ("".equals(id)) {
-
-            validationList.add("id is empty");
+            validationList.add("id is invalid");
         }
         //ISIN
-        if (isin == null) {
+        if (isin == null || "".equals(isin)) {
 
-            validationList.add("isin is null");
-        } else if ("".equals(isin)) {
-
-            validationList.add("isin is empty");
+            validationList.add("isin is invalid");
         }
 
         //Currency         

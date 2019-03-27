@@ -78,44 +78,32 @@ public class Transaction implements Validatable {
 
         List<String> validationList = new ArrayList<>();
         //ID 
-        if (id == null) {
+        if (id == null || "".equals(id)) {
 
-            validationList.add("id is null");
-        } else if ("".equals(id)) {
-
-            validationList.add("id is empty");
+            validationList.add("id is invalid");
         }
 
         //positionId
-        if (positionId == null) {
+        if (positionId == null | "".equals(positionId)) {
 
-            validationList.add("positionId is null");
-        } else if ("".equals(positionId)) {
-
-            validationList.add("positionId is empty");
+            validationList.add("positionId is invalid");
         }
         //payer
 
         if (payer.equals(receiver)) {
-            validationList.add("payer = longSide");
+            validationList.add("payer and receiver should not be the same");
 
-        } else if (payer == null) {
+        } else if (payer == null || "".equals(payer)) {
 
-            validationList.add("payer is null");
+            validationList.add("payer is invalid");
 
-        } else if ("".equals(payer)) {
-            validationList.add("payer is empty");
         }
 
-        //receiver
-        if (receiver == null) {
+        if (receiver == null || "".equals(receiver)) {
 
-            validationList.add("receiver is null");
-        } else {
-            validationList.add("receiver is valid");
+            validationList.add("receiver is invalid");
         }
 
-        //date
         if (date == null) {
 
             validationList.add("date is null");

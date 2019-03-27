@@ -33,11 +33,11 @@ public class Credit extends DebtInstrument implements Validatable {
     @Override
     public List<String> validate() {
         List<String> validationList = new ArrayList<>();
-
+        validationList.addAll(super.validate());
         if (amortizationFrequency == null) {
             validationList.add("interestRate is null");
         }
-        validationList.addAll(super.validate());
+
         return validationList;
     }
 
