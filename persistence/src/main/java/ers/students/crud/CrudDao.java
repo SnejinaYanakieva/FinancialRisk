@@ -5,6 +5,7 @@
  */
 package ers.students.crud;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -19,30 +20,30 @@ public interface CrudDao<Entity> {
      * Saves/inserts entity in DB
      * @param e - entity
      */
-    void save(Entity e);
+    void save(Entity e) throws SQLException;
 
     /**
      * Updates entity in DB
      * @param e - entity
      */
-    void update(Entity e);
+    void update(Entity e) throws SQLException;
     
     /**
      * Deletes entity in DB
      * @param id - ID of row to delete data from
      */
-    void delete(String id);
+    void delete(String id) throws SQLException;
 
     /**
      * Loads object with the given ID
      * @param id
      * @return entity
      */
-    Entity loadById(String id);
+    Entity loadById(String id) throws SQLException;
 
     /**
      * Loads all data
      * @return list of entities
      */
-    List<Entity> loadAll();
+    List<Entity> loadAll() throws SQLException;
 }

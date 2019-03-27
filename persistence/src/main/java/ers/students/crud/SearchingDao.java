@@ -5,6 +5,7 @@
  */
 package ers.students.crud;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -20,5 +21,5 @@ public interface SearchingDao<Entity> extends CrudDao<Entity> {
      * @param name
      * @return List of entities
      */
-    List<Entity> searchByName(String name);
+    List<Entity> searchByName(String name) throws SQLException;
 }

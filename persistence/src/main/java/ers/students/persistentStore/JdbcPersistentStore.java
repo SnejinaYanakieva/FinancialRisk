@@ -14,6 +14,9 @@ import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
 import ers.students.portfolio.Transaction;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import org.hsqldb.jdbc.JDBCDataSource;
 
 /**
@@ -40,7 +43,37 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public void createDB() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            connect();
+
+            Statement statement = connection.createStatement();
+
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS FxQuote("
+                    + "id TEXT(36) NOT NULL,"
+                    + "from TEXT(3) NOT NULL,"
+                    + "to TEXT(3) NOT NULL,"
+                    + "date DATE NOT NULL,"
+                    + "value DOUBLE NOT NULL,"
+                    + "PRIMARY KEY(id))");
+
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS Yield_Curve("
+                    + "id TEXT(36) NOT NULL,"
+                    + "name TEXT(200) NOT NULL,"
+                    + "yield1month DOUBLE,"
+                    + "yield2month DOUBLE,"
+                    + "yield3month DOUBLE,"
+                    + "yield6month DOUBLE,"
+                    + "yield1year DOUBLE,"
+                    + "yield2year DOUBLE,"
+                    + "yield5year DOUBLE,"
+                    + "yield10year DOUBLE,"
+                    + "yield20year DOUBLE,"
+                    + "yield30year DOUBLE,"
+                    + "PRIMARY KEY(id))");
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -134,6 +167,14 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public CrudDao<FxQuote> getFxQuote() {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void connect() {
+        try {
+            connection = DriverManager.getConnection("jdbc:hsql:file:", userName, password);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }
