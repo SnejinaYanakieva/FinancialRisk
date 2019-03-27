@@ -5,12 +5,14 @@
  */
 package ers.students.crud;
 
+import ers.students.market.FxQuote;
+
 /**
  *
  * @author Ayhan
  * 
  * Stores data retrieved from CRUD operations
  */
-public class FxQuoteDao extends AbstractCrudDao {
+public class FxQuoteDao extends AbstractCrudDao<FxQuote> {
     
 }

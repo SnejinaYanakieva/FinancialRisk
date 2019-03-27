@@ -5,12 +5,14 @@
  */
 package ers.students.crud;
 
+import ers.students.portfolio.Transaction;
+
 /**
  *
  * @author Ayhan
  * 
  * Stores data retrieved from CRUD operations
  */
-public class TransactionDao extends AbstractSearchingDao {
+public class TransactionDao extends AbstractSearchingDao<Transaction> {
     
 }

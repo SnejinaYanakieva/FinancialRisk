@@ -5,12 +5,14 @@
  */
 package ers.students.crud;
 
+import ers.students.market.YieldCurve;
+
 /**
  *
  * @author Ayhan
  * 
  * Stores data retrieved from CRUD operations
  */
-public class YieldCurveDao extends AbstractCrudDao{
+public class YieldCurveDao extends AbstractCrudDao<YieldCurve>{
     
 }

@@ -5,12 +5,14 @@
  */
 package ers.students.crud;
 
+import ers.students.instruments.Instrument;
+
 /**
  *
  * @author Ayhan
  * 
  * Stores data retrieved from CRUD operations
  */
-public class InstrumentDao extends AbstractSearchingDao{
+public class InstrumentDao extends AbstractSearchingDao<Instrument>{
     
 }
