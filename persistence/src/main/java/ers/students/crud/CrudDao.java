@@ -19,18 +19,21 @@ public interface CrudDao<Entity> {
     /**
      * Saves/inserts entity in DB
      * @param e - entity
+     * @throws java.sql.SQLException
      */
     void save(Entity e) throws SQLException;
 
     /**
      * Updates entity in DB
      * @param e - entity
+     * @throws java.sql.SQLException
      */
     void update(Entity e) throws SQLException;
     
     /**
      * Deletes entity in DB
      * @param id - ID of row to delete data from
+     * @throws java.sql.SQLException
      */
     void delete(String id) throws SQLException;
 
@@ -38,12 +41,14 @@ public interface CrudDao<Entity> {
      * Loads object with the given ID
      * @param id
      * @return entity
+     * @throws java.sql.SQLException
      */
     Entity loadById(String id) throws SQLException;
 
     /**
      * Loads all data
      * @return list of entities
+     * @throws java.sql.SQLException
      */
     List<Entity> loadAll() throws SQLException;
 }

@@ -20,6 +20,7 @@ public interface SearchingDao<Entity> extends CrudDao<Entity> {
      * For looking up data by name
      * @param name
      * @return List of entities
+     * @throws java.sql.SQLException
      */
     List<Entity> searchByName(String name) throws SQLException;
 }

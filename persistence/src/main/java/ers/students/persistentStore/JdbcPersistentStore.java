@@ -29,6 +29,7 @@ public class JdbcPersistentStore implements PersistentStore {
 
     private Connection connection;
     private JDBCDataSource dataSource;
+    private String dbURL;
     private String userName;
     private String password;
     private PortfolioDao portfolioDao;
@@ -70,6 +71,7 @@ public class JdbcPersistentStore implements PersistentStore {
                     + "yield20year DOUBLE,"
                     + "yield30year DOUBLE,"
                     + "PRIMARY KEY(id))");
+            
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -171,7 +173,7 @@ public class JdbcPersistentStore implements PersistentStore {
 
     public void connect() {
         try {
-            connection = DriverManager.getConnection("jdbc:hsql:file:", userName, password);
+            connection = DriverManager.getConnection(dbURL, userName, password);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
