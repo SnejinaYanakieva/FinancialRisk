@@ -14,6 +14,7 @@ import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
 import ers.students.portfolio.Transaction;
 import java.sql.Connection;
+import org.hsqldb.jdbc.JDBCDataSource;
 
 /**
  *
@@ -24,6 +25,7 @@ import java.sql.Connection;
 public class JdbcPersistentStore implements PersistentStore {
 
     private Connection connection;
+    private JDBCDataSource dataSource;
     private String userName;
     private String password;
     private PortfolioDao portfolioDao;
