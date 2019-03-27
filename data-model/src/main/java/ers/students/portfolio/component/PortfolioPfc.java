@@ -9,13 +9,22 @@ import ers.students.portfolio.Portfolio;
 import java.util.*;
 
 /**
- * PortfolioPfc is a portfolio component that have a variable portfolio and list of portfolio components  called elements
+ * PortfolioPfc is a portfolio component that have a variable portfolio and list
+ * of portfolio components called elements
+ *
  * @author Viktor
  */
 public class PortfolioPfc extends AbstractPfc {
 
     private Portfolio portfolio;
     private final List<PortfolioComponent> elements = new ArrayList();
+
+    PortfolioPfc(Portfolio portfolio) {
+        this.portfolio = portfolio;
+    }
+
+    PortfolioPfc() {
+    }
 
     public Portfolio getPortfolio() {
         return portfolio;

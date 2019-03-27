@@ -21,6 +21,15 @@ public class Portfolio implements Validatable {
     private String name;
     private Currency currency;
 
+    public Portfolio() {
+    }
+
+    public Portfolio(String id, String name, Currency currency) {
+        this.id = id;
+        this.name = name;
+        this.currency = currency;
+    }
+
     public String getId() {
         return id;
     }

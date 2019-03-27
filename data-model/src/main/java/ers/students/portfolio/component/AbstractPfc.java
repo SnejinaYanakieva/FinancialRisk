@@ -8,9 +8,9 @@ package ers.students.portfolio.component;
 import java.util.*;
 import ers.students.util.Currency;
 
-
 /**
  * used as a basis for creating the Pfc
+ *
  * @author Viktor
  */
 public class AbstractPfc implements PortfolioComponent {
@@ -22,6 +22,17 @@ public class AbstractPfc implements PortfolioComponent {
     private final List<String> errors = new ArrayList<>();
 
     private final Map<CalculationResult, Object> calculationResults = new HashMap<>();
+
+   
+    public AbstractPfc(String id, String parentId, String name, Currency currency) {
+        this.id = id;
+        this.parentId = parentId;
+        this.name = name;
+        this.currency = currency;
+    }
+     
+    public AbstractPfc() {
+    }
 
     /**
      *
@@ -38,7 +49,7 @@ public class AbstractPfc implements PortfolioComponent {
      * @param key
      */
     public void addCalculationResult(CalculationResult key, Object value) {
-        this.calculationResults.put(key,value);
+        this.calculationResults.put(key, value);
     }
 
     /**

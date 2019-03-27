@@ -6,7 +6,8 @@
 package ers.students.portfolio.component;
 
 /**
- *  An enum about witch result we want to get
+ * An enum about witch result we want to get
+ *
  * @author Viktor
  */
 public enum StringResult implements CalculationResult {

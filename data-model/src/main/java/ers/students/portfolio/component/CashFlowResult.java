@@ -6,7 +6,8 @@
 package ers.students.portfolio.component;
 
 /**
- *The result of a cash flow.
+ * The result of a cash flow.
+ *
  * @author Viktor
  */
 public enum CashFlowResult implements CalculationResult {

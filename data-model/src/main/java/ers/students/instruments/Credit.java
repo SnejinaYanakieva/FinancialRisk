@@ -21,6 +21,13 @@ public class Credit extends DebtInstrument implements Validatable {
 
     private Frequency amortizationFrequency;
 
+    public Credit() {
+    }
+
+    public Credit(Frequency amortizationFrequency) {
+        this.amortizationFrequency = amortizationFrequency;
+    }
+
     public Frequency getAmortitationFrequency() {
         return amortizationFrequency;
     }

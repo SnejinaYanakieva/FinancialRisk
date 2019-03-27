@@ -24,6 +24,18 @@ public class Position implements Validatable {
     private String portfolioId;
     private Instrument instrument;
 
+    public Position(String id, String name, String shortSide, String longSide, String portfolioId, Instrument instrument) {
+        this.id = id;
+        this.name = name;
+        this.shortSide = shortSide;
+        this.longSide = longSide;
+        this.portfolioId = portfolioId;
+        this.instrument = instrument;
+    }
+
+    public Position() {
+    }
+
     public Instrument getInstrument() {
         return instrument;
     }

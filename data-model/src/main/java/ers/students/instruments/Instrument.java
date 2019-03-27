@@ -24,6 +24,17 @@ public class Instrument implements Validatable {
     private Date issueDate;
     private Date maturityDate;
 
+    public Instrument() {
+    }
+
+    public Instrument(String id, String isin, Currency currency, Date issueDate, Date maturityDate) {
+        this.id = id;
+        this.isin = isin;
+        this.currency = currency;
+        this.issueDate = issueDate;
+        this.maturityDate = maturityDate;
+    }
+
     public Currency getCurrency() {
         return currency;
     }

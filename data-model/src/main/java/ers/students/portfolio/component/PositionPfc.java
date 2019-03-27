@@ -8,13 +8,22 @@ package ers.students.portfolio.component;
 import ers.students.portfolio.Position;
 
 /**
- *A component of the portfolio
+ * A component of the portfolio
+ *
  * @author Viktor
  */
 public class PositionPfc extends AbstractPfc {
 
     private Position position;
     private double volume;
+
+    PositionPfc(Position position, double volume) {
+        this.position = position;
+        this.volume = volume;
+    }
+
+    PositionPfc() {
+    }
 
     public Position getPosition() {
         return position;

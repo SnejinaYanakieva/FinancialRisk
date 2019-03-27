@@ -29,6 +29,24 @@ public class YieldCurve implements Validatable {
     private double yield20year;
     private double yield30year;
 
+    public YieldCurve() {
+    }
+
+    public YieldCurve(String id, String name, double yield1month, double yield2month, double yield3month, double yield6month, double yield1year, double yield2year, double yield5year, double yield10year, double yield20year, double yield30year) {
+        this.id = id;
+        this.name = name;
+        this.yield1month = yield1month;
+        this.yield2month = yield2month;
+        this.yield3month = yield3month;
+        this.yield6month = yield6month;
+        this.yield1year = yield1year;
+        this.yield2year = yield2year;
+        this.yield5year = yield5year;
+        this.yield10year = yield10year;
+        this.yield20year = yield20year;
+        this.yield30year = yield30year;
+    }
+
     public String getId() {
         return id;
     }
@@ -136,6 +154,47 @@ public class YieldCurve implements Validatable {
         if (name == null || "".equals(name)) {
 
             validationList.add("name is invalid");
+        }
+
+        if ("".equals(yield1month)) {
+
+            validationList.add("yield1month is invalid");
+        }
+        if ("".equals(yield2month)) {
+
+            validationList.add("yield2month is invalid");
+        }
+        if ("".equals(yield3month)) {
+
+            validationList.add("yield3month is invalid");
+        }
+        if ("".equals(yield6month)) {
+
+            validationList.add("yield6month is invalid");
+        }
+        if ("".equals(yield1year)) {
+
+            validationList.add("yield1year is invalid");
+        }
+        if ("".equals(yield2year)) {
+
+            validationList.add("yield2year is invalid");
+        }
+        if ("".equals(yield5year)) {
+
+            validationList.add("yield5year is invalid");
+        }
+        if ("".equals(yield10year)) {
+
+            validationList.add("yield10year is invalid");
+        }
+        if ("".equals(yield20year)) {
+
+            validationList.add("yield20year is invalid");
+        }
+        if ("".equals(yield30year)) {
+
+            validationList.add("yield30year is invalid");
         }
 
         return validationList;

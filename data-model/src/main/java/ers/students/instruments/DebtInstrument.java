@@ -19,6 +19,15 @@ public class DebtInstrument extends Instrument {
     private double interestRate;
     private Frequency interestFrequency;
 
+    public DebtInstrument() {
+    }
+
+    public DebtInstrument(double interestRate, Frequency interestFrequency) {
+        this.interestRate = interestRate;
+        this.interestFrequency = interestFrequency;
+    }
+
+    
     public Frequency getInterestFrequency() {
         return interestFrequency;
     }
@@ -40,8 +49,8 @@ public class DebtInstrument extends Instrument {
 
         List<String> validationList = new ArrayList<>();
         validationList.addAll(super.validate());
-        if (interestRate > 0 && interestRate < 100) {
-            validationList.add("interestRate is invalid");
+        if (interestRate < 0 && interestRate > 100) {
+            validationList.add("interestRate is out of bound");
         }
         if (interestFrequency == null) {
             validationList.add("interestFrequency is null");

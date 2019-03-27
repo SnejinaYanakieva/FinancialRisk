@@ -25,6 +25,18 @@ public class Transaction implements Validatable {
     private Date date;
     private double amount;
 
+    public Transaction() {
+    }
+
+    public Transaction(String id, String positionId, String payer, String receiver, Date date, double amount) {
+        this.id = id;
+        this.positionId = positionId;
+        this.payer = payer;
+        this.receiver = receiver;
+        this.date = date;
+        this.amount = amount;
+    }
+
     public String getId() {
         return id;
     }

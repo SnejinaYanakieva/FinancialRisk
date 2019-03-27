@@ -22,6 +22,17 @@ public class FxQuote implements Validatable {
     private Date date;
     private double value;
 
+    public FxQuote() {
+    }
+
+    public FxQuote(String id, Currency from, Currency to, Date date, double value) {
+        this.id = id;
+        this.from = from;
+        this.to = to;
+        this.date = date;
+        this.value = value;
+    }
+
     public String getId() {
         return id;
     }
@@ -62,26 +73,26 @@ public class FxQuote implements Validatable {
         this.value = value;
     }
 
+    @Override
     public List<String> validate() {
 
         List<String> validationList = new ArrayList<>();
-        //id
-        if (id == null||"".equals(id)) {
+
+        if (id == null || "".equals(id)) {
 
             validationList.add("id is not valid");
-           }
-//curr
-        if (from == null||from.equals(to)) {
+        }
+
+        if (from == null || from.equals(to)) {
 
             validationList.add("from is not valid");
-     
 
         }
         if (to == null) {
 
             validationList.add("to is null");
         }
-//date
+
         if (date == null) {
 
             validationList.add("date is null");

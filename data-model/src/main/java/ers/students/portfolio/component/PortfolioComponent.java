@@ -10,6 +10,7 @@ import ers.students.util.Currency;
 
 /**
  * Interface of the portfolio component
+ *
  * @author Viktor
  */
 public interface PortfolioComponent {

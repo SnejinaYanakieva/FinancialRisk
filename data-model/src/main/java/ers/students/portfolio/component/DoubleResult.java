@@ -7,6 +7,7 @@ package ers.students.portfolio.component;
 
 /**
  * An enum that gives us the results of type double
+ *
  * @author Viktor
  */
 public enum DoubleResult implements CalculationResult {
