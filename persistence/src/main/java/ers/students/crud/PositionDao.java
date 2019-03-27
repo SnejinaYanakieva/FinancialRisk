@@ -5,6 +5,8 @@
  */
 package ers.students.crud;
 
+import ers.students.portfolio.Position;
+
 
 /**
  *
@@ -12,6 +14,6 @@ package ers.students.crud;
  *
  * Stores data retrieved from CRUD operations
  */
-public class PositionDao extends AbstractSearchingDao {
+public class PositionDao extends AbstractSearchingDao<Position> {
     
 }

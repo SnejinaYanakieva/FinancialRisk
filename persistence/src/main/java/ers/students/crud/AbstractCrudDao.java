@@ -6,6 +6,7 @@
 package ers.students.crud;
 
 import ers.students.persistentStore.JdbcPersistentStore;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      * @param e entity to save/insert
      */
     @Override
-    public void save(Entity e) {
+    public void save(Entity e) throws SQLException{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -37,7 +38,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      * @param e entity to update
      */
     @Override
-    public void update(Entity e) {
+    public void update(Entity e) throws SQLException{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -46,7 +47,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      * @param id - id of row to delete data from
      */
     @Override
-    public void delete(String id) {
+    public void delete(String id)throws SQLException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -56,7 +57,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      * @return entity
      */
     @Override
-    public Entity loadById(String id) {
+    public Entity loadById(String id) throws SQLException{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -65,7 +66,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      * @return List of entities
      */
     @Override
-    public List<Entity> loadAll() {
+    public List<Entity> loadAll() throws SQLException{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

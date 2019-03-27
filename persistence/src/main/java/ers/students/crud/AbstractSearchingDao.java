@@ -5,6 +5,7 @@
  */
 package ers.students.crud;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public abstract class AbstractSearchingDao<Entity> extends AbstractCrudDao<Entit
      * @return list of entities
      */
     @Override
-    public List<Entity> searchByName(String name) {
+    public List<Entity> searchByName(String name) throws SQLException{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
