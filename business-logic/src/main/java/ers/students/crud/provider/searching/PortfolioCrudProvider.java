@@ -5,8 +5,7 @@
  */
 package ers.students.crud.provider.searching;
 
-import ers.students.crud.CrudDao;
-import ers.students.crud.results.LoadResults;
+import ers.students.crud.SearchingDao;
 import ers.students.portfolio.Portfolio;
 
 /**
@@ -21,19 +20,8 @@ public class PortfolioCrudProvider extends SearchingCrudProvider<Portfolio> {
      * @return
      */
     @Override
-    public CrudDao<Portfolio> getDao() {
+    public SearchingDao<Portfolio> getDao() {
         return persistentStore.getPortfolioDao();
     }
-
-    /**
-     *
-     * @param name
-     * @return
-     */
-    @Override
-    public LoadResults<Portfolio> searchByName(String name) {
-        LoadResults<Portfolio> portfolioResults = new LoadResults<>();
-        portfolioResults.setEntities(persistentStore.getPortfolioDao().searchByName(name));
-        return portfolioResults;
-    }
+    
 }

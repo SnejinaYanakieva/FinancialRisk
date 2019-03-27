@@ -6,7 +6,7 @@
 package ers.students.crud.provider.searching;
 
 import ers.students.crud.CrudDao;
-import ers.students.crud.results.LoadResults;
+import ers.students.crud.SearchingDao;
 import ers.students.instruments.Instrument;
 
 /**
@@ -21,20 +21,8 @@ public class InstrumentCrudProvider extends SearchingCrudProvider<Instrument> {
      * @return
      */
     @Override
-    public CrudDao<Instrument> getDao() {
+    public SearchingDao<Instrument> getDao() {
         return persistentStore.getInstrumentDao();
-    }
-
-    /**
-     *
-     * @param name
-     * @return
-     */
-    @Override
-    public LoadResults<Instrument> searchByName(String name) {
-        LoadResults<Instrument> instrumentResults = new LoadResults<>();
-        instrumentResults.setEntities(persistentStore.getInstrumentDao().searchByName(name));
-        return instrumentResults;
     }
 
 }

@@ -78,9 +78,7 @@ public abstract class AbstactCrudProvider<E extends Validatable> {
         Map<ErrorCode, List<String>> errors = new HashMap<>();
         try {
             persistentStore.startTransaction();
-            E entity = getDao().loadById(id);
-            //////////////////////////
-            errors = loadEntityAndCheckForNull(id);
+            E entity = loadEntityAndCheckForNull(id, errors);
             if (!errors.isEmpty()) {
                 result.setErrors(errors);
                 return result;
@@ -104,7 +102,7 @@ public abstract class AbstactCrudProvider<E extends Validatable> {
         Map<ErrorCode, List<String>> errors = new HashMap<>();
         try {
             persistentStore.startTransaction();
-            errors = loadEntityAndCheckForNull(id);
+            E entity = loadEntityAndCheckForNull(id, errors);
             if (!errors.isEmpty()) {
                 return errors;
             }
@@ -156,14 +154,13 @@ public abstract class AbstactCrudProvider<E extends Validatable> {
      * @param id to search entity
      * @return pairs of error code and errors
      */
-    private Map<ErrorCode, List<String>> loadEntityAndCheckForNull(String id) {
-        Map<ErrorCode, List<String>> errors = new HashMap<>();
+    private E loadEntityAndCheckForNull(String id, Map<ErrorCode, List<String>> errors) {
         E entity = getDao().loadById(id);
         if (entity == null) {
             errors.put(ErrorCode.NO_SUCH_ELEMENT, Arrays.asList("No such element"));
             persistentStore.rollbackTransaction();
         }
-        return errors;
+        return entity;
     }
 
 }
