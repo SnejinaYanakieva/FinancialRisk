@@ -5,15 +5,19 @@
  */
 package ers.students.crud.provider.searching;
 
-import ers.students.crud.CrudDao;
 import ers.students.crud.SearchingDao;
 import ers.students.instruments.Instrument;
+import ers.students.persistentStore.PersistentStore;
 
 /**
  *
  * @author Irina
  */
 public class InstrumentCrudProvider extends SearchingCrudProvider<Instrument> {
+
+    public InstrumentCrudProvider(PersistentStore persistentStore) {
+        super(persistentStore);
+    }
 
     /**
      * Provides DAO interface for Instrument.

@@ -6,6 +6,7 @@
 package ers.students.crud.provider.searching;
 
 import ers.students.crud.SearchingDao;
+import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Position;
 
 /**
@@ -13,6 +14,10 @@ import ers.students.portfolio.Position;
  * @author Irina
  */
 public class PositionCrudProvider extends SearchingCrudProvider<Position> {
+
+    public PositionCrudProvider(PersistentStore persistentStore) {
+        super(persistentStore);
+    }
 
     /**
      * Provides DAO interface for Position.

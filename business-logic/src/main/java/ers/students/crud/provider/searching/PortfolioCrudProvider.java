@@ -6,6 +6,7 @@
 package ers.students.crud.provider.searching;
 
 import ers.students.crud.SearchingDao;
+import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Portfolio;
 
 /**
@@ -14,13 +15,17 @@ import ers.students.portfolio.Portfolio;
  */
 public class PortfolioCrudProvider extends SearchingCrudProvider<Portfolio> {
 
+    public PortfolioCrudProvider(PersistentStore persistentStore) {
+        super(persistentStore);
+    }
+    
     /**
      * Provides DAO interface for Portfolio.
      *
      * @return
      */
     @Override
-    public SearchingDao<Portfolio> getDao() {
+    protected SearchingDao<Portfolio> getDao() {
         return persistentStore.getPortfolioDao();
     }
     

@@ -14,6 +14,7 @@ import java.util.Map;
  * errors. It also contains information about loaded entity.
  *
  * @author Irina
+ * @param <E>
  */
 public class LoadResult<E> {
 

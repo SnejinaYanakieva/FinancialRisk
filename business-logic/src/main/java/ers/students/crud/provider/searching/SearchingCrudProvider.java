@@ -5,12 +5,14 @@
  */
 package ers.students.crud.provider.searching;
 
-import ers.students.crud.AbstractSearchingDao;
-import ers.students.crud.CrudDao;
 import ers.students.crud.SearchingDao;
-import ers.students.crud.provider.AbstactCrudProvider;
+import ers.students.crud.provider.AbstractCrudProvider;
+import ers.students.crud.results.ErrorCode;
 import ers.students.crud.results.LoadResults;
+import ers.students.persistentStore.PersistentStore;
 import ers.students.validate.Validatable;
+import java.sql.SQLException;
+import java.util.Arrays;
 
 /**
  * Provides method for searching entities in DB.
@@ -18,7 +20,11 @@ import ers.students.validate.Validatable;
  * @author Irina
  * @param <E>
  */
-public abstract class SearchingCrudProvider<E extends Validatable> extends AbstactCrudProvider<E> {
+public abstract class SearchingCrudProvider<E extends Validatable> extends AbstractCrudProvider<E> {
+
+    public SearchingCrudProvider(PersistentStore persistentStore) {
+        super(persistentStore);
+    }
 
     /**
      * Provides DAO interface for searching entity by name.
@@ -36,9 +42,15 @@ public abstract class SearchingCrudProvider<E extends Validatable> extends Absta
      * @param name on which we search for entities
      * @return loaded entities and map of errors
      */
-    protected LoadResults<E> searchByName(String name) {
+    public LoadResults<E> searchByName(String name) {
         LoadResults<E> results = new LoadResults<>();
-        results.setEntities(getDao().searchByName(name));
+
+        try {
+            results.setEntities(getDao().searchByName(name));
+        } catch (SQLException e) {
+            results.getErrors().put(ErrorCode.INTERNAL_ERROR, Arrays.asList(e.getCause().getMessage()));
+        }
+
         return results;
     }
 }

@@ -7,12 +7,17 @@ package ers.students.crud.provider;
 
 import ers.students.crud.CrudDao;
 import ers.students.market.FxQuote;
+import ers.students.persistentStore.PersistentStore;
 
 /**
  *
  * @author Irina
  */
-public class FxCrudProvider extends AbstactCrudProvider<FxQuote> {
+public class FxCrudProvider extends AbstractCrudProvider<FxQuote> {
+
+    public FxCrudProvider(PersistentStore persistentStore) {
+        super(persistentStore);
+    }
 
     /**
      * Provides DAO interface for FxQuote.

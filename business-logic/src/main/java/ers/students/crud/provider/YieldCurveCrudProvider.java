@@ -7,12 +7,17 @@ package ers.students.crud.provider;
 
 import ers.students.crud.CrudDao;
 import ers.students.market.YieldCurve;
+import ers.students.persistentStore.PersistentStore;
 
 /**
  *
  * @author Irina
  */
-public class YieldCurveCrudProvider extends AbstactCrudProvider<YieldCurve> {
+public class YieldCurveCrudProvider extends AbstractCrudProvider<YieldCurve> {
+
+    public YieldCurveCrudProvider(PersistentStore persistentStore) {
+        super(persistentStore);
+    }
 
     /**
      * Provides DAO interface for YieldCurve.

@@ -10,6 +10,7 @@ import ers.students.crud.results.ErrorCode;
 import ers.students.crud.results.LoadResult;
 import ers.students.persistentStore.PersistentStore;
 import ers.students.validate.Validatable;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -21,9 +22,13 @@ import java.util.Map;
  * @author Irina
  * @param <E>
  */
-public abstract class AbstactCrudProvider<E extends Validatable> {
+public abstract class AbstractCrudProvider<E extends Validatable> {
 
-    protected PersistentStore persistentStore;
+    protected final PersistentStore persistentStore;
+
+    public AbstractCrudProvider(PersistentStore persistentStore) {
+        this.persistentStore = persistentStore;
+    }
 
     /**
      * Creates an entity in DB.
@@ -31,7 +36,7 @@ public abstract class AbstactCrudProvider<E extends Validatable> {
      * @param entity to create
      * @return corresponding error code and list of errors
      */
-    protected Map<ErrorCode, List<String>> create(E entity) {
+    public Map<ErrorCode, List<String>> create(E entity) {
         Map<ErrorCode, List<String>> errors = getErrors(entity);
         if (!errors.isEmpty()) {
             return errors;
@@ -40,7 +45,7 @@ public abstract class AbstactCrudProvider<E extends Validatable> {
             persistentStore.startTransaction();
             getDao().save(entity);
             persistentStore.commitTransaction();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             errors = getExceptionsAndRollbackTransaction(e);
         }
         return errors;
@@ -52,7 +57,7 @@ public abstract class AbstactCrudProvider<E extends Validatable> {
      * @param entity to update
      * @return corresponding error code and list of errors
      */
-    protected Map<ErrorCode, List<String>> update(E entity) {
+    public Map<ErrorCode, List<String>> update(E entity) {
         Map<ErrorCode, List<String>> errors = getErrors(entity);
         if (!errors.isEmpty()) {
             return errors;
@@ -61,7 +66,7 @@ public abstract class AbstactCrudProvider<E extends Validatable> {
             persistentStore.startTransaction();
             getDao().update(entity);
             persistentStore.commitTransaction();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             errors = getExceptionsAndRollbackTransaction(e);
         }
         return errors;
@@ -73,7 +78,7 @@ public abstract class AbstactCrudProvider<E extends Validatable> {
      * @param id to search entity
      * @return loaded entities and map of errors
      */
-    LoadResult<E> loadById(String id) {
+    public LoadResult<E> loadById(String id) {
         LoadResult<E> result = new LoadResult<>();
         Map<ErrorCode, List<String>> errors = new HashMap<>();
         try {
@@ -98,7 +103,7 @@ public abstract class AbstactCrudProvider<E extends Validatable> {
      * @param id to search entity
      * @return corresponding error code and list of errors
      */
-    protected Map<ErrorCode, List<String>> delete(String id) {
+    public Map<ErrorCode, List<String>> delete(String id) {
         Map<ErrorCode, List<String>> errors = new HashMap<>();
         try {
             persistentStore.startTransaction();
@@ -108,7 +113,7 @@ public abstract class AbstactCrudProvider<E extends Validatable> {
             }
             getDao().delete(id);
             persistentStore.commitTransaction();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             errors = getExceptionsAndRollbackTransaction(e);
         }
         return errors;
@@ -155,10 +160,15 @@ public abstract class AbstactCrudProvider<E extends Validatable> {
      * @return pairs of error code and errors
      */
     private E loadEntityAndCheckForNull(String id, Map<ErrorCode, List<String>> errors) {
-        E entity = getDao().loadById(id);
-        if (entity == null) {
-            errors.put(ErrorCode.NO_SUCH_ELEMENT, Arrays.asList("No such element"));
-            persistentStore.rollbackTransaction();
+        E entity = null;
+        try {
+            entity = getDao().loadById(id);
+            if (entity == null) {
+                errors.put(ErrorCode.NO_SUCH_ELEMENT, Arrays.asList("No such element"));
+                persistentStore.rollbackTransaction();
+            }
+        } catch (SQLException e) {
+            errors.put(ErrorCode.INTERNAL_ERROR, Arrays.asList("Cannot load entity."));
         }
         return entity;
     }

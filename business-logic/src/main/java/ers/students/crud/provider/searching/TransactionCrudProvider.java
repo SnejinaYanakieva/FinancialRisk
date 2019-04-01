@@ -6,6 +6,7 @@
 package ers.students.crud.provider.searching;
 
 import ers.students.crud.SearchingDao;
+import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Transaction;
 
 /**
@@ -13,6 +14,10 @@ import ers.students.portfolio.Transaction;
  * @author Irina
  */
 public class TransactionCrudProvider extends SearchingCrudProvider<Transaction> {
+
+    public TransactionCrudProvider(PersistentStore persistentStore) {
+        super(persistentStore);
+    }
 
     /**
      * Provides DAO interface for Transaction.
