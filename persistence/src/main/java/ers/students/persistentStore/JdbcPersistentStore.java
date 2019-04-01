@@ -114,7 +114,8 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Position> getPositionDao() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return positionDao;
+       // throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
