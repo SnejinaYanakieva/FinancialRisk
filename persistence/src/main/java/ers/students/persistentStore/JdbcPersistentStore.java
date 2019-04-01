@@ -4,15 +4,22 @@
 package ers.students.persistentStore;
 
 import ers.students.crud.CrudDao;
+import ers.students.crud.FxQuoteDao;
+import ers.students.crud.InstrumentDao;
 import ers.students.crud.PortfolioDao;
 import ers.students.crud.PositionDao;
 import ers.students.crud.SearchingDao;
+import ers.students.crud.TransactionDao;
+import ers.students.crud.YieldCurveDao;
 import ers.students.instruments.Instrument;
 import ers.students.market.FxQuote;
 import ers.students.market.YieldCurve;
 import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
 import ers.students.portfolio.Transaction;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -34,46 +41,35 @@ public class JdbcPersistentStore implements PersistentStore {
     private String password;
     private PortfolioDao portfolioDao;
     private PositionDao positionDao;
-    private Transaction transactionDao;
-    private Instrument instrumentDao;
-    private YieldCurve yieldCurve;
-    private FxQuote FxQuote;
+    private TransactionDao transactionDao;
+    private InstrumentDao instrumentDao;
+    private YieldCurveDao yieldCurve;
+    private FxQuoteDao FxQuote;
 
     /**
      * Creates the DB
+     *
      */
+    public JdbcPersistentStore() {
+        try {
+            connection = DriverManager.getConnection(dbURL, userName, password);
+            connection.setAutoCommit(false);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public Connection getConnection(){
+        return this.connection;
+    }
+
     @Override
     public void createDB() {
         try {
-            connect();
-
             Statement statement = connection.createStatement();
-
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS FxQuote("
-                    + "id TEXT(36) NOT NULL,"
-                    + "from TEXT(3) NOT NULL,"
-                    + "to TEXT(3) NOT NULL,"
-                    + "date DATE NOT NULL,"
-                    + "value DOUBLE NOT NULL,"
-                    + "PRIMARY KEY(id))");
-
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS Yield_Curve("
-                    + "id TEXT(36) NOT NULL,"
-                    + "name TEXT(200) NOT NULL,"
-                    + "yield1month DOUBLE,"
-                    + "yield2month DOUBLE,"
-                    + "yield3month DOUBLE,"
-                    + "yield6month DOUBLE,"
-                    + "yield1year DOUBLE,"
-                    + "yield2year DOUBLE,"
-                    + "yield5year DOUBLE,"
-                    + "yield10year DOUBLE,"
-                    + "yield20year DOUBLE,"
-                    + "yield30year DOUBLE,"
-                    + "PRIMARY KEY(id))");
-            
-
-        } catch (SQLException ex) {
+            String q = new String(Files.readAllBytes(Paths.get("CreateTableQueries.txt")));
+            statement.executeUpdate(q);
+        } catch (SQLException | IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
@@ -83,7 +79,7 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public void dropDB() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String dropDBQuery = "DROP DATABASE ?";
     }
 
     /**
@@ -169,14 +165,6 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public CrudDao<FxQuote> getFxQuote() {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void connect() {
-        try {
-            connection = DriverManager.getConnection(dbURL, userName, password);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 
 }

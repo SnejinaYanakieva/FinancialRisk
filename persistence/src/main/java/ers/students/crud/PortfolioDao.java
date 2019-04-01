@@ -15,5 +15,10 @@ import ers.students.portfolio.Portfolio;
  * Stores data retrieved from CRUD operations
  */
 public class PortfolioDao extends AbstractSearchingDao<Portfolio> {
-    
+    public static String INSERT = "INSERT INTO ? VALUES(?,?,?)";
+
+    @Override
+    public void save(Portfolio portfolio){
+        
+    }
 }
