@@ -8,9 +8,11 @@ package ers.students.factory;
 import javax.ws.rs.core.Response;
 import ers.students.crud.results.LoadResult;
 import ers.students.crud.results.ErrorCode;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 /**
  * The class provides an instance that returns a HTTP response.
+ *
  * @author martinstoynov
  */
 public class ResponseFactory {
@@ -19,7 +21,6 @@ public class ResponseFactory {
      * Creates an object of type ResponseFactory.
      */
     private static final ResponseFactory instance = new ResponseFactory();
-
 
     /**
      * Returns the only object available.
@@ -32,41 +33,43 @@ public class ResponseFactory {
 
     /**
      * Returns a HTTP response based on the given result.
+     *
      * @param result
-     * @return 
+     * @return
      */
     public static Response make(LoadResult result) {
 
-        if (result.getErrors().keySet().contains(ErrorCode.INTERNAL_ERROR)) {
+        ResponseBuilder builder = Response.noContent();
 
-            return Response
-                    .status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity(result.getErrors().get(ErrorCode.INTERNAL_ERROR))
-                    .build();
+        result.getErrors().forEach((k, v) -> {
 
-        } else if (result.getErrors().keySet().contains(ErrorCode.NO_SUCH_ELEMENT)) {
-            
-            return Response
-                    .status(Response.Status.NOT_FOUND)
-                    .entity(result.getErrors().get(ErrorCode.NO_SUCH_ELEMENT))
-                    .build();
+            switch ((ErrorCode) k) {
+                case INTERNAL_ERROR:
 
-        } else if (result.getErrors().keySet().contains(ErrorCode.VALIDATION)) {
-            
-            String message = "The request is not valid.";
-            
-            return Response
-                    .status(Response.Status.BAD_REQUEST)
-                    .entity(result.getErrors().get(ErrorCode.VALIDATION))
-                    .build();
+                    builder.status(Response.Status.INTERNAL_SERVER_ERROR)
+                            .entity(result.getErrors().get(ErrorCode.INTERNAL_ERROR));
+                    break;
 
-        } else {
-            return Response
-                    .status(Response.Status.OK)
-                    .entity(result.getEntity())
-                    .build();
-        }
+                case NO_SUCH_ELEMENT:
 
+                    builder.status(Response.Status.NOT_FOUND)
+                            .entity(result.getErrors().get(ErrorCode.NO_SUCH_ELEMENT));
+                    break;
+
+                case VALIDATION:
+
+                    builder.status(Response.Status.BAD_REQUEST)
+                            .entity(result.getErrors().get(ErrorCode.VALIDATION));
+                    break;
+
+                default:
+
+                    builder.status(Response.Status.OK)
+                            .entity(result.getEntity());
+                    break;
+            }
+        });
+
+        return builder.build();
     }
-
 }
