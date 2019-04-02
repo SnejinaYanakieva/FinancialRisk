@@ -24,6 +24,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hsqldb.jdbc.JDBCDataSource;
 
 /**
@@ -58,8 +60,8 @@ public class JdbcPersistentStore implements PersistentStore {
             System.out.println(ex.getMessage());
         }
     }
-    
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         return this.connection;
     }
 
@@ -67,8 +69,8 @@ public class JdbcPersistentStore implements PersistentStore {
     public void createDB() {
         try {
             Statement statement = connection.createStatement();
-            String q = new String(Files.readAllBytes(Paths.get("CreateTableQueries.txt")));
-            statement.executeUpdate(q);
+            String tableCreateQuery = new String(Files.readAllBytes(Paths.get("CreateTableQueries.txt")));
+            statement.executeUpdate(tableCreateQuery);
         } catch (SQLException | IOException ex) {
             System.out.println(ex.getMessage());
         }
@@ -80,6 +82,13 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public void dropDB() {
         String dropDBQuery = "DROP DATABASE ?";
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(dropDBQuery);
+        } catch (SQLException ex) {
+            Logger.getLogger(JdbcPersistentStore.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -114,8 +123,7 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Position> getPositionDao() {
-        return positionDao;
-       // throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
