@@ -46,31 +46,22 @@ public class ResponseFactory {
 
             switch ((ErrorCode) k) {
                 case INTERNAL_ERROR:
-
-                    builder.status(Response.Status.INTERNAL_SERVER_ERROR)
-                            .entity(result.getErrors().get(ErrorCode.INTERNAL_ERROR));
+                    builder.status(Response.Status.INTERNAL_SERVER_ERROR).entity(v);
                     break;
 
                 case NO_SUCH_ELEMENT:
-
-                    builder.status(Response.Status.NOT_FOUND)
-                            .entity(result.getErrors().get(ErrorCode.NO_SUCH_ELEMENT));
+                    builder.status(Response.Status.NOT_FOUND).entity(v);
                     break;
 
                 case VALIDATION:
-
-                    builder.status(Response.Status.BAD_REQUEST)
-                            .entity(result.getErrors().get(ErrorCode.VALIDATION));
+                    builder.status(Response.Status.BAD_REQUEST).entity(v);
                     break;
 
                 default:
-
-                    builder.status(Response.Status.OK)
-                            .entity(result.getEntity());
+                    builder.status(Response.Status.OK).entity(result.getEntity());
                     break;
             }
         });
-
         return builder.build();
     }
 
@@ -82,31 +73,23 @@ public class ResponseFactory {
 
             switch ((ErrorCode) k) {
                 case INTERNAL_ERROR:
-
-                    builder.status(Response.Status.INTERNAL_SERVER_ERROR)
-                            .entity(results.getErrors().get(ErrorCode.INTERNAL_ERROR));
+                    builder.status(Response.Status.INTERNAL_SERVER_ERROR).entity(v);
                     break;
 
                 case NO_SUCH_ELEMENT:
 
-                    builder.status(Response.Status.NOT_FOUND)
-                            .entity(results.getErrors().get(ErrorCode.NO_SUCH_ELEMENT));
+                    builder.status(Response.Status.NOT_FOUND).entity(v);
                     break;
 
                 case VALIDATION:
-
-                    builder.status(Response.Status.BAD_REQUEST)
-                            .entity(results.getErrors().get(ErrorCode.VALIDATION));
+                    builder.status(Response.Status.BAD_REQUEST).entity(v);
                     break;
 
                 default:
-
-                    builder.status(Response.Status.OK)
-                            .entity(results.getEntities());
+                    builder.status(Response.Status.OK).entity(results.getEntities());
                     break;
             }
         });
-
         return builder.build();
     }
 
