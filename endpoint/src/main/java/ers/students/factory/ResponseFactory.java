@@ -8,6 +8,7 @@ package ers.students.factory;
 import javax.ws.rs.core.Response;
 import ers.students.crud.results.LoadResult;
 import ers.students.crud.results.ErrorCode;
+import ers.students.crud.results.LoadResults;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
 /**
@@ -72,4 +73,41 @@ public class ResponseFactory {
 
         return builder.build();
     }
+
+        public static Response make(LoadResults results) {
+
+        ResponseBuilder builder = Response.noContent();
+
+        results.getErrors().forEach((k, v) -> {
+
+            switch ((ErrorCode) k) {
+                case INTERNAL_ERROR:
+
+                    builder.status(Response.Status.INTERNAL_SERVER_ERROR)
+                            .entity(results.getErrors().get(ErrorCode.INTERNAL_ERROR));
+                    break;
+
+                case NO_SUCH_ELEMENT:
+
+                    builder.status(Response.Status.NOT_FOUND)
+                            .entity(results.getErrors().get(ErrorCode.NO_SUCH_ELEMENT));
+                    break;
+
+                case VALIDATION:
+
+                    builder.status(Response.Status.BAD_REQUEST)
+                            .entity(results.getErrors().get(ErrorCode.VALIDATION));
+                    break;
+
+                default:
+
+                    builder.status(Response.Status.OK)
+                            .entity(results.getEntities());
+                    break;
+            }
+        });
+
+        return builder.build();
+    }
+
 }
