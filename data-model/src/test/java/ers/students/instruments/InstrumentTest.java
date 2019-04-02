@@ -27,7 +27,7 @@ public class InstrumentTest extends TestCase {
      * Test of validate method, of class Instrument.
      */
     public void testValidate() {
-        System.out.println("validate");
+      //  System.out.println("validate");
         Instrument instance = new Instrument();
         List<String> expResult = new ArrayList<>();
         expResult.add("id is invalid");

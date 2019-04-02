@@ -28,7 +28,7 @@ public class CreditTest extends TestCase {
      * Test of validate method, of class Credit.
      */
     public void testValidate() {
-        System.out.println("Validating");
+      //  System.out.println("Validating");
         Credit instance = new Credit();
         List<String> expResult = new ArrayList<>();
         expResult.add("id is invalid");
@@ -49,7 +49,7 @@ public class CreditTest extends TestCase {
 
     public void testValidateSecound() throws ParseException {
         List<String> expResult = new ArrayList<>();
-        System.out.println("ValidateSecound");
+      //  System.out.println("ValidateSecound");
         Credit instance = new Credit();
         instance.setId("Test123");
         instance.setIsin("Test");
@@ -58,7 +58,7 @@ public class CreditTest extends TestCase {
         expResult.add("interestRate is out of bound");
         //Date 
         SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
-        String DateVariable = "2018-09-12";
+        String DateVariable = "2018-09-00";
         instance.setIssueDate(dateformatt.parse(DateVariable));
         DateVariable = "2015-09-15";
         instance.setMaturityDate(dateformatt.parse(DateVariable));
@@ -73,7 +73,7 @@ public class CreditTest extends TestCase {
         Collections.sort(expResult);
         Collections.sort(result);
 
-        System.out.println("Expected Result List Start Here :");
+      /*  System.out.println("Expected Result List Start Here :");
         for (int i = 0; i < expResult.size(); i++) {
             System.out.println(expResult.get(i));
         }
@@ -83,7 +83,7 @@ public class CreditTest extends TestCase {
         for (int i = 0; i < result.size(); i++) {
             System.out.println(result.get(i));
         }
-
+*/
         assertEquals(expResult, result);
 
     }

@@ -26,7 +26,7 @@ public class DebtInstrumentTest extends TestCase {
      */
     public void testValidate() {
 
-        System.out.println("validate");
+      //  System.out.println("validate");
         DebtInstrument instance = new DebtInstrument();
         List<String> expResult = new ArrayList<>();
         expResult.add("id is invalid");
@@ -40,7 +40,7 @@ public class DebtInstrumentTest extends TestCase {
         //Sorting 
         Collections.sort(expResult);
         Collections.sort(result);
-
+/* 
         System.out.println("Expected Result List Start Here :");
         for (int i = 0; i < expResult.size(); i++) {
             System.out.println(expResult.get(i));
@@ -51,7 +51,7 @@ public class DebtInstrumentTest extends TestCase {
         for (int i = 0; i < result.size(); i++) {
             System.out.println(result.get(i));
         }
-
+*/
         assertEquals(expResult, result);
 
     }
