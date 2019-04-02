@@ -25,6 +25,7 @@ public class DebtInstrumentTest extends TestCase {
      * Test of validate method, of class DebtInstrument.
      */
     public void testValidate() {
+
         System.out.println("validate");
         DebtInstrument instance = new DebtInstrument();
         List<String> expResult = new ArrayList<>();
@@ -32,13 +33,24 @@ public class DebtInstrumentTest extends TestCase {
         expResult.add("isin is invalid");
         expResult.add("currency is null");
         expResult.add("issueDate is null");
-        expResult.add("maturityDate is null");
-        expResult.add("interestFrequency is invalid");
+        expResult.add("maturityDate is invalid");
+        expResult.add("interestFrequency is null");
         List<String> result = instance.validate();
-        
+
         //Sorting 
         Collections.sort(expResult);
         Collections.sort(result);
+
+        System.out.println("Expected Result List Start Here :");
+        for (int i = 0; i < expResult.size(); i++) {
+            System.out.println(expResult.get(i));
+        }
+        System.out.println();
+        System.out.println("Result List Start Here :");
+
+        for (int i = 0; i < result.size(); i++) {
+            System.out.println(result.get(i));
+        }
 
         assertEquals(expResult, result);
 
