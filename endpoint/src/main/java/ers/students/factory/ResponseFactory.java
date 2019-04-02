@@ -38,13 +38,18 @@ public class ResponseFactory {
      * Returns a HTTP response based on the given result.
      *
      * @param result
+     * @param statusOK
      * @return
      */
-    public static Response make(LoadResult result) {
+    public static Response make(LoadResult result, boolean statusOK) {
 
-        ResponseBuilder builder = Response.ok().entity(result.getEntity());
-        builder = checkForErrors(builder,result.getErrors());
+        ResponseBuilder builder = Response.status(Response.Status.OK).entity(result.getEntity());
         
+        if(statusOK == false)
+            builder = Response.status(Response.Status.CREATED).entity(result.getEntity());
+        
+        builder = checkForErrors(builder, result.getErrors());
+
         return builder.build();
     }
 
@@ -52,17 +57,30 @@ public class ResponseFactory {
      * Returns a HTTP response based on the given results.
      *
      * @param results
+     * @param statusOK
      * @return
      */
-    public static Response make(LoadResults results) {
+    public static Response make(LoadResults results, boolean statusOK) {
 
-        ResponseBuilder builder = Response.ok().entity(results.getEntities());
-        builder = checkForErrors(builder,results.getErrors());
-    
+        ResponseBuilder builder = Response.status(Response.Status.OK).entity(results.getEntities());
+        
+        if(statusOK == false)
+            builder = Response.status(Response.Status.CREATED).entity(results.getEntities());
+        
+        builder = checkForErrors(builder, results.getErrors());
+
         return builder.build();
     }
 
-    private static ResponseBuilder checkForErrors(ResponseBuilder builder, Map<ErrorCode, List<String>> errors){
+    /**
+     * The method iterates through a map containing error codes and sets
+     * an error status, if present in the map.
+     * 
+     * @param builder
+     * @param errors
+     * @return 
+     */
+    private static ResponseBuilder checkForErrors(ResponseBuilder builder, Map<ErrorCode, List<String>> errors) {
 
         errors.forEach((k, v) -> {
 
@@ -82,5 +100,5 @@ public class ResponseFactory {
         });
         return builder;
     }
-    
+
 }
