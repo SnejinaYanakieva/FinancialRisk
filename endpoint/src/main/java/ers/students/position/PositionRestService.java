@@ -28,22 +28,31 @@ public interface PositionRestService {
     /**
     * Sends information to the server
     * about Position to create a resource
+    *
+    * @param position
+    * @return 
     */
-    @POST
+    @PUT
     @Path("/create")
     Response create(Position position);
     
     /**
     * Replaces all current representations of the target
     * resource with the uploaded content.
+    *
+    * @param position
+    * @return 
     */
-    @PUT
+    @POST
     @Path("/update")
     Response update(Position position);
     
     /**
     * Retrieves information about a resource
     * specified by ID from the server.
+    *
+    * @param id
+    * @return 
     */
     @GET
     @Path("/loadById/{id}")
@@ -52,6 +61,9 @@ public interface PositionRestService {
     /**
     * Removes all current representations of the target
     * resource, specified by ID.
+    *
+    * @param id
+    * @return 
     */
     @DELETE
     @Path("/deleteById/{id}")
@@ -60,6 +72,8 @@ public interface PositionRestService {
     /**
     * Retrieves information about all
     * resources from the server using a given URI.
+    *
+    * @return 
     */
     @GET
     @Path("/loadAll")
@@ -68,6 +82,9 @@ public interface PositionRestService {
     /**
     * Retrieves information about a resource
     * specified by name from the server.
+    *
+    * @param name
+    * @return 
     */
     @GET
     @Path("/searchByName/{name}")

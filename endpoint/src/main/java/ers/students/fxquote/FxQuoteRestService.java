@@ -30,22 +30,31 @@ public interface FxQuoteRestService {
     /**
     * Sends information to the server
     * about FX quote to create resource.
+    *
+    * @param fxQuote
+    * @return 
     */
-    @POST
+    @PUT
     @Path("/create")
     Response create(FxQuote fxQuote);
 
     /**
     * Replaces all current representations of the target
     * resource with the uploaded content.
+    *
+    * @param fxQuote
+    * @return 
     */
-    @PUT
+    @POST
     @Path("/update")
     Response update(FxQuote fxQuote);
     
     /**
     * Retrieves information about a resource,
     * specified by ID, from the server.
+    *
+    * @param id
+    * @return 
     */
     @GET
     @Path("/loadById/{id}")
@@ -54,6 +63,9 @@ public interface FxQuoteRestService {
     /**
     * Removes all current representations of the target
     * resource, specified by ID.
+    *
+    * @param id
+    * @return 
     */
     @DELETE
     @Path("/deleteById/{id}")
@@ -62,6 +74,8 @@ public interface FxQuoteRestService {
     /**
     * Retrieves information about all
     * resources from the server using a given URI.
+    *
+    * @return 
     */
     @GET
     @Path("/loadAll")

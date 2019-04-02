@@ -30,22 +30,31 @@ public interface TransactionRestService {
     /**
     * Sends information to the server
     * about Transaction to create a resource
+    *
+    * @param transaction
+    * @return 
     */    
-    @POST
+    @PUT
     @Path("/create")
     Response create(Transaction transaction);
     
     /**
     * Replaces all current representations of the target
     * resource with the uploaded content.
+    *
+    * @param transaction
+    * @return 
     */    
-    @PUT
+    @POST
     @Path("/update")
     Response update(Transaction transaction);
     
     /**
     * Retrieves information about a resource,
     * specified by ID, from the server.
+    *
+    * @param id
+    * @return 
     */    
     @GET
     @Path("/loadById/{id}")
@@ -54,6 +63,9 @@ public interface TransactionRestService {
     /**
     * Removes all current representations of the target
     * resource, specified by ID.
+    *
+    * @param id
+    * @return 
     */    
     @DELETE
     @Path("/deleteById/{id}")
@@ -62,6 +74,8 @@ public interface TransactionRestService {
     /**
     * Retrieves information about all
     * resources from the server using a given URI.
+    *
+    * @return 
     */    
     @GET
     @Path("/loadAll")
@@ -70,6 +84,9 @@ public interface TransactionRestService {
     /**
     * Retrieves information about a resource,
     * specified by position ID, from the server.
+    *
+    * @param positionId
+    * @return 
     */    
     @GET
     @Path("/searchByPositionId/{positionId}")

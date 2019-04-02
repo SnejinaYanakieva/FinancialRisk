@@ -9,10 +9,12 @@ import javax.ws.rs.core.Response;
 import ers.students.crud.results.LoadResult;
 import ers.students.crud.results.ErrorCode;
 import ers.students.crud.results.LoadResults;
+import java.util.List;
+import java.util.Map;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
 /**
- * The class provides an instance that returns a HTTP response.
+ * The class provides an instance that returns a HTTP response message.
  *
  * @author martinstoynov
  */
@@ -40,9 +42,29 @@ public class ResponseFactory {
      */
     public static Response make(LoadResult result) {
 
-        ResponseBuilder builder = Response.noContent();
+        ResponseBuilder builder = Response.ok().entity(result.getEntity());
+        builder = checkForErrors(builder,result.getErrors());
+        
+        return builder.build();
+    }
 
-        result.getErrors().forEach((k, v) -> {
+    /**
+     * Returns a HTTP response based on the given results.
+     *
+     * @param results
+     * @return
+     */
+    public static Response make(LoadResults results) {
+
+        ResponseBuilder builder = Response.ok().entity(results.getEntities());
+        builder = checkForErrors(builder,results.getErrors());
+    
+        return builder.build();
+    }
+
+    private static ResponseBuilder checkForErrors(ResponseBuilder builder, Map<ErrorCode, List<String>> errors){
+
+        errors.forEach((k, v) -> {
 
             switch ((ErrorCode) k) {
                 case INTERNAL_ERROR:
@@ -56,41 +78,9 @@ public class ResponseFactory {
                 case VALIDATION:
                     builder.status(Response.Status.BAD_REQUEST).entity(v);
                     break;
-
-                default:
-                    builder.status(Response.Status.OK).entity(result.getEntity());
-                    break;
             }
         });
-        return builder.build();
+        return builder;
     }
-
-        public static Response make(LoadResults results) {
-
-        ResponseBuilder builder = Response.noContent();
-
-        results.getErrors().forEach((k, v) -> {
-
-            switch ((ErrorCode) k) {
-                case INTERNAL_ERROR:
-                    builder.status(Response.Status.INTERNAL_SERVER_ERROR).entity(v);
-                    break;
-
-                case NO_SUCH_ELEMENT:
-
-                    builder.status(Response.Status.NOT_FOUND).entity(v);
-                    break;
-
-                case VALIDATION:
-                    builder.status(Response.Status.BAD_REQUEST).entity(v);
-                    break;
-
-                default:
-                    builder.status(Response.Status.OK).entity(results.getEntities());
-                    break;
-            }
-        });
-        return builder.build();
-    }
-
+    
 }

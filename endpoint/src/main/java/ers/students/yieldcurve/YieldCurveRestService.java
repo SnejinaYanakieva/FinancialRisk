@@ -29,22 +29,31 @@ public interface YieldCurveRestService {
     /**
     * Sends information to the server
     * about Yield curve to create a resource
+    *
+    * @param yieldCurve
+    * @return 
     */    
-    @POST
+    @PUT
     @Path("/create")
     Response create(YieldCurve yieldCurve);
     
     /**
     * Replaces all current representations of the target
     * resource with the uploaded content.
+    *
+    * @param yieldCurve
+    * @return 
     */    
-    @PUT
+    @POST
     @Path("/update")
     Response update(YieldCurve yieldCurve);
     
     /**
     * Retrieves information about a resource,
     * specified by ID, from the server.
+    * 
+    * @param id
+    * @return 
     */    
     @GET
     @Path("/loadById/{id}")
@@ -53,6 +62,9 @@ public interface YieldCurveRestService {
     /**
     * Removes all current representations of the target
     * resource, specified by ID.
+    *
+    * @param id
+    * @return 
     */    
     @DELETE
     @Path("/deleteById/{id}")
@@ -61,6 +73,8 @@ public interface YieldCurveRestService {
     /**
     * Retrieves information about all
     * resources from the server using a given URI.
+    *
+    * @return 
     */    
     @GET
     @Path("/loadAll")
@@ -69,6 +83,9 @@ public interface YieldCurveRestService {
     /**
     * Retrieves information about a resource,
     * specified by name, from the server.
+    *
+    * @param name
+    * @return 
     */    
     @GET
     @Path("/searchByName/{name}")
