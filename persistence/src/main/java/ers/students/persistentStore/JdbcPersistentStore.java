@@ -45,8 +45,8 @@ public class JdbcPersistentStore implements PersistentStore {
     private PositionDao positionDao;
     private TransactionDao transactionDao;
     private InstrumentDao instrumentDao;
-    private YieldCurveDao yieldCurve;
-    private FxQuoteDao FxQuote;
+    private YieldCurveDao yieldCurveDao;
+    private FxQuoteDao fxQuoteDao;
 
     /**
      * Creates the DB
@@ -140,7 +140,10 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Portfolio> getPortfolioDao() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(portfolioDao==null){
+            portfolioDao = new PortfolioDao();
+        }
+        return portfolioDao;
     }
 
     /**
@@ -150,7 +153,10 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Transaction> getTransactionDao() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(transactionDao==null){
+            transactionDao = new TransactionDao();
+        }
+        return transactionDao;
     }
 
     /**
@@ -160,7 +166,10 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Instrument> getInstrumentDao() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(instrumentDao==null){
+            instrumentDao = new InstrumentDao();
+        }
+        return instrumentDao;
     }
 
     /**
@@ -170,7 +179,10 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public CrudDao<YieldCurve> getYieldCurveDao() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(yieldCurveDao==null){
+            yieldCurveDao = new YieldCurveDao();
+        }
+        return yieldCurveDao;
     }
 
     /**
@@ -180,7 +192,10 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public CrudDao<FxQuote> getFxQuote() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(fxQuoteDao==null){
+            fxQuoteDao = new FxQuoteDao();
+        }
+        return fxQuoteDao;
     }
 
 }
