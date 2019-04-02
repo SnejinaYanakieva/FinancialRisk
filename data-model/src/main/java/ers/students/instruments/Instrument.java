@@ -96,15 +96,17 @@ public class Instrument implements Validatable {
             validationList.add("currency is null");
         }
 
-        //issueDate ++
+        //issueDate 
         if (issueDate == null) {
 
             validationList.add("issueDate is null");
         }
-        //maturityDate ++
-        if (maturityDate == null) {
+        
+        
+        //maturityDate 
+        if (maturityDate == null||maturityDate.compareTo(issueDate) < 0) {
 
-            validationList.add("maturityDate is null");
+            validationList.add("maturityDate is invalid");
         }
 
         return validationList;
