@@ -6,6 +6,7 @@
 package ers.students.crud;
 
 import ers.students.persistentStore.JdbcPersistentStore;
+import ers.students.persistentStore.PersistentStore;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
@@ -26,6 +27,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      * @param LOADBYID - constant for prepared statement
      * @param LOADALL - constant for prepared statement
      */
+    
     private final JdbcPersistentStore JDBCPersistentStore = new JdbcPersistentStore();
     private static final String INSERT = "INSERT INTO ? VALUES()";
     private static final String UPDATE = "";
