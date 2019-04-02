@@ -61,6 +61,10 @@ public class JdbcPersistentStore implements PersistentStore {
         }
     }
 
+    /**
+     *
+     * @return Connection object
+     */
     public Connection getConnection() {
         return this.connection;
     }
@@ -88,7 +92,7 @@ public class JdbcPersistentStore implements PersistentStore {
         } catch (SQLException ex) {
             Logger.getLogger(JdbcPersistentStore.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /**
@@ -123,7 +127,10 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Position> getPositionDao() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       if(positionDao==null){
+           positionDao = new PositionDao();
+       }
+       return positionDao;
     }
 
     /**
