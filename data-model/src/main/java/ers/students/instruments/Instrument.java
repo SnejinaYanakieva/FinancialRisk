@@ -75,6 +75,19 @@ public class Instrument implements Validatable {
         this.maturityDate = maturityDate;
     }
 
+    public boolean equals(Instrument obj) {
+
+        if (this.id.equals(obj.id)
+                && this.isin.equals(obj.isin)
+                && this.currency.equals(obj.currency)
+                && this.issueDate.equals(obj.issueDate)
+                && this.maturityDate.equals(obj.maturityDate)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public List<String> validate() {
         List<String> validationList = new ArrayList<>();
@@ -101,10 +114,9 @@ public class Instrument implements Validatable {
 
             validationList.add("Issue Date is null");
         }
-        
-        
+
         //maturityDate 
-        if (maturityDate == null||maturityDate.compareTo(issueDate) <= 0) {
+        if (maturityDate == null || maturityDate.compareTo(issueDate) <= 0) {
 
             validationList.add("Maturity Date is invalid");
         }
