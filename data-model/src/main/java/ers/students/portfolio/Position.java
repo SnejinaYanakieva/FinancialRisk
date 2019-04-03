@@ -84,6 +84,20 @@ public class Position implements Validatable {
         this.portfolioId = portfolioId;
     }
 
+    public boolean equals(Position obj) {
+
+        if (this.id.equals(obj.id)
+                && this.name.equals(obj.name)
+                && this.shortSide.equals(obj.shortSide)
+                && this.longSide.equals(obj.longSide)
+                && this.portfolioId.equals(obj.portfolioId)
+                && this.instrument.equals(obj.instrument)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public List<String> validate() {
         List<String> validationList = new ArrayList<>();

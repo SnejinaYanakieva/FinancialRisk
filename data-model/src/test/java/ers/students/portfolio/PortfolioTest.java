@@ -39,10 +39,10 @@ public class PortfolioTest {
         Portfolio obj = new Portfolio("3143EVR", "Testing", Currency.BGN);
         Portfolio instance = new Portfolio("3143EVR", "Testing", Currency.BGN);
         boolean expResult = true;
-        boolean result = instance.Equal(obj);
+        boolean result = instance.equals(obj);
 
-      System.out.println("expResult:" + expResult);
-      System.out.println("Result:"+result);
+      //System.out.println("expResult:" + expResult);
+    //  System.out.println("Result:"+result);
 
         assertEquals(expResult, result);
 
@@ -51,12 +51,12 @@ public class PortfolioTest {
     public void testEqualFalse() {
        
         Portfolio obj = new Portfolio("3143EVR", "Testing", Currency.BGN);
-        Portfolio instance = new Portfolio("256EVR", "Testing", Currency.BGN);
+        Portfolio instance = new Portfolio("256EVR", "Testing21", Currency.USD);
         boolean expResult = false;
-        boolean result = instance.Equal(obj);
+        boolean result = instance.equals(obj);
 
-        System.out.println("expResult:" + expResult);
-        System.out.println("Result:"+result);
+      //  System.out.println("expResult:" + expResult);
+        //System.out.println("Result:"+result);
 
         assertEquals(expResult, result);
 
