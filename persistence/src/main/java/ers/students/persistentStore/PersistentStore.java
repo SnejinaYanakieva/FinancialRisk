@@ -89,5 +89,4 @@ public interface PersistentStore {
      * 
      * @return
      */
-    Connection getConnection();
 }
