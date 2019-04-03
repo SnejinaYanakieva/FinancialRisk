@@ -51,7 +51,7 @@ public class PositionTest {
 
         Position obj = new Position("TesterId0", "Tester", "Viktor", "Irina", "PortFolioId:63242", Test1);
         Position instance = new Position("TesterId0", "Tester", "Viktor", "Irina", "PortFolioId:63242", Test2);
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
 

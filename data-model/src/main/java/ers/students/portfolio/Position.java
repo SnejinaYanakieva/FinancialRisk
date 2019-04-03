@@ -84,14 +84,14 @@ public class Position implements Validatable {
         this.portfolioId = portfolioId;
     }
 
-    public boolean equals(Position obj) {
-
-        if (this.id.equals(obj.id)
-                && this.name.equals(obj.name)
-                && this.shortSide.equals(obj.shortSide)
-                && this.longSide.equals(obj.longSide)
-                && this.portfolioId.equals(obj.portfolioId)
-                && this.instrument.equals(obj.instrument)) {
+        public boolean equals(Object obj) {
+ Position object = (Position) obj ;
+        if (this.id.equals(object.id)
+                && this.name.equals(object.name)
+                && this.shortSide.equals(object.shortSide)
+                && this.longSide.equals(object.longSide)
+                && this.portfolioId.equals(object.portfolioId)
+                && this.instrument.equals(object.instrument)) {
             return true;
         } else {
             return false;
