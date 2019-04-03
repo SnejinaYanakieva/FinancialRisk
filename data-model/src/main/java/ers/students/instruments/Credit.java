@@ -12,7 +12,8 @@ import java.util.ArrayList;
 
 /**
  *
- * Credit is when someone is given money and he have to return it with interest.
+ * Credit is contractual agreement in which a borrower receives something of value now 
+ * and agrees to repay the lender at a later date—generally with interest..
  *
  * @author Viktor
  */
@@ -41,7 +42,7 @@ public class Credit extends DebtInstrument implements Validatable {
         List<String> validationList = new ArrayList<>();
         validationList.addAll(super.validate());
         if (amortizationFrequency == null) {
-            validationList.add("interestRate is null");
+            validationList.add("The amortization Frequency is null");
         }
 
         return validationList;

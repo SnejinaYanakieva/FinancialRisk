@@ -50,10 +50,10 @@ public class DebtInstrument extends Instrument {
         List<String> validationList = new ArrayList<>();
         validationList.addAll(super.validate());
         if (interestRate < 0 || interestRate > 100) {
-            validationList.add("interestRate is out of bound");
+            validationList.add("Interest Rate is out of bound");
         }
         if (interestFrequency == null) {
-            validationList.add("interestFrequency is null");
+            validationList.add("Interest Frequency is null");
         }
 
         return validationList;

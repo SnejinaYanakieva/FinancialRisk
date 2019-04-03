@@ -102,10 +102,7 @@ public class Transaction implements Validatable {
         }
         //payer
 
-        if (payer.equals(receiver)) {
-            validationList.add("payer and receiver should not be the same");
-
-        } else if (payer == null || "".equals(payer)) {
+        if (payer == null || "".equals(payer)) {
 
             validationList.add("payer is invalid");
 
@@ -116,6 +113,10 @@ public class Transaction implements Validatable {
             validationList.add("receiver is invalid");
         }
 
+        if (payer.equals(receiver)) {
+            validationList.add("payer and receiver should not be the same");
+
+        }
         if (date == null) {
 
             validationList.add("date is null");

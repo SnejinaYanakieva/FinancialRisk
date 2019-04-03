@@ -143,6 +143,43 @@ public class YieldCurve implements Validatable {
         this.yield30year = yield30year;
     }
 
+    public List<String> validateYield() {
+        List<String> validationList = new ArrayList<>();
+
+        if (yield1month < 0 || yield1month > 100) {
+            validationList.add("The Yield for 1 month is invalid");
+        }
+        if (yield2month < 0 || yield2month > 100) {
+            validationList.add("The Yield for 2 month is invalid");
+        }
+        if (yield3month < 0 || yield3month > 100) {
+            validationList.add("The Yield for 3 month is invalid");
+        }
+        if (yield6month < 0 || yield6month > 100) {
+            validationList.add("The Yield for 6 month is invalid");
+        }
+        if (yield1year < 0 || yield1year > 100) {
+            validationList.add("The Yield for 1 year is invalid");
+        }
+        if (yield2year < 0 || yield2year > 100) {
+            validationList.add("The Yield for 2 year is invalid");
+        }
+        if (yield5year < 0 || yield5year > 100) {
+            validationList.add("The Yield for 5 year is invalid");
+        }
+        if (yield10year < 0 || yield10year > 100) {
+            validationList.add("The Yield for 10 year is invalid");
+        }
+        if (yield20year < 0 || yield20year > 100) {
+            validationList.add("The Yield for 20 year is invalid");
+        }
+        if (yield30year < 0 || yield30year > 100) {
+            validationList.add("The Yield for 30 year is invalid");
+        }
+
+        return validationList;
+    }
+
     @Override
     public List<String> validate() {
         List<String> validationList = new ArrayList<>();
@@ -155,48 +192,8 @@ public class YieldCurve implements Validatable {
 
             validationList.add("name is invalid");
         }
-
-        if ("".equals(yield1month)) {
-
-            validationList.add("yield1month is invalid");
-        }
-        if ("".equals(yield2month)) {
-
-            validationList.add("yield2month is invalid");
-        }
-        if ("".equals(yield3month)) {
-
-            validationList.add("yield3month is invalid");
-        }
-        if ("".equals(yield6month)) {
-
-            validationList.add("yield6month is invalid");
-        }
-        if ("".equals(yield1year)) {
-
-            validationList.add("yield1year is invalid");
-        }
-        if ("".equals(yield2year)) {
-
-            validationList.add("yield2year is invalid");
-        }
-        if ("".equals(yield5year)) {
-
-            validationList.add("yield5year is invalid");
-        }
-        if ("".equals(yield10year)) {
-
-            validationList.add("yield10year is invalid");
-        }
-        if ("".equals(yield20year)) {
-
-            validationList.add("yield20year is invalid");
-        }
-        if ("".equals(yield30year)) {
-
-            validationList.add("yield30year is invalid");
-        }
-
+        validationList.addAll(validateYield());
+        
         return validationList;
     }
 }

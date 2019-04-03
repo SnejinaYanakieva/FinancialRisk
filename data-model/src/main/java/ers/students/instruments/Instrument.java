@@ -82,31 +82,31 @@ public class Instrument implements Validatable {
         //ID 
         if (id == null || "".equals(id)) {
 
-            validationList.add("id is invalid");
+            validationList.add("Id is invalid");
         }
         //ISIN
         if (isin == null || "".equals(isin)) {
 
-            validationList.add("isin is invalid");
+            validationList.add("Isin is invalid");
         }
 
         //Currency         
         if (currency == null) {
 
-            validationList.add("currency is null");
+            validationList.add("Currency is null");
         }
 
         //issueDate 
         if (issueDate == null) {
 
-            validationList.add("issueDate is null");
+            validationList.add("Issue Date is null");
         }
         
         
         //maturityDate 
-        if (maturityDate == null||maturityDate.compareTo(issueDate) < 0) {
+        if (maturityDate == null||maturityDate.compareTo(issueDate) <= 0) {
 
-            validationList.add("maturityDate is invalid");
+            validationList.add("Maturity Date is invalid");
         }
 
         return validationList;

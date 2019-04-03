@@ -70,7 +70,7 @@ public class FxQuote implements Validatable {
     }
 
     public void setValue(double value) {
-        this.value = value;
+        this.value = value; 
     }
 
     @Override
@@ -85,22 +85,22 @@ public class FxQuote implements Validatable {
 
         if (from == null || from.equals(to)) {
 
-            validationList.add("from is not valid");
+            validationList.add("From variable is not valid");
 
         }
         if (to == null) {
 
-            validationList.add("to is null");
+            validationList.add("To variable is null");
         }
 
         if (date == null) {
 
-            validationList.add("date is null");
+            validationList.add("Date is null");
         }
         // value
-        if (value < 0 && value > 100) {
+        if (value < 0 || value > 100) {
 
-            validationList.add("date is out of bound");
+            validationList.add("Value is out of bound");
         }
         return validationList;
     }

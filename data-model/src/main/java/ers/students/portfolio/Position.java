@@ -99,23 +99,21 @@ public class Position implements Validatable {
             validationList.add("name is invalid");
         }
 
-        //shortSide
-        if (shortSide.equals(longSide)) {
-            validationList.add("shortSide and longSide should not be the same");
-
-        }
         if (shortSide == null || "".equals(shortSide)) {
 
             validationList.add("shortSide is invalid");
 
         }
 
-        //longSide
         if (longSide == null || "".equals(longSide)) {
 
             validationList.add("longSide is invalid");
         }
 
+        if (shortSide.equals(longSide)) {
+            validationList.add("shortSide and longSide should not be the same");
+
+        }
         //portfolioId
         if (portfolioId == null || "".equals(portfolioId)) {
 

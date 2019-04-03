@@ -26,21 +26,21 @@ public class InstrumentTest extends TestCase {
     /**
      * Test of validate method, of class Instrument.
      */
-    public void testValidate() {
-      //  System.out.println("validate");
+    public void testForNull() {
+        //  System.out.println("validate");
         Instrument instance = new Instrument();
         List<String> expResult = new ArrayList<>();
-        expResult.add("id is invalid");
-        expResult.add("isin is invalid");
-        expResult.add("currency is null");
-        expResult.add("issueDate is null");
-        expResult.add("maturityDate is invalid");
+        expResult.add("Id is invalid");
+        expResult.add("Isin is invalid");
+        expResult.add("Currency is null");
+        expResult.add("Issue Date is null");
+        expResult.add("Maturity Date is invalid");
         List<String> result = instance.validate();
-        
+
         //Sorting 
         Collections.sort(expResult);
         Collections.sort(result);
-        
+
         assertEquals(expResult, result);
 
     }
