@@ -13,6 +13,7 @@ import ers.students.market.YieldCurve;
 import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
 import ers.students.portfolio.Transaction;
+import java.sql.Connection;
 
 /**
  *
@@ -83,4 +84,10 @@ public interface PersistentStore {
      * @return 
      */
     CrudDao<FxQuote> getFxQuote();
+    
+    /**
+     * 
+     * @return
+     */
+    Connection getConnection();
 }

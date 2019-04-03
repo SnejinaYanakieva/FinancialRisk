@@ -24,8 +24,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.hsqldb.jdbc.JDBCDataSource;
 
 /**
@@ -90,9 +88,8 @@ public class JdbcPersistentStore implements PersistentStore {
             Statement statement = connection.createStatement();
             statement.executeUpdate(dropDBQuery);
         } catch (SQLException ex) {
-            Logger.getLogger(JdbcPersistentStore.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
-
     }
 
     /**
@@ -104,12 +101,16 @@ public class JdbcPersistentStore implements PersistentStore {
     }
 
     /**
-     * Reverts back to the previous state of the database changes made in DB
-     * aren't saved
+     * Reverts back to the previous state of the database.
+     * Any changes made in DB aren't saved.
      */
     @Override
     public void rollbackTransaction() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try{
+            connection.rollback();
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -117,7 +118,11 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public void commitTransaction() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            connection.commit();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -127,10 +132,10 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Position> getPositionDao() {
-       if(positionDao==null){
-           positionDao = new PositionDao();
-       }
-       return positionDao;
+        if (positionDao == null) {
+            positionDao = new PositionDao();
+        }
+        return positionDao;
     }
 
     /**
@@ -140,7 +145,7 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Portfolio> getPortfolioDao() {
-        if(portfolioDao==null){
+        if (portfolioDao == null) {
             portfolioDao = new PortfolioDao();
         }
         return portfolioDao;
@@ -153,7 +158,7 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Transaction> getTransactionDao() {
-        if(transactionDao==null){
+        if (transactionDao == null) {
             transactionDao = new TransactionDao();
         }
         return transactionDao;
@@ -166,7 +171,7 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public SearchingDao<Instrument> getInstrumentDao() {
-        if(instrumentDao==null){
+        if (instrumentDao == null) {
             instrumentDao = new InstrumentDao();
         }
         return instrumentDao;
@@ -179,7 +184,7 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public CrudDao<YieldCurve> getYieldCurveDao() {
-        if(yieldCurveDao==null){
+        if (yieldCurveDao == null) {
             yieldCurveDao = new YieldCurveDao();
         }
         return yieldCurveDao;
@@ -192,7 +197,7 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public CrudDao<FxQuote> getFxQuote() {
-        if(fxQuoteDao==null){
+        if (fxQuoteDao == null) {
             fxQuoteDao = new FxQuoteDao();
         }
         return fxQuoteDao;

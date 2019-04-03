@@ -19,21 +19,17 @@ import java.util.List;
  */
 public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
-    /**
-     * @param JdbcPersistentStore For transactions using JDBC.
-     * @param INSERT - constant for prepared statement
-     * @param UPDATE - constant for prepared statement
-     * @param DELETE - constant for prepared statement
-     * @param LOADBYID - constant for prepared statement
-     * @param LOADALL - constant for prepared statement
-     */
     
-    private final JdbcPersistentStore JDBCPersistentStore = new JdbcPersistentStore();
+    private final PersistentStore JDBCPersistentStore;
     private static final String INSERT = "INSERT INTO ? VALUES()";
     private static final String UPDATE = "";
     private static final String DELETE = "DELETE FROM ? WHERE id=?";
     private static final String LOADBYID = "SELECT * FROM ? WHERE id=?";
     private static final String LOADALL = "SELECT * FROM ?";
+
+    public AbstractCrudDao() {
+        this.JDBCPersistentStore = new JdbcPersistentStore();
+    }
 
     /**
      * Saves/inserts entity in DB
