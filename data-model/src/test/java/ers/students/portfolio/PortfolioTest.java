@@ -5,7 +5,10 @@
  */
 package ers.students.portfolio;
 
+import ers.students.market.YieldCurve;
 import ers.students.util.Currency;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,47 +19,67 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author tester
+ *  * @author Viktor
  */
 public class PortfolioTest {
 
     public PortfolioTest() {
     }
 
-    // @Test
-    public void testValidate() {
-        System.out.println("validate");
-        Portfolio instance = new Portfolio();
-        List<String> expResult = null;
+    @Test
+    public void testValidateTrue() {
+
+        Portfolio instance = new Portfolio("3143EVR", "Testing", Currency.BGN);
+
+        List<String> expResult = new ArrayList<>();
+
         List<String> result = instance.validate();
         assertEquals(expResult, result);
 
+        Collections.sort(expResult);
+        Collections.sort(result);
+
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testValidateFalse() {
+
+        Portfolio instance = new Portfolio("", "", null);
+
+        List<String> expResult = new ArrayList<>();
+
+        List<String> result = instance.validate();
+
+        expResult.add("id is invalid");
+        expResult.add("name is invalid");
+        expResult.add("currency is null");
+
+        Collections.sort(expResult);
+        Collections.sort(result);
+
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testEqualTrue() {
-      
+
         Portfolio obj = new Portfolio("3143EVR", "Testing", Currency.BGN);
         Portfolio instance = new Portfolio("3143EVR", "Testing", Currency.BGN);
         boolean expResult = true;
         boolean result = instance.equals(obj);
 
-      //System.out.println("expResult:" + expResult);
-    //  System.out.println("Result:"+result);
-
         assertEquals(expResult, result);
 
     }
+
     @Test
     public void testEqualFalse() {
-       
+
         Portfolio obj = new Portfolio("3143EVR", "Testing", Currency.BGN);
         Portfolio instance = new Portfolio("256EVR", "Testing21", Currency.USD);
         boolean expResult = false;
         boolean result = instance.equals(obj);
-
-      //  System.out.println("expResult:" + expResult);
-        //System.out.println("Result:"+result);
 
         assertEquals(expResult, result);
 

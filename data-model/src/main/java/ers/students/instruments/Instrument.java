@@ -116,7 +116,7 @@ public class Instrument implements Validatable {
         }
 
         //maturityDate 
-        if (maturityDate == null || maturityDate.compareTo(issueDate) <= 0) {
+        if (maturityDate == null || maturityDate.compareTo(issueDate) <0) {
 
             validationList.add("Maturity Date is invalid");
         }

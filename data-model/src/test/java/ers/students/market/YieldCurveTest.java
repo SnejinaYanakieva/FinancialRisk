@@ -8,16 +8,12 @@ package ers.students.market;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author tester
+ * @author Viktor
  */
 public class YieldCurveTest {
 
@@ -34,19 +30,7 @@ public class YieldCurveTest {
         List<String> result = instance.validate();
         expResult.add("id is invalid");
         expResult.add("name is invalid");
-        /*
-        System.out.println("Expected Result List Start Here :");
 
-        for (int i = 0; i < expResult.size(); i++) {
-            System.out.println(expResult.get(i));
-        }
-        System.out.println();
-        System.out.println("Result List Start Here :");
-
-        for (int i = 0; i < result.size(); i++) {
-            System.out.println(result.get(i));
-        }
-         */
         Collections.sort(expResult);
         Collections.sort(result);
 
@@ -67,7 +51,7 @@ public class YieldCurveTest {
 
         System.out.println("Expected Result List Start Here :");
 
-        for (int i = 0; i < expResult.size(); i++) {
+        /*for (int i = 0; i < expResult.size(); i++) {
             System.out.println(expResult.get(i));
         }
         System.out.println();
@@ -75,7 +59,7 @@ public class YieldCurveTest {
 
         for (int i = 0; i < result.size(); i++) {
             System.out.println(result.get(i));
-        }
+        }*/
 
         Collections.sort(expResult);
         Collections.sort(result);

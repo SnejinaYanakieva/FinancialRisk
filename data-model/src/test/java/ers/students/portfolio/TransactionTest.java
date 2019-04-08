@@ -5,32 +5,75 @@
  */
 package ers.students.portfolio;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
- * @author tester
+ * @author Viktor
  */
 public class TransactionTest {
 
-    public TransactionTest() {
+    @Test
+    public void testForNull() {
+      
+        Transaction instance = new Transaction();
+        List<String> expResult = new ArrayList<>();
+        expResult.add("id is invalid");
+        expResult.add("positionId is invalid");
+        expResult.add("payer is invalid");
+        expResult.add("receiver is invalid");
+        expResult.add("date is null");
+
+        List<String> result = instance.validate();
+
+       
+        Collections.sort(expResult);
+        Collections.sort(result);
+
+        assertEquals(expResult, result);
+
     }
 
-    //@Test
-    public void testValidate() {
-        System.out.println("validate");
-        Transaction instance = new Transaction();
-        List<String> expResult = null;
+    @Test
+    public void testForSame() {
+        
+        Transaction instance = new Transaction("id4433", "id12343", "Ood", "Ood", null, 42342);
+        List<String> expResult = new ArrayList<>();
+
+        expResult.add("date is null");
+        expResult.add("payer and receiver should not be the same");
+
         List<String> result = instance.validate();
+
+   
+        Collections.sort(expResult);
+        Collections.sort(result);
+
         assertEquals(expResult, result);
-      
+
+    }
+
+    @Test
+    public void testForAmaunt() {
+        //  System.out.println("validate");
+        Transaction instance = new Transaction("id4433", "id12343", "New.Ood", "Ood", null, -42342);
+        List<String> expResult = new ArrayList<>();
+
+        expResult.add("date is null");
+
+        expResult.add("amount is invalid");
+        List<String> result = instance.validate();
+
+        //Sorting 
+        Collections.sort(expResult);
+        Collections.sort(result);
+
+        assertEquals(expResult, result);
+
     }
 
 }

@@ -74,17 +74,6 @@ public class CreditTest extends TestCase {
         Collections.sort(expResult);
         Collections.sort(result);
 
-        /*  System.out.println("Expected Result List Start Here :");
-        for (int i = 0; i < expResult.size(); i++) {
-            System.out.println(expResult.get(i));
-        }
-        System.out.println();
-        System.out.println("Result List Start Here :");
-
-        for (int i = 0; i < result.size(); i++) {
-            System.out.println(result.get(i));
-        }
-         */
         assertEquals(expResult, result);
 
     }

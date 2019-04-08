@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author tester
+ * @author Viktor
  */
 public class FxQuoteTest {
 
