@@ -6,6 +6,7 @@
 package ers.students.crud.utils;
 
 import ers.students.crud.PortfolioDao;
+import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Portfolio;
 import ers.students.util.Currency;
 import java.sql.SQLException;
@@ -19,6 +20,10 @@ import java.util.List;
 public class SuccessfulPortfolioDao extends PortfolioDao {
 
     public static Portfolio portfolio = new Portfolio("1l", "name1", Currency.CHF);
+    
+     public SuccessfulPortfolioDao(PersistentStore JDBCPersistentStore) {
+        super(JDBCPersistentStore);
+    }
 
     @Override
     public Portfolio loadById(String id) {

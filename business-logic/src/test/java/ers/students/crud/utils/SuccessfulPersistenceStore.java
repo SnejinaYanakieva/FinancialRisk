@@ -19,6 +19,7 @@ import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
 import ers.students.portfolio.Transaction;
+import java.sql.Connection;
 
 /**
  *
@@ -53,31 +54,41 @@ public class SuccessfulPersistenceStore implements PersistentStore {
 
     @Override
     public SearchingDao<Portfolio> getPortfolioDao() {
-        return new SuccessfulPortfolioDao();
+        return new SuccessfulPortfolioDao(this);
     }
 
     @Override
     public SearchingDao<Position> getPositionDao() {
-        return new PositionDao();
+        return new PositionDao(this);
     }
 
     @Override
     public SearchingDao<Transaction> getTransactionDao() {
-        return new TransactionDao();
+        return new TransactionDao(this);
     }
 
     @Override
     public SearchingDao<Instrument> getInstrumentDao() {
-        return new InstrumentDao();
+        return new InstrumentDao(this);
     }
 
     @Override
     public CrudDao<YieldCurve> getYieldCurveDao() {
-        return new YieldCurveDao();
+        return new YieldCurveDao(this);
     }
 
     @Override
     public CrudDao<FxQuote> getFxQuote() {
-        return new FxQuoteDao();
+        return new FxQuoteDao(this);
+    }
+
+    @Override
+    public Connection getConnection() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

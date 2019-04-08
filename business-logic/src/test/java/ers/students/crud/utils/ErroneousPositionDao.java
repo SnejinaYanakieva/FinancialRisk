@@ -6,6 +6,7 @@
 package ers.students.crud.utils;
 
 import ers.students.crud.AbstractSearchingDao;
+import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Position;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,6 +16,10 @@ import java.util.List;
  * @author Irina
  */
 public class ErroneousPositionDao extends AbstractSearchingDao<Position> {
+
+    public ErroneousPositionDao(PersistentStore JDBCPersistentStore) {
+        super(JDBCPersistentStore);
+    }
 
     @Override
     public void delete(String e) throws SQLException {
