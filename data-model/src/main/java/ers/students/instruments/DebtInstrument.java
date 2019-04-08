@@ -10,9 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Debt instrument is when someone is getting into a debt
+ * A debt instrument is a paper or electronic obligation that enables 
+ * the issuing party to raise funds by promising to repay a lender in 
+ * accordance with terms of a contract. 
  *
- * @author Viktor
+ * @author Viktor   
  */
 public class DebtInstrument extends Instrument {
 

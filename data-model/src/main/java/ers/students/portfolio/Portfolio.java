@@ -54,8 +54,9 @@ public class Portfolio implements Validatable {
         this.currency = currency;
     }
 
+    @Override
     public boolean equals(Object obj) {
-      Portfolio object = (Portfolio) obj ;
+        Portfolio object = (Portfolio) obj;
         if (this.id.equals(object.id)
                 && this.name.equals(object.name)
                 && this.currency.equals(object.currency)) {

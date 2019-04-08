@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Is about who gives money to who and the instrument
+ * A position is the amount of a security, commodity or currency which is owned
+ * by an individual, dealer, institution, or other fiscal entity.
  *
  * @author Viktor
  */
@@ -84,8 +85,9 @@ public class Position implements Validatable {
         this.portfolioId = portfolioId;
     }
 
-        public boolean equals(Object obj) {
- Position object = (Position) obj ;
+    @Override
+    public boolean equals(Object obj) {
+        Position object = (Position) obj;
         if (this.id.equals(object.id)
                 && this.name.equals(object.name)
                 && this.shortSide.equals(object.shortSide)

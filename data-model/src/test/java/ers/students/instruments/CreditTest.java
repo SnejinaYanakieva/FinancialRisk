@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  *
@@ -20,13 +21,7 @@ import junit.framework.TestCase;
  */
 public class CreditTest extends TestCase {
 
-    public CreditTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * Test of validate method, of class Credit.
-     */
+    @Test
     public void testForNull() {
         // System.out.println("Validating");
         Credit instance = new Credit();
@@ -48,23 +43,20 @@ public class CreditTest extends TestCase {
 
     }
 
-    public void testValidate() throws ParseException {
+    @Test
+    public void testValidateInterestRate() throws ParseException {
         List<String> expResult = new ArrayList<>();
         //  System.out.println("ValidateSecound");
         Credit instance = new Credit();
         instance.setId("Test123");
         instance.setIsin("Test");
-
         instance.setInterestRate(222);
         expResult.add("Interest Rate is out of bound");
-        //Date 
         SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
         String DateVariable = "2018-09-00";
         instance.setIssueDate(dateformatt.parse(DateVariable));
-        DateVariable = "2015-09-15";
+        DateVariable = "2019-09-15";
         instance.setMaturityDate(dateformatt.parse(DateVariable));
-        expResult.add("Maturity Date is invalid");
-        //Enum
         instance.setInterestFrequency(Frequency.QUATERLY);
         instance.setAmortitationFrequency(Frequency.MONTHLY);
         instance.setCurrency(Currency.BGN);
@@ -78,4 +70,30 @@ public class CreditTest extends TestCase {
 
     }
 
+    @Test
+    public void testValidateDate() throws ParseException {
+        List<String> expResult = new ArrayList<>();
+        //  System.out.println("ValidateSecound");
+        Credit instance = new Credit();
+        instance.setId("Test123");
+        instance.setIsin("Test");
+        instance.setInterestRate(3);
+        SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
+        String DateVariable = "2018-09-00";
+        instance.setIssueDate(dateformatt.parse(DateVariable));
+        DateVariable = "2015-09-15";
+        instance.setMaturityDate(dateformatt.parse(DateVariable));
+        expResult.add("Maturity Date is invalid");
+        instance.setInterestFrequency(Frequency.QUATERLY);
+        instance.setAmortitationFrequency(Frequency.MONTHLY);
+        instance.setCurrency(Currency.BGN);
+
+        List<String> result = instance.validate();
+
+        Collections.sort(expResult);
+        Collections.sort(result);
+
+        assertEquals(expResult, result);
+
+    }
 }

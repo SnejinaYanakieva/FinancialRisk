@@ -12,7 +12,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Instrument is asset that can be traded.
+  *An instrument is a tradable asset or negotiable item such as
+  * a security, commodity, derivative or index, or any item that underlies a derivative. 
  *
  * @author Viktor
  */

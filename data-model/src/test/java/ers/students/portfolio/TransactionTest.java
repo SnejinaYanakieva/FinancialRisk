@@ -19,7 +19,7 @@ public class TransactionTest {
 
     @Test
     public void testForNull() {
-      
+
         Transaction instance = new Transaction();
         List<String> expResult = new ArrayList<>();
         expResult.add("id is invalid");
@@ -30,7 +30,6 @@ public class TransactionTest {
 
         List<String> result = instance.validate();
 
-       
         Collections.sort(expResult);
         Collections.sort(result);
 
@@ -40,7 +39,7 @@ public class TransactionTest {
 
     @Test
     public void testForSame() {
-        
+
         Transaction instance = new Transaction("id4433", "id12343", "Ood", "Ood", null, 42342);
         List<String> expResult = new ArrayList<>();
 
@@ -49,7 +48,6 @@ public class TransactionTest {
 
         List<String> result = instance.validate();
 
-   
         Collections.sort(expResult);
         Collections.sort(result);
 
@@ -59,7 +57,7 @@ public class TransactionTest {
 
     @Test
     public void testForAmaunt() {
-        //  System.out.println("validate");
+
         Transaction instance = new Transaction("id4433", "id12343", "New.Ood", "Ood", null, -42342);
         List<String> expResult = new ArrayList<>();
 

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  *
@@ -16,16 +17,13 @@ import junit.framework.TestCase;
  */
 public class DebtInstrumentTest extends TestCase {
 
-    public DebtInstrumentTest(String testName) {
-        super(testName);
-    }
-
     /**
      * Test of validate method, of class DebtInstrument.
      */
-    public void testValidate() {
+    
+    @Test
+    public void testValidateNull() {
 
-       
         DebtInstrument instance = new DebtInstrument();
         List<String> expResult = new ArrayList<>();
         expResult.add("Id is invalid");
@@ -39,9 +37,31 @@ public class DebtInstrumentTest extends TestCase {
         //Sorting 
         Collections.sort(expResult);
         Collections.sort(result);
-        
+
         assertEquals(expResult, result);
 
     }
 
+    @Test
+    public void testValidateInterestRate() {
+
+        DebtInstrument instance = new DebtInstrument();
+        instance.setInterestRate(-200);
+        List<String> expResult = new ArrayList<>();
+        expResult.add("Id is invalid");
+        expResult.add("Isin is invalid");
+        expResult.add("Currency is null");
+        expResult.add("Issue Date is null");
+        expResult.add("Maturity Date is invalid");
+        expResult.add("Interest Frequency is null");
+        expResult.add("Interest Rate is out of bound");
+        List<String> result = instance.validate();
+
+        //Sorting 
+        Collections.sort(expResult);
+        Collections.sort(result);
+
+        assertEquals(expResult, result);
+
+    }
 }
