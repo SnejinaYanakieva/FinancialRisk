@@ -5,6 +5,7 @@
  */
 package ers.students.crud;
 
+import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Transaction;
 
 /**
@@ -14,5 +15,9 @@ import ers.students.portfolio.Transaction;
  * Stores data retrieved from CRUD operations
  */
 public class TransactionDao extends AbstractSearchingDao<Transaction> {
+    
+    public TransactionDao(PersistentStore ps) {
+        super(ps);
+    }
     
 }

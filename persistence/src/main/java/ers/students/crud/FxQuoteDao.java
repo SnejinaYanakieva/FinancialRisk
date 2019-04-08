@@ -6,6 +6,7 @@
 package ers.students.crud;
 
 import ers.students.market.FxQuote;
+import ers.students.persistentStore.PersistentStore;
 
 /**
  *
@@ -14,5 +15,7 @@ import ers.students.market.FxQuote;
  * Stores data retrieved from CRUD operations
  */
 public class FxQuoteDao extends AbstractCrudDao<FxQuote> {
-    
+    public FxQuoteDao(PersistentStore ps){
+        super(ps);
+    }
 }

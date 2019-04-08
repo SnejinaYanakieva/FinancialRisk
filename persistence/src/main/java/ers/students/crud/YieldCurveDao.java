@@ -6,6 +6,7 @@
 package ers.students.crud;
 
 import ers.students.market.YieldCurve;
+import ers.students.persistentStore.PersistentStore;
 
 /**
  *
@@ -14,5 +15,7 @@ import ers.students.market.YieldCurve;
  * Stores data retrieved from CRUD operations
  */
 public class YieldCurveDao extends AbstractCrudDao<YieldCurve>{
-    
+    public YieldCurveDao(PersistentStore ps){
+        super(ps);
+    }
 }

@@ -5,6 +5,7 @@
  */
 package ers.students.crud;
 
+import ers.students.persistentStore.PersistentStore;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,6 +17,11 @@ import java.util.List;
  */
 public abstract class AbstractSearchingDao<Entity> extends AbstractCrudDao<Entity>
         implements SearchingDao<Entity> {
+    
+    public AbstractSearchingDao(PersistentStore ps){
+        super(ps);
+        
+    }
 
     private static final String SELECT = "SELECT * FROM ? WHERE name=?";
 

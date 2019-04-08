@@ -56,16 +56,10 @@ public class JdbcPersistentStore implements PersistentStore {
      * @param password - DB login information
      */
     public JdbcPersistentStore(String dbURL, String userName, String password) {
-        try {
-            dataSource = new JDBCDataSource();
-            dataSource.setURL(dbURL);
-            dataSource.setUser(userName);
-            dataSource.setPassword(password);
-            connection = dataSource.getConnection();
-            connection.setAutoCommit(false);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        dataSource = new JDBCDataSource();
+        dataSource.setURL(dbURL);
+        dataSource.setUser(userName);
+        dataSource.setPassword(password);
     }
 
     /**
@@ -109,11 +103,12 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public void startTransaction() {
         try {
-            if(connection.isClosed()){
-                
+            if (connection.isClosed()) {
+                connection = dataSource.getConnection();
+                connection.setAutoCommit(false);
             }
         } catch (SQLException ex) {
-             System.out.println(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -165,7 +160,7 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public SearchingDao<Position> getPositionDao() {
         if (positionDao == null) {
-            positionDao = new PositionDao();
+            positionDao = new PositionDao(this);
         }
         return positionDao;
     }
@@ -178,7 +173,7 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public SearchingDao<Portfolio> getPortfolioDao() {
         if (portfolioDao == null) {
-            portfolioDao = new PortfolioDao();
+            portfolioDao = new PortfolioDao(this);
         }
         return portfolioDao;
     }
@@ -191,7 +186,7 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public SearchingDao<Transaction> getTransactionDao() {
         if (transactionDao == null) {
-            transactionDao = new TransactionDao();
+            transactionDao = new TransactionDao(this);
         }
         return transactionDao;
     }
@@ -204,7 +199,7 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public SearchingDao<Instrument> getInstrumentDao() {
         if (instrumentDao == null) {
-            instrumentDao = new InstrumentDao();
+            instrumentDao = new InstrumentDao(this);
         }
         return instrumentDao;
     }
@@ -217,7 +212,7 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public CrudDao<YieldCurve> getYieldCurveDao() {
         if (yieldCurveDao == null) {
-            yieldCurveDao = new YieldCurveDao();
+            yieldCurveDao = new YieldCurveDao(this);
         }
         return yieldCurveDao;
     }
@@ -230,7 +225,7 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public CrudDao<FxQuote> getFxQuote() {
         if (fxQuoteDao == null) {
-            fxQuoteDao = new FxQuoteDao();
+            fxQuoteDao = new FxQuoteDao(this);
         }
         return fxQuoteDao;
     }

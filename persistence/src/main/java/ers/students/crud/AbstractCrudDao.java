@@ -20,14 +20,17 @@ import java.util.List;
 public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
     private String dbURL, userName, password;
-    private final PersistentStore JDBCPersistentStore = new JdbcPersistentStore(dbURL, userName, password);
+    private final PersistentStore persistentStore;
     private static final String INSERT = "INSERT INTO ? VALUES()";
     private static final String UPDATE = "";
     private static final String DELETE = "DELETE FROM ? WHERE id=?";
     private static final String LOADBYID = "SELECT * FROM ? WHERE id=?";
     private static final String LOADALL = "SELECT * FROM ?";
 
-    //JDBCPersistentStore = new JdbcPersistentStore(dbURL, userName, password);
+    public AbstractCrudDao(PersistentStore persistentStore){
+        this.persistentStore=persistentStore;
+    }
+    
     /**
      * Saves/inserts entity in DB
      *
@@ -35,7 +38,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      */
     @Override
     public void save(Entity e) throws SQLException {
-        PreparedStatement pStatement = JDBCPersistentStore.getConnection().prepareStatement(INSERT);
+        PreparedStatement pStatement = persistentStore.getConnection().prepareStatement(INSERT);
         
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -57,7 +60,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      */
     @Override
     public void delete(String id) throws SQLException {
-        PreparedStatement pStatement = JDBCPersistentStore.getConnection().prepareStatement(DELETE);
+        PreparedStatement pStatement = persistentStore.getConnection().prepareStatement(DELETE);
         pStatement.setString(2, id);
         pStatement.executeUpdate();
         pStatement.close();

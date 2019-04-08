@@ -11,6 +11,7 @@ package ers.students.adminDBApp;
  * @author Ayhan
  */
 
+import ers.students.crud.AbstractCrudDao;
 import ers.students.persistentStore.JdbcPersistentStore;
 import ers.students.persistentStore.PersistentStore;
 import java.sql.SQLException;
