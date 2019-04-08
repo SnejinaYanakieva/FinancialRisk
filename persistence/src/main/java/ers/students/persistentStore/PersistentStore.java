@@ -14,6 +14,7 @@ import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
 import ers.students.portfolio.Transaction;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  *

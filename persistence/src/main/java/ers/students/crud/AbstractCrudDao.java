@@ -35,6 +35,8 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      */
     @Override
     public void save(Entity e) throws SQLException {
+        PreparedStatement pStatement = JDBCPersistentStore.getConnection().prepareStatement(INSERT);
+        
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
