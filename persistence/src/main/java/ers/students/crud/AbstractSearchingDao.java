@@ -17,6 +17,8 @@ import java.util.List;
 public abstract class AbstractSearchingDao<Entity> extends AbstractCrudDao<Entity>
         implements SearchingDao<Entity> {
 
+    private static final String SELECT = "SELECT * FROM ? WHERE name=?";
+
     /**
      * 
      * @param name - string to use for searching in DB

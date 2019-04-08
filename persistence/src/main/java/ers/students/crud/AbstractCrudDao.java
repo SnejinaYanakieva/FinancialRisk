@@ -19,18 +19,15 @@ import java.util.List;
  */
 public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
-    
-    private final PersistentStore JDBCPersistentStore;
+    private String dbURL, userName, password;
+    private final PersistentStore JDBCPersistentStore = new JdbcPersistentStore(dbURL, userName, password);
     private static final String INSERT = "INSERT INTO ? VALUES()";
     private static final String UPDATE = "";
     private static final String DELETE = "DELETE FROM ? WHERE id=?";
     private static final String LOADBYID = "SELECT * FROM ? WHERE id=?";
     private static final String LOADALL = "SELECT * FROM ?";
 
-    public AbstractCrudDao() {
-        this.JDBCPersistentStore = new JdbcPersistentStore();
-    }
-
+    //JDBCPersistentStore = new JdbcPersistentStore(dbURL, userName, password);
     /**
      * Saves/inserts entity in DB
      *
@@ -58,10 +55,10 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      */
     @Override
     public void delete(String id) throws SQLException {
-        /*PreparedStatement pStatement = JDBCPersistentStore.getConnection().prepareStatement(DELETE);
+        PreparedStatement pStatement = JDBCPersistentStore.getConnection().prepareStatement(DELETE);
         pStatement.setString(2, id);
         pStatement.executeUpdate();
-        pStatement.close();*/
+        pStatement.close();
     }
 
     /**

@@ -84,9 +84,11 @@ public interface PersistentStore {
      * @return 
      */
     CrudDao<FxQuote> getFxQuote();
-    
+
     /**
      * 
-     * @return
+     * @return 
      */
+    Connection getConnection();
+    
 }

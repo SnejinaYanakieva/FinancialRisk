@@ -22,6 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import org.hsqldb.jdbc.JDBCDataSource;
@@ -45,14 +46,23 @@ public class JdbcPersistentStore implements PersistentStore {
     private InstrumentDao instrumentDao;
     private YieldCurveDao yieldCurveDao;
     private FxQuoteDao fxQuoteDao;
+    
+    private static final String DROPDB="DROP DATABASE ?";
 
     /**
      * Creates the DB
      *
+     * @param dbURL - path of DB
+     * @param userName - DB login information
+     * @param password - DB login information
      */
-    public JdbcPersistentStore() {
+    public JdbcPersistentStore(String dbURL, String userName, String password) {
         try {
-            connection = DriverManager.getConnection(dbURL, userName, password);
+            dataSource = new JDBCDataSource();
+            dataSource.setURL(dbURL);
+            dataSource.setUser(userName);
+            dataSource.setPassword(password);
+            connection = dataSource.getConnection();
             connection.setAutoCommit(false);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -63,6 +73,7 @@ public class JdbcPersistentStore implements PersistentStore {
      *
      * @return Connection object
      */
+    @Override
     public Connection getConnection() {
         return this.connection;
     }
@@ -83,10 +94,11 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public void dropDB() {
-        String dropDBQuery = "DROP DATABASE ?";
         try {
+            PreparedStatement pStatement = connection.prepareStatement(DROPDB);
+            pStatement.setString(1, connection.getCatalog());
             Statement statement = connection.createStatement();
-            statement.executeUpdate(dropDBQuery);
+            statement.executeUpdate(DROPDB);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

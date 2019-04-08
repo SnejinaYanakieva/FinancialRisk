@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS FxQuote(id TEXT(36) NOT NULL, from TEXT(3) NOT NULL, 
 
 CREATE TABLE IF NOT EXISTS Portfolio (id TEXT(36) NOT NULL, name TEXT(36), currency TEXT(3), PRIMARY KEY(id));
 
-CREATE TABLE IF NOT EXISTS Instrument (id TEXT(36) NOT NULL, type TEXT(50) NOT NULL, isin TEXT(200) NOT NULL, currency TEXT(3) NOT NULL, issue_date DATE NOT NULL, maturity_date DATE NOT NULL, interest_rate DOUBLE NOT NULL, interest_frequency TEXT(20) NOT NULL, amortization_frequenct TEXT(20) NOT NULL, PRIMARY KEY (id));
+CREATE TABLE IF NOT EXISTS Instrument (id TEXT(36) NOT NULL, type TEXT(50) NOT NULL, isin TEXT(200) NOT NULL, currency TEXT(3) NOT NULL, issue_date DATE NOT NULL, maturity_date DATE NOT NULL, interest_rate DOUBLE NOT NULL, interest_frequency TEXT(20) NOT NULL, amortization_frequency TEXT(20) NOT NULL, PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS Position (id TEXT(36) NOT NULL, name TEXT(200) NOT NULL, short_side TEXT(200) NOT NULL, long_side TEXT(200) NOT NULL, PRIMARY KEY(id));
 
