@@ -28,27 +28,43 @@ public class ResponseFactory {
     /**
      * Returns the only object available.
      *
-     * @return
+     * @return an instance of an object created into the class
      */
     public static ResponseFactory getInstance() {
         return instance;
     }
 
+    
+    /**
+     * Returns a HTTP response based on the given results.
+     *
+     * @param errors contains an ErrorCode constant and a phrase mapped into it 
+     * @param statusOk indicates whether a the status returns OK or not
+     * @return a response containing HTTP status code and phrase
+     */
+    public static Response make(Map<ErrorCode,List<String>> errors, boolean statusOk) {
+        
+        ResponseBuilder builder = Response.status(Response.Status.CREATED);
+        
+        if(statusOk == true)
+            builder = Response.status(Response.Status.OK);
+        
+        builder = buildResponse(builder, errors);
+        
+        return builder.build();
+    }
+    
     /**
      * Returns a HTTP response based on the given result.
      *
-     * @param result
-     * @param statusOK
-     * @return
+     * @param result contains a map of error codes and an entity
+     * @return a response containing HTTP status code and an entity
      */
-    public static Response make(LoadResult result, boolean statusOK) {
+    public static Response make(LoadResult result) {
 
         ResponseBuilder builder = Response.status(Response.Status.OK).entity(result.getEntity());
         
-        if(statusOK == false)
-            builder = Response.status(Response.Status.CREATED).entity(result.getEntity());
-        
-        builder = checkForErrors(builder, result.getErrors());
+        builder = buildResponse(builder, result.getErrors());
 
         return builder.build();
     }
@@ -56,18 +72,14 @@ public class ResponseFactory {
     /**
      * Returns a HTTP response based on the given results.
      *
-     * @param results
-     * @param statusOK
-     * @return
+     * @param results contains a map of error codes and a list of entities
+     * @return a response containing HTTP status code and a list of entities
      */
-    public static Response make(LoadResults results, boolean statusOK) {
+    public static Response make(LoadResults results) {
 
         ResponseBuilder builder = Response.status(Response.Status.OK).entity(results.getEntities());
         
-        if(statusOK == false)
-            builder = Response.status(Response.Status.CREATED).entity(results.getEntities());
-        
-        builder = checkForErrors(builder, results.getErrors());
+        builder = buildResponse(builder, results.getErrors());
 
         return builder.build();
     }
@@ -78,10 +90,10 @@ public class ResponseFactory {
      * 
      * @param builder
      * @param errors
-     * @return 
+     * @return
      */
-    private static ResponseBuilder checkForErrors(ResponseBuilder builder, Map<ErrorCode, List<String>> errors) {
-
+    private static ResponseBuilder buildResponse(ResponseBuilder builder, Map<ErrorCode, List<String>> errors) {
+        
         errors.forEach((k, v) -> {
 
             switch ((ErrorCode) k) {
