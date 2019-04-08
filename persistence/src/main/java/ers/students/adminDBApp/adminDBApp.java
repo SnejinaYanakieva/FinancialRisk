@@ -1,5 +1,15 @@
 package ers.students.adminDBApp;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Ayhan
+ */
 
 import ers.students.persistentStore.JdbcPersistentStore;
 import ers.students.persistentStore.PersistentStore;
@@ -28,12 +38,15 @@ public class adminDBApp {
         String pass = "admin";
         initJDBCPersistentStore(url, user, pass);
         try {
-            //JDBCPersistentStore.startTransaction();
+            JDBCPersistentStore.startTransaction();
             JDBCPersistentStore.createDB();
             JDBCPersistentStore.commitTransaction();
         } catch (SQLException ex) {
             JDBCPersistentStore.rollbackTransaction();
-            System.out.println(ex.getMessage());
+        } finally {
+            if(JDBCPersistentStore.getConnection()!=null){
+                JDBCPersistentStore.close();
+            }
         }
     }
 }

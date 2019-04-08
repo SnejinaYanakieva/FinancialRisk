@@ -45,8 +45,8 @@ public class JdbcPersistentStore implements PersistentStore {
     private InstrumentDao instrumentDao;
     private YieldCurveDao yieldCurveDao;
     private FxQuoteDao fxQuoteDao;
-    
-    private static final String DROPDB="DROP DATABASE ?";
+
+    private static final String DROPDB = "DROP DATABASE ?";
 
     /**
      * Creates the DB
@@ -108,18 +108,38 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public void startTransaction() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            if(connection.isClosed()){
+                
+            }
+        } catch (SQLException ex) {
+             System.out.println(ex.getMessage());
+        }
     }
 
     /**
-     * Reverts back to the previous state of the database.
-     * Any changes made in DB aren't saved.
+     *
+     */
+    @Override
+    public void close() {
+        try {
+            if (!connection.isClosed()) {
+                connection.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    /**
+     * Reverts back to the previous state of the database. Any changes made in
+     * DB aren't saved.
      */
     @Override
     public void rollbackTransaction() {
-        try{
+        try {
             connection.rollback();
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
@@ -128,12 +148,13 @@ public class JdbcPersistentStore implements PersistentStore {
      * Saves transaction
      */
     @Override
-    public void commitTransaction() {
-        try {
+    public void commitTransaction() throws SQLException {
+        /*try {
             connection.commit();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
+        }*/
+        connection.commit();
     }
 
     /**

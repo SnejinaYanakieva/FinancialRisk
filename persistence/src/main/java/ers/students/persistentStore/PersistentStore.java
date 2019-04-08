@@ -47,8 +47,9 @@ public interface PersistentStore {
 
     /**
      * Saves transaction
+     * @throws java.sql.SQLException
      */
-    void commitTransaction();
+    void commitTransaction() throws SQLException;
 
     /**
      * Uses lazy initialization
@@ -91,5 +92,7 @@ public interface PersistentStore {
      * @return 
      */
     Connection getConnection();
+    
+    void close();
     
 }
