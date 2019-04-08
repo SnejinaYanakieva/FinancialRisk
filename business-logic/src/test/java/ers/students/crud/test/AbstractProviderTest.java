@@ -110,6 +110,5 @@ public abstract class AbstractProviderTest<E extends Validatable> extends TestCa
 
     private boolean CheckIfEntityIsPosition() {
         return entity.getClass().equals(Position.class);
-    }
-    
+    }    
 }
