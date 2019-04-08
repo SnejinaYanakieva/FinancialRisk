@@ -9,7 +9,6 @@ import ers.students.crud.PortfolioDao;
 import ers.students.portfolio.Portfolio;
 import ers.students.util.Currency;
 import java.sql.SQLException;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +18,11 @@ import java.util.List;
  */
 public class SuccessfulPortfolioDao extends PortfolioDao {
 
+    public static Portfolio portfolio = new Portfolio("1l", "name1", Currency.CHF);
+
     @Override
     public Portfolio loadById(String id) {
-        return new Portfolio("1l", "name1", Currency.CHF);
+        return portfolio;
     }
 
     @Override
@@ -46,9 +47,9 @@ public class SuccessfulPortfolioDao extends PortfolioDao {
     public void update(Portfolio e) throws SQLException {
 
     }
-    
+
     @Override
-    public List<Portfolio> searchByName(String name){
+    public List<Portfolio> searchByName(String name) {
         return new ArrayList<>();
     }
 }

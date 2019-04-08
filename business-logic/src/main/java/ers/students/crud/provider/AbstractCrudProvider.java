@@ -8,6 +8,7 @@ package ers.students.crud.provider;
 import ers.students.crud.CrudDao;
 import ers.students.crud.results.ErrorCode;
 import ers.students.crud.results.LoadResult;
+import ers.students.crud.results.LoadResults;
 import ers.students.persistentStore.PersistentStore;
 import ers.students.validate.Validatable;
 import java.sql.SQLException;
@@ -76,7 +77,7 @@ public abstract class AbstractCrudProvider<E extends Validatable> {
      * Loads an entity by given id.
      *
      * @param id to search entity
-     * @return loaded entities and map of errors
+     * @return loaded entity and map of errors
      */
     public LoadResult<E> loadById(String id) {
         LoadResult<E> result = new LoadResult<>();
@@ -85,13 +86,13 @@ public abstract class AbstractCrudProvider<E extends Validatable> {
             persistentStore.startTransaction();
             E entity = loadEntityAndCheckForNull(id, errors);
             if (!errors.isEmpty()) {
-                result.setErrors(errors);
+                result.addAllErrors(errors);
                 return result;
             }
             persistentStore.commitTransaction();
             result.setEntity(entity);
         } catch (Exception e) {
-            result.setErrors(getExceptionsAndRollbackTransaction(e));
+            result.addAllErrors(getExceptionsAndRollbackTransaction(e));
         }
 
         return result;
@@ -117,6 +118,26 @@ public abstract class AbstractCrudProvider<E extends Validatable> {
             errors = getExceptionsAndRollbackTransaction(e);
         }
         return errors;
+    }
+
+    /**
+     * Loads all entities.
+     *
+     * @return loaded entities and map of errors
+     */
+    public LoadResults<E> loadAll() {
+        LoadResults<E> results = new LoadResults<>();
+        //Map<ErrorCode, List<String>> errors = new HashMap<>();
+        try {
+            persistentStore.startTransaction();
+            ////////////////////
+            results.addAllEntities(getDao().loadAll());
+            persistentStore.commitTransaction();
+        } catch (SQLException e) {
+            results.addAllErrors(getExceptionsAndRollbackTransaction(e));
+        }
+
+        return results;
     }
 
     /**
@@ -148,7 +169,7 @@ public abstract class AbstractCrudProvider<E extends Validatable> {
      */
     private Map<ErrorCode, List<String>> getExceptionsAndRollbackTransaction(Exception e) {
         Map<ErrorCode, List<String>> errors = new HashMap<>();
-        errors.put(ErrorCode.INTERNAL_ERROR, Arrays.asList(e.getCause().getMessage()));
+        errors.put(ErrorCode.INTERNAL_ERROR, Arrays.asList(e.getMessage()));
         persistentStore.rollbackTransaction();
         return errors;
     }

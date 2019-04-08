@@ -33,7 +33,7 @@ public class LoadResult<E> {
         return errors;
     }
 
-    public void setErrors(Map<ErrorCode, List<String>> errors) {
-        this.errors = errors;
+    public void addAllErrors(Map<ErrorCode, List<String>> errors) {
+        this.errors.putAll(errors);
     }
 }

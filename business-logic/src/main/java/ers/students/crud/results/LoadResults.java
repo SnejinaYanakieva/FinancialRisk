@@ -24,17 +24,17 @@ public class LoadResults<E> {
     public List<E> getEntities() {
         return entities;
     }
-
-    public void setEntities(List<E> entities) {
-        this.entities = entities;
+    
+    public void addAllEntities(List<E> entities){
+        this.entities.addAll(entities);
     }
 
     public Map<ErrorCode, List<String>> getErrors() {
         return errors;
     }
 
-    public void setErrors(Map<ErrorCode, List<String>> errors) {
-        this.errors = errors;
+    public void addAllErrors(Map<ErrorCode, List<String>> errors) {
+        this.errors.putAll(errors);
     }
-    
+
 }

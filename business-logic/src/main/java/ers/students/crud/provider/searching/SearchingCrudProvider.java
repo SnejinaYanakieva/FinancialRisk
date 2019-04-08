@@ -32,9 +32,7 @@ public abstract class SearchingCrudProvider<E extends Validatable> extends Abstr
      * @return
      */
     @Override
-    protected SearchingDao<E> getDao() {
-        return getDao();
-    }
+    protected abstract SearchingDao<E> getDao();
 
     /**
      * Searches an entity by given name.
@@ -46,9 +44,9 @@ public abstract class SearchingCrudProvider<E extends Validatable> extends Abstr
         LoadResults<E> results = new LoadResults<>();
 
         try {
-            results.setEntities(getDao().searchByName(name));
+            results.addAllEntities(getDao().searchByName(name));
         } catch (SQLException e) {
-            results.getErrors().put(ErrorCode.INTERNAL_ERROR, Arrays.asList(e.getCause().getMessage()));
+            results.getErrors().put(ErrorCode.INTERNAL_ERROR, Arrays.asList(e.getMessage()));
         }
 
         return results;
