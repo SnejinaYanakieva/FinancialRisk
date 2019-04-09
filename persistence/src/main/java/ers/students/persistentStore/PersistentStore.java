@@ -93,6 +93,9 @@ public interface PersistentStore {
      */
     Connection getConnection();
     
+    /**
+     * Closes connection with DB if it's open
+     */
     void close();
     
 }

@@ -5,7 +5,6 @@
  */
 package ers.students.crud;
 
-import ers.students.persistentStore.JdbcPersistentStore;
 import ers.students.persistentStore.PersistentStore;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -19,7 +18,6 @@ import java.util.List;
  */
 public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
-    private String dbURL, userName, password;
     private final PersistentStore persistentStore;
     private static final String INSERT = "INSERT INTO ? VALUES()";
     private static final String UPDATE = "";

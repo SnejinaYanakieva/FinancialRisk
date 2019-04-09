@@ -1,6 +1,3 @@
-/*
- * Interface that provides methods for creating a database and 
- */
 package ers.students.persistentStore;
 
 import ers.students.crud.CrudDao;
@@ -29,9 +26,10 @@ import org.hsqldb.jdbc.JDBCDataSource;
 /**
  *
  * @author Ayhan
- *
+ * Interface that provides methods for creating a database and 
  * Implements methods for working with database and transactions
  */
+
 public class JdbcPersistentStore implements PersistentStore {
 
     private Connection connection;
@@ -108,13 +106,7 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public void startTransaction() {
-        try {
-            if (this.connection.isClosed()) {
-
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**

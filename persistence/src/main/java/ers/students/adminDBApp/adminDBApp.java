@@ -5,12 +5,10 @@ package ers.students.adminDBApp;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Ayhan
  */
-
 import ers.students.persistentStore.JdbcPersistentStore;
 import ers.students.persistentStore.PersistentStore;
 import java.sql.SQLException;
@@ -33,7 +31,7 @@ public class adminDBApp {
     }
 
     public static void main(String[] args) {
-        String url = "jdbc:hsql:file:testdb";
+        String url = "jdbc:hsql:file:dbtest";
         String user = "SA";
         String pass = "admin";
         initJDBCPersistentStore(url, user, pass);
@@ -44,7 +42,7 @@ public class adminDBApp {
         } catch (SQLException ex) {
             JDBCPersistentStore.rollbackTransaction();
         } finally {
-            if(JDBCPersistentStore.getConnection()!=null){
+            if (JDBCPersistentStore.getConnection() != null) {
                 JDBCPersistentStore.close();
             }
         }
