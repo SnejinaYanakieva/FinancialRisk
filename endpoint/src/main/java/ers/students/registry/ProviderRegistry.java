@@ -11,7 +11,6 @@ import ers.students.crud.provider.searching.InstrumentCrudProvider;
 import ers.students.crud.provider.searching.PortfolioCrudProvider;
 import ers.students.crud.provider.searching.PositionCrudProvider;
 import ers.students.crud.provider.searching.TransactionCrudProvider;
-import ers.students.persistentStore.JdbcPersistentStore;
 import ers.students.persistentStore.PersistentStore;
 
 /**
@@ -21,7 +20,8 @@ import ers.students.persistentStore.PersistentStore;
 
 public class ProviderRegistry {
     
-    private static final ProviderRegistry instance = new ProviderRegistry();
+    private static ProviderRegistry instance;
+    private static PersistentStore persistentStore;
     
     private static InstrumentCrudProvider instrument;
     private static PositionCrudProvider position;
@@ -30,13 +30,13 @@ public class ProviderRegistry {
     private static YieldCurveCrudProvider yieldCurve;
     private static TransactionCrudProvider transaction;
     
-    private static PersistentStore persistentStore;
-    
     private ProviderRegistry() {}
     
     public static ProviderRegistry getInstance(PersistentStore store){
-        if(persistentStore == null)
+        if(instance == null) {
+            instance = new ProviderRegistry();
             persistentStore = store;
+        }
         return instance;
     }
     
@@ -81,6 +81,5 @@ public class ProviderRegistry {
         }
         return transaction;
     }
-    
     
 }
