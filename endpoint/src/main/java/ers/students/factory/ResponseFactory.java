@@ -31,9 +31,9 @@ public class ResponseFactory {
     private ResponseFactory(){}
 
     /**
-     * Returns the only object available.
-     *
-     * @return an instance of an object created into the class
+     * Provide a global point of access to the instance.
+     * 
+     * @return returns the only object available
      */
     public static ResponseFactory getInstance() {
         return instance;

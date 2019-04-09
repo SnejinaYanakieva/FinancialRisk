@@ -14,7 +14,8 @@ import ers.students.crud.provider.searching.TransactionCrudProvider;
 import ers.students.persistentStore.PersistentStore;
 
 /**
- *
+ * Singleton class that provides a registry of AbstractCrudProvider classes.
+ * 
  * @author martinstoynov
  */
 
@@ -31,7 +32,7 @@ public class ProviderRegistry {
     private static PersistentStore persistentStore;
     
     /**
-     * Create objects of type AbstractCrudProvider.
+     * Creates objects of type AbstractCrudProvider.
      */
     private static InstrumentCrudProvider instrument;
     private static PositionCrudProvider position;
@@ -47,6 +48,7 @@ public class ProviderRegistry {
     
     /**
      * Provide a global point of access to the instance.
+     * 
      * @param store
      * @return returns the only object available
      */
