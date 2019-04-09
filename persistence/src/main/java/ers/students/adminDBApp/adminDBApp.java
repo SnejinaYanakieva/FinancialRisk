@@ -24,10 +24,10 @@ import java.sql.SQLException;
  */
 public class adminDBApp {
 
-    static PersistentStore JDBCPersistentStore;
+    static PersistentStore persistentStore;
 
     public static void initJDBCPersistentStore(String dbURL, String userName, String password) {
-        JDBCPersistentStore = new JdbcPersistentStore(dbURL, userName, password);
+        persistentStore = new JdbcPersistentStore(dbURL, userName, password);
     }
 
     public static void main(String[] args) {
@@ -36,14 +36,14 @@ public class adminDBApp {
         String pass = "admin";
         initJDBCPersistentStore(url, user, pass);
         try {
-            JDBCPersistentStore.startTransaction();
-            JDBCPersistentStore.createDB();
-            JDBCPersistentStore.commitTransaction();
+            persistentStore.startTransaction();
+            persistentStore.createDB();
+            persistentStore.commitTransaction();
         } catch (SQLException ex) {
-            JDBCPersistentStore.rollbackTransaction();
+            persistentStore.rollbackTransaction();
         } finally {
-            if (JDBCPersistentStore.getConnection() != null) {
-                JDBCPersistentStore.close();
+            if (persistentStore.getConnection() != null) {
+                persistentStore.close();
             }
         }
     }
