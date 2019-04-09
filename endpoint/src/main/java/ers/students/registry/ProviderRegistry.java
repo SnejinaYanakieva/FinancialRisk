@@ -5,7 +5,14 @@
  */
 package ers.students.registry;
 
-import java.util.HashMap;
+import ers.students.crud.provider.FxCrudProvider;
+import ers.students.crud.provider.YieldCurveCrudProvider;
+import ers.students.crud.provider.searching.InstrumentCrudProvider;
+import ers.students.crud.provider.searching.PortfolioCrudProvider;
+import ers.students.crud.provider.searching.PositionCrudProvider;
+import ers.students.crud.provider.searching.TransactionCrudProvider;
+import ers.students.persistentStore.JdbcPersistentStore;
+import ers.students.persistentStore.PersistentStore;
 
 /**
  *
@@ -14,23 +21,66 @@ import java.util.HashMap;
 
 public class ProviderRegistry {
     
-    private static ProviderRegistry instance = null;
-    private HashMap registry = null;
+    private static final ProviderRegistry instance = new ProviderRegistry();
     
-    private ProviderRegistry() {
-        registry = new HashMap();
+    private static InstrumentCrudProvider instrument;
+    private static PositionCrudProvider position;
+    private static PortfolioCrudProvider portfolio;
+    private static FxCrudProvider fxQuote;
+    private static YieldCurveCrudProvider yieldCurve;
+    private static TransactionCrudProvider transaction;
+    
+    private static PersistentStore persistentStore;
+    
+    private ProviderRegistry() {}
+    
+    public static ProviderRegistry getInstance(PersistentStore store){
+        if(persistentStore == null)
+            persistentStore = store;
+        return instance;
     }
     
-    static public void addToRegistry(Object key, Object value){
-        if(instance == null)
-            instance = new ProviderRegistry();
-        instance.registry.put(key, value);
+    public static InstrumentCrudProvider getInstrumentProvider(){
+        if(instrument == null){
+            instrument = new InstrumentCrudProvider(persistentStore);
+        }
+        return instrument;
     }
     
-    public static Object getProvider(Object key) {
-        if(instance == null)
-            instance = new ProviderRegistry();
-        return instance.registry.get(key);
+    public static PositionCrudProvider getPositionProvider(){    
+        if(position == null){
+            position = new PositionCrudProvider(persistentStore);
+        }
+        return position;
+    }
+    
+    public static PortfolioCrudProvider getProtfolioProvider(){    
+        if(portfolio == null){
+            portfolio = new PortfolioCrudProvider(persistentStore);
+        }
+        return portfolio;
     }
 
+    public static FxCrudProvider getFxQuoteProvider(){    
+        if(fxQuote == null){
+            fxQuote = new FxCrudProvider(persistentStore);
+        }
+        return fxQuote;
+    }
+
+    public static YieldCurveCrudProvider getYieldCurveProvider(){    
+        if(yieldCurve == null){
+            yieldCurve = new YieldCurveCrudProvider(persistentStore);
+        }
+        return yieldCurve;
+    }
+
+    public static TransactionCrudProvider getTransactionProvider(){    
+        if(transaction == null){
+            transaction = new TransactionCrudProvider(persistentStore);
+        }
+        return transaction;
+    }
+    
+    
 }
