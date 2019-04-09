@@ -24,6 +24,8 @@ public class ResponseFactory {
      * Creates an object of type ResponseFactory.
      */
     private static final ResponseFactory instance = new ResponseFactory();
+    
+    private ResponseFactory(){}
 
     /**
      * Returns the only object available.

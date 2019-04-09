@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
  * @author martinstoynov
  */
 public class PositionRestServiceImpl implements PositionRestService {
-
+    
     @Override
     public Response create(Position position) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
