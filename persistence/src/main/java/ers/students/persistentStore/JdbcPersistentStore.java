@@ -56,10 +56,16 @@ public class JdbcPersistentStore implements PersistentStore {
      * @param password - DB login information
      */
     public JdbcPersistentStore(String dbURL, String userName, String password) {
-        dataSource = new JDBCDataSource();
-        dataSource.setURL(dbURL);
-        dataSource.setUser(userName);
-        dataSource.setPassword(password);
+        try {
+            dataSource = new JDBCDataSource();
+            dataSource.setURL(dbURL);
+            dataSource.setUser(userName);
+            dataSource.setPassword(password);
+            connection = dataSource.getConnection();
+            connection.setAutoCommit(false);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -103,9 +109,8 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public void startTransaction() {
         try {
-            if (connection.isClosed()) {
-                connection = dataSource.getConnection();
-                connection.setAutoCommit(false);
+            if (this.connection.isClosed()) {
+
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

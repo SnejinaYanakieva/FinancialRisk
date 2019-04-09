@@ -6,6 +6,7 @@
 package ers.students.crud;
 
 import ers.students.instruments.Instrument;
+import ers.students.persistentStore.PersistentStore;
 
 /**
  *
@@ -14,5 +15,9 @@ import ers.students.instruments.Instrument;
  * Stores data retrieved from CRUD operations
  */
 public class InstrumentDao extends AbstractSearchingDao<Instrument>{
+    
+    public InstrumentDao(PersistentStore ps) {
+        super(ps);
+    }
     
 }
