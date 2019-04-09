@@ -56,7 +56,7 @@ public class TransactionTest {
     }
 
     @Test
-    public void testForAmaunt() {
+    public void testForAmount() {
 
         Transaction instance = new Transaction("id4433", "id12343", "New.Ood", "Ood", null, -42342);
         List<String> expResult = new ArrayList<>();

@@ -23,7 +23,7 @@ public class CreditTest extends TestCase {
 
     @Test
     public void testForNull() {
-        // System.out.println("Validating");
+
         Credit instance = new Credit();
         List<String> expResult = new ArrayList<>();
         expResult.add("Id is invalid");
@@ -45,8 +45,8 @@ public class CreditTest extends TestCase {
 
     @Test
     public void testValidateInterestRate() throws ParseException {
+
         List<String> expResult = new ArrayList<>();
-        //  System.out.println("ValidateSecound");
         Credit instance = new Credit();
         instance.setId("Test123");
         instance.setIsin("Test");

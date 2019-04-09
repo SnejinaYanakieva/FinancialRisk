@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  *
@@ -19,15 +20,9 @@ import junit.framework.TestCase;
  */
 public class InstrumentTest extends TestCase {
 
-    public InstrumentTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * Test of validate method, of class Instrument.
-     */
+    @Test
     public void testForNull() {
-       
+
         Instrument instance = new Instrument();
         List<String> expResult = new ArrayList<>();
         expResult.add("Id is invalid");
@@ -37,7 +32,6 @@ public class InstrumentTest extends TestCase {
         expResult.add("Maturity Date is invalid");
         List<String> result = instance.validate();
 
-  
         Collections.sort(expResult);
         Collections.sort(result);
 
@@ -45,6 +39,7 @@ public class InstrumentTest extends TestCase {
 
     }
 
+    @Test
     public void testForDate() throws ParseException {
 
         SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
