@@ -17,21 +17,21 @@ import java.util.List;
  */
 public abstract class AbstractSearchingDao<Entity> extends AbstractCrudDao<Entity>
         implements SearchingDao<Entity> {
-    
-    public AbstractSearchingDao(PersistentStore ps){
-        super(ps);
-        
-    }
 
     private static final String SELECT = "SELECT * FROM ? WHERE name=?";
 
+    public AbstractSearchingDao(PersistentStore ps) {
+        super(ps);
+
+    }
+
     /**
-     * 
+     *
      * @param name - string to use for searching in DB
      * @return list of entities
      */
     @Override
-    public List<Entity> searchByName(String name) throws SQLException{
+    public List<Entity> searchByName(String name) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

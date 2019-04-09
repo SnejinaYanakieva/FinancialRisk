@@ -25,15 +25,13 @@ import org.hsqldb.jdbc.JDBCDataSource;
 
 /**
  *
- * @author Ayhan
- * Interface that provides methods for creating a database and 
+ * @author Ayhan Interface that provides methods for creating a database and
  * Implements methods for working with database and transactions
  */
-
 public class JdbcPersistentStore implements PersistentStore {
 
     private Connection connection;
-    private JDBCDataSource dataSource;
+    private final JDBCDataSource dataSource;
     private String dbURL;
     private String userName;
     private String password;
@@ -44,7 +42,7 @@ public class JdbcPersistentStore implements PersistentStore {
     private YieldCurveDao yieldCurveDao;
     private FxQuoteDao fxQuoteDao;
 
-    private static final String DROPDB = "DROP DATABASE ?";
+    private static final String DROP_DB = "DROP DATABASE ?";
 
     /**
      * Creates the DB
@@ -54,16 +52,12 @@ public class JdbcPersistentStore implements PersistentStore {
      * @param password - DB login information
      */
     public JdbcPersistentStore(String dbURL, String userName, String password) {
-        try {
-            dataSource = new JDBCDataSource();
-            dataSource.setURL(dbURL);
-            dataSource.setUser(userName);
-            dataSource.setPassword(password);
-            connection = dataSource.getConnection();
-            connection.setAutoCommit(false);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+
+        dataSource = new JDBCDataSource();
+        dataSource.setURL(dbURL);
+        dataSource.setUser(userName);
+        dataSource.setPassword(password);
+
     }
 
     /**
@@ -91,11 +85,10 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public void dropDB() {
-        try {
-            PreparedStatement pStatement = connection.prepareStatement(DROPDB);
+        try (PreparedStatement pStatement = connection.prepareStatement(DROP_DB)) {
             pStatement.setString(1, connection.getCatalog());
             Statement statement = connection.createStatement();
-            statement.executeUpdate(DROPDB);
+            statement.executeUpdate(DROP_DB);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -106,7 +99,12 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public void startTransaction() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            connection = dataSource.getConnection();
+            connection.setAutoCommit(false);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**

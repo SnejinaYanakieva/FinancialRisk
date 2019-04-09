@@ -18,10 +18,9 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Ayhan
- * This interface provides methods for working with database and transactions
+ * @author Ayhan This interface provides methods for working with database and
+ * transactions
  */
-
 public interface PersistentStore {
 
     /**
@@ -32,7 +31,7 @@ public interface PersistentStore {
     /**
      * Deletes database
      */
-    void dropDB(); 
+    void dropDB();
 
     /**
      * Begins transaction
@@ -40,62 +39,69 @@ public interface PersistentStore {
     void startTransaction();
 
     /**
-     * Reverts back to the previous state of the database
-     * changes made in DB aren't saved
+     * Reverts back to the previous state of the database changes made in DB
+     * aren't saved
      */
     void rollbackTransaction();
 
     /**
      * Saves transaction
+     *
      * @throws java.sql.SQLException
      */
     void commitTransaction() throws SQLException;
 
     /**
      * Uses lazy initialization
-     * @return 
+     *
+     * @return
      */
-    SearchingDao<Portfolio> getPortfolioDao(); 
+    SearchingDao<Portfolio> getPortfolioDao();
 
     /**
      * Uses lazy initialization
-     * @return 
+     *
+     * @return
      */
-    SearchingDao<Position> getPositionDao(); 
-    
+    SearchingDao<Position> getPositionDao();
+
     /**
      * Uses lazy initialization
-     * @return 
+     *
+     * @return
      */
     SearchingDao<Transaction> getTransactionDao();
-    
+
     /**
      * Uses lazy initialization
-     * @return 
+     *
+     * @return
      */
     SearchingDao<Instrument> getInstrumentDao();
-    
+
     /**
      * Uses lazy initialization
-     * @return 
+     *
+     * @return
      */
     CrudDao<YieldCurve> getYieldCurveDao();
-    
+
     /**
      * Uses lazy initialization
-     * @return 
+     *
+     * @return
      */
     CrudDao<FxQuote> getFxQuote();
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     Connection getConnection();
-    
+
     /**
      * Closes connection with DB if it's open
      */
     void close();
-    
+
 }

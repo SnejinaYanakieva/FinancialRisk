@@ -22,13 +22,14 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     private static final String INSERT = "INSERT INTO ? VALUES()";
     private static final String UPDATE = "";
     private static final String DELETE = "DELETE FROM ? WHERE id=?";
-    private static final String LOADBYID = "SELECT * FROM ? WHERE id=?";
-    private static final String LOADALL = "SELECT * FROM ?";
+    private static final String LOAD_BY_ID = "SELECT * FROM ? WHERE id=?";
+    private static final String LOAD_ALL = "SELECT * FROM ?";
 
-    public AbstractCrudDao(PersistentStore persistentStore){
-        this.persistentStore=persistentStore;
+    public AbstractCrudDao(PersistentStore persistentStore) {
+
+        this.persistentStore = persistentStore;
     }
-    
+
     /**
      * Saves/inserts entity in DB
      *
@@ -36,8 +37,11 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      */
     @Override
     public void save(Entity e) throws SQLException {
-        PreparedStatement pStatement = persistentStore.getConnection().prepareStatement(INSERT);
-        
+
+        try (PreparedStatement pStatement = persistentStore.getConnection().prepareStatement(INSERT)) {
+
+        }
+
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -48,6 +52,11 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      */
     @Override
     public void update(Entity e) throws SQLException {
+
+        try (PreparedStatement pStatement = persistentStore.getConnection().prepareStatement(UPDATE)) {
+
+        }
+
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -58,10 +67,12 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      */
     @Override
     public void delete(String id) throws SQLException {
-        PreparedStatement pStatement = persistentStore.getConnection().prepareStatement(DELETE);
-        pStatement.setString(2, id);
-        pStatement.executeUpdate();
-        pStatement.close();
+
+        try (PreparedStatement pStatement = persistentStore.getConnection().prepareStatement(DELETE)) {
+            pStatement.setString(2, id);
+            pStatement.executeUpdate();
+            pStatement.close();
+        }
     }
 
     /**
@@ -72,6 +83,11 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      */
     @Override
     public Entity loadById(String id) throws SQLException {
+
+        try (PreparedStatement pStatement = persistentStore.getConnection().prepareStatement(LOAD_BY_ID)) {
+
+        }
+
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -82,6 +98,10 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
      */
     @Override
     public List<Entity> loadAll() throws SQLException {
+
+        try (PreparedStatement pStatement = persistentStore.getConnection().prepareStatement(LOAD_ALL)) {
+
+        }
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

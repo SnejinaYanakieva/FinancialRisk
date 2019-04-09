@@ -1,32 +1,20 @@
 package ers.students.adminDBApp;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Ayhan
- */
 import ers.students.persistentStore.JdbcPersistentStore;
 import ers.students.persistentStore.PersistentStore;
 import java.sql.SQLException;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
+ * This class lets the administrator create a database by writing the URL of the
+ * DB, username and password
  *
  * @author Ayhan
  */
-public class adminDBApp {
+public class AdminDBApp {
 
     static PersistentStore persistentStore;
 
-    public static void initJDBCPersistentStore(String dbURL, String userName, String password) {
+    private static void initJDBCPersistentStore(String dbURL, String userName, String password) {
         persistentStore = new JdbcPersistentStore(dbURL, userName, password);
     }
 
