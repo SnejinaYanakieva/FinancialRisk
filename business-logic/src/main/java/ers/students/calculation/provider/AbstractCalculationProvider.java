@@ -7,8 +7,14 @@ package ers.students.calculation.provider;
 
 import ers.students.calculation.resolver.CalculationResolver;
 import ers.students.calculator.Calculator;
+import ers.students.crud.provider.AbstractCrudProvider;
+import ers.students.crud.provider.searching.PortfolioCrudProvider;
+import ers.students.crud.results.LoadResult;
 import ers.students.market.Market;
+import ers.students.persistentStore.JdbcPersistentStore;
+import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.component.CalculationResult;
+import ers.students.portfolio.component.PortfolioComponent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +33,15 @@ public abstract class AbstractCalculationProvider {
             calculators.add(new CalculationResolver().getCalculator(calcResult.getName()));
         });
         
+        PortfolioCrudProvider portfolioCrudProvider = new PortfolioCrudProvider(new JdbcPersistentStore("", "", ""));
+        LoadResult<Portfolio> portfolio = portfolioCrudProvider.loadById(calcRequest.getPortfolioId());
+        
+        if(!portfolio.getErrors().isEmpty()){
+            return new PfcCalculationResult(PortfolioComponentType.Portfolio);
+        }
+        
         calculators.forEach((calculator)->{
-            //calculator.calculate(portfolioComponent, market, evalDate);
+         //  calculator.calculate(portfolio, new Market(), calcRequest.getEvalDate());
         });
 
         return new PfcCalculationResult(PortfolioComponentType.Portfolio);

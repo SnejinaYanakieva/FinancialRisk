@@ -9,14 +9,11 @@ import ers.students.crud.provider.searching.SearchingCrudProvider;
 import ers.students.crud.results.ErrorCode;
 import ers.students.crud.results.LoadResult;
 import ers.students.crud.results.LoadResults;
-import ers.students.crud.utils.SuccessfulPortfolioDao;
 import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Portfolio;
-import ers.students.portfolio.Position;
 import ers.students.validate.Validatable;
 import java.util.List;
 import java.util.Map;
-import static junit.framework.Assert.assertTrue;
 import junit.framework.TestCase;
 
 /**
@@ -47,69 +44,39 @@ public abstract class AbstractProviderTest<E extends Validatable> extends TestCa
         entityID = null;
     }
 
+    protected abstract void save(Map<ErrorCode, List<String>> errors);
+
+    protected abstract void update(Map<ErrorCode, List<String>> errors);
+
+    protected abstract void update(LoadResult<Portfolio> result);
+
+    protected abstract void delete(Map<ErrorCode, List<String>> errors);
+
+    protected abstract void loadAll(LoadResults<E> results);
+
+    protected abstract void searchByName(LoadResults<Portfolio> results);
+
     public void testSave() {
-        Map<ErrorCode, List<String>> errors = crudProvider.create(entity);
-        if (CheckIfEntityIsPortfolio()) {
-            assertTrue("Cannot save.", errors.isEmpty());
-        } else if (CheckIfEntityIsPosition()) {
-            assertFalse("Entity saved.", errors.isEmpty());
-        }
+        save(crudProvider.create(entity));
     }
 
     public void testUpdate() {
-        Map<ErrorCode, List<String>> errors = crudProvider.update(entity);
-        if (CheckIfEntityIsPortfolio()) {
-            assertEquals("Loaded erroneous portfolio. ", SuccessfulPortfolioDao.portfolio, entity);
-            assertTrue("Cannot update.", errors.isEmpty());
-        } else if (CheckIfEntityIsPosition()) {
-            assertFalse("Entity updated.", errors.isEmpty());
-        }
+        update(crudProvider.update(entity));
     }
 
     public void testLoadById() {
-        LoadResult<Portfolio> result = crudProvider.loadById(entityID);
-        if (CheckIfEntityIsPortfolio()) {
-            assertEquals("Loaded erroneous portfolio. ", SuccessfulPortfolioDao.portfolio, entity);
-            assertTrue("Cannot load entity.", result.getErrors().isEmpty());
-        } else if (CheckIfEntityIsPosition()) {
-            assertFalse("Entity loaded.", result.getErrors().isEmpty());
-        }
+        update(crudProvider.loadById(entityID));
     }
 
     public void testDelete() {
-        Map<ErrorCode, List<String>> errors = crudProvider.delete(entityID);
-        if (CheckIfEntityIsPortfolio()) {
-            assertEquals("Loaded erroneous portfolio. ", SuccessfulPortfolioDao.portfolio, entity);
-            assertTrue("Cannot delete.", errors.isEmpty());
-        } else if (CheckIfEntityIsPosition()) {
-            assertFalse("Entity deleted.", errors.isEmpty());
-        }
+        delete(crudProvider.delete(entityID));
     }
 
     public void testLoadAll() {
-        LoadResults<E> results = crudProvider.loadAll();
-        if (CheckIfEntityIsPortfolio()) {
-            assertTrue("Cannot find entities.", results.getErrors().isEmpty());
-        } else if (CheckIfEntityIsPosition()) {
-            assertFalse("Entities found.", results.getErrors().isEmpty());
-        }
+        loadAll(crudProvider.loadAll());
     }
 
     public void testSearchByName() {
-        LoadResults<Portfolio> results = crudProvider.searchByName(entityName);
-        if (CheckIfEntityIsPortfolio()) {
-            assertTrue("Cannot find entities.", results.getErrors().isEmpty());
-        } else if (CheckIfEntityIsPosition()) {
-            assertFalse("Entities found.", results.getErrors().isEmpty());
-        }
+        searchByName(crudProvider.searchByName(entityName));
     }
-
-    private boolean CheckIfEntityIsPortfolio() {
-        return entity.getClass().equals(Portfolio.class);
-    }
-
-    private boolean CheckIfEntityIsPosition() {
-        return entity.getClass().equals(Position.class);
-    }
-    
 }

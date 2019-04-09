@@ -6,9 +6,12 @@
 package ers.students.crud.test;
 
 import ers.students.crud.provider.searching.PositionCrudProvider;
+import ers.students.crud.results.LoadResult;
+import ers.students.crud.results.LoadResults;
 import ers.students.crud.utils.ErroneousPersistenceStore;
 import ers.students.instruments.Instrument;
 import ers.students.portfolio.Position;
+import java.util.Map;
 
 /**
  *
@@ -31,6 +34,36 @@ public class PositionProviderTest extends AbstractProviderTest {
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();
+    }
+
+    @Override
+    protected void save(Map errors) {
+        assertFalse("Entity saved.", errors.isEmpty());
+    }
+
+    @Override
+    protected void update(Map errors) {
+        assertFalse("Entity updated.", errors.isEmpty());
+    }
+
+    @Override
+    protected void update(LoadResult result) {
+        assertFalse("Entity loaded.", result.getErrors().isEmpty());
+    }
+
+    @Override
+    protected void delete(Map errors) {
+        assertFalse("Entity deleted.", errors.isEmpty());
+    }
+
+    @Override
+    protected void loadAll(LoadResults results) {
+        assertFalse("Entities found.", results.getErrors().isEmpty());
+    }
+
+    @Override
+    protected void searchByName(LoadResults results) {
+        assertFalse("Entities found.", results.getErrors().isEmpty());
     }
 
 }
