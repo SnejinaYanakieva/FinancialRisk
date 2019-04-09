@@ -41,7 +41,7 @@ public class ResponseFactory {
 
     
     /**
-     * Returns a HTTP response based on the given results.
+     * Returns a HTTP response for create(), update() and delete() methods.
      *
      * @param errors contains an ErrorCode constant and a phrase mapped into it 
      * @param statusOk indicates whether a the status returns OK or not
@@ -60,7 +60,7 @@ public class ResponseFactory {
     }
     
     /**
-     * Returns a HTTP response based on the given result.
+     * Returns a HTTP response for loadById() and searchByName() methods.
      *
      * @param result contains a map of error codes and an entity
      * @return a response containing HTTP status code and an entity
@@ -75,7 +75,7 @@ public class ResponseFactory {
     }
 
     /**
-     * Returns a HTTP response based on the given results.
+     * Returns a HTTP response for loadAll() method.
      *
      * @param results contains a map of error codes and a list of entities
      * @return a response containing HTTP status code and a list of entities
