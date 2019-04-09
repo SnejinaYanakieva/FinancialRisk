@@ -108,8 +108,8 @@ public class PositionTest {
     public void testEqualFalse() throws ParseException {
 
         SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
-        String issueDate = "2018-09-00";
-        String maturityDate = "2018-09-00";
+        String issueDate = "2018-03-20";
+        String maturityDate = "2018-09-10";
 
         Instrument Test1 = new Instrument("Tester", "What is in ?", Currency.BGN, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
         Instrument Test2 = new Instrument("Tester", "What is in ?", Currency.BGN, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
