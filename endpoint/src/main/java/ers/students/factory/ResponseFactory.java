@@ -25,6 +25,9 @@ public class ResponseFactory {
      */
     private static final ResponseFactory instance = new ResponseFactory();
     
+    /**
+     * Private constructor to prevent others from instantiating this class.
+     */
     private ResponseFactory(){}
 
     /**
