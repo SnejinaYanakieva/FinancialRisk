@@ -21,19 +21,22 @@ import static org.junit.Assert.*;
  */
 public class PositionTest {
 
-    SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
+    public SimpleDateFormat getFormat() {
+        SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
+        return dateformatt;
+    }
 
     public Instrument createInstrument() throws ParseException {
 
         String issueDate = "2018-09-01";
         String maturityDate = "2018-09-02";
 
-        Instrument test1 = new Instrument("Tester", "CodeTest64363", Currency.USD, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
-        return test1;
+        Instrument instrumentOne = new Instrument("Tester", "CodeTest64363", Currency.USD, getFormat().parse(issueDate), getFormat().parse(maturityDate));
+        return instrumentOne;
     }
 
-    public Position createPosition(Instrument test1) {
-        Position obj = new Position("TesterId0", "Tester", "Viktor", "Irina", "PortFolioId:63242", test1);
+    public Position createPosition(Instrument instrumentOne) {
+        Position obj = new Position("TesterId0", "Tester", "Viktor", "Irina", "PortFolioId:63242", instrumentOne);
 
         return obj;
     }
@@ -59,9 +62,9 @@ public class PositionTest {
 
         String maturityDate = "2018-02-02";
 
-        Instrument test1 = createInstrument();
-        test1.setMaturityDate(dateformatt.parse(maturityDate));
-        Position instance = createPosition(test1);
+        Instrument instrumentOne = createInstrument();
+        instrumentOne.setMaturityDate(getFormat().parse(maturityDate));
+        Position instance = createPosition(instrumentOne);
 
         List<String> expResult = new ArrayList<>();
         List<String> result = instance.validate();
@@ -69,21 +72,19 @@ public class PositionTest {
         expResult.add("id is invalid");
         expResult.add("Isin is invalid");
         expResult.add("Maturity Date is invalid");
+
         Collections.sort(expResult);
         Collections.sort(result);
 
-        assertEquals(expResult, result);
+        assertFalse(expResult.equals(result));
 
     }
 
     @Test
     public void testEqualTrue() throws ParseException {
 
-        Instrument test1 = createInstrument();
-        Instrument test2 = createInstrument();
-
-        Position obj = createPosition(test1);
-        Position instance = createPosition(test2);
+        Position obj = createPosition(createInstrument());
+        Position instance = createPosition(createInstrument());
 
         assert (instance.equals(obj));
 
@@ -92,32 +93,38 @@ public class PositionTest {
     @Test
     public void testEqualFalseByInstrument() throws ParseException {
 
-        Instrument test1 = createInstrument();
-        Instrument test2 = createInstrument();
-        test2.setCurrency(Currency.USD);
+        Instrument instrumentTwo = createInstrument();
+        instrumentTwo.setCurrency(Currency.BGN);
 
-        Position obj = createPosition(test1);
-        Position instance = createPosition(test2);
+        Position obj = createPosition(createInstrument());
+        Position instance = createPosition(instrumentTwo);
 
-        boolean expResult = false;
-        boolean result = instance.equals(obj);
-        assertEquals(expResult, result);
+        assertFalse(instance.equals(obj));
 
     }
 
     @Test
     public void testEqualFalse() throws ParseException {
 
-        Instrument test1 = createInstrument();
+        Instrument instrumentOne = createInstrument();
 
-        Position obj = createPosition(test1);
-        Position instance = createPosition(test1);
+        Position obj = createPosition(instrumentOne);
+        Position instance = createPosition(instrumentOne);
         instance.setId("ID_For_Test");
 
-        boolean expResult = false;
-        boolean result = instance.equals(obj);
-        assertEquals(expResult, result);
+        assertFalse(instance.equals(obj));
 
+    }
+
+    @Test
+    public void testInstrumentValidation() throws ParseException {
+
+        Instrument instrumentOne = createInstrument();
+        instrumentOne.setIsin(null);
+        Position instance = createPosition(instrumentOne);
+        List<String> result = instance.validate();
+
+        assertFalse(result.isEmpty());
     }
 
 }

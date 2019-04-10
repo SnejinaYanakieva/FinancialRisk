@@ -137,6 +137,12 @@ public class Position implements Validatable {
             validationList.add("instrument is null");
         }
 
+        if (!(instrument.validate().isEmpty())) {
+
+            validationList.add("instrument is not valid");
+
+        }
+
         return validationList;
     }
 }
