@@ -74,7 +74,11 @@ public class JdbcPersistentStore implements PersistentStore {
         try {
             Statement statement = connection.createStatement();
             String tableCreateQuery = new String(Files.readAllBytes(Paths.get("CreateTableQueries.txt")));
+            String tableAlterQuery = new String(Files.readAllBytes(Paths.get("AlterTableQueries.txt")));
+
             statement.executeUpdate(tableCreateQuery);
+            statement.executeUpdate(tableAlterQuery);
+
         } catch (SQLException | IOException ex) {
             System.out.println(ex.getMessage());
         }
