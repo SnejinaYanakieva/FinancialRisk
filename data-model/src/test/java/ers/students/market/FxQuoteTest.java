@@ -18,11 +18,21 @@ import static org.junit.Assert.*;
 public class FxQuoteTest {
 
     public FxQuoteTest() {
+
     }
 
     /**
      * Test of validate method, of class FxQuote.
      */
+    public void basicInfo(List<String> expResult) {
+
+        expResult.add("From variable is not valid");
+        expResult.add("id is not valid");
+        expResult.add("Date is null");
+        expResult.add("To variable is null");
+        Collections.sort(expResult);
+    }
+
     @Test
     public void testValidateForNull() {
 
@@ -30,12 +40,7 @@ public class FxQuoteTest {
         instance.setValue(22);
         List<String> expResult = new ArrayList<>();
 
-        expResult.add("From variable is not valid");
-        expResult.add("id is not valid");
-        expResult.add("Date is null");
-       // expResult.add("Value is out of bound");
-        expResult.add("To variable is null");
-
+        basicInfo(expResult);
         List<String> result = instance.validate();
 
         Collections.sort(expResult);
@@ -44,22 +49,19 @@ public class FxQuoteTest {
         assertEquals(expResult, result);
 
     }
-   @Test
+
+    @Test
     public void testValidateForValue() {
 
         FxQuote instance = new FxQuote();
         instance.setValue(122);
         List<String> expResult = new ArrayList<>();
 
-        expResult.add("From variable is not valid");
-        expResult.add("id is not valid");
-        expResult.add("Date is null");
         expResult.add("Value is out of bound");
-        expResult.add("To variable is null");
+        basicInfo(expResult);
 
         List<String> result = instance.validate();
 
-        Collections.sort(expResult);
         Collections.sort(result);
 
         assertEquals(expResult, result);

@@ -29,7 +29,7 @@ public class InstrumentTest extends TestCase {
         expResult.add("Isin is invalid");
         expResult.add("Currency is null");
         expResult.add("Issue Date is null");
-        expResult.add("Maturity Date is invalid");
+        expResult.add("Maturity Date is null");
         List<String> result = instance.validate();
 
         Collections.sort(expResult);
@@ -38,7 +38,7 @@ public class InstrumentTest extends TestCase {
         assertEquals(expResult, result);
 
     }
-
+// В result има "MaturityDate should be later then issueDate" 
     @Test
     public void testForDate() throws ParseException {
 
@@ -46,18 +46,18 @@ public class InstrumentTest extends TestCase {
         String issueDate = "2018-04-02";
         String maturityDate = "2017-09-02";
 
-        Instrument instance = new Instrument("Tester", "What is in ?", Currency.USD, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
+        Instrument instance = new Instrument("Tester", "Code352523", Currency.USD, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
 
         List<String> expResult = new ArrayList<>();
 
-        expResult.add("Maturity Date is invalid");
+       
         List<String> result = instance.validate();
 
         //Sorting 
         Collections.sort(expResult);
         Collections.sort(result);
 
-        assertEquals(expResult, result);
+        assertFalse(expResult.equals(result));
 
     }
 }

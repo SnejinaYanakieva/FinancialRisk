@@ -88,16 +88,12 @@ public class Position implements Validatable {
     @Override
     public boolean equals(Object obj) {
         Position object = (Position) obj;
-        if (this.id.equals(object.id)
+        return this.id.equals(object.id)
                 && this.name.equals(object.name)
                 && this.shortSide.equals(object.shortSide)
                 && this.longSide.equals(object.longSide)
                 && this.portfolioId.equals(object.portfolioId)
-                && this.instrument.equals(object.instrument)) {
-            return true;
-        } else {
-            return false;
-        }
+                && this.instrument.equals(object.instrument);
     }
 
     @Override

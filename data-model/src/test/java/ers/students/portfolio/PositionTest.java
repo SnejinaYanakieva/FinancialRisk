@@ -21,18 +21,27 @@ import static org.junit.Assert.*;
  */
 public class PositionTest {
 
-    public PositionTest() {
-    }
+    SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
 
-    @Test
-    public void testValidateTrue() throws ParseException {
+    public Instrument createInstrument() throws ParseException {
 
-        SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
         String issueDate = "2018-09-01";
         String maturityDate = "2018-09-02";
 
-        Instrument Test1 = new Instrument("Tester", "What is in ?", Currency.USD, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
-        Position instance = new Position("TesterId0", "Tester", "Viktor", "Ivan", "PortFolioId:66312", Test1);
+        Instrument test1 = new Instrument("Tester", "CodeTest64363", Currency.USD, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
+        return test1;
+    }
+
+    public Position createPosition(Instrument test1) {
+        Position obj = new Position("TesterId0", "Tester", "Viktor", "Irina", "PortFolioId:63242", test1);
+
+        return obj;
+    }
+
+   /* @Test
+    public void testValidateTrue() {
+
+       // Position instance = new Position("TesterId0", "Tester", "Viktor", "Ivan", "PortFolioId:66312", createInstrument());
 
         List<String> expResult = new ArrayList<>();
 
@@ -43,17 +52,16 @@ public class PositionTest {
 
         assertEquals(expResult, result);
 
-    }
+    }*/
 
     @Test
     public void testValidateFalse() throws ParseException {
 
-        SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
-        String issueDate = "2019-09-01";
         String maturityDate = "2018-02-02";
 
-        Instrument Test1 = new Instrument("Tester", "", Currency.USD, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
-        Position instance = new Position("", "Tester", "Viktor", "Ivan", "PortFolioId:66312", Test1);
+        Instrument test1 = createInstrument();
+        test1.setMaturityDate(dateformatt.parse(maturityDate));
+        Position instance = createPosition(test1);
 
         List<String> expResult = new ArrayList<>();
         List<String> result = instance.validate();
@@ -71,33 +79,26 @@ public class PositionTest {
     @Test
     public void testEqualTrue() throws ParseException {
 
-        SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
-        String issueDate = "2018-09-00";
-        String maturityDate = "2018-09-00";
+        Instrument test1 = createInstrument();
+        Instrument test2 = createInstrument();
 
-        Instrument Test1 = new Instrument("Tester", "What is in ?", Currency.USD, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
-        Instrument Test2 = new Instrument("Tester", "What is in ?", Currency.USD, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
+        Position obj = createPosition(test1);
+        Position instance = createPosition(test2);
 
-        Position obj = new Position("TesterId0", "Tester", "Viktor", "Irina", "PortFolioId:63242", Test1);
-        Position instance = new Position("TesterId0", "Tester", "Viktor", "Irina", "PortFolioId:63242", Test2);
-        boolean expResult = true;
-        boolean result = instance.equals(obj);
-        assertEquals(expResult, result);
+        assert (instance.equals(obj));
 
     }
 
     @Test
     public void testEqualFalseByInstrument() throws ParseException {
 
-        SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
-        String issueDate = "2018-09-00";
-        String maturityDate = "2018-09-00";
+        Instrument test1 = createInstrument();
+        Instrument test2 = createInstrument();
+        test2.setCurrency(Currency.USD);
 
-        Instrument Test1 = new Instrument("Tester", "What is in ?", Currency.BGN, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
-        Instrument Test2 = new Instrument("Tester", "What is in ?", Currency.USD, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
+        Position obj = createPosition(test1);
+        Position instance = createPosition(test2);
 
-        Position obj = new Position("TesterId0", "Tester", "Viktor", "Irina", "PortFolioId:63242", Test1);
-        Position instance = new Position("TesterId0", "Tester", "Viktor", "Irina", "PortFolioId:63242", Test2);
         boolean expResult = false;
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
@@ -107,15 +108,14 @@ public class PositionTest {
     @Test
     public void testEqualFalse() throws ParseException {
 
-        SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
-        String issueDate = "2018-03-20";
-        String maturityDate = "2018-09-10";
+        Instrument test1 = createInstrument();
+        Instrument test2 = createInstrument();
+        test2.setCurrency(Currency.USD);
 
-        Instrument Test1 = new Instrument("Tester", "What is in ?", Currency.BGN, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
-        Instrument Test2 = new Instrument("Tester", "What is in ?", Currency.BGN, dateformatt.parse(issueDate), dateformatt.parse(maturityDate));
+        Position obj = createPosition(test1);
+        Position instance = createPosition(test2);
+        instance.setId("ID_For_Test");
 
-        Position obj = new Position("TesterId0", "Tester", "Viktor", "Martin", "PortFolioId:63242", Test1);
-        Position instance = new Position("TesterId0", "Tester", "Viktor", "Irina", "PortFolioId:63242", Test2);
         boolean expResult = false;
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);

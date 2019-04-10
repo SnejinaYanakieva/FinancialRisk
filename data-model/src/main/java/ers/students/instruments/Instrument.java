@@ -78,15 +78,11 @@ public class Instrument implements Validatable {
 
     public boolean equals(Instrument obj) {
 
-        if (this.id.equals(obj.id)
+        return this.id.equals(obj.id)
                 && this.isin.equals(obj.isin)
                 && this.currency.equals(obj.currency)
                 && this.issueDate.equals(obj.issueDate)
-                && this.maturityDate.equals(obj.maturityDate)) {
-            return true;
-        } else {
-            return false;
-        }
+                && this.maturityDate.equals(obj.maturityDate);
     }
 
     @Override
@@ -117,11 +113,26 @@ public class Instrument implements Validatable {
         }
 
         //maturityDate 
-        if (maturityDate == null || maturityDate.compareTo(issueDate) <0) {
+        if (maturityDate == null) {
 
-            validationList.add("Maturity Date is invalid");
+            validationList.add("Maturity Date is null");
+        }
+        
+          if (maturityDate != null && issueDate != null) {
+            if ( maturityDate.compareTo(issueDate) <0) {
+                validationList.add("MaturityDate should be later then issueDate");
+
+            } else if(maturityDate.compareTo(issueDate) == 0)
+            {
+                      validationList.add("MaturityDate and IssueDate should not be the same");
+            
+            
+            }
+            
         }
 
         return validationList;
     }
+
+
 }

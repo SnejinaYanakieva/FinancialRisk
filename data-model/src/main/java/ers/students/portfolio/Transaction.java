@@ -122,7 +122,7 @@ public class Transaction implements Validatable {
 
             validationList.add("date is null");
         }
-        if (amount < 0) {
+        if (amount <= 0) {
 
             validationList.add("amount is invalid");
         }

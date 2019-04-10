@@ -18,32 +18,19 @@ import static org.junit.Assert.*;
  */
 public class PortfolioTest {
 
-    public PortfolioTest() {
-    }
-
     @Test
     public void testValidateTrue() {
 
         Portfolio instance = new Portfolio("3143EVR", "Testing", Currency.BGN);
-
-        List<String> expResult = new ArrayList<>();
-
         List<String> result = instance.validate();
-        assertEquals(expResult, result);
-
-        Collections.sort(expResult);
-        Collections.sort(result);
-
-        assertEquals(expResult, result);
+        assert (result.isEmpty());
     }
 
     @Test
     public void testValidateFalse() {
 
         Portfolio instance = new Portfolio("", "", null);
-
         List<String> expResult = new ArrayList<>();
-
         List<String> result = instance.validate();
 
         expResult.add("id is invalid");
@@ -61,22 +48,13 @@ public class PortfolioTest {
 
         Portfolio obj = new Portfolio("3143EVR", "Testing", Currency.BGN);
         Portfolio instance = new Portfolio("3143EVR", "Testing", Currency.BGN);
-        boolean expResult = true;
-        boolean result = instance.equals(obj);
-
-        assertEquals(expResult, result);
-
+        assert (instance.equals(obj));
     }
 
     @Test
     public void testEqualFalse() {
-
         Portfolio obj = new Portfolio("3143EVR", "Testing", Currency.BGN);
         Portfolio instance = new Portfolio("256EVR", "Testing21", Currency.USD);
-        boolean expResult = false;
-        boolean result = instance.equals(obj);
-
-        assertEquals(expResult, result);
-
+        assertFalse(instance.equals(obj));
     }
 }
