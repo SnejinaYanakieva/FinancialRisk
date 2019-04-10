@@ -38,10 +38,10 @@ public class PositionTest {
         return obj;
     }
 
-   /* @Test
-    public void testValidateTrue() {
+    @Test
+    public void testValidateTrue() throws ParseException {
 
-       // Position instance = new Position("TesterId0", "Tester", "Viktor", "Ivan", "PortFolioId:66312", createInstrument());
+        Position instance = createPosition(createInstrument());
 
         List<String> expResult = new ArrayList<>();
 
@@ -52,7 +52,7 @@ public class PositionTest {
 
         assertEquals(expResult, result);
 
-    }*/
+    }
 
     @Test
     public void testValidateFalse() throws ParseException {
@@ -109,11 +109,9 @@ public class PositionTest {
     public void testEqualFalse() throws ParseException {
 
         Instrument test1 = createInstrument();
-        Instrument test2 = createInstrument();
-        test2.setCurrency(Currency.USD);
 
         Position obj = createPosition(test1);
-        Position instance = createPosition(test2);
+        Position instance = createPosition(test1);
         instance.setId("ID_For_Test");
 
         boolean expResult = false;
