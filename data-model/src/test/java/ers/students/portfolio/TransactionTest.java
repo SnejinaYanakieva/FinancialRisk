@@ -27,7 +27,7 @@ public class TransactionTest {
         expResult.add("payer is invalid");
         expResult.add("receiver is invalid");
         expResult.add("date is null");
-
+        expResult.add("amount is invalid");
         List<String> result = instance.validate();
 
         Collections.sort(expResult);
