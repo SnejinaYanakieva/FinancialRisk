@@ -5,6 +5,7 @@
  */
 package ers.students.calculator;
 
+import ers.students.calculator.pfc.PortfolioCalculator;
 import java.util.Date;
 
 import ers.students.market.Market;
@@ -27,6 +28,6 @@ public class PositionVolumeCalculator implements Calculator {
      */
     @Override
     public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate) {
-        throw new UnsupportedOperationException("Unsupported operation.");
+       new PortfolioCalculator().calculatePositionVolume(portfolioComponent, market, evalDate);
     }
 }

@@ -19,7 +19,7 @@ import java.util.Map;
 public class LoadResult<E> {
 
     private E entity;
-    private Map<ErrorCode, List<String>> errors = new HashMap<>();
+    private final Map<ErrorCode, List<String>> errors = new HashMap<>();
 
     public E getEntity() {
         return entity;

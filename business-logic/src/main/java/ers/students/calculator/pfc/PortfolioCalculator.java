@@ -5,10 +5,16 @@
  */
 package ers.students.calculator.pfc;
 
+import ers.students.crud.provider.AbstractCrudProvider;
+import ers.students.crud.provider.searching.PositionCrudProvider;
+import ers.students.crud.results.LoadResults;
 import java.util.Date;
 
 import ers.students.market.Market;
-import ers.students.portfolio.component.AbstractPfc;
+import ers.students.persistentStore.JdbcPersistentStore;
+import ers.students.portfolio.Position;
+import ers.students.portfolio.component.DoubleResult;
+import ers.students.portfolio.component.PortfolioComponent;
 
 /**
  * The PortfolioCalculator class provides methods for calculating cash flow,
@@ -26,7 +32,7 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
      * @param evalDate date of calculation
      */
     @Override
-    public void calculatePresentValue(AbstractPfc pfc, Market market, Date evalDate) {
+    public void calculatePresentValue(PortfolioComponent pfc, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Unsupported operation.");
     }
 
@@ -38,7 +44,7 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
      * @param evalDate date of calculation
      */
     @Override
-    public void calculateProfitLoss(AbstractPfc pfc, Market market, Date evalDate) {
+    public void calculateProfitLoss(PortfolioComponent pfc, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Unsupported operation.");
     }
 
@@ -50,8 +56,20 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
      * @param evalDate date of calculation
      */
     @Override
-    public void calculatePositionVolume(AbstractPfc pfc, Market market, Date evalDate) {
-        throw new UnsupportedOperationException("Unsupported operation.");
+    public void calculatePositionVolume(PortfolioComponent pfc, Market market, Date evalDate) {
+        AbstractCrudProvider crudProvider = new PositionCrudProvider(new JdbcPersistentStore("", "", ""));
+        LoadResults<Position> positionResults = crudProvider.loadAll();
+
+        if (!positionResults.getErrors().isEmpty()) {
+            return;
+        }
+
+        // get volume
+        positionResults.getEntities().forEach((position) -> {
+            if (position.getPortfolioId().equals(pfc.getId())) {
+                pfc.getCalculationResults().put(DoubleResult.POSITION_VOLUME, "");
+            }
+        });
     }
 
     /**
@@ -62,7 +80,7 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
      * @param evalDate date of calculation
      */
     @Override
-    public void calculateCashFlow(AbstractPfc pfc, Market market, Date evalDate) {
+    public void calculateCashFlow(PortfolioComponent pfc, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Unsupported operation.");
     }
 }

@@ -24,11 +24,11 @@ public class CalculationResolver {
     private final static Map<String, Calculator> calculators = new HashMap<String, Calculator>();
 
     static {
+        calculators.put(DoubleResult.POSITION_VOLUME.getName(), new PositionVolumeCalculator());
         calculators.put(CashFlowResult.AMORTITATION_PAYMENT.getName(), new CashFlowCalculator());
         calculators.put(CashFlowResult.INTEREST_PAYMENTS.getName(), new CashFlowCalculator());
         calculators.put(DoubleResult.PV.getName(), new PresentValueCalculator());
         calculators.put(DoubleResult.PROFIT_LOSS.getName(), new ProfitLossCalculator());
-        calculators.put(DoubleResult.POSITION_VOLUME.getName(), new PositionVolumeCalculator());
     }
 
     public Calculator getCalculator(String calculationResultName) {

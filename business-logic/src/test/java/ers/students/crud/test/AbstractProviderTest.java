@@ -42,6 +42,7 @@ public abstract class AbstractProviderTest<E extends Validatable> extends TestCa
         crudProvider = null;
         entity = null;
         entityID = null;
+        entityName = null;
     }
 
     protected abstract void save(Map<ErrorCode, List<String>> errors);

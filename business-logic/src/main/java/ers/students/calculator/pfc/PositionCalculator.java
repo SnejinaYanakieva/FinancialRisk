@@ -8,7 +8,7 @@ package ers.students.calculator.pfc;
 import java.util.Date;
 
 import ers.students.market.Market;
-import ers.students.portfolio.component.AbstractPfc;
+import ers.students.portfolio.component.PortfolioComponent;
 
 /**
  * The PositionCalculator class provides methods for calculating cash flow,
@@ -30,7 +30,7 @@ public class PositionCalculator implements PortfolioComponentCalculator {
      * @param evalDate date of calculation
      */
     @Override
-    public void calculatePresentValue(AbstractPfc pfc, Market market, Date evalDate) {
+    public void calculatePresentValue(PortfolioComponent pfc, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Unsupported operation.");
     }
 
@@ -43,7 +43,7 @@ public class PositionCalculator implements PortfolioComponentCalculator {
      * @param evalDate date of calculation
      */
     @Override
-    public void calculateProfitLoss(AbstractPfc pfc, Market market, Date evalDate) {
+    public void calculateProfitLoss(PortfolioComponent pfc, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Unsupported operation.");
     }
 
@@ -55,7 +55,7 @@ public class PositionCalculator implements PortfolioComponentCalculator {
      * @param evalDate date of calculation
      */
     @Override
-    public void calculatePositionVolume(AbstractPfc pfc, Market market, Date evalDate) {
+    public void calculatePositionVolume(PortfolioComponent pfc, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Unsupported operation.");
     }
 
@@ -73,7 +73,7 @@ public class PositionCalculator implements PortfolioComponentCalculator {
      * @param evalDate date of calculation
      */
     @Override
-    public void calculateCashFlow(AbstractPfc pfc, Market market, Date evalDate) {
+    public void calculateCashFlow(PortfolioComponent pfc, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Unsupported operation.");
     }
 

@@ -8,7 +8,7 @@ package ers.students.calculator.pfc;
 import java.util.Date;
 
 import ers.students.market.Market;
-import ers.students.portfolio.component.AbstractPfc;
+import ers.students.portfolio.component.PortfolioComponent;
 
 /**
  * This interface imposes calculation methods for each class that implements it.
@@ -17,11 +17,11 @@ import ers.students.portfolio.component.AbstractPfc;
  */
 public interface PortfolioComponentCalculator {
 
-    void calculatePresentValue(AbstractPfc pfc, Market market, Date evalDate);
+    void calculatePresentValue(PortfolioComponent pfc, Market market, Date evalDate);
 
-    void calculateProfitLoss(AbstractPfc pfc, Market market, Date evalDate);
+    void calculateProfitLoss(PortfolioComponent pfc, Market market, Date evalDate);
 
-    void calculatePositionVolume(AbstractPfc pfc, Market market, Date evalDate);
+    void calculatePositionVolume(PortfolioComponent pfc, Market market, Date evalDate);
 
-    void calculateCashFlow(AbstractPfc pfc, Market market, Date evalDate);
+    void calculateCashFlow(PortfolioComponent pfc, Market market, Date evalDate);
 }

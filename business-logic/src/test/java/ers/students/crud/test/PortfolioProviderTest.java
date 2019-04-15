@@ -66,7 +66,6 @@ public class PortfolioProviderTest extends AbstractProviderTest {
     @Override
     protected void loadAll(LoadResults results) {
         assertTrue("Cannot find entities.", results.getErrors().isEmpty());
-
     }
 
     @Override

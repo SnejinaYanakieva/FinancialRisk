@@ -91,7 +91,7 @@ public abstract class AbstractCrudProvider<E extends Validatable> {
             }
             persistentStore.commitTransaction();
             result.setEntity(entity);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             result.addAllErrors(getExceptionsAndRollbackTransaction(e));
         }
 

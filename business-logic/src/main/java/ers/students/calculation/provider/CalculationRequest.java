@@ -17,7 +17,7 @@ import java.util.List;
 public class CalculationRequest {
 
     private String portfolioId;
-    private List<CalculationResult> calcResults = new ArrayList<>();
+    private final List<CalculationResult> calcResults = new ArrayList<>();
     private Calendar evalDate;
 
     public String getPortfolioId() {

@@ -19,13 +19,12 @@ public class PfcCalculationResult {
 
     private String pfcId;
     private String pfcName;
-    private Map<CalculationResult, Object> results = new HashMap<>();
-    private List<PfcCalculationResult> children = new ArrayList<>();
-    private List<String> errors = new ArrayList<>();
-    private final PortfolioComponentType portfolioComponentType;
+    private final Map<CalculationResult, Object> results = new HashMap<>();
+    private final List<PfcCalculationResult> children = new ArrayList<>();
+    private final List<String> errors = new ArrayList<>();
+    private final PortfolioComponentType portfolioComponentType = null;
 
-    public PfcCalculationResult(PortfolioComponentType portfolioComponentType) {
-        this.portfolioComponentType = portfolioComponentType;
+    public PfcCalculationResult() {
     }
 
     public String getPfcId() {
