@@ -29,23 +29,22 @@ public class ProviderRegistry {
     /**
      * Creates an object of type PersistentStore.
      */
-    private static PersistentStore persistentStore;
+    private PersistentStore persistentStore;
     
     /**
      * Creates objects of type AbstractCrudProvider.
      */
-    private static InstrumentCrudProvider instrument;
-    private static PositionCrudProvider position;
-    private static PortfolioCrudProvider portfolio;
-    private static FxCrudProvider fxQuote;
-    private static YieldCurveCrudProvider yieldCurve;
-    private static TransactionCrudProvider transaction;
+    private InstrumentCrudProvider instrument;
+    private PositionCrudProvider position;
+    private PortfolioCrudProvider portfolio;
+    private FxCrudProvider fxQuote;
+    private YieldCurveCrudProvider yieldCurve;
+    private TransactionCrudProvider transaction;
     
     /**
      * Private constructor to prevent others from instantiating this class.
      */
-    private ProviderRegistry(PersistentStore store) {
-        persistentStore = store;
+    private ProviderRegistry() {
         }
     
     /**
@@ -54,12 +53,17 @@ public class ProviderRegistry {
      * @param store
      * @return returns the only object available
      */
-    public static ProviderRegistry getInstance(PersistentStore store){
+    public static ProviderRegistry getInstance(){
         if(instance == null) {
-            instance = new ProviderRegistry(store);
+            instance = new ProviderRegistry();
         }
         return instance;
     }
+
+    public void setPersistentStore(PersistentStore store){
+        persistentStore = store;
+    }
+
     
     /**
      * @return an object of type InstrumentCrudProvider
