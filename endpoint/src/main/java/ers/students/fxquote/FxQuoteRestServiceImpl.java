@@ -5,7 +5,9 @@
  */
 package ers.students.fxquote;
 
+import ers.students.factory.ResponseFactory;
 import ers.students.market.FxQuote;
+import ers.students.registry.ProviderRegistry;
 import javax.ws.rs.core.Response;
 
 /**
@@ -14,24 +16,27 @@ import javax.ws.rs.core.Response;
  */
 public class FxQuoteRestServiceImpl implements FxQuoteRestService {
 
+    private ProviderRegistry registry = ProviderRegistry.getInstance();
+       
+
     @Override
     public Response create(FxQuote fxQuote) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getFxQuoteProvider().create(fxQuote),false);
     }
 
     @Override
     public Response update(FxQuote fxQuote) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getFxQuoteProvider().update(fxQuote),true);
     }
 
     @Override
     public Response loadById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getFxQuoteProvider().loadById(id));
     }
 
     @Override
     public Response deleteById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getFxQuoteProvider().delete(id),true);
     }
 
     @Override
