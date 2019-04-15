@@ -88,7 +88,7 @@ public class ProviderRegistry {
     /**
      * @return an object of type PortfolioCrudProvider
      */
-    public PortfolioCrudProvider getProtfolioProvider(){    
+    public PortfolioCrudProvider getPortfolioProvider(){    
         if(portfolio == null){
             portfolio = new PortfolioCrudProvider(persistentStore);
         }

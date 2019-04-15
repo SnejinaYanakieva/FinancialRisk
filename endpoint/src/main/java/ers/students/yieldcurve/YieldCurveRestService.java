@@ -79,16 +79,4 @@ public interface YieldCurveRestService {
     @GET
     @Path("/loadAll")
     Response loadAll();
-    
-    /**
-    * Retrieves information about a resource,
-    * specified by name, from the server.
-    *
-    * @param name
-    * @return 
-    */    
-    @GET
-    @Path("/searchByName/{name}")
-    Response searchByName(@PathParam("name") String name);
-
 }

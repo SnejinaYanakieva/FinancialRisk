@@ -5,7 +5,9 @@
  */
 package ers.students.instrument;
 
+import ers.students.factory.ResponseFactory;
 import ers.students.instruments.Instrument;
+import ers.students.registry.ProviderRegistry;
 import javax.ws.rs.core.Response;
 
 /**
@@ -14,24 +16,26 @@ import javax.ws.rs.core.Response;
  */
 public class InstrumentRestServiceImpl implements InstrumentRestService {
 
+    private ProviderRegistry registry = ProviderRegistry.getInstance();
+    
     @Override
     public Response create(Instrument instrument) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getInstrumentProvider().create(instrument),false);
     }
 
     @Override
     public Response update(Instrument instrument) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getInstrumentProvider().update(instrument),true);
     }
 
     @Override
     public Response loadById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getInstrumentProvider().loadById(id));
     }
 
     @Override
     public Response deleteById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getInstrumentProvider().delete(id),true);
     }
 
     @Override
@@ -41,7 +45,7 @@ public class InstrumentRestServiceImpl implements InstrumentRestService {
 
     @Override
     public Response searchByIsin(String isin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getInstrumentProvider().searchByName(isin));
     }
     
 }

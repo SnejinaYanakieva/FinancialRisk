@@ -5,6 +5,8 @@
  */
 package ers.students.portfolio;
 
+import ers.students.factory.ResponseFactory;
+import ers.students.registry.ProviderRegistry;
 import javax.ws.rs.core.Response;
 
 /**
@@ -13,24 +15,26 @@ import javax.ws.rs.core.Response;
  */
 public class PortfolioRestServiceImpl implements PortfolioRestService {
 
+    private ProviderRegistry registry = ProviderRegistry.getInstance();
+    
     @Override
     public Response create(Portfolio portfolio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getPortfolioProvider().create(portfolio),false);
     }
 
     @Override
     public Response update(Portfolio portfolio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getPortfolioProvider().update(portfolio),true);
     }
 
     @Override
     public Response loadById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getPortfolioProvider().loadById(id));
     }
 
     @Override
     public Response deleteById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getPortfolioProvider().delete(id),true);
     }
 
     @Override
@@ -40,7 +44,7 @@ public class PortfolioRestServiceImpl implements PortfolioRestService {
 
     @Override
     public Response searchByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getPortfolioProvider().searchByName(name));
     }
     
 }
