@@ -21,7 +21,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import org.hsqldb.jdbc.JDBCDataSource;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.hsqldb.jdbc.*;
 
 /**
  *
@@ -32,7 +34,6 @@ public class JdbcPersistentStore implements PersistentStore {
 
     private Connection connection;
     private final JDBCDataSource dataSource;
-    private String dbURL;
     private String userName;
     private String password;
     private PortfolioDao portfolioDao;
@@ -57,7 +58,6 @@ public class JdbcPersistentStore implements PersistentStore {
         dataSource.setURL(dbURL);
         dataSource.setUser(userName);
         dataSource.setPassword(password);
-
     }
 
     /**
@@ -72,7 +72,9 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public void createDB() {
         try {
-            Statement statement = connection.createStatement();
+            //Statement statement = this.connection.createStatement();
+            Statement statement = this.dataSource.getConnection().createStatement();
+            
             String tableCreateQuery = new String(Files.readAllBytes(Paths.get("CreateTableQueries.txt")));
             String tableAlterQuery = new String(Files.readAllBytes(Paths.get("AlterTableQueries.txt")));
 
@@ -89,9 +91,9 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public void dropDB() {
-        try (PreparedStatement pStatement = connection.prepareStatement(DROP_DB)) {
-            pStatement.setString(1, connection.getCatalog());
-            Statement statement = connection.createStatement();
+        try (PreparedStatement pStatement = this.dataSource.getConnection().prepareStatement(DROP_DB)) {
+            pStatement.setString(1, this.dataSource.getConnection().getCatalog());
+            Statement statement = this.dataSource.getConnection().createStatement();
             statement.executeUpdate(DROP_DB);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -104,12 +106,13 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public void startTransaction() {
         try {
-            connection = dataSource.getConnection();
-            connection.setAutoCommit(false);
+            this.connection = dataSource.getConnection();
+            this.getConnection().setAutoCommit(false);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
+    
 
     /**
      *
@@ -117,8 +120,8 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public void close() {
         try {
-            if (!connection.isClosed()) {
-                connection.close();
+            if (!dataSource.getConnection().isClosed()) {
+                dataSource.getConnection().close();
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -132,7 +135,7 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public void rollbackTransaction() {
         try {
-            connection.rollback();
+            this.dataSource.getConnection().rollback();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -143,12 +146,7 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public void commitTransaction() throws SQLException {
-        /*try {
-            connection.commit();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }*/
-        connection.commit();
+        this.dataSource.getConnection().commit();
     }
 
     /**

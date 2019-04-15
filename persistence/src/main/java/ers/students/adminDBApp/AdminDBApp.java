@@ -24,10 +24,12 @@ public class AdminDBApp {
     }
 
     public static void main(String[] args) {
-        String url = "jdbc:hsql:file:dbtest";
+        String url = "jdbc:hsql:file:/DBTest/dbtest";
         String user = "SA";
         String pass = "admin";
+        
         initJDBCPersistentStore(url, user, pass);
+        
         try {
             persistentStore.startTransaction();
             persistentStore.createDB();
