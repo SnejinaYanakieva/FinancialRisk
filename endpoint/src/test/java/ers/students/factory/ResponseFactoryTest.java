@@ -6,8 +6,9 @@
 package ers.students.factory;
 
 import ers.students.crud.results.ErrorCode;
-import ers.students.crud.results.LoadResult;
-import ers.students.crud.results.LoadResults;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.core.Response;
@@ -19,6 +20,9 @@ import junit.framework.TestCase;
  */
 public class ResponseFactoryTest extends TestCase {
     
+    private Map<ErrorCode, List<String>> errors;
+    private List<String> list;
+    
     public ResponseFactoryTest(String testName) {
         super(testName);
     }
@@ -26,6 +30,8 @@ public class ResponseFactoryTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+        errors = new HashMap<>();
+        list = new ArrayList<>();
     }
     
     @Override
@@ -34,55 +40,25 @@ public class ResponseFactoryTest extends TestCase {
     }
 
     /**
-     * Test of getInstance method, of class ResponseFactory.
-     */
-    public void testGetInstance() {
-        System.out.println("getInstance");
-        ResponseFactory expResult = null;
-        ResponseFactory result = ResponseFactory.getInstance();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of make method, of class ResponseFactory.
      */
-    public void testMake_Map_boolean() {
-        System.out.println("make");
-        Map<ErrorCode, List<String>> errors = null;
+    public void testMakeMapBoolean() {
+        
+        list.clear();
+        errors.clear();
+        
+        list.add("No such element");
+        errors.put(ErrorCode.NO_SUCH_ELEMENT, Arrays.asList("No such element"));
+        
         boolean statusOk = false;
-        Response expResult = null;
+        
+        Response expResult = Response.status(Response.Status.NOT_FOUND).entity(list).build();
+        
         Response result = ResponseFactory.make(errors, statusOk);
+        
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of make method, of class ResponseFactory.
-     */
-    public void testMake_LoadResult() {
-        System.out.println("make");
-        LoadResult result_2 = null;
-        Response expResult = null;
-        Response result = ResponseFactory.make(result_2);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of make method, of class ResponseFactory.
-     */
-    public void testMake_LoadResults() {
-        System.out.println("make");
-        LoadResults results = null;
-        Response expResult = null;
-        Response result = ResponseFactory.make(results);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
