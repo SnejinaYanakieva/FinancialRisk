@@ -22,7 +22,7 @@ import junit.framework.TestCase;
 public class ResponseFactoryTest extends TestCase {
     
     private Map<ErrorCode, List<String>> errors;
-    private List<String> list;
+    private boolean statusOk = true;
     
     public ResponseFactoryTest(String testName) {
         super(testName);
@@ -32,32 +32,65 @@ public class ResponseFactoryTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         errors = new HashMap<>();
-        list = new ArrayList<>();
     }
     
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();
+        errors.clear();
     }
 
-    /**
-     * Test of make method, of class ResponseFactory.
-     */
-    public void testMakeMapBoolean() {
+    public void testCreated() {
+        errors.clear();
+        statusOk = false;
+        Response result = ResponseFactory.make(errors, statusOk);
+        assertEquals(201, result.getStatus());
+    }
+    
+    public void testUpdatedOrDeleted() {
+        errors.clear();
+        Response result = ResponseFactory.make(errors, statusOk);
+        assertEquals(200, result.getStatus());
+    }
+    
+    public void testNotFound() {
+        errors.clear();
+        errors.put(ErrorCode.NO_SUCH_ELEMENT, Arrays.asList("No such element"));
+        Response result = ResponseFactory.make(errors, statusOk);
         
-        list.clear();
+        assertEquals(404, result.getStatus());
+    }
+
+    public void testInternalError() {
+        errors.clear();
+        errors.put(ErrorCode.INTERNAL_ERROR, Arrays.asList("Internal server error!"));
+        Response result = ResponseFactory.make(errors, statusOk);
+        
+        assertEquals(500, result.getStatus());
+    }
+    
+    public void testBadRequest() {
+        errors.clear();
+        errors.put(ErrorCode.VALIDATION, Arrays.asList("Bad request!"));
+        Response result = ResponseFactory.make(errors, statusOk);
+        
+        assertEquals(400, result.getStatus());
+    }
+/*
+    public void testEntity() {
+        List<String> list = new ArrayList<>();
         errors.clear();
         
         list.add("No such element");
         errors.put(ErrorCode.NO_SUCH_ELEMENT, Arrays.asList("No such element"));
         
-        boolean statusOk = false;
-
+        statusOk = false;
+        
         Response expResult = Response.status(Response.Status.NOT_FOUND).entity(list).build();
-
+        
         Response result = ResponseFactory.make(errors, statusOk);
-
-        assertEquals(Response.Status.NOT_FOUND.getStatusCode(), result.getStatus());
+        
+        assertEquals(expResult.readEntity(String.class),result.readEntity(String.class));
     }
-
+*/
 }
