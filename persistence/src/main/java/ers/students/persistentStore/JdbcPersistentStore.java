@@ -14,7 +14,12 @@ import ers.students.market.YieldCurve;
 import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
 import ers.students.portfolio.Transaction;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
@@ -72,17 +77,22 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public void createDB() {
         try {
-            //Statement statement = this.connection.createStatement();
-            Statement statement = this.dataSource.getConnection().createStatement();
-            
-            String tableCreateQuery = new String(Files.readAllBytes(Paths.get("CreateTableQueries.txt")));
-            String tableAlterQuery = new String(Files.readAllBytes(Paths.get("AlterTableQueries.txt")));
+            Statement statement = this.connection.createStatement();
+            //Statement statement = this.dataSource.getConnection().createStatement();
+            URL uri = this.getClass().getResource("../persistentStore/CreateTableQueries.txt");
+            File f = new File(uri.toURI());
+            String tableCreateQuery = new String(Files.readAllBytes(f.toPath()));
+            uri = this.getClass().getResource("../persistentStore/AlterTableQueries.txt");
+            f = new File(uri.toURI());
+            String tableAlterQuery = new String(Files.readAllBytes(f.toPath()));
 
             statement.executeUpdate(tableCreateQuery);
-            statement.executeUpdate(tableAlterQuery);
+          //  statement.executeUpdate(tableAlterQuery);
 
         } catch (SQLException | IOException ex) {
             System.out.println(ex.getMessage());
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(JdbcPersistentStore.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -120,8 +130,8 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public void close() {
         try {
-            if (!dataSource.getConnection().isClosed()) {
-                dataSource.getConnection().close();
+            if (this.connection.isClosed()) {
+                this.connection.close();
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -135,7 +145,7 @@ public class JdbcPersistentStore implements PersistentStore {
     @Override
     public void rollbackTransaction() {
         try {
-            this.dataSource.getConnection().rollback();
+            this.connection.rollback();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -146,7 +156,7 @@ public class JdbcPersistentStore implements PersistentStore {
      */
     @Override
     public void commitTransaction() throws SQLException {
-        this.dataSource.getConnection().commit();
+        this.connection.commit();
     }
 
     /**
