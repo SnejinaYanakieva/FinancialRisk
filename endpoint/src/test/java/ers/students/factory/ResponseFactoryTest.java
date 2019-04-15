@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -51,14 +52,12 @@ public class ResponseFactoryTest extends TestCase {
         errors.put(ErrorCode.NO_SUCH_ELEMENT, Arrays.asList("No such element"));
         
         boolean statusOk = false;
-        
-        Response expResult = Response.status(Response.Status.NOT_FOUND).entity(list).build();
-        
-        Response result = ResponseFactory.make(errors, statusOk);
-        
-        assertEquals(expResult, result);
-        
-    }
 
+        Response expResult = Response.status(Response.Status.NOT_FOUND).entity(list).build();
+
+        Response result = ResponseFactory.make(errors, statusOk);
+
+        assertEquals(Response.Status.NOT_FOUND.getStatusCode(), result.getStatus());
+    }
 
 }
