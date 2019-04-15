@@ -50,7 +50,6 @@ public class ProviderRegistry {
     /**
      * Provide a global point of access to the instance.
      * 
-     * @param store
      * @return returns the only object available
      */
     public static ProviderRegistry getInstance(){
