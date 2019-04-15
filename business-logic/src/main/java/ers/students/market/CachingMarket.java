@@ -5,19 +5,22 @@
  */
 package ers.students.market;
 
+import ers.students.persistentStore.PersistentStore;
+
 /**
  *
  * @author Viktor
  */
 public class CachingMarket implements Market {
+//temp
 
+    PersistentStore persistentStore;
     String dbURL;
-    String userName;
-    String password;
+//
+    private DataMarketLoader dataMarketLoader = new DataMarketLoader(persistentStore, dbURL);
 
-    private DataMarketLoader dataMarketLoader = new DataMarketLoader(dbURL, userName, password);
-    private YieldCurve cacheYieldCurve = new YieldCurve(); //cacheYieldCurve = dataMarketLoader.getYieldCurve();
-    private FxQuote cacheFxQuote = new FxQuote(); //dataMarketLoader.getFxQuote();
+    private YieldCurve cacheYieldCurve = new YieldCurve();
+    private FxQuote cacheFxQuote = new FxQuote();
 
     @Override
     public YieldCurve getYieldCurve() {

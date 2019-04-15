@@ -9,32 +9,26 @@ import ers.students.crud.provider.FxCrudProvider;
 import ers.students.crud.provider.YieldCurveCrudProvider;
 import ers.students.crud.results.LoadResult;
 import ers.students.persistentStore.JdbcPersistentStore;
+import ers.students.persistentStore.PersistentStore;
 
 /**
  *
  * @author Viktor
  */
 public class DataMarketLoader implements Market {
-    
-    
-        private String dbURL ;
-        private String userName; 
-        private String password;
 
-    public DataMarketLoader(String dbURL, String userName, String password) {
+    PersistentStore persistentStore;
+    String dbURL;
+
+    public DataMarketLoader(PersistentStore persistentStore, String dbURL) {
+        this.persistentStore = persistentStore;
         this.dbURL = dbURL;
-        this.userName = userName;
-        this.password = password;
     }
-        
-             
-        
 
     @Override
     public YieldCurve getYieldCurve() {
-       
-        JdbcPersistentStore store = new JdbcPersistentStore(dbURL, userName, password);
-        YieldCurveCrudProvider yeldCurveProvider = new YieldCurveCrudProvider(store);
+
+        YieldCurveCrudProvider yeldCurveProvider = new YieldCurveCrudProvider(persistentStore);
         LoadResult<YieldCurve> curve = yeldCurveProvider.loadById(dbURL);
 
         return curve.getEntity();
@@ -42,13 +36,10 @@ public class DataMarketLoader implements Market {
 
     @Override
     public FxQuote getFxQuote() {
-      
-        JdbcPersistentStore store = new JdbcPersistentStore(dbURL, userName, password);
-        FxCrudProvider fxCurveProvider = new FxCrudProvider(store);
-      LoadResult<FxQuote> fxQuote = fxCurveProvider.loadById(dbURL);
-       
-        
-        
+
+        FxCrudProvider fxCurveProvider = new FxCrudProvider(persistentStore);
+        LoadResult<FxQuote> fxQuote = fxCurveProvider.loadById(dbURL);
+
         return fxQuote.getEntity();
     }
 
