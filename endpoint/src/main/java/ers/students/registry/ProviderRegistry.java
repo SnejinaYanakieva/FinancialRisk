@@ -44,7 +44,9 @@ public class ProviderRegistry {
     /**
      * Private constructor to prevent others from instantiating this class.
      */
-    private ProviderRegistry() {}
+    private ProviderRegistry(PersistentStore store) {
+        persistentStore = store;
+        }
     
     /**
      * Provide a global point of access to the instance.
@@ -54,8 +56,7 @@ public class ProviderRegistry {
      */
     public static ProviderRegistry getInstance(PersistentStore store){
         if(instance == null) {
-            instance = new ProviderRegistry();
-            persistentStore = store;
+            instance = new ProviderRegistry(store);
         }
         return instance;
     }
