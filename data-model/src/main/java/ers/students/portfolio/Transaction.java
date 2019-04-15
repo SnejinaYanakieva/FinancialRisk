@@ -96,7 +96,7 @@ public class Transaction implements Validatable {
         }
 
         //positionId
-        if (positionId == null | "".equals(positionId)) {
+        if (positionId == null || "".equals(positionId)) {
 
             validationList.add("positionId is invalid");
         }
