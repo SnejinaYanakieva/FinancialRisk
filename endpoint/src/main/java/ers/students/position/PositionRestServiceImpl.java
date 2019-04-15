@@ -5,7 +5,10 @@
  */
 package ers.students.position;
 
+import ers.students.factory.ResponseFactory;
+import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Position;
+import ers.students.registry.ProviderRegistry;
 import javax.ws.rs.core.Response;
 
 /**
@@ -14,24 +17,32 @@ import javax.ws.rs.core.Response;
  */
 public class PositionRestServiceImpl implements PositionRestService {
     
+    private ProviderRegistry registry;
+    
+    public PositionRestServiceImpl(PersistentStore store){
+        if(registry==null){
+            registry = ProviderRegistry.getInstance(store);
+        }
+    }
+    
     @Override
     public Response create(Position position) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getPositionProvider().create(position), false);
     }
 
     @Override
     public Response update(Position position) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getPositionProvider().update(position), true);
     }
 
     @Override
     public Response loadById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getPositionProvider().loadById(id));
     }
 
     @Override
     public Response deleteById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getPositionProvider().delete(id),true);
     }
 
     @Override
@@ -41,7 +52,7 @@ public class PositionRestServiceImpl implements PositionRestService {
 
     @Override
     public Response searchByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getPositionProvider().searchByName(name));
     }
     
 }

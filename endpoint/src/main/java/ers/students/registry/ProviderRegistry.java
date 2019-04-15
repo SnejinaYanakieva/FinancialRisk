@@ -64,7 +64,7 @@ public class ProviderRegistry {
     /**
      * @return an object of type InstrumentCrudProvider
      */
-    public static InstrumentCrudProvider getInstrumentProvider(){
+    public InstrumentCrudProvider getInstrumentProvider(){
         if(instrument == null){
             instrument = new InstrumentCrudProvider(persistentStore);
         }
@@ -74,7 +74,7 @@ public class ProviderRegistry {
     /**
      * @return an object of type PositionCrudProvider
      */
-    public static PositionCrudProvider getPositionProvider(){    
+    public PositionCrudProvider getPositionProvider(){    
         if(position == null){
             position = new PositionCrudProvider(persistentStore);
         }
@@ -84,7 +84,7 @@ public class ProviderRegistry {
     /**
      * @return an object of type PortfolioCrudProvider
      */
-    public static PortfolioCrudProvider getProtfolioProvider(){    
+    public PortfolioCrudProvider getProtfolioProvider(){    
         if(portfolio == null){
             portfolio = new PortfolioCrudProvider(persistentStore);
         }
@@ -94,7 +94,7 @@ public class ProviderRegistry {
     /**
      * @return an object of type FxCrudProvider
      */
-    public static FxCrudProvider getFxQuoteProvider(){    
+    public FxCrudProvider getFxQuoteProvider(){    
         if(fxQuote == null){
             fxQuote = new FxCrudProvider(persistentStore);
         }
@@ -104,7 +104,7 @@ public class ProviderRegistry {
     /**
      * @return an object of type YieldCurveCrudProvider
      */
-    public static YieldCurveCrudProvider getYieldCurveProvider(){    
+    public YieldCurveCrudProvider getYieldCurveProvider(){    
         if(yieldCurve == null){
             yieldCurve = new YieldCurveCrudProvider(persistentStore);
         }
@@ -114,7 +114,7 @@ public class ProviderRegistry {
     /**
      * @return an object of type TransactionCrudProvider
      */
-    public static TransactionCrudProvider getTransactionProvider(){    
+    public TransactionCrudProvider getTransactionProvider(){    
         if(transaction == null){
             transaction = new TransactionCrudProvider(persistentStore);
         }
