@@ -44,6 +44,9 @@ public class ResponseFactoryTest extends TestCase {
         list.clear();
     }
 
+    /**
+     * Test for successful method create().
+     */
     public void testCreated() {
         errors.clear();
         statusOk = false;
@@ -51,12 +54,19 @@ public class ResponseFactoryTest extends TestCase {
         assertEquals(201, result.getStatus());
     }
     
+    /**
+     * Test for successful methods update() and deleteById().
+     */
     public void testOk() {
         errors.clear();
         Response result = ResponseFactory.make(errors, statusOk);
         assertEquals(200, result.getStatus());
     }
     
+    /**
+     * Test for status "404 Not found" 
+     * on methods create(), update() and deleteById().
+     */
     public void testNotFound() {
         errors.clear();
         errors.put(ErrorCode.NO_SUCH_ELEMENT, Arrays.asList("No such element"));
@@ -64,7 +74,11 @@ public class ResponseFactoryTest extends TestCase {
         
         assertEquals(404, result.getStatus());
     }
-
+    
+    /**
+     * Test for status "500 Internal server error" 
+     * on methods create(), update() and deleteById().
+     */
     public void testInternalError() {
         errors.clear();
         errors.put(ErrorCode.INTERNAL_ERROR, Arrays.asList("Internal server error!"));
@@ -73,6 +87,10 @@ public class ResponseFactoryTest extends TestCase {
         assertEquals(500, result.getStatus());
     }
     
+    /**
+     * Test for status "400 Bad request" 
+     * on methods create(), update() and deleteById().
+     */
     public void testBadRequest() {
         errors.clear();
         errors.put(ErrorCode.VALIDATION, Arrays.asList("Bad request!"));
@@ -81,6 +99,10 @@ public class ResponseFactoryTest extends TestCase {
         assertEquals(400, result.getStatus());
     }
 
+    /**
+     * Test for entity of an error response
+     * on methods create(), update() and deleteById().
+     */
     public void testEntity() {
         list.clear();
         errors.clear();
@@ -96,5 +118,9 @@ public class ResponseFactoryTest extends TestCase {
         
         assertEquals(expResult.getEntity(),result.getEntity());
     }
+        
+    public void testLoadResult(){}
+    
+    public void testLoadResults(){}
     
 }
