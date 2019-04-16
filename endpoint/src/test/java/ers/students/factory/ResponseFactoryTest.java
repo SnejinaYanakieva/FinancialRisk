@@ -7,6 +7,10 @@
 package ers.students.factory;
 
 import ers.students.crud.results.ErrorCode;
+import ers.students.crud.results.LoadResult;
+import ers.students.crud.results.LoadResults;
+import ers.students.portfolio.Portfolio;
+import ers.students.util.Currency;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -24,6 +28,10 @@ public class ResponseFactoryTest extends TestCase {
     private Map<ErrorCode, List<String>> errors;
     private boolean statusOk;
     private List<String> list;
+    private Portfolio portfolio;
+    private LoadResult result;
+    private List<Portfolio> entities;
+    private LoadResults results;
     
     public ResponseFactoryTest(String testName) {
         super(testName);
@@ -32,77 +40,85 @@ public class ResponseFactoryTest extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+        
         errors = new HashMap<>();
         list = new ArrayList<>();
         statusOk = true;
+        
+        portfolio = new Portfolio("001","Portfolio1",Currency.BGN);
+        result = new LoadResult();
+        result.addAllErrors(errors);
+        result.setEntity(portfolio);
+        
+        entities = new ArrayList<>();
+        entities.add(new Portfolio("001","Portfolio1",Currency.BGN));
+        entities.add(new Portfolio("002","Portfolio2",Currency.AUD));
+        entities.add(new Portfolio("003","Portfolio3",Currency.CHF));
+        entities.add(new Portfolio("004","Portfolio4",Currency.GBP));
+        entities.add(new Portfolio("005","Portfolio5",Currency.USD));
+        results = new LoadResults();
+        results.addAllErrors(errors);
+        results.addAllEntities(entities);
     }
     
     @Override
     protected void tearDown() throws Exception {
+        
         super.tearDown();
+        
         errors.clear();
         list.clear();
     }
 
-    /**
-     * Test for successful method create().
-     */
     public void testCreated() {
+        
         errors.clear();
         statusOk = false;
-        Response result = ResponseFactory.make(errors, statusOk);
-        assertEquals(201, result.getStatus());
+        
+        Response response = ResponseFactory.make(errors, statusOk);
+        
+        assertEquals(201, response.getStatus());
     }
     
-    /**
-     * Test for successful methods update() and deleteById().
-     */
     public void testOk() {
+        
         errors.clear();
-        Response result = ResponseFactory.make(errors, statusOk);
-        assertEquals(200, result.getStatus());
+        
+        Response response = ResponseFactory.make(errors, statusOk);
+        
+        assertEquals(200, response.getStatus());
     }
     
-    /**
-     * Test for status "404 Not found" 
-     * on methods create(), update() and deleteById().
-     */
     public void testNotFound() {
+        
         errors.clear();
         errors.put(ErrorCode.NO_SUCH_ELEMENT, Arrays.asList("No such element"));
-        Response result = ResponseFactory.make(errors, statusOk);
         
-        assertEquals(404, result.getStatus());
+        Response response = ResponseFactory.make(errors, statusOk);
+        
+        assertEquals(404, response.getStatus());
     }
     
-    /**
-     * Test for status "500 Internal server error" 
-     * on methods create(), update() and deleteById().
-     */
     public void testInternalError() {
+        
         errors.clear();
         errors.put(ErrorCode.INTERNAL_ERROR, Arrays.asList("Internal server error!"));
-        Response result = ResponseFactory.make(errors, statusOk);
         
-        assertEquals(500, result.getStatus());
+        Response response = ResponseFactory.make(errors, statusOk);
+        
+        assertEquals(500, response.getStatus());
     }
     
-    /**
-     * Test for status "400 Bad request" 
-     * on methods create(), update() and deleteById().
-     */
     public void testBadRequest() {
+        
         errors.clear();
         errors.put(ErrorCode.VALIDATION, Arrays.asList("Bad request!"));
-        Response result = ResponseFactory.make(errors, statusOk);
         
-        assertEquals(400, result.getStatus());
+        Response response = ResponseFactory.make(errors, statusOk);
+        
+        assertEquals(400, response.getStatus());
     }
 
-    /**
-     * Test for entity of an error response
-     * on methods create(), update() and deleteById().
-     */
     public void testEntity() {
         list.clear();
         errors.clear();
@@ -112,15 +128,32 @@ public class ResponseFactoryTest extends TestCase {
         
         statusOk = false;
         
-        Response expResult = Response.status(Response.Status.NOT_FOUND).entity(list).build();
+        Response expResponse = Response.status(Response.Status.NOT_FOUND).entity(list).build();
         
-        Response result = ResponseFactory.make(errors, statusOk);
+        Response response = ResponseFactory.make(errors, statusOk);
         
-        assertEquals(expResult.getEntity(),result.getEntity());
+        assertEquals(expResponse.getEntity(),response.getEntity());
     }
+    
+    public void testLoadResult(){
         
-    public void testLoadResult(){}
+        errors.clear();
+        
+        Response expResponse = Response.status(Response.Status.OK).entity(portfolio).build();
+        Response response = ResponseFactory.make(result);
+        
+        assertEquals(expResponse.getEntity(),response.getEntity());
+
+    }
     
-    public void testLoadResults(){}
-    
+    public void testLoadResults() {
+        
+        errors.clear();
+        
+        Response expResponse = Response.status(Response.Status.OK).entity(entities).build();
+        Response response = ResponseFactory.make(results);
+        
+        assertEquals(expResponse.getEntity(),response.getEntity());
+
+    }
 }
