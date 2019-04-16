@@ -78,16 +78,11 @@ public class JdbcPersistentStore implements PersistentStore {
     public void createDB() {
         try {
             Statement statement = this.connection.createStatement();
-            //Statement statement = this.dataSource.getConnection().createStatement();
             URL uri = this.getClass().getResource("../persistentStore/CreateTableQueries.txt");
             File f = new File(uri.toURI());
-            String tableCreateQuery = new String(Files.readAllBytes(f.toPath()));
-            uri = this.getClass().getResource("../persistentStore/AlterTableQueries.txt");
-            f = new File(uri.toURI());
-            String tableAlterQuery = new String(Files.readAllBytes(f.toPath()));
+            String tableCreateQuery = new String(Files.readAllBytes(f.toPath()));            
 
             statement.executeUpdate(tableCreateQuery);
-          //  statement.executeUpdate(tableAlterQuery);
 
         } catch (SQLException | IOException ex) {
             System.out.println(ex.getMessage());
