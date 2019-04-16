@@ -25,8 +25,8 @@ public class CachingMarket implements Market {
     
     private final DataMarketLoader dataMarketLoader = new DataMarketLoader(persistentStore, dbURL);
 
-    private YieldCurve cacheYieldCurve = new YieldCurve();
-    private FxQuote cacheFxQuote = new FxQuote();
+    private YieldCurve cacheYieldCurve;
+    private FxQuote cacheFxQuote;
 
     @Override
     public YieldCurve getYieldCurve() {
