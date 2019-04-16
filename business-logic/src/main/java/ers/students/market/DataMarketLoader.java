@@ -8,7 +8,6 @@ package ers.students.market;
 import ers.students.crud.provider.FxCrudProvider;
 import ers.students.crud.provider.YieldCurveCrudProvider;
 import ers.students.crud.results.LoadResult;
-import ers.students.persistentStore.JdbcPersistentStore;
 import ers.students.persistentStore.PersistentStore;
 
 /**

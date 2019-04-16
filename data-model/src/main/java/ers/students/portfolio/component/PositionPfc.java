@@ -6,6 +6,9 @@
 package ers.students.portfolio.component;
 
 import ers.students.portfolio.Position;
+import ers.students.portfolio.Transaction;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A component of the portfolio
@@ -16,10 +19,12 @@ public class PositionPfc extends AbstractPfc {
 
     private Position position;
     private double volume;
+    private List<Transaction> transactionList = new ArrayList<>();  
 
-    PositionPfc(Position position, double volume) {
+    PositionPfc(Position position, double volume, List<Transaction> transactionList) {
         this.position = position;
         this.volume = volume;
+        this.transactionList=transactionList;
     }
 
     PositionPfc() {
@@ -39,5 +44,13 @@ public class PositionPfc extends AbstractPfc {
 
     public void setVolume(double volume) {
         this.volume = volume;
+    }
+    
+    
+    public  List<Transaction> getTransactionList() {
+        return transactionList;
+    }
+      public  void addInTransactionList(Transaction forAdd) {
+        transactionList.add(forAdd);
     }
 }

@@ -17,7 +17,13 @@ public class CachingMarket implements Market {
     PersistentStore persistentStore;
     String dbURL;
 //
-    private DataMarketLoader dataMarketLoader = new DataMarketLoader(persistentStore, dbURL);
+
+    public CachingMarket(PersistentStore persistentStore, String dbURL) {
+        this.persistentStore = persistentStore;
+        this.dbURL = dbURL;
+    }
+    
+    private final DataMarketLoader dataMarketLoader = new DataMarketLoader(persistentStore, dbURL);
 
     private YieldCurve cacheYieldCurve = new YieldCurve();
     private FxQuote cacheFxQuote = new FxQuote();
