@@ -1,3 +1,0 @@
-ALTER TABLE Position ADD FOREIGN KEY (portfolio_id) REFERENCES Portfolio(id);
-ALTER TABLE Position ADD FOREIGN KEY (instrument_id) REFERENCES Instrument(id);
-ALTER TABLE Transaction ADD FOREIGN KEY (position_id) REFERENCES Position(id);

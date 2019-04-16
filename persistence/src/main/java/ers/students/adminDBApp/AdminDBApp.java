@@ -8,6 +8,8 @@ package ers.students.adminDBApp;
 import ers.students.persistentStore.JdbcPersistentStore;
 import ers.students.persistentStore.PersistentStore;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This class lets the administrator create a database by writing the URL of the
@@ -24,7 +26,7 @@ public class AdminDBApp {
     }
 
     public static void main(String[] args) {
-        String url = "jdbc:hsqldb:file:/DBTest/dbtest";
+        String url = "jdbc:hsqldb:file:/DBTest7/dbtest";
         String user = "SA";
         String pass = "admin";
         initJDBCPersistentStore(url, user, pass);
@@ -34,10 +36,13 @@ public class AdminDBApp {
             persistentStore.startTransaction();
             persistentStore.createDB();
             persistentStore.commitTransaction();
+            Thread.sleep(2000);
         } catch (SQLException ex) {
             persistentStore.rollbackTransaction();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(AdminDBApp.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (persistentStore.getConnection() != null) {
+           if (persistentStore.getConnection() != null) {
                 persistentStore.close();
             }
         }

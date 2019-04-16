@@ -20,14 +20,17 @@ CREATE TABLE Position (
  short_side VARCHAR(200) NOT NULL,
  long_side VARCHAR(200) NOT NULL,
  portfolio_id VARCHAR(36) NOT NULL,
- instrument_id VARCHAR(36) NOT NULL);
+ instrument_id VARCHAR(36) NOT NULL,
+FOREIGN KEY (portfolio_id) REFERENCES Portfolio(id),
+FOREIGN KEY (instrument_id) REFERENCES Instrument(id));
 
 CREATE TABLE Transaction (
  id VARCHAR(36) NOT NULL PRIMARY KEY,
  position_id VARCHAR(36) NOT NULL,
  payer VARCHAR(200) NOT NULL,
  receiver VARCHAR(200) NOT NULL,
- date DATE NOT NULL);
+ date DATE NOT NULL,
+FOREIGN KEY (position_id) REFERENCES Position(id));
 
 CREATE TABLE Yield_Curve(
  id VARCHAR(36) NOT NULL PRIMARY KEY,
