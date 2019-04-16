@@ -6,6 +6,7 @@
 package ers.students.portfolio;
 
 import ers.students.factory.ResponseFactory;
+import ers.students.persistentStore.PersistentStore;
 import ers.students.registry.ProviderRegistry;
 import javax.ws.rs.core.Response;
 
@@ -15,7 +16,14 @@ import javax.ws.rs.core.Response;
  */
 public class PortfolioRestServiceImpl implements PortfolioRestService {
 
-    private ProviderRegistry registry = ProviderRegistry.getInstance();
+    private ProviderRegistry registry;
+    
+    public PortfolioRestServiceImpl(PersistentStore persistentStore){
+        ProviderRegistry.createInstance(persistentStore);
+        
+        if(ProviderRegistry.getInstance() != null)
+            registry = ProviderRegistry.getInstance();
+    }
     
     @Override
     public Response create(Portfolio portfolio) {

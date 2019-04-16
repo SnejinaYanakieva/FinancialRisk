@@ -29,7 +29,7 @@ public class ProviderRegistry {
     /**
      * Creates an object of type PersistentStore.
      */
-    private PersistentStore persistentStore;
+    private static PersistentStore persistentStore;
     
     /**
      * Creates objects of type AbstractCrudProvider.
@@ -44,8 +44,17 @@ public class ProviderRegistry {
     /**
      * Private constructor to prevent others from instantiating this class.
      */
-    private ProviderRegistry() {
+    private ProviderRegistry() {}
+    
+     /**
+     * Creates PersistentStore object.
+     * @param store 
+     */
+    public static void createInstance(PersistentStore store){
+        if(persistentStore == null) {
+            persistentStore = store;
         }
+    }   
     
     /**
      * Provide a global point of access to the instance.
@@ -53,17 +62,16 @@ public class ProviderRegistry {
      * @return returns the only object available
      */
     public static ProviderRegistry getInstance(){
-        if(instance == null) {
+        if(persistentStore != null){
             instance = new ProviderRegistry();
         }
         return instance;
     }
-
+    
     public void setPersistentStore(PersistentStore store){
         persistentStore = store;
     }
 
-    
     /**
      * @return an object of type InstrumentCrudProvider
      */
