@@ -22,7 +22,8 @@ import junit.framework.TestCase;
 public class ResponseFactoryTest extends TestCase {
     
     private Map<ErrorCode, List<String>> errors;
-    private boolean statusOk = true;
+    private boolean statusOk;
+    private List<String> list;
     
     public ResponseFactoryTest(String testName) {
         super(testName);
@@ -32,12 +33,15 @@ public class ResponseFactoryTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         errors = new HashMap<>();
+        list = new ArrayList<>();
+        statusOk = true;
     }
     
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();
         errors.clear();
+        list.clear();
     }
 
     public void testCreated() {
@@ -47,7 +51,7 @@ public class ResponseFactoryTest extends TestCase {
         assertEquals(201, result.getStatus());
     }
     
-    public void testUpdatedOrDeleted() {
+    public void testOk() {
         errors.clear();
         Response result = ResponseFactory.make(errors, statusOk);
         assertEquals(200, result.getStatus());
@@ -76,9 +80,9 @@ public class ResponseFactoryTest extends TestCase {
         
         assertEquals(400, result.getStatus());
     }
-/*
+
     public void testEntity() {
-        List<String> list = new ArrayList<>();
+        list.clear();
         errors.clear();
         
         list.add("No such element");
@@ -90,7 +94,7 @@ public class ResponseFactoryTest extends TestCase {
         
         Response result = ResponseFactory.make(errors, statusOk);
         
-        assertEquals(expResult.readEntity(String.class),result.readEntity(String.class));
+        assertEquals(expResult.getEntity(),result.getEntity());
     }
-*/
+    
 }
