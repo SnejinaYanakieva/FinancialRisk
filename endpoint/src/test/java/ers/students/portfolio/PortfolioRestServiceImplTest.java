@@ -5,7 +5,6 @@
  */
 package ers.students.portfolio;
 
-import javax.ws.rs.core.Response;
 import junit.framework.TestCase;
 
 /**
