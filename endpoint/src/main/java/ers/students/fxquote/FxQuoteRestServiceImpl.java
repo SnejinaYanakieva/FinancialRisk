@@ -41,7 +41,7 @@ public class FxQuoteRestServiceImpl implements FxQuoteRestService {
 
     @Override
     public Response loadAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getFxQuoteProvider().loadAll());
     }
     
 }

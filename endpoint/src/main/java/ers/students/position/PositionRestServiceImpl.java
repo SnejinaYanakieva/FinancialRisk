@@ -6,7 +6,6 @@
 package ers.students.position;
 
 import ers.students.factory.ResponseFactory;
-import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Position;
 import ers.students.registry.ProviderRegistry;
 import javax.ws.rs.core.Response;
@@ -41,7 +40,7 @@ public class PositionRestServiceImpl implements PositionRestService {
 
     @Override
     public Response loadAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ResponseFactory.make(registry.getPositionProvider().loadAll());
     }
 
     @Override
