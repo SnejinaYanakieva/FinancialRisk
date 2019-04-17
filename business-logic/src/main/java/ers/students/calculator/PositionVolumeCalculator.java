@@ -5,7 +5,6 @@
  */
 package ers.students.calculator;
 
-import ers.students.calculator.pfc.PortfolioCalculator;
 import ers.students.calculator.pfc.PortfolioComponentCalculator;
 import ers.students.calculator.pfc.resolver.PortfolioComponentCalculatorResolver;
 import java.util.Date;
@@ -30,7 +29,7 @@ public class PositionVolumeCalculator implements Calculator {
      */
     @Override
     public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate) {
-       PortfolioComponentCalculator calculator = PortfolioComponentCalculatorResolver.getPfcCalculator(portfolioComponent.getClass());
-       calculator.calculatePositionVolume(portfolioComponent, market, evalDate);
+        PortfolioComponentCalculator calculator = PortfolioComponentCalculatorResolver.getPfcCalculator(portfolioComponent.getClass());
+        calculator.calculatePositionVolume(portfolioComponent, market, evalDate);
     }
 }

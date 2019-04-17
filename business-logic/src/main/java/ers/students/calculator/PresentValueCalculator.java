@@ -5,6 +5,8 @@
  */
 package ers.students.calculator;
 
+import ers.students.calculator.pfc.PortfolioComponentCalculator;
+import ers.students.calculator.pfc.resolver.PortfolioComponentCalculatorResolver;
 import java.util.Date;
 
 import ers.students.market.Market;
@@ -19,18 +21,19 @@ import ers.students.portfolio.component.PortfolioComponent;
 public class PresentValueCalculator implements Calculator {
 
     /**
-     * The Present Value is calculated by the formula:
-     * Present Value = FV / ( 1 + r )^n, where 
+     * The Present Value is calculated by the formula: 
+     * Present Value = FV / ( 1+ r )^n, where 
      * FV = future value 
      * r = rate of return 
      * n = number of periods
-     * 
+     *
      * @param portfolioComponent component on which will be executed calculation
      * @param market
      * @param evalDate date of calculation
      */
     @Override
     public void calculate(PortfolioComponent portfolioComponent, Market market, Date evalDate) {
-        throw new UnsupportedOperationException("Unsupported operation.");
+        PortfolioComponentCalculator calculator = PortfolioComponentCalculatorResolver.getPfcCalculator(portfolioComponent.getClass());
+        calculator.calculatePresentValue(portfolioComponent, market, evalDate);
     }
 }

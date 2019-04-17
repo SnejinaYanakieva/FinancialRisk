@@ -6,15 +6,9 @@
 package ers.students.calculator.pfc;
 
 import ers.students.calculator.PositionVolumeCalculator;
-import ers.students.crud.provider.AbstractCrudProvider;
-import ers.students.crud.provider.searching.PositionCrudProvider;
-import ers.students.crud.results.LoadResults;
 import java.util.Date;
 
 import ers.students.market.Market;
-import ers.students.persistentStore.JdbcPersistentStore;
-import ers.students.portfolio.Position;
-import ers.students.portfolio.component.DoubleResult;
 import ers.students.portfolio.component.PortfolioComponent;
 import ers.students.portfolio.component.PortfolioPfc;
 import java.util.List;

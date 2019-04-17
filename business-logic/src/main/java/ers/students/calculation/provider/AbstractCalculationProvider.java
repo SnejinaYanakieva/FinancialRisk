@@ -7,7 +7,6 @@ package ers.students.calculation.provider;
 
 import ers.students.calculation.resolver.CalculationResolver;
 import ers.students.calculator.Calculator;
-import ers.students.calculator.PositionVolumeCalculator;
 import ers.students.crud.provider.AbstractCrudProvider;
 import ers.students.crud.provider.searching.PortfolioCrudProvider;
 import ers.students.crud.results.LoadResult;
@@ -19,7 +18,6 @@ import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
 import ers.students.portfolio.Transaction;
 import ers.students.portfolio.component.CalculationResult;
-import ers.students.portfolio.component.PortfolioComponent;
 import java.util.ArrayList;
 import java.util.List;
 

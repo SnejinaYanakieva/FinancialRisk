@@ -10,7 +10,6 @@ import java.util.*;
 import ers.students.calculator.pfc.PortfolioCalculator;
 import ers.students.calculator.pfc.PortfolioComponentCalculator;
 import ers.students.calculator.pfc.PositionCalculator;
-import ers.students.portfolio.component.AbstractPfc;
 import ers.students.portfolio.component.PortfolioComponent;
 import ers.students.portfolio.component.PortfolioPfc;
 import ers.students.portfolio.component.PositionPfc;
@@ -24,13 +23,14 @@ import ers.students.portfolio.component.PositionPfc;
 public class PortfolioComponentCalculatorResolver {
 
     /**
-     * Contains PortfolioComponentCalculator objects by given corresponding AbstractPfc class.
+     * Contains PortfolioComponentCalculator objects by given corresponding
+     * PortfolioComponent class.
      */
-    private final static Map<Class<? extends AbstractPfc>, PortfolioComponentCalculator> portfolioComponentCalculators = new HashMap<Class<? extends AbstractPfc>, PortfolioComponentCalculator>();
+    private final static Map<Class<? extends PortfolioComponent>, PortfolioComponentCalculator> portfolioComponentCalculators = new HashMap<Class<? extends PortfolioComponent>, PortfolioComponentCalculator>();
 
     /**
      * Map initialization with Portfolio Component Calculators and corresponding
-     * AbstractPfc class.
+     * PortfolioComponent class.
      */
     static {
         portfolioComponentCalculators.put(PortfolioPfc.class, new PortfolioCalculator());
@@ -40,7 +40,7 @@ public class PortfolioComponentCalculatorResolver {
     /**
      *
      * @param pfcClass a key to resolve a portfolio component calculator.
-     * @return by given AbstractPfc class key returns corresponding portfolio
+     * @return by given PortfolioComponent class key returns corresponding portfolio
      * component calculator.
      */
     public static PortfolioComponentCalculator getPfcCalculator(Class<? extends PortfolioComponent> pfcClass) {
