@@ -26,7 +26,7 @@ public class AdminDBApp {
     }
 
     public static void main(String[] args) {
-        String url = "jdbc:hsqldb:file:/DBTest7/dbtest";
+        String url = "jdbc:hsqldb:file:/DBTest/dbtest";
         String user = "SA";
         String pass = "admin";
         initJDBCPersistentStore(url, user, pass);

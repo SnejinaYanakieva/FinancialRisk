@@ -82,9 +82,8 @@ public class JdbcPersistentStore implements PersistentStore {
             File f = new File(uri.toURI());
             String tableCreateQuery = new String(Files.readAllBytes(f.toPath()));            
             statement.executeUpdate(tableCreateQuery);
-        } catch (SQLException | IOException ex) {
-            Logger.getLogger(JdbcPersistentStore.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (URISyntaxException ex) {
+            statement.close();
+        } catch (SQLException | IOException | URISyntaxException ex) {
             Logger.getLogger(JdbcPersistentStore.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -98,6 +97,7 @@ public class JdbcPersistentStore implements PersistentStore {
             pStatement.setString(1, this.dataSource.getConnection().getCatalog());
             Statement statement = this.dataSource.getConnection().createStatement();
             statement.executeUpdate(DROP_DB);
+            statement.close();
         } catch (SQLException ex) {
             Logger.getLogger(JdbcPersistentStore.class.getName()).log(Level.SEVERE, null, ex);
         }
