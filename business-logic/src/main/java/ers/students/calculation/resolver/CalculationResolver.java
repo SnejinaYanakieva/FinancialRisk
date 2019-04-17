@@ -31,7 +31,7 @@ public class CalculationResolver {
         calculators.put(DoubleResult.PROFIT_LOSS.getName(), new ProfitLossCalculator());
     }
 
-    public Calculator getCalculator(String calculationResultName) {
+    public static Calculator getCalculator(String calculationResultName) {
         return calculators.get(calculationResultName);
     }
 }

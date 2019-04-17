@@ -8,7 +8,10 @@ package ers.students.calculator.pfc;
 import java.util.Date;
 
 import ers.students.market.Market;
+import ers.students.portfolio.Transaction;
 import ers.students.portfolio.component.PortfolioComponent;
+import ers.students.portfolio.component.PositionPfc;
+import java.util.List;
 
 /**
  * The PositionCalculator class provides methods for calculating cash flow,
@@ -19,11 +22,8 @@ import ers.students.portfolio.component.PortfolioComponent;
 public class PositionCalculator implements PortfolioComponentCalculator {
 
     /**
-     * The Present Value is calculated by the formula:
-     * Present Value = FV / ( 1 + r )^n, where 
-     * FV = future value 
-     * r = rate of return 
-     * n = number of periods
+     * The Present Value is calculated by the formula: Present Value = FV / ( 1
+     * + r )^n, where FV = future value r = rate of return n = number of periods
      *
      * @param pfc component on which will be executed calculation
      * @param market
@@ -35,9 +35,9 @@ public class PositionCalculator implements PortfolioComponentCalculator {
     }
 
     /**
-     * The Profit & Loss is calculated by the formula:
-     * Profit / Loss = Present Value - Notional amount
-     * 
+     * The Profit & Loss is calculated by the formula: Profit / Loss = Present
+     * Value - Notional amount
+     *
      * @param pfc component on which will be executed calculation
      * @param market
      * @param evalDate date of calculation
@@ -49,25 +49,40 @@ public class PositionCalculator implements PortfolioComponentCalculator {
 
     /**
      * Calculates the amount of transactions.
-     * 
+     *
      * @param pfc component on which will be executed calculation
      * @param market
      * @param evalDate date of calculation
      */
     @Override
     public void calculatePositionVolume(PortfolioComponent pfc, Market market, Date evalDate) {
-        throw new UnsupportedOperationException("Unsupported operation.");
+        PositionPfc positionPfc = (PositionPfc) pfc;
+        List<Transaction> trasactions = positionPfc.getTransactionList();
+
+        double volume = 0.0;
+        for (Transaction transaction : trasactions) {
+            if (!positionPfc.getPosition().getLongSide().equals(transaction.getPayer())
+                    || !positionPfc.getPosition().getShortSide().equals(transaction.getReciver())) {
+                //return error
+                return;
+            }
+
+            if (positionPfc.getPosition().getLongSide().equals(transaction.getPayer())) {
+                volume += transaction.getAmount();
+            } else {
+                volume -= transaction.getAmount();
+            }
+        }
+
+        positionPfc.setVolume(volume);
     }
 
     /**
      * Calculates the interest and principal payments.
-     * 
-     * The Cash Flow is calculated by the formula:
-     * CFi = Ci . RDI   where
-     * CFi value of cash flow 
-     * Ci interest payment for the period
-     * RDi residual debt
-     * 
+     *
+     * The Cash Flow is calculated by the formula: CFi = Ci . RDI where CFi
+     * value of cash flow Ci interest payment for the period RDi residual debt
+     *
      * @param pfc component on which will be executed calculation
      * @param market
      * @param evalDate date of calculation

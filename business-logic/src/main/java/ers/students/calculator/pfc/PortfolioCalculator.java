@@ -5,6 +5,7 @@
  */
 package ers.students.calculator.pfc;
 
+import ers.students.calculator.PositionVolumeCalculator;
 import ers.students.crud.provider.AbstractCrudProvider;
 import ers.students.crud.provider.searching.PositionCrudProvider;
 import ers.students.crud.results.LoadResults;
@@ -15,6 +16,8 @@ import ers.students.persistentStore.JdbcPersistentStore;
 import ers.students.portfolio.Position;
 import ers.students.portfolio.component.DoubleResult;
 import ers.students.portfolio.component.PortfolioComponent;
+import ers.students.portfolio.component.PortfolioPfc;
+import java.util.List;
 
 /**
  * The PortfolioCalculator class provides methods for calculating cash flow,
@@ -57,19 +60,12 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
      */
     @Override
     public void calculatePositionVolume(PortfolioComponent pfc, Market market, Date evalDate) {
-        AbstractCrudProvider crudProvider = new PositionCrudProvider(new JdbcPersistentStore("", "", ""));
-        LoadResults<Position> positionResults = crudProvider.loadAll();
-
-        if (!positionResults.getErrors().isEmpty()) {
-            return;
-        }
-
-        // get volume
-        positionResults.getEntities().forEach((position) -> {
-            if (position.getPortfolioId().equals(pfc.getId())) {
-                pfc.getCalculationResults().put(DoubleResult.POSITION_VOLUME, "");
-            }
-        });
+      PortfolioPfc portfolioPfc = (PortfolioPfc)pfc;
+      List<PortfolioComponent> components = portfolioPfc.getElements();
+      PositionVolumeCalculator calculator = new PositionVolumeCalculator();
+      components.forEach((component)->{
+          calculator.calculate(component, market, evalDate);
+      });
     }
 
     /**

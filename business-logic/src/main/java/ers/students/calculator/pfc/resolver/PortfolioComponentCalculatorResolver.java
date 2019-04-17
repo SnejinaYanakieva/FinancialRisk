@@ -11,6 +11,7 @@ import ers.students.calculator.pfc.PortfolioCalculator;
 import ers.students.calculator.pfc.PortfolioComponentCalculator;
 import ers.students.calculator.pfc.PositionCalculator;
 import ers.students.portfolio.component.AbstractPfc;
+import ers.students.portfolio.component.PortfolioComponent;
 import ers.students.portfolio.component.PortfolioPfc;
 import ers.students.portfolio.component.PositionPfc;
 
@@ -42,7 +43,7 @@ public class PortfolioComponentCalculatorResolver {
      * @return by given AbstractPfc class key returns corresponding portfolio
      * component calculator.
      */
-    public PortfolioComponentCalculator getPfcCalculator(Class<? extends AbstractPfc> pfcClass) {
+    public static PortfolioComponentCalculator getPfcCalculator(Class<? extends PortfolioComponent> pfcClass) {
         return portfolioComponentCalculators.get(pfcClass);
     }
 }

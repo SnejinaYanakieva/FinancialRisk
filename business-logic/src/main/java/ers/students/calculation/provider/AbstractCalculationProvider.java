@@ -7,15 +7,19 @@ package ers.students.calculation.provider;
 
 import ers.students.calculation.resolver.CalculationResolver;
 import ers.students.calculator.Calculator;
+import ers.students.calculator.PositionVolumeCalculator;
 import ers.students.crud.provider.AbstractCrudProvider;
 import ers.students.crud.provider.searching.PortfolioCrudProvider;
 import ers.students.crud.results.LoadResult;
 import ers.students.crud.results.LoadResults;
+import ers.students.market.CachingMarket;
+import ers.students.market.Market;
 import ers.students.persistentStore.JdbcPersistentStore;
 import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
 import ers.students.portfolio.Transaction;
 import ers.students.portfolio.component.CalculationResult;
+import ers.students.portfolio.component.PortfolioComponent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +36,12 @@ public abstract class AbstractCalculationProvider {
 
         // getting calculators
         calcResults.forEach((calcResult) -> {
-            calculators.add(new CalculationResolver().getCalculator(calcResult.getName()));
+            calculators.add(CalculationResolver.getCalculator(calcResult.getName()));
         });
 
         // creating market
+        Market market = new CachingMarket(new JdbcPersistentStore("", "", ""), "");
+
         // loading portfolio
         AbstractCrudProvider portfolioCrudProvider = new PortfolioCrudProvider(new JdbcPersistentStore("", "", ""));
         LoadResult<Portfolio> portfolio = portfolioCrudProvider.loadById(calcRequest.getPortfolioId());
@@ -57,6 +63,7 @@ public abstract class AbstractCalculationProvider {
         List<Transaction> transactionsList = new ArrayList<Transaction>();
         //transaction loader
 
+        // new PositionVolumeCalculator().calculate(portfolioComponent, market, evalDate);
         return pfcCalculationResult;
     }
 
