@@ -69,7 +69,8 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     public void delete(String id) throws SQLException {
 
         try (PreparedStatement preparedStatement = persistentStore.getConnection().prepareStatement(DELETE)) {
-            //preparedStatement.setString(1, tableName);
+            String tableName=this.getClass().getName();
+            preparedStatement.setString(1, tableName.substring(0, tableName.length()-3));
             preparedStatement.setString(2, id);
             preparedStatement.executeUpdate();
             preparedStatement.close();
