@@ -69,8 +69,8 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     public void delete(String id) throws SQLException {
 
         try (PreparedStatement preparedStatement = persistentStore.getConnection().prepareStatement(DELETE)) {
-            String tableName=this.getClass().getName();
-            preparedStatement.setString(1, tableName.substring(0, tableName.length()-3));
+            String tableName = this.getClass().getName();
+            preparedStatement.setString(1, tableName.substring(0, tableName.length() - 3));
             preparedStatement.setString(2, id);
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -89,11 +89,11 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
         try (PreparedStatement preparedStatement = persistentStore.getConnection().prepareStatement(LOAD_BY_ID)) {
             //preparedStatement.setString(1, tableName);
             preparedStatement.setString(2, id);
-            
+
             ResultSet resultSet = preparedStatement.executeQuery();
-            
-            if(resultSet.next()){
-                
+
+            if (resultSet.next()) {
+
             }
 
         }
@@ -112,7 +112,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
         try (PreparedStatement preparedStatement = persistentStore.getConnection().prepareStatement(LOAD_ALL)) {
             //preparedStatement.setString(1, tableName);
         }
-        
+
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
