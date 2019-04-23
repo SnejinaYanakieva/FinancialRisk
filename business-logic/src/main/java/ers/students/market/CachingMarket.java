@@ -15,15 +15,15 @@ public class CachingMarket implements Market {
 //temp
 
     private final DataMarketLoader dataMarketLoader;
-
+ private YieldCurve cacheYieldCurve;
+    private FxQuote cacheFxQuote;
 //
     public CachingMarket(PersistentStore persistentStore, String idYeld, String idFx) {
         this.dataMarketLoader = new DataMarketLoader(persistentStore, idYeld, idFx);
 
     }
 
-    private YieldCurve cacheYieldCurve;
-    private FxQuote cacheFxQuote;
+   
 
     @Override
     public YieldCurve getYieldCurve() {
