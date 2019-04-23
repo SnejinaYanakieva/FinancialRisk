@@ -17,6 +17,8 @@ import javax.ws.rs.core.Response;
 public class YieldCurveRestServiceImpl implements YieldCurveRestService {
 
     private ProviderRegistry registry;
+    private final boolean create = false;
+    private final boolean ok = true;
     
     public YieldCurveRestServiceImpl(ProviderRegistry registry){
         if(ProviderRegistry.getInstance() != null)
@@ -25,12 +27,12 @@ public class YieldCurveRestServiceImpl implements YieldCurveRestService {
        
     @Override
     public Response create(YieldCurve yieldCurve) {
-        return ResponseFactory.make(registry.getYieldCurveProvider().create(yieldCurve),false);
+        return ResponseFactory.make(registry.getYieldCurveProvider().create(yieldCurve),create);
     }
 
     @Override
     public Response update(YieldCurve yieldCurve) {
-        return ResponseFactory.make(registry.getYieldCurveProvider().update(yieldCurve),true);
+        return ResponseFactory.make(registry.getYieldCurveProvider().update(yieldCurve),ok);
     }
 
     @Override
@@ -40,7 +42,7 @@ public class YieldCurveRestServiceImpl implements YieldCurveRestService {
 
     @Override
     public Response deleteById(String id) {
-        return ResponseFactory.make(registry.getYieldCurveProvider().delete(id),true);
+        return ResponseFactory.make(registry.getYieldCurveProvider().delete(id),ok);
     }
 
     @Override

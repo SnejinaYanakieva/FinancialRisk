@@ -17,6 +17,8 @@ import javax.ws.rs.core.Response;
 public class TransactionRestServiceImpl implements TransactionRestService {
 
     private ProviderRegistry registry;
+    private final boolean create = false;
+    private final boolean ok = true;
     
     public TransactionRestServiceImpl(ProviderRegistry registry){
         if(ProviderRegistry.getInstance() != null)
@@ -25,12 +27,12 @@ public class TransactionRestServiceImpl implements TransactionRestService {
     
     @Override
     public Response create(Transaction transaction) {
-        return ResponseFactory.make(registry.getTransactionProvider().create(transaction),false);
+        return ResponseFactory.make(registry.getTransactionProvider().create(transaction),create);
     }
 
     @Override
     public Response update(Transaction transaction) {
-        return ResponseFactory.make(registry.getTransactionProvider().update(transaction),true);
+        return ResponseFactory.make(registry.getTransactionProvider().update(transaction),ok);
     }
 
     @Override
@@ -40,7 +42,7 @@ public class TransactionRestServiceImpl implements TransactionRestService {
 
     @Override
     public Response deleteById(String id) {
-        return ResponseFactory.make(registry.getTransactionProvider().delete(id),true);
+        return ResponseFactory.make(registry.getTransactionProvider().delete(id),ok);
     }
 
     @Override

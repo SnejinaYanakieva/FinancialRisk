@@ -91,13 +91,13 @@ public class PortfolioRestServiceImplTest extends TestCase {
         assertEquals(400,response.getStatus());
     }
 
-    /*
+    
     public void testLoadByIdError(){
         setUpForError();
         response = service.loadById(null);
         assertEquals(400,response.getStatus());
     }
-    
+   /* 
     public void testDeleteByIdError(){
         setUpForError();
         response = service.deleteById(null);

@@ -17,6 +17,8 @@ import javax.ws.rs.core.Response;
 public class InstrumentRestServiceImpl implements InstrumentRestService {
 
     private ProviderRegistry registry;
+    private final boolean create = false;
+    private final boolean ok = true;
     
     public InstrumentRestServiceImpl(ProviderRegistry registry){
         if(ProviderRegistry.getInstance() != null)
@@ -25,12 +27,12 @@ public class InstrumentRestServiceImpl implements InstrumentRestService {
     
     @Override
     public Response create(Instrument instrument) {
-        return ResponseFactory.make(registry.getInstrumentProvider().create(instrument),false);
+        return ResponseFactory.make(registry.getInstrumentProvider().create(instrument),create);
     }
 
     @Override
     public Response update(Instrument instrument) {
-        return ResponseFactory.make(registry.getInstrumentProvider().update(instrument),true);
+        return ResponseFactory.make(registry.getInstrumentProvider().update(instrument),ok);
     }
 
     @Override
@@ -40,7 +42,7 @@ public class InstrumentRestServiceImpl implements InstrumentRestService {
 
     @Override
     public Response deleteById(String id) {
-        return ResponseFactory.make(registry.getInstrumentProvider().delete(id),true);
+        return ResponseFactory.make(registry.getInstrumentProvider().delete(id),ok);
     }
 
     @Override

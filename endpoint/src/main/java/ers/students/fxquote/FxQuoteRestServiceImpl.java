@@ -17,6 +17,8 @@ import javax.ws.rs.core.Response;
 public class FxQuoteRestServiceImpl implements FxQuoteRestService {
 
     private ProviderRegistry registry;
+    private final boolean create = false;
+    private final boolean ok = true;
     
     public FxQuoteRestServiceImpl(ProviderRegistry registry){
         if(ProviderRegistry.getInstance() != null)
@@ -25,12 +27,12 @@ public class FxQuoteRestServiceImpl implements FxQuoteRestService {
 
     @Override
     public Response create(FxQuote fxQuote) {
-        return ResponseFactory.make(registry.getFxQuoteProvider().create(fxQuote),false);
+        return ResponseFactory.make(registry.getFxQuoteProvider().create(fxQuote),create);
     }
 
     @Override
     public Response update(FxQuote fxQuote) {
-        return ResponseFactory.make(registry.getFxQuoteProvider().update(fxQuote),true);
+        return ResponseFactory.make(registry.getFxQuoteProvider().update(fxQuote),ok);
     }
 
     @Override
@@ -40,7 +42,7 @@ public class FxQuoteRestServiceImpl implements FxQuoteRestService {
 
     @Override
     public Response deleteById(String id) {
-        return ResponseFactory.make(registry.getFxQuoteProvider().delete(id),true);
+        return ResponseFactory.make(registry.getFxQuoteProvider().delete(id),ok);
     }
 
     @Override

@@ -16,6 +16,8 @@ import javax.ws.rs.core.Response;
 public class PortfolioRestServiceImpl implements PortfolioRestService {
 
     private ProviderRegistry registry;
+    private final boolean create = false;
+    private final boolean ok = true;
     
     public PortfolioRestServiceImpl(ProviderRegistry registry){
         if(ProviderRegistry.getInstance() != null)
@@ -24,12 +26,12 @@ public class PortfolioRestServiceImpl implements PortfolioRestService {
     
     @Override
     public Response create(Portfolio portfolio) {
-        return ResponseFactory.make(registry.getPortfolioProvider().create(portfolio),false);
+        return ResponseFactory.make(registry.getPortfolioProvider().create(portfolio),create);
     }
 
     @Override
     public Response update(Portfolio portfolio) {
-        return ResponseFactory.make(registry.getPortfolioProvider().update(portfolio),true);
+        return ResponseFactory.make(registry.getPortfolioProvider().update(portfolio),ok);
     }
 
     @Override
@@ -39,7 +41,7 @@ public class PortfolioRestServiceImpl implements PortfolioRestService {
 
     @Override
     public Response deleteById(String id) {
-        return ResponseFactory.make(registry.getPortfolioProvider().delete(id),true);
+        return ResponseFactory.make(registry.getPortfolioProvider().delete(id),ok);
     }
 
     @Override

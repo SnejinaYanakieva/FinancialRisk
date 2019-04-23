@@ -17,6 +17,8 @@ import javax.ws.rs.core.Response;
 public class PositionRestServiceImpl implements PositionRestService {
     
     private ProviderRegistry registry;
+    private final boolean create = false;
+    private final boolean ok = true;
     
     public PositionRestServiceImpl(ProviderRegistry registry){
         if(ProviderRegistry.getInstance() != null)
@@ -25,12 +27,12 @@ public class PositionRestServiceImpl implements PositionRestService {
     
     @Override
     public Response create(Position position) {
-        return ResponseFactory.make(registry.getPositionProvider().create(position), false);
+        return ResponseFactory.make(registry.getPositionProvider().create(position), create);
     }
 
     @Override
     public Response update(Position position) {
-        return ResponseFactory.make(registry.getPositionProvider().update(position), true);
+        return ResponseFactory.make(registry.getPositionProvider().update(position), ok);
     }
 
     @Override
@@ -40,7 +42,7 @@ public class PositionRestServiceImpl implements PositionRestService {
 
     @Override
     public Response deleteById(String id) {
-        return ResponseFactory.make(registry.getPositionProvider().delete(id),true);
+        return ResponseFactory.make(registry.getPositionProvider().delete(id),ok);
     }
 
     @Override
