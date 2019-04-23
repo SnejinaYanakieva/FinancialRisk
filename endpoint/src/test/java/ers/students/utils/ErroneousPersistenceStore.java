@@ -49,7 +49,7 @@ public class ErroneousPersistenceStore implements PersistentStore {
 
     @Override
     public SearchingDao<Position> getPositionDao() {
-        return new ErroneousPositionDao(this);
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -79,7 +79,7 @@ public class ErroneousPersistenceStore implements PersistentStore {
 
     @Override
     public void close() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
