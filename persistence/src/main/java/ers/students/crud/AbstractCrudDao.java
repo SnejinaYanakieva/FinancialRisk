@@ -6,10 +6,13 @@
 package ers.students.crud;
 
 import ers.students.persistentStore.PersistentStore;
+import ers.students.portfolio.Position;
+import ers.students.portfolio.Transaction;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -113,6 +116,11 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
             //preparedStatement.setString(1, tableName);
         }
 
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    public Map<Position, List<Transaction>> portfolioTransactionLoader(Position position, Transaction transaction){
+        
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
