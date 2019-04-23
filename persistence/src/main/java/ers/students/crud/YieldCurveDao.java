@@ -11,11 +11,17 @@ import ers.students.persistentStore.PersistentStore;
 /**
  *
  * @author Ayhan
- * 
+ *
  * Stores data retrieved from CRUD operations
  */
-public class YieldCurveDao extends AbstractCrudDao<YieldCurve>{
-    public YieldCurveDao(PersistentStore ps){
+public class YieldCurveDao extends AbstractCrudDao<YieldCurve> {
+
+    public YieldCurveDao(PersistentStore ps) {
         super(ps);
+    }
+
+    @Override
+    public String getTableName() {
+        return this.getClass().getName();
     }
 }

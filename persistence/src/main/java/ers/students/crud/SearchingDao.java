@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * This interface provides methods for searching data in the DB
- * 
+ *
  * @author Ayhan
  * @param <Entity> entity
  */
@@ -18,6 +18,7 @@ public interface SearchingDao<Entity> extends CrudDao<Entity> {
 
     /**
      * For looking up data by name
+     *
      * @param name
      * @return List of entities
      * @throws java.sql.SQLException

@@ -18,4 +18,9 @@ public class FxQuoteDao extends AbstractCrudDao<FxQuote> {
     public FxQuoteDao(PersistentStore ps){
         super(ps);
     }
+    
+    @Override
+    public String getTableName() {
+        return this.getClass().getName();
+    }
 }

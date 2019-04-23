@@ -11,13 +11,18 @@ import ers.students.portfolio.Transaction;
 /**
  *
  * @author Ayhan
- * 
+ *
  * Stores data retrieved from CRUD operations
  */
 public class TransactionDao extends AbstractSearchingDao<Transaction> {
-    
+
     public TransactionDao(PersistentStore ps) {
         super(ps);
     }
-    
+
+    @Override
+    public String getTableName() {
+        return this.getClass().getName();
+    }
+
 }

@@ -8,7 +8,6 @@ package ers.students.crud;
 import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Position;
 
-
 /**
  *
  * @author Ayhan
@@ -16,9 +15,14 @@ import ers.students.portfolio.Position;
  * Stores data retrieved from CRUD operations
  */
 public class PositionDao extends AbstractSearchingDao<Position> {
-    
+
     public PositionDao(PersistentStore ps) {
         super(ps);
     }
-    
+
+    @Override
+    public String getTableName() {
+        return this.getClass().getName();
+    }
+
 }

@@ -15,9 +15,14 @@ import ers.students.portfolio.Portfolio;
  * Stores data retrieved from CRUD operations
  */
 public class PortfolioDao extends AbstractSearchingDao<Portfolio> {
-    
+
     public PortfolioDao(PersistentStore ps) {
         super(ps);
     }
-    
+
+    @Override
+    public String getTableName() {
+        return this.getClass().getName();
+    }
+
 }

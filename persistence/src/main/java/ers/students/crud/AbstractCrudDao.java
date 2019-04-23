@@ -43,6 +43,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     public void save(Entity e) throws SQLException {
 
         try (PreparedStatement preparedStatement = persistentStore.getConnection().prepareStatement(INSERT)) {
+            preparedStatement.setString(1, this.getTableName());
 
         }
 
@@ -58,6 +59,8 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     public void update(Entity e) throws SQLException {
 
         try (PreparedStatement preparedStatement = persistentStore.getConnection().prepareStatement(UPDATE)) {
+            preparedStatement.setString(1, this.getTableName());
+
         }
 
         throw new UnsupportedOperationException("Not supported yet.");
@@ -72,8 +75,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     public void delete(String id) throws SQLException {
 
         try (PreparedStatement preparedStatement = persistentStore.getConnection().prepareStatement(DELETE)) {
-            String tableName = this.getClass().getName();
-            preparedStatement.setString(1, tableName.substring(0, tableName.length() - 3));
+            preparedStatement.setString(1, this.getTableName());
             preparedStatement.setString(2, id);
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -90,7 +92,7 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     public Entity loadById(String id) throws SQLException {
 
         try (PreparedStatement preparedStatement = persistentStore.getConnection().prepareStatement(LOAD_BY_ID)) {
-            //preparedStatement.setString(1, tableName);
+            preparedStatement.setString(1, this.getTableName());
             preparedStatement.setString(2, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -118,10 +120,12 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
-    public Map<Position, List<Transaction>> portfolioTransactionLoader(Position position, Transaction transaction){
-        
+
+    public Map<Position, List<Transaction>> portfolioTransactionLoader(Position position, Transaction transaction) {
+
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    abstract String getTableName();
 
 }

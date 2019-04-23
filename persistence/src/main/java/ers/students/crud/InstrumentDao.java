@@ -11,13 +11,18 @@ import ers.students.persistentStore.PersistentStore;
 /**
  *
  * @author Ayhan
- * 
+ *
  * Stores data retrieved from CRUD operations
  */
-public class InstrumentDao extends AbstractSearchingDao<Instrument>{
-    
+public class InstrumentDao extends AbstractSearchingDao<Instrument> {
+
     public InstrumentDao(PersistentStore ps) {
         super(ps);
     }
-    
+
+    @Override
+    public String getTableName() {
+        return this.getClass().getName();
+    }
+
 }
