@@ -16,8 +16,12 @@ import javax.ws.rs.core.Response;
  */
 public class FxQuoteRestServiceImpl implements FxQuoteRestService {
 
-    private ProviderRegistry registry = ProviderRegistry.getInstance();
-       
+    private ProviderRegistry registry;
+    
+    public FxQuoteRestServiceImpl(ProviderRegistry registry){
+        if(ProviderRegistry.getInstance() != null)
+            this.registry = registry;
+    } 
 
     @Override
     public Response create(FxQuote fxQuote) {

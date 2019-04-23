@@ -19,7 +19,8 @@ public class PositionRestServiceImpl implements PositionRestService {
     private ProviderRegistry registry;
     
     public PositionRestServiceImpl(ProviderRegistry registry){
-        this.registry = registry;
+        if(ProviderRegistry.getInstance() != null)
+            this.registry = registry;
     }
     
     @Override

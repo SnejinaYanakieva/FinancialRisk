@@ -16,7 +16,12 @@ import javax.ws.rs.core.Response;
  */
 public class TransactionRestServiceImpl implements TransactionRestService {
 
-    private ProviderRegistry registry = ProviderRegistry.getInstance();
+    private ProviderRegistry registry;
+    
+    public TransactionRestServiceImpl(ProviderRegistry registry){
+        if(ProviderRegistry.getInstance() != null)
+            this.registry = registry;
+    }
     
     @Override
     public Response create(Transaction transaction) {

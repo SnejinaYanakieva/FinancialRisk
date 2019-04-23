@@ -16,7 +16,12 @@ import javax.ws.rs.core.Response;
  */
 public class YieldCurveRestServiceImpl implements YieldCurveRestService {
 
-    private ProviderRegistry registry = ProviderRegistry.getInstance();
+    private ProviderRegistry registry;
+    
+    public YieldCurveRestServiceImpl(ProviderRegistry registry){
+        if(ProviderRegistry.getInstance() != null)
+            this.registry = registry;
+    }
        
     @Override
     public Response create(YieldCurve yieldCurve) {

@@ -16,7 +16,12 @@ import javax.ws.rs.core.Response;
  */
 public class InstrumentRestServiceImpl implements InstrumentRestService {
 
-    private ProviderRegistry registry = ProviderRegistry.getInstance();
+    private ProviderRegistry registry;
+    
+    public InstrumentRestServiceImpl(ProviderRegistry registry){
+        if(ProviderRegistry.getInstance() != null)
+            this.registry = registry;
+    }
     
     @Override
     public Response create(Instrument instrument) {
