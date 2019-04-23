@@ -38,7 +38,7 @@ public abstract class AbstractCalculationProvider {
         });
 
         // creating market
-        Market market = new CachingMarket(new JdbcPersistentStore("", "", ""), "");
+        //Market market = new CachingMarket(new JdbcPersistentStore("", "", ""), "");
 
         // loading portfolio
         AbstractCrudProvider portfolioCrudProvider = new PortfolioCrudProvider(new JdbcPersistentStore("", "", ""));
@@ -57,7 +57,7 @@ public abstract class AbstractCalculationProvider {
         // loading positions
         AbstractCrudProvider positionCrudProvider = new PortfolioCrudProvider(new JdbcPersistentStore("", "", ""));
         LoadResults<Position> positions = new LoadResults<>();
-
+         
         List<Transaction> transactionsList = new ArrayList<Transaction>();
         //transaction loader
 

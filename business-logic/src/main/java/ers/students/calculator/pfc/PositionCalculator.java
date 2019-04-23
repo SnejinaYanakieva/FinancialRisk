@@ -22,8 +22,11 @@ import java.util.List;
 public class PositionCalculator implements PortfolioComponentCalculator {
 
     /**
-     * The Present Value is calculated by the formula: Present Value = FV / ( 1
-     * + r )^n, where FV = future value r = rate of return n = number of periods
+     * The Present Value is calculated by the formula: 
+     * Present Value = FV / ( 1+ r )^n, where 
+     * FV = future value 
+     * r = rate of return 
+     * n = number of periods
      *
      * @param pfc component on which will be executed calculation
      * @param market
@@ -35,8 +38,8 @@ public class PositionCalculator implements PortfolioComponentCalculator {
     }
 
     /**
-     * The Profit & Loss is calculated by the formula: Profit / Loss = Present
-     * Value - Notional amount
+     * The Profit & Loss is calculated by the formula: 
+     * Profit / Loss = PresentValue - Notional amount
      *
      * @param pfc component on which will be executed calculation
      * @param market
@@ -63,7 +66,7 @@ public class PositionCalculator implements PortfolioComponentCalculator {
         for (Transaction transaction : trasactions) {
             if (!positionPfc.getPosition().getLongSide().equals(transaction.getPayer())
                     || !positionPfc.getPosition().getShortSide().equals(transaction.getReciver())) {
-                //return error
+                //positionPfc.addError("Payer or receiver incorrect.");
                 return;
             }
 
@@ -80,8 +83,11 @@ public class PositionCalculator implements PortfolioComponentCalculator {
     /**
      * Calculates the interest and principal payments.
      *
-     * The Cash Flow is calculated by the formula: CFi = Ci . RDI where CFi
-     * value of cash flow Ci interest payment for the period RDi residual debt
+     * The Cash Flow is calculated by the formula:
+     * CFi = Ci . RDI where 
+     * CFi value of cash flow 
+     * Ci interest payment for the period 
+     * RDi residual debt
      *
      * @param pfc component on which will be executed calculation
      * @param market
@@ -89,7 +95,7 @@ public class PositionCalculator implements PortfolioComponentCalculator {
      */
     @Override
     public void calculateCashFlow(PortfolioComponent pfc, Market market, Date evalDate) {
-        throw new UnsupportedOperationException("Unsupported operation.");
+        PositionPfc positionPfc = (PositionPfc) pfc;
+        
     }
-
 }

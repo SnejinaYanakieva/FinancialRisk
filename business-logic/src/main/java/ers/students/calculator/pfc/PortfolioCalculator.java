@@ -5,7 +5,10 @@
  */
 package ers.students.calculator.pfc;
 
+import ers.students.calculator.CashFlowCalculator;
 import ers.students.calculator.PositionVolumeCalculator;
+import ers.students.calculator.PresentValueCalculator;
+import ers.students.calculator.ProfitLossCalculator;
 import java.util.Date;
 
 import ers.students.market.Market;
@@ -30,7 +33,13 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
      */
     @Override
     public void calculatePresentValue(PortfolioComponent pfc, Market market, Date evalDate) {
-        throw new UnsupportedOperationException("Unsupported operation.");
+        PortfolioPfc portfolioPfc = (PortfolioPfc) pfc;
+        List<PortfolioComponent> components = portfolioPfc.getElements();
+        PresentValueCalculator calculator = new PresentValueCalculator();
+        components.forEach((component) -> {
+            calculator.calculate(component, market, evalDate);
+            portfolioPfc.addElement(component);
+        });
     }
 
     /**
@@ -42,7 +51,13 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
      */
     @Override
     public void calculateProfitLoss(PortfolioComponent pfc, Market market, Date evalDate) {
-        throw new UnsupportedOperationException("Unsupported operation.");
+        PortfolioPfc portfolioPfc = (PortfolioPfc) pfc;
+        List<PortfolioComponent> components = portfolioPfc.getElements();
+        ProfitLossCalculator calculator = new ProfitLossCalculator();
+        components.forEach((component) -> {
+            calculator.calculate(component, market, evalDate);
+            portfolioPfc.addElement(component);
+        });
     }
 
     /**
@@ -54,12 +69,13 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
      */
     @Override
     public void calculatePositionVolume(PortfolioComponent pfc, Market market, Date evalDate) {
-      PortfolioPfc portfolioPfc = (PortfolioPfc)pfc;
-      List<PortfolioComponent> components = portfolioPfc.getElements();
-      PositionVolumeCalculator calculator = new PositionVolumeCalculator();
-      components.forEach((component)->{
-          calculator.calculate(component, market, evalDate);
-      });
+        PortfolioPfc portfolioPfc = (PortfolioPfc) pfc;
+        List<PortfolioComponent> components = portfolioPfc.getElements();
+        PositionVolumeCalculator calculator = new PositionVolumeCalculator();
+        components.forEach((component) -> {
+            calculator.calculate(component, market, evalDate);
+            portfolioPfc.addElement(component);
+        });
     }
 
     /**
@@ -71,6 +87,12 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
      */
     @Override
     public void calculateCashFlow(PortfolioComponent pfc, Market market, Date evalDate) {
-        throw new UnsupportedOperationException("Unsupported operation.");
+        PortfolioPfc portfolioPfc = (PortfolioPfc) pfc;
+        List<PortfolioComponent> components = portfolioPfc.getElements();
+        CashFlowCalculator calculator = new CashFlowCalculator();
+        components.forEach((component) -> {
+            calculator.calculate(component, market, evalDate);
+            portfolioPfc.addElement(component);
+        });
     }
 }
