@@ -14,16 +14,13 @@ import ers.students.persistentStore.PersistentStore;
 public class CachingMarket implements Market {
 //temp
 
-    PersistentStore persistentStore;
-    String dbURL;
-//
+    private final DataMarketLoader dataMarketLoader;
 
-    public CachingMarket(PersistentStore persistentStore, String dbURL) {
-        this.persistentStore = persistentStore;
-        this.dbURL = dbURL;
+//
+    public CachingMarket(PersistentStore persistentStore, String idYeld, String idFx) {
+        this.dataMarketLoader = new DataMarketLoader(persistentStore, idYeld, idFx);
+
     }
-    
-    private final DataMarketLoader dataMarketLoader = new DataMarketLoader(persistentStore, dbURL);
 
     private YieldCurve cacheYieldCurve;
     private FxQuote cacheFxQuote;

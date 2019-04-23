@@ -17,18 +17,21 @@ import ers.students.persistentStore.PersistentStore;
 public class DataMarketLoader implements Market {
 
     PersistentStore persistentStore;
-    String dbURL;
+    String idFx;
+    String idYeld;
 
-    public DataMarketLoader(PersistentStore persistentStore, String dbURL) {
+    public DataMarketLoader(PersistentStore persistentStore,String idYeld ,String idFx) {
         this.persistentStore = persistentStore;
-        this.dbURL = dbURL;
+        this.idYeld = idYeld;
+        this.idFx=idFx;
+
     }
 
     @Override
     public YieldCurve getYieldCurve() {
 
         YieldCurveCrudProvider yeldCurveProvider = new YieldCurveCrudProvider(persistentStore);
-        LoadResult<YieldCurve> curve = yeldCurveProvider.loadById(dbURL);
+        LoadResult<YieldCurve> curve = yeldCurveProvider.loadById(idYeld);
 
         return curve.getEntity();
     }
@@ -37,7 +40,7 @@ public class DataMarketLoader implements Market {
     public FxQuote getFxQuote() {
 
         FxCrudProvider fxCurveProvider = new FxCrudProvider(persistentStore);
-        LoadResult<FxQuote> fxQuote = fxCurveProvider.loadById(dbURL);
+        LoadResult<FxQuote> fxQuote = fxCurveProvider.loadById(idFx);
 
         return fxQuote.getEntity();
     }
