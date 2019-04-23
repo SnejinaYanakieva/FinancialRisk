@@ -16,7 +16,11 @@ import javax.ws.rs.core.Response;
  */
 public class PositionRestServiceImpl implements PositionRestService {
     
-    private ProviderRegistry registry = ProviderRegistry.getInstance();
+    private ProviderRegistry registry;
+    
+    public PositionRestServiceImpl(ProviderRegistry registry){
+        this.registry = registry;
+    }
     
     @Override
     public Response create(Position position) {

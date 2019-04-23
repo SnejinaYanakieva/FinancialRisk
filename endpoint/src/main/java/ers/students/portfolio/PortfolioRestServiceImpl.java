@@ -18,11 +18,9 @@ public class PortfolioRestServiceImpl implements PortfolioRestService {
 
     private ProviderRegistry registry;
     
-    public PortfolioRestServiceImpl(PersistentStore persistentStore){
-        ProviderRegistry.createInstance(persistentStore);
-        
+    public PortfolioRestServiceImpl(ProviderRegistry registry){
         if(ProviderRegistry.getInstance() != null)
-            registry = ProviderRegistry.getInstance();
+            this.registry = registry;
     }
     
     @Override

@@ -5,7 +5,10 @@
  */
 package ers.students.portfolio;
 
-import ers.students.util.Currency;
+import ers.students.persistentStore.PersistentStore;
+import ers.students.registry.ProviderRegistry;
+import ers.students.utils.SuccessfulPersistenceStore;
+import ers.students.utils.SuccessfulPortfolioDao;
 import javax.ws.rs.core.Response;
 import junit.framework.TestCase;
 
@@ -15,18 +18,19 @@ import junit.framework.TestCase;
  */
 public class PortfolioRestServiceImplTest extends TestCase {
 
-    private PortfolioRestService service;
-    private Portfolio portfolio;
-    
-    public PortfolioRestServiceImplTest(String testName) {
-        super(testName);
-    }
+    private PortfolioRestServiceImpl service;
+    private ProviderRegistry registry;
+    private Response response;
+    protected PersistentStore persistentStore;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        service = new PortfolioRestServiceImpl(null);
-        portfolio = new Portfolio("1", "Portfolio", Currency.BGN);
+        
+        persistentStore = new SuccessfulPersistenceStore();
+        ProviderRegistry.createInstance(persistentStore);
+        registry = ProviderRegistry.getInstance();
+        service = new PortfolioRestServiceImpl(registry);
     }
 
     @Override
@@ -34,58 +38,33 @@ public class PortfolioRestServiceImplTest extends TestCase {
         super.tearDown();
     }
 
-    public void testCreate() {
-        try {
-            Response response = service.create(portfolio);
-            fail();
-        } catch (NullPointerException ex) {
-            assertTrue(ex instanceof NullPointerException);
-        }
+    public void testCreateSuccess() {
+        response = service.create(SuccessfulPortfolioDao.portfolio);
+        assertEquals(201,response.getStatus());
     }
 
-    public void testUpdate() {
-        try {
-            Response response = service.update(portfolio);
-            fail();
-        } catch (NullPointerException ex) {
-            assertTrue(ex instanceof NullPointerException);
-        }
+    public void testUpdateSuccess() {
+        response = service.update(SuccessfulPortfolioDao.portfolio);
+        assertEquals(200,response.getStatus());
     }
 
-    public void testLoadById() {
-        try {
-            Response response = service.loadById("001");
-            fail();
-        } catch (NullPointerException ex) {
-            assertTrue(ex instanceof NullPointerException);
-        }
+    public void testLoadByIdSuccess() {
+        response = service.loadById(SuccessfulPortfolioDao.portfolio.getId());
+        assertEquals(200,response.getStatus());
     }
 
-    public void testDeleteById() {
-        try {
-            Response response = service.deleteById("001");
-            fail();
-        } catch (NullPointerException ex) {
-            assertTrue(ex instanceof NullPointerException);
-        }
+    public void testDeleteByIdSuccess() {
+        response = service.deleteById(SuccessfulPortfolioDao.portfolio.getId());
+        assertEquals(200,response.getStatus());
     }
 
-    public void testLoadAll() {
-        try {
-            Response response = service.loadAll();
-            fail();
-        } catch (NullPointerException ex) {
-            assertTrue(ex instanceof NullPointerException);
-        }
+    public void testLoadAllSuccess() {
+        response = service.loadAll();
+        assertEquals(200,response.getStatus());
     }
 
-    public void testSearchByName() {
-        try {
-            Response response = service.searchByName("NAME");
-            fail();
-        } catch (NullPointerException ex) {
-            assertTrue(ex instanceof NullPointerException);
-        }
+    public void testSearchByNameSuccess() {
+        response = service.searchByName(SuccessfulPortfolioDao.portfolio.getName());
+        assertEquals(200,response.getStatus());
     }
-
 }
