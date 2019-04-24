@@ -80,7 +80,7 @@ public class JdbcPersistentStore implements PersistentStore {
             Statement statement = this.connection.createStatement();
             URL uri = this.getClass().getResource("../persistentStore/CreateTableQueries.txt");
             File f = new File(uri.toURI());
-            String tableCreateQuery = new String(Files.readAllBytes(f.toPath()));            
+            String tableCreateQuery = new String(Files.readAllBytes(f.toPath()));
             statement.executeUpdate(tableCreateQuery);
             statement.close();
         } catch (SQLException | IOException | URISyntaxException ex) {

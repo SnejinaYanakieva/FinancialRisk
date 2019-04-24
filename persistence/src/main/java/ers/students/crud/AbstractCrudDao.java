@@ -88,5 +88,9 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     }
 
     abstract String getTableName();
+    
+    public PersistentStore getPersistentStore(){
+        return this.persistentStore;
+    }
 
 }
