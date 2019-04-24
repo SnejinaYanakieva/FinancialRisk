@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -21,17 +22,13 @@ import static org.junit.Assert.*;
  */
 public class PositionTest {
 
-    public SimpleDateFormat getFormat() {
-        SimpleDateFormat dateformatt = new SimpleDateFormat("yyyyy-mm-dd");
-        return dateformatt;
-    }
-
     public Instrument createInstrument() throws ParseException {
 
-        String issueDate = "2018-09-01";
-        String maturityDate = "2018-09-02";
+        Date date = new Date(2018, 4, 1);
 
-        Instrument instrumentOne = new Instrument("Tester", "CodeTest64363", Currency.USD, getFormat().parse(issueDate), getFormat().parse(maturityDate));
+        Date date2 = new Date(2019, 5, 1);
+
+        Instrument instrumentOne = new Instrument("Tester", "CodeTest64363", Currency.USD, date, date2);
         return instrumentOne;
     }
 
@@ -58,12 +55,11 @@ public class PositionTest {
     }
 
     @Test
-    public void testValidateFalse() throws ParseException {
+    public void testValidateFalse() throws ParseException  {
 
-        String maturityDate = "2018-02-02";
-
+        Date date = new Date(2018, 5, 1);
         Instrument instrumentOne = createInstrument();
-        instrumentOne.setMaturityDate(getFormat().parse(maturityDate));
+        instrumentOne.setMaturityDate(date);
         Position instance = createPosition(instrumentOne);
 
         List<String> expResult = new ArrayList<>();
@@ -81,7 +77,7 @@ public class PositionTest {
     }
 
     @Test
-    public void testEqualTrue() throws ParseException {
+    public void testEqualTrue() throws ParseException  {
 
         Position obj = createPosition(createInstrument());
         Position instance = createPosition(createInstrument());

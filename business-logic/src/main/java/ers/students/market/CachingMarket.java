@@ -15,25 +15,22 @@ public class CachingMarket implements Market {
 //temp
 
     private final DataMarketLoader dataMarketLoader;
- private YieldCurve cacheYieldCurve;
+    private YieldCurve cacheYieldCurve;
     private FxQuote cacheFxQuote;
 //
+
     public CachingMarket(PersistentStore persistentStore, String idYeld, String idFx) {
         this.dataMarketLoader = new DataMarketLoader(persistentStore, idYeld, idFx);
 
     }
-
-   
 
     @Override
     public YieldCurve getYieldCurve() {
 
         if (cacheYieldCurve == null) {
             cacheYieldCurve = dataMarketLoader.getYieldCurve();
-            return cacheYieldCurve;
-        } else {
-            return cacheYieldCurve;
         }
+        return cacheYieldCurve;
 
     }
 
@@ -42,9 +39,8 @@ public class CachingMarket implements Market {
 
         if (cacheFxQuote == null) {
             cacheFxQuote = dataMarketLoader.getFxQuote();
-            return cacheFxQuote;
-        } else {
-            return cacheFxQuote;
         }
+        return cacheFxQuote;
+
     }
 }

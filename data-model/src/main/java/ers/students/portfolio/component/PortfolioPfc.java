@@ -19,11 +19,11 @@ public class PortfolioPfc extends AbstractPfc {
     private Portfolio portfolio;
     private final List<PortfolioComponent> elements = new ArrayList();
 
-    PortfolioPfc(Portfolio portfolio) {
+   public  PortfolioPfc(Portfolio portfolio) {
         this.portfolio = portfolio;
     }
 
-    PortfolioPfc() {
+   public  PortfolioPfc() {
     }
 
     public Portfolio getPortfolio() {

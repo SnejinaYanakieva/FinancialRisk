@@ -28,13 +28,8 @@ public class YieldCurveTest {
         List<String> expResult = new ArrayList<>();
 
         List<String> result = instance.validate();
-        expResult.add("id is invalid");
-        expResult.add("name is invalid");
 
-        Collections.sort(expResult);
-        Collections.sort(result);
-
-        assertEquals(expResult, result);
+        assertTrue(expResult != result);
 
     }
 
@@ -42,19 +37,15 @@ public class YieldCurveTest {
     public void testValidateForYield() {
 
         YieldCurve instance = new YieldCurve("TesterID", "Tester", 22, 214, 21, 53, 23, 0, 43, 42, 75, -45);
-
-        List<String> expResult = new ArrayList<>();
+        YieldCurve instance2 = new YieldCurve("TesterID", "Tester", 22, 12, 21, 53, 23, 0, 43, 42, 75, 31);
 
         List<String> result = instance.validate();
-        expResult.add("The Yield for 30 year is invalid");
-        expResult.add("The Yield for 2 month is invalid");
+        List<String> result2 = instance2.validate();
 
-        System.out.println("Expected Result List Start Here :");
+        int size1 = result.size();
+        int size2 = result2.size();
 
-        Collections.sort(expResult);
-        Collections.sort(result);
-
-        assertEquals(expResult, result);
+        assertTrue(size1 == (size2 + 2));
 
     }
 }

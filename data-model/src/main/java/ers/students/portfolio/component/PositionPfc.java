@@ -27,7 +27,7 @@ public class PositionPfc extends AbstractPfc {
         this.transactionList=transactionList;
     }
 
-    PositionPfc() {
+   public PositionPfc() {
     }
 
     public Position getPosition() {

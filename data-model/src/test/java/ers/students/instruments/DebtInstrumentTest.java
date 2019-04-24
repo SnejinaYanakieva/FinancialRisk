@@ -17,19 +17,6 @@ import org.junit.Test;
  */
 public class DebtInstrumentTest extends TestCase {
 
-    
-    public void basicInfo(List<String> expResult) {
-
-        expResult.add("Id is invalid");
-        expResult.add("Isin is invalid");
-        expResult.add("Currency is null");
-        expResult.add("Issue Date is null");
-        expResult.add("Maturity Date is null");
-        expResult.add("Interest Frequency is null");
-
-        Collections.sort(expResult);
-    }
-
     @Test
     public void testValidateNull() {
 
@@ -38,11 +25,9 @@ public class DebtInstrumentTest extends TestCase {
 
         List<String> result = instance.validate();
 
-        //Sorting 
-        basicInfo(expResult);
         Collections.sort(result);
 
-        assertEquals(expResult, result);
+        assertTrue(expResult != result);
 
     }
 
@@ -51,17 +36,13 @@ public class DebtInstrumentTest extends TestCase {
 
         DebtInstrument instance = new DebtInstrument();
         instance.setInterestRate(-200);
-        List<String> expResult = new ArrayList<>();
+        DebtInstrument instance2 = new DebtInstrument();
+        instance2.setInterestRate(8);
 
-        expResult.add("Interest Rate is out of bound");
-
-        basicInfo(expResult);
+        List<String> result2 = instance2.validate();
         List<String> result = instance.validate();
 
-        //Sorting 
-        Collections.sort(result);
-
-        assertEquals(expResult, result);
+        assertTrue(result2.size()<result.size());
 
     }
 }

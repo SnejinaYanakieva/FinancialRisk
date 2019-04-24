@@ -24,15 +24,6 @@ public class FxQuoteTest {
     /**
      * Test of validate method, of class FxQuote.
      */
-    public void basicInfo(List<String> expResult) {
-
-        expResult.add("From variable is not valid");
-        expResult.add("id is not valid");
-        expResult.add("Date is null");
-        expResult.add("To variable is null");
-        Collections.sort(expResult);
-    }
-
     @Test
     public void testValidateForNull() {
 
@@ -40,13 +31,12 @@ public class FxQuoteTest {
         instance.setValue(22);
         List<String> expResult = new ArrayList<>();
 
-        basicInfo(expResult);
         List<String> result = instance.validate();
 
         Collections.sort(expResult);
         Collections.sort(result);
 
-        assertEquals(expResult, result);
+        assertTrue(expResult != result);
 
     }
 
@@ -55,16 +45,15 @@ public class FxQuoteTest {
 
         FxQuote instance = new FxQuote();
         instance.setValue(122);
-        List<String> expResult = new ArrayList<>();
+        FxQuote instance2 = new FxQuote();
+        instance2.setValue(2);
 
-        expResult.add("Value is out of bound");
-        basicInfo(expResult);
-
+        List<String> result2 = instance2.validate();
         List<String> result = instance.validate();
 
         Collections.sort(result);
 
-        assertEquals(expResult, result);
+        assertTrue(!result2.equals(result));
 
     }
 }
