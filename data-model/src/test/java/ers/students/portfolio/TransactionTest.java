@@ -23,13 +23,13 @@ public class TransactionTest {
 
         Transaction instance = new Transaction();
         List<String> expResult = new ArrayList<>();
-       
+
         List<String> result = instance.validate();
 
         Collections.sort(expResult);
         Collections.sort(result);
 
-        assertEquals(expResult, result);
+        assertTrue(!expResult.equals(result));
 
     }
 
