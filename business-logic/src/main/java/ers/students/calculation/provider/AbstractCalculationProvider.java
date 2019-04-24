@@ -38,7 +38,7 @@ public abstract class AbstractCalculationProvider {
         });
 
         // creating market
-        //Market market = new CachingMarket(new JdbcPersistentStore("", "", ""), "");
+        Market market = new CachingMarket(new JdbcPersistentStore("", "", ""), "", "");
 
         // loading portfolio
         AbstractCrudProvider portfolioCrudProvider = new PortfolioCrudProvider(new JdbcPersistentStore("", "", ""));

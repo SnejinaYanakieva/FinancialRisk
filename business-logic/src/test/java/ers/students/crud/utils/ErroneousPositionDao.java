@@ -6,6 +6,7 @@
 package ers.students.crud.utils;
 
 import ers.students.crud.AbstractSearchingDao;
+import ers.students.crud.PositionDao;
 import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Position;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author Irina
  */
-public class ErroneousPositionDao extends AbstractSearchingDao<Position> {
+public class ErroneousPositionDao extends PositionDao {
 
     public ErroneousPositionDao(PersistentStore JDBCPersistentStore) {
         super(JDBCPersistentStore);

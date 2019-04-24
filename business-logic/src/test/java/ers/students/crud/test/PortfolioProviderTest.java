@@ -23,7 +23,7 @@ import static junit.framework.Assert.assertTrue;
  */
 public class PortfolioProviderTest extends AbstractProviderTest {
 
-    private final Portfolio portfolio = new Portfolio("1l", "name1", Currency.CHF);
+    private final Portfolio portfolio = SuccessfulPortfolioDao.portfolio;
 
     @Override
     protected void setUp() throws Exception {

@@ -14,6 +14,7 @@ import ers.students.portfolio.Position;
 import java.util.Map;
 
 /**
+ * Uses an erroneous position object to test CRUD methods.
  *
  * @author Irina
  */
