@@ -23,8 +23,6 @@ import java.util.Map;
 public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
 
     private final PersistentStore persistentStore;
-    private static final String INSERT = "INSERT INTO ? VALUES()";
-    private static final String UPDATE = "";
     private static final String DELETE = "DELETE FROM ? WHERE id=?";
     private static final String LOAD_BY_ID = "SELECT * FROM ? WHERE id=?";
     private static final String LOAD_ALL = "SELECT * FROM ?";
@@ -32,38 +30,6 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     public AbstractCrudDao(PersistentStore persistentStore) {
 
         this.persistentStore = persistentStore;
-    }
-
-    /**
-     * Saves/inserts entity in DB
-     *
-     * @param e entity to save/insert
-     */
-    @Override
-    public void save(Entity e) throws SQLException {
-
-        try (PreparedStatement preparedStatement = persistentStore.getConnection().prepareStatement(INSERT)) {
-            preparedStatement.setString(1, this.getTableName());
-
-        }
-
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    /**
-     * Updates entity in DB
-     *
-     * @param e entity to update
-     */
-    @Override
-    public void update(Entity e) throws SQLException {
-
-        try (PreparedStatement preparedStatement = persistentStore.getConnection().prepareStatement(UPDATE)) {
-            preparedStatement.setString(1, this.getTableName());
-
-        }
-
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -115,13 +81,8 @@ public abstract class AbstractCrudDao<Entity> implements CrudDao<Entity> {
     public List<Entity> loadAll() throws SQLException {
 
         try (PreparedStatement preparedStatement = persistentStore.getConnection().prepareStatement(LOAD_ALL)) {
-            //preparedStatement.setString(1, tableName);
+            preparedStatement.setString(1, this.getTableName());
         }
-
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public Map<Position, List<Transaction>> portfolioTransactionLoader(Position position, Transaction transaction) {
 
         throw new UnsupportedOperationException("Not supported yet.");
     }

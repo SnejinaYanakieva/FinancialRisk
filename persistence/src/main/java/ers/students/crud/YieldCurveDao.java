@@ -7,6 +7,7 @@ package ers.students.crud;
 
 import ers.students.market.YieldCurve;
 import ers.students.persistentStore.PersistentStore;
+import java.sql.SQLException;
 
 /**
  *
@@ -22,6 +23,16 @@ public class YieldCurveDao extends AbstractCrudDao<YieldCurve> {
 
     @Override
     public String getTableName() {
-        return this.getClass().getName();
+        return "YieldCurve";
+    }
+
+    @Override
+    public void save(YieldCurve e) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(YieldCurve e) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

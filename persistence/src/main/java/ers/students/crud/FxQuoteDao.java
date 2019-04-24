@@ -7,6 +7,7 @@ package ers.students.crud;
 
 import ers.students.market.FxQuote;
 import ers.students.persistentStore.PersistentStore;
+import java.sql.SQLException;
 
 /**
  *
@@ -21,6 +22,16 @@ public class FxQuoteDao extends AbstractCrudDao<FxQuote> {
     
     @Override
     public String getTableName() {
-        return this.getClass().getName();
+        return "FxQuote";
+    }
+
+    @Override
+    public void save(FxQuote e) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(FxQuote e) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

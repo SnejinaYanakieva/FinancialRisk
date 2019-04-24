@@ -7,6 +7,7 @@ package ers.students.crud;
 
 import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Portfolio;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,6 +16,8 @@ import ers.students.portfolio.Portfolio;
  * Stores data retrieved from CRUD operations
  */
 public class PortfolioDao extends AbstractSearchingDao<Portfolio> {
+    
+    private final String INSERT = "INSERT INTO Portfolio VALUES (?, ?, ?)";
 
     public PortfolioDao(PersistentStore ps) {
         super(ps);
@@ -22,7 +25,17 @@ public class PortfolioDao extends AbstractSearchingDao<Portfolio> {
 
     @Override
     public String getTableName() {
-        return this.getClass().getName();
+        return "Portfolio";
+    }
+
+    @Override
+    public void save(Portfolio e) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(Portfolio e) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

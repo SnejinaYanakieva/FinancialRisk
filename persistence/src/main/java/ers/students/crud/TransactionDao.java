@@ -7,6 +7,7 @@ package ers.students.crud;
 
 import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Transaction;
+import java.sql.SQLException;
 
 /**
  *
@@ -22,7 +23,19 @@ public class TransactionDao extends AbstractSearchingDao<Transaction> {
 
     @Override
     public String getTableName() {
-        return this.getClass().getName();
+        return "Transaction";
     }
+
+    @Override
+    public void save(Transaction e) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(Transaction e) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 
 }
