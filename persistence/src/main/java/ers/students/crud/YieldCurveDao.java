@@ -37,16 +37,16 @@ public class YieldCurveDao extends AbstractCrudDao<YieldCurve> {
         try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(INSERT)) {
             prepStatement.setString(1, yieldCurve.getId());
             prepStatement.setString(2, yieldCurve.getName());
-            prepStatement.setString(3, String.valueOf(yieldCurve.getYield1month()));
-            prepStatement.setString(4, String.valueOf(yieldCurve.getYield2month()));
-            prepStatement.setString(5, String.valueOf(yieldCurve.getYield3month()));
-            prepStatement.setString(6, String.valueOf(yieldCurve.getYield6month()));
-            prepStatement.setString(7, String.valueOf(yieldCurve.getYield1year()));
-            prepStatement.setString(8, String.valueOf(yieldCurve.getYield2year()));
-            prepStatement.setString(9, String.valueOf(yieldCurve.getYield5year()));
-            prepStatement.setString(10, String.valueOf(yieldCurve.getYield10year()));
-            prepStatement.setString(11, String.valueOf(yieldCurve.getYield20year()));
-            prepStatement.setString(12, String.valueOf(yieldCurve.getYield30year()));
+            prepStatement.setDouble(3, yieldCurve.getYield1month());
+            prepStatement.setDouble(4, yieldCurve.getYield2month());
+            prepStatement.setDouble(5, yieldCurve.getYield3month());
+            prepStatement.setDouble(6, yieldCurve.getYield6month());
+            prepStatement.setDouble(7, yieldCurve.getYield1year());
+            prepStatement.setDouble(8, yieldCurve.getYield2year());
+            prepStatement.setDouble(9, yieldCurve.getYield5year());
+            prepStatement.setDouble(10, yieldCurve.getYield10year());
+            prepStatement.setDouble(11, yieldCurve.getYield20year());
+            prepStatement.setDouble(12, yieldCurve.getYield30year());
 
             prepStatement.executeUpdate();
             prepStatement.close();
@@ -57,16 +57,16 @@ public class YieldCurveDao extends AbstractCrudDao<YieldCurve> {
     public void update(YieldCurve yieldCurve) throws SQLException {
         try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(UPDATE)) {
             prepStatement.setString(1, yieldCurve.getName());
-            prepStatement.setString(2, String.valueOf(yieldCurve.getYield1month()));
-            prepStatement.setString(3, String.valueOf(yieldCurve.getYield2month()));
-            prepStatement.setString(4, String.valueOf(yieldCurve.getYield3month()));
-            prepStatement.setString(5, String.valueOf(yieldCurve.getYield6month()));
-            prepStatement.setString(6, String.valueOf(yieldCurve.getYield1year()));
-            prepStatement.setString(7, String.valueOf(yieldCurve.getYield2year()));
-            prepStatement.setString(8, String.valueOf(yieldCurve.getYield5year()));
-            prepStatement.setString(9, String.valueOf(yieldCurve.getYield10year()));
-            prepStatement.setString(10, String.valueOf(yieldCurve.getYield20year()));
-            prepStatement.setString(11, String.valueOf(yieldCurve.getYield30year()));
+            prepStatement.setDouble(2, yieldCurve.getYield1month());
+            prepStatement.setDouble(3, yieldCurve.getYield2month());
+            prepStatement.setDouble(4, yieldCurve.getYield3month());
+            prepStatement.setDouble(5, yieldCurve.getYield6month());
+            prepStatement.setDouble(6, yieldCurve.getYield1year());
+            prepStatement.setDouble(7, yieldCurve.getYield2year());
+            prepStatement.setDouble(8, yieldCurve.getYield5year());
+            prepStatement.setDouble(9, yieldCurve.getYield10year());
+            prepStatement.setDouble(10, yieldCurve.getYield20year());
+            prepStatement.setDouble(11, yieldCurve.getYield30year());
             prepStatement.setString(12, yieldCurve.getId());
 
             prepStatement.executeUpdate();

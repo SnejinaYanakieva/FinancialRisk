@@ -7,6 +7,7 @@ package ers.students.crud;
 
 import ers.students.market.FxQuote;
 import ers.students.persistentStore.PersistentStore;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -36,8 +37,8 @@ public class FxQuoteDao extends AbstractCrudDao<FxQuote> {
             prepStatement.setString(1, fxQuote.getId());
             prepStatement.setString(2, fxQuote.getFrom().toString());
             prepStatement.setString(3, fxQuote.getTo().toString());
-            prepStatement.setString(4, fxQuote.getDate().toString());
-            prepStatement.setString(5, String.valueOf(fxQuote.getValue()));
+            prepStatement.setDate(4, (Date) fxQuote.getDate());
+            prepStatement.setDouble(5, fxQuote.getValue());
 
             prepStatement.executeUpdate();
             prepStatement.close();
@@ -47,11 +48,11 @@ public class FxQuoteDao extends AbstractCrudDao<FxQuote> {
     @Override
     public void update(FxQuote fxQuote) throws SQLException {
         try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(UPDATE)) {
-            prepStatement.setString(1, fxQuote.getFrom().toString());
-            prepStatement.setString(2, fxQuote.getTo().toString());
-            prepStatement.setString(3, fxQuote.getDate().toString());
-            prepStatement.setString(4, String.valueOf(fxQuote.getValue()));
-            prepStatement.setString(5, fxQuote.getId());
+            prepStatement.setString(1, fxQuote.getId());
+            prepStatement.setString(2, fxQuote.getFrom().toString());
+            prepStatement.setString(3, fxQuote.getTo().toString());
+            prepStatement.setDate(4, (Date) fxQuote.getDate());
+            prepStatement.setDouble(5, fxQuote.getValue());
 
             prepStatement.executeUpdate();
             prepStatement.close();

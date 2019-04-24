@@ -7,6 +7,7 @@ package ers.students.crud;
 
 import ers.students.instruments.Instrument;
 import ers.students.persistentStore.PersistentStore;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -37,14 +38,20 @@ public class InstrumentDao extends AbstractSearchingDao<Instrument> {
             prepStatement.setString(1, instrument.getId());
             prepStatement.setString(3, instrument.getIsin());
             prepStatement.setString(4, instrument.getCurrency().toString());
-            prepStatement.setString(5, instrument.getIssueDate().toString());
-            prepStatement.setString(6, instrument.getMaturityDate().toString());
+            prepStatement.setDate(5, (Date) instrument.getIssueDate());
+            prepStatement.setDate(6, (Date) instrument.getMaturityDate());
         }
     }
 
     @Override
     public void update(Instrument instrument) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(INSERT)) {
+            prepStatement.setString(2, instrument.getIsin());
+            prepStatement.setString(3, instrument.getCurrency().toString());
+            prepStatement.setDate(4, (Date) instrument.getIssueDate());
+            prepStatement.setDate(5, (Date) instrument.getMaturityDate());
+            prepStatement.setString(9, instrument.getId());
+        }
     }
 
 }

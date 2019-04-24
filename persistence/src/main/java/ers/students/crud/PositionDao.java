@@ -39,8 +39,8 @@ public class PositionDao extends AbstractSearchingDao<Position> {
             prepStatement.setString(2, position.getName());
             prepStatement.setString(3, position.getShortSide());
             prepStatement.setString(4, position.getLongSide());
-            prepStatement.setString(5, position.getPortfolioId().toString());
-            prepStatement.setString(6, position.getInstrument().toString());
+            prepStatement.setString(5, position.getPortfolioId());
+            prepStatement.setString(6, position.getInstrument().getId());
 
             prepStatement.executeUpdate();
             prepStatement.close();
