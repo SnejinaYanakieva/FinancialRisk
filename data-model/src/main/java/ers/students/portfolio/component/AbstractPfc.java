@@ -13,7 +13,7 @@ import ers.students.util.Currency;
  *
  * @author Viktor
  */
-public class AbstractPfc implements PortfolioComponent {
+public abstract class AbstractPfc implements PortfolioComponent {
 
     private String id;
     private String parentId;
@@ -30,10 +30,6 @@ public class AbstractPfc implements PortfolioComponent {
         this.name = name;
         this.currency = currency;
     }
-     
-    public AbstractPfc() {
-    }
-
     /**
      *
      * @return

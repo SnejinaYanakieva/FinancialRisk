@@ -5,6 +5,12 @@
  */
 package ers.students.calculation.provider;
 
+import ers.students.portfolio.component.AbstractPfc;
+import ers.students.portfolio.component.PortfolioPfc;
+import ers.students.portfolio.component.PositionPfc;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author Irina
@@ -12,4 +18,11 @@ package ers.students.calculation.provider;
 public enum PortfolioComponentType {
     Portfolio,
     Position;
+
+    public static Map<Class<? extends AbstractPfc>, PortfolioComponentType> portfolioComponentTypes = new HashMap();
+
+    static {
+        portfolioComponentTypes.put(PortfolioPfc.class, Portfolio);
+        portfolioComponentTypes.put(PositionPfc.class, Position);
+    }
 }

@@ -12,6 +12,7 @@ import ers.students.calculator.ProfitLossCalculator;
 import java.util.Date;
 
 import ers.students.market.Market;
+import ers.students.portfolio.component.DoubleResult;
 import ers.students.portfolio.component.PortfolioComponent;
 import ers.students.portfolio.component.PortfolioPfc;
 import java.util.List;
@@ -74,7 +75,7 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
         PositionVolumeCalculator calculator = new PositionVolumeCalculator();
         components.forEach((component) -> {
             calculator.calculate(component, market, evalDate);
-            portfolioPfc.addElement(component);
+            portfolioPfc.addCalculationResult(DoubleResult.POSITION_VOLUME, null);
         });
     }
 

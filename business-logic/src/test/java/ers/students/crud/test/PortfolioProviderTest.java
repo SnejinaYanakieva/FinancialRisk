@@ -11,7 +11,6 @@ import ers.students.crud.results.LoadResults;
 import ers.students.crud.utils.SuccessfulPersistenceStore;
 import ers.students.crud.utils.SuccessfulPortfolioDao;
 import ers.students.portfolio.Portfolio;
-import ers.students.util.Currency;
 import java.util.Map;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;

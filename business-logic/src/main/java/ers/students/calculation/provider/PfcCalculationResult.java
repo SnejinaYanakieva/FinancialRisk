@@ -22,7 +22,7 @@ public class PfcCalculationResult {
     private final Map<CalculationResult, Object> results = new HashMap<>();
     private final List<PfcCalculationResult> children = new ArrayList<>();
     private final List<String> errors = new ArrayList<>();
-    private final PortfolioComponentType portfolioComponentType = null;
+    private PortfolioComponentType portfolioComponentType;
 
     public PfcCalculationResult() {
     }
@@ -70,5 +70,8 @@ public class PfcCalculationResult {
     public PortfolioComponentType getPortfolioComponentType() {
         return portfolioComponentType;
     }
-
+    
+    public void setPortfolioComponentType(PortfolioComponentType type){
+        this.portfolioComponentType = type;
+    }
 }

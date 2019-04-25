@@ -7,6 +7,7 @@ package ers.students.portfolio.component;
 
 import ers.students.portfolio.Position;
 import ers.students.portfolio.Transaction;
+import ers.students.util.Currency;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,15 +22,17 @@ public class PositionPfc extends AbstractPfc {
     private double volume;
     private List<Transaction> transactionList = new ArrayList<>();  
 
-    PositionPfc(Position position, double volume, List<Transaction> transactionList) {
+    public PositionPfc(Position position,
+            List<Transaction> transactionList,
+            String id, 
+            String parentId,
+            String name,
+            Currency currency) {
+        super(id, parentId, name, currency);
         this.position = position;
-        this.volume = volume;
         this.transactionList=transactionList;
     }
-
-   public PositionPfc() {
-    }
-
+    
     public Position getPosition() {
         return position;
     }

@@ -9,6 +9,7 @@ import java.util.Date;
 
 import ers.students.market.Market;
 import ers.students.portfolio.Transaction;
+import ers.students.portfolio.component.DoubleResult;
 import ers.students.portfolio.component.PortfolioComponent;
 import ers.students.portfolio.component.PositionPfc;
 import java.util.List;
@@ -64,11 +65,14 @@ public class PositionCalculator implements PortfolioComponentCalculator {
 
         double volume = 0.0;
         for (Transaction transaction : trasactions) {
-            if (!positionPfc.getPosition().getLongSide().equals(transaction.getPayer())
-                    || !positionPfc.getPosition().getShortSide().equals(transaction.getReciver())) {
-                //positionPfc.addError("Payer or receiver incorrect.");
+           /* if (!positionPfc.getPosition().getLongSide().equals(transaction.getReciver())
+                    || !positionPfc.getPosition().getShortSide().equals(transaction.getPayer())) {
+                positionPfc.addError("Payer or receiver incorrect.");
                 return;
-            }
+            }*/
+           
+           if(transaction.getDate().after(evalDate))
+               continue;
 
             if (positionPfc.getPosition().getLongSide().equals(transaction.getPayer())) {
                 volume += transaction.getAmount();
@@ -76,8 +80,14 @@ public class PositionCalculator implements PortfolioComponentCalculator {
                 volume -= transaction.getAmount();
             }
         }
-
+        
+        if(volume<=0){
+            positionPfc.addError("Volume is not positive.");
+            return;
+        }
+        
         positionPfc.setVolume(volume);
+        positionPfc.addCalculationResult(DoubleResult.POSITION_VOLUME, volume);
     }
 
     /**
@@ -96,6 +106,6 @@ public class PositionCalculator implements PortfolioComponentCalculator {
     @Override
     public void calculateCashFlow(PortfolioComponent pfc, Market market, Date evalDate) {
         PositionPfc positionPfc = (PositionPfc) pfc;
-        
+        //positionPfc.getPosition().getInstrument().getIssueDate();
     }
 }

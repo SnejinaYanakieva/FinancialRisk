@@ -15,32 +15,30 @@ import java.util.*;
  * @author Viktor
  */
 public class PortfolioPfc extends AbstractPfc {
-
+    
     private Portfolio portfolio;
     private final List<PortfolioComponent> elements = new ArrayList();
-
-   public  PortfolioPfc(Portfolio portfolio) {
+    
+    public PortfolioPfc(Portfolio portfolio, String id, String parentId, String name, ers.students.util.Currency currency) {
+        super(id, parentId, name, currency);
         this.portfolio = portfolio;
     }
-
-   public  PortfolioPfc() {
-    }
-
+    
     public Portfolio getPortfolio() {
         return portfolio;
     }
-
+    
     public void setPortfolio(Portfolio portfolio) {
         this.portfolio = portfolio;
-
+        
     }
-
+    
     public List<PortfolioComponent> getElements() {
         return elements;
     }
-
+    
     public void addElement(PortfolioComponent element) {
         this.elements.add(element);
     }
-
+    
 }
