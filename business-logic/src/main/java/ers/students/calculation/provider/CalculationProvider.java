@@ -10,9 +10,7 @@ import ers.students.calculator.Calculator;
 import ers.students.crud.provider.AbstractCrudProvider;
 import ers.students.crud.provider.searching.PortfolioCrudProvider;
 import ers.students.crud.results.LoadResult;
-import ers.students.market.CachingMarket;
 import ers.students.market.Market;
-import ers.students.persistentStore.JdbcPersistentStore;
 import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
@@ -40,8 +38,8 @@ public class CalculationProvider {
     public PfcCalculationResult calculate(CalculationRequest calcRequest) {
         PfcCalculationResult pfcCalculationResult = new PfcCalculationResult();
         //positionTransactions = new PortfolioTransactionLoader(persistenseStore);
+
         // creating market
-        //TODO: provider
         Market market = null;
 
         // loading portfolio
@@ -67,6 +65,7 @@ public class CalculationProvider {
                 portfolio.getName(),
                 portfolio.getCurrency()
         );
+
         positionTransactions.forEach((position, transactionsList) -> {
             PositionPfc positionPfc = new PositionPfc(
                     position,
@@ -95,12 +94,15 @@ public class CalculationProvider {
         PfcCalculationResult calculationResult = new PfcCalculationResult();
         calculationResult.setPfcId(pfc.getId());
         calculationResult.setPfcName(pfc.getName());
+
         pfc.getCalculationResults().forEach((key, value) -> {
             calculationResult.addResult(key, value);
         });
+
         pfc.getErrors().forEach((error) -> {
             calculationResult.addError(error);
         });
+
         calculationResult.setPortfolioComponentType(
                 PortfolioComponentType.portfolioComponentTypes.get(pfc.getClass()));
 

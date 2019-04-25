@@ -12,6 +12,8 @@ import ers.students.calculator.ProfitLossCalculator;
 import java.util.Date;
 
 import ers.students.market.Market;
+import ers.students.portfolio.component.CashFlowResult;
+import ers.students.portfolio.component.DoubleResult;
 import ers.students.portfolio.component.DoubleResult;
 import ers.students.portfolio.component.PortfolioComponent;
 import ers.students.portfolio.component.PortfolioPfc;
@@ -34,13 +36,6 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
      */
     @Override
     public void calculatePresentValue(PortfolioComponent pfc, Market market, Date evalDate) {
-        PortfolioPfc portfolioPfc = (PortfolioPfc) pfc;
-        List<PortfolioComponent> components = portfolioPfc.getElements();
-        PresentValueCalculator calculator = new PresentValueCalculator();
-        components.forEach((component) -> {
-            calculator.calculate(component, market, evalDate);
-            portfolioPfc.addElement(component);
-        });
     }
 
     /**
@@ -52,13 +47,6 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
      */
     @Override
     public void calculateProfitLoss(PortfolioComponent pfc, Market market, Date evalDate) {
-        PortfolioPfc portfolioPfc = (PortfolioPfc) pfc;
-        List<PortfolioComponent> components = portfolioPfc.getElements();
-        ProfitLossCalculator calculator = new ProfitLossCalculator();
-        components.forEach((component) -> {
-            calculator.calculate(component, market, evalDate);
-            portfolioPfc.addElement(component);
-        });
     }
 
     /**
@@ -93,7 +81,8 @@ public class PortfolioCalculator implements PortfolioComponentCalculator {
         CashFlowCalculator calculator = new CashFlowCalculator();
         components.forEach((component) -> {
             calculator.calculate(component, market, evalDate);
-            portfolioPfc.addElement(component);
+            portfolioPfc.addCalculationResult(CashFlowResult.AMORTITATION_PAYMENT, null);
+            portfolioPfc.addCalculationResult(CashFlowResult.INTEREST_PAYMENTS, null);
         });
     }
 }
