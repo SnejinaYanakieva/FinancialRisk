@@ -69,14 +69,6 @@ public class PositionCalculator implements PortfolioComponentCalculator {
             if (transaction.getDate().after(evalDate)) {
                 continue;
             }
-           /* if (!positionPfc.getPosition().getLongSide().equals(transaction.getReciver())
-                    || !positionPfc.getPosition().getShortSide().equals(transaction.getPayer())) {
-                positionPfc.addError("Payer or receiver incorrect.");
-                return;
-            }*/
-           
-           if(transaction.getDate().after(evalDate))
-               continue;
 
             if (positionPfc.getPosition().getLongSide().equals(transaction.getPayer())) {
                 volume += transaction.getAmount();
@@ -84,12 +76,7 @@ public class PositionCalculator implements PortfolioComponentCalculator {
                 volume -= transaction.getAmount();
             }
         }
-        
-        if(volume<=0){
-            positionPfc.addError("Volume is not positive.");
-            return;
-        }
-        
+
         if (volume <= 0) {
             positionPfc.addError("Volume is not positive.");
             return;
