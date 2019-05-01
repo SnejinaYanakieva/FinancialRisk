@@ -8,7 +8,10 @@ package ers.students.crud;
 import ers.students.persistentStore.PersistentStore;
 import ers.students.portfolio.Position;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,6 +24,9 @@ public class PositionDao extends AbstractSearchingDao<Position> {
     private final String INSERT = "INSERT INTO Position VALUES (?,?,?,?,?,?)";
     private final String UPDATE = "UPDATE Position SET name=?, short_side=?, long_side=?, "
             + "portfolio_id=?, instrument_id=? WHERE id=?";
+    private final String LOAD_BY_ID = "SELECT * FROM Instrument WHERE id=?";
+    private final String LOAD_ALL = "SELECT * FROM ?";
+    private final String SEARCH_BY_NAME = "SELECT * FROM ? WHERE name=?";
 
     public PositionDao(PersistentStore ps) {
         super(ps);
@@ -31,6 +37,12 @@ public class PositionDao extends AbstractSearchingDao<Position> {
         return "Position";
     }
 
+    /**
+     * Saves Position in DB
+     * 
+     * @param position
+     * @throws SQLException 
+     */
     @Override
     public void save(Position position) throws SQLException {
         try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(INSERT)) {
@@ -48,6 +60,12 @@ public class PositionDao extends AbstractSearchingDao<Position> {
         }
     }
 
+    /**
+     * Updates Position in DB
+     * 
+     * @param position
+     * @throws SQLException 
+     */
     @Override
     public void update(Position position) throws SQLException {
         try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(INSERT)) {
@@ -63,6 +81,110 @@ public class PositionDao extends AbstractSearchingDao<Position> {
             prepStatement.close();
 
         }
+    }
+
+    /**
+     * Loads Position from DB with the given ID
+     * 
+     * @param id
+     * @return
+     * @throws SQLException 
+     */
+    @Override
+    public Position loadById(String id) throws SQLException {
+        Position position = new Position();
+
+        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(LOAD_BY_ID)) {
+            prepStatement.setString(1, id);
+
+            ResultSet resultSet = prepStatement.executeQuery();
+
+            if (resultSet.next()) {
+                position.setId(resultSet.getString("id"));
+                position.setName(resultSet.getString("name"));
+                position.setShortSide(resultSet.getString("short_side"));
+                position.setLongSide(resultSet.getString("long_side"));
+                position.setPortfolioId(resultSet.getString("position_id"));
+                //position.setInstrument(resultSet.getString("instrument_id"));
+            }
+
+            resultSet.close();
+            prepStatement.close();
+        }
+
+        return position;
+    }
+
+    /**
+     * Loads all Positions from DB
+     * 
+     * @return
+     * @throws SQLException 
+     */
+    @Override
+    public List<Position> loadAll() throws SQLException {
+        List<Position> positionList = new ArrayList<>();
+        Position position;
+
+        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(LOAD_ALL)) {
+            ResultSet resultSet = prepStatement.executeQuery();
+
+            if (resultSet.next()) {
+                position = new Position();
+
+                position.setId(resultSet.getString("id"));
+                position.setName(resultSet.getString("name"));
+                position.setShortSide(resultSet.getString("short_side"));
+                position.setLongSide(resultSet.getString("long_side"));
+                position.setPortfolioId(resultSet.getString("position_id"));
+                //position.setInstrument(resultSet.getString("instrument_id"));
+
+                positionList.add(position);
+            }
+
+            resultSet.close();
+            prepStatement.close();
+        }
+
+        return positionList;
+    }
+
+    /**
+     * Loads all Positions from DB with the given name.
+     * 
+     * @param name
+     * @return
+     * @throws SQLException 
+     */
+    @Override
+    public List<Position> searchByName(String name) throws SQLException {
+        List<Position> positionList = new ArrayList<>();
+        Position position;
+
+        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(LOAD_ALL)) {
+            prepStatement.setString(1, name);
+            ResultSet resultSet = prepStatement.executeQuery();
+
+            if (resultSet.next()) {
+                position = new Position();
+
+                position.setId(resultSet.getString("id"));
+                position.setName(resultSet.getString("name"));
+                position.setShortSide(resultSet.getString("short_side"));
+                position.setLongSide(resultSet.getString("long_side"));
+                position.setPortfolioId(resultSet.getString("position_id"));
+                //position.setInstrument(resultSet.getString("instrument_id"));
+
+                positionList.add(position);
+            }
+            
+            resultSet.close();
+            prepStatement.close();
+
+        }
+
+        return positionList;
+
     }
 
 }
