@@ -21,12 +21,15 @@ public class SuccessfulPortfolioDao extends PortfolioDao {
 
     public static Portfolio portfolio = new Portfolio("1l", "name1", Currency.CHF);
     
-    public SuccessfulPortfolioDao(PersistentStore JDBCPersistentStore) {
-        super(JDBCPersistentStore);
+    public SuccessfulPortfolioDao(PersistentStore ps) {
+        super(ps);
     }
 
     @Override
     public Portfolio loadById(String id) {
+        if(id==null){
+            return null;
+        }
         return portfolio;
     }
 
@@ -50,7 +53,7 @@ public class SuccessfulPortfolioDao extends PortfolioDao {
 
     @Override
     public void update(Portfolio e) throws SQLException {
-
+        
     }
 
     @Override
