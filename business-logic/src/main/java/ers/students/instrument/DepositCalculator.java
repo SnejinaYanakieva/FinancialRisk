@@ -29,7 +29,7 @@ public class DepositCalculator implements InstrumentCalculator {
      * @return present value
      */
     @Override
-    public double calculatePresentValue(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
+    public double calculatePresentValue(Instrument instrument, double positionVolume, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -42,7 +42,7 @@ public class DepositCalculator implements InstrumentCalculator {
      * @param evalDate date of calculation
      */
     @Override
-    public void buildCashFlow(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
+    public void buildCashFlow(Instrument instrument, double positionVolume, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -73,7 +73,7 @@ public class DepositCalculator implements InstrumentCalculator {
      * @return profit/loss
      */
     @Override
-    public double calculateProfitLoss(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
+    public double calculateProfitLoss(Instrument instrument, double positionVolume, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

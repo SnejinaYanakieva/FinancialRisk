@@ -5,14 +5,24 @@
  */
 package ers.students.calculator.pfc;
 
+import ers.students.instrument.CreditCalculator;
+import ers.students.instrument.InstrumentCalculator;
+import ers.students.instrument.resolver.InstrumentCalculatorResolver;
+import ers.students.instruments.Credit;
+import ers.students.instruments.Instrument;
 import java.util.Date;
 
 import ers.students.market.Market;
 import ers.students.portfolio.Transaction;
+import ers.students.portfolio.component.CashFlowResult;
 import ers.students.portfolio.component.DoubleResult;
 import ers.students.portfolio.component.PortfolioComponent;
 import ers.students.portfolio.component.PositionPfc;
+import ers.students.util.Frequency;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The PositionCalculator class provides methods for calculating cash flow,
@@ -102,6 +112,18 @@ public class PositionCalculator implements PortfolioComponentCalculator {
     @Override
     public void calculateCashFlow(PortfolioComponent pfc, Market market, Date evalDate) {
         PositionPfc positionPfc = (PositionPfc) pfc;
-        //positionPfc.getPosition().getInstrument().getIssueDate();
+        Instrument instrument = positionPfc.getPosition().getInstrument();
+        
+        if (instrument instanceof Credit) {
+            CreditCalculator creditCalculator = new CreditCalculator();
+            ///////////////////
+            positionPfc.setVolume(100);
+            creditCalculator.buildCashFlow(instrument, positionPfc.getVolume(), market, evalDate);
+            
+            positionPfc.getCalculationResults().
+                    put(CashFlowResult.AMORTITATION_PAYMENT, creditCalculator.getAmortizationPayments());
+        }
+        
+        
     }
 }

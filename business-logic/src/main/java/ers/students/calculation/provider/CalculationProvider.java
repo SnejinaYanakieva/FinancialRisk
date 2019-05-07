@@ -16,8 +16,13 @@ import ers.students.portfolio.Portfolio;
 import ers.students.portfolio.Position;
 import ers.students.portfolio.Transaction;
 import ers.students.portfolio.component.AbstractPfc;
+import ers.students.portfolio.component.CalculationResult;
+import ers.students.portfolio.component.CashFlowResult;
+import ers.students.portfolio.component.DoubleResult;
 import ers.students.portfolio.component.PortfolioPfc;
 import ers.students.portfolio.component.PositionPfc;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,11 +33,18 @@ import java.util.Map;
  */
 public class CalculationProvider {
 
-    private Map<Position, List<Transaction>> positionTransactions = new HashMap<Position, List<Transaction>>();
+    private Map<Position, List<Transaction>> positionTransactions = new HashMap<>();
     private final PersistentStore persistentStore;
+    private List<CalculationResult> calculationResult = new ArrayList<>();
 
     public CalculationProvider(PersistentStore persistentStore) {
         this.persistentStore = persistentStore;
+
+        calculationResult.add(DoubleResult.POSITION_VOLUME);
+        calculationResult.add(CashFlowResult.AMORTITATION_PAYMENT);
+        calculationResult.add(CashFlowResult.INTEREST_PAYMENTS);
+        calculationResult.add(DoubleResult.PV);
+        calculationResult.add(DoubleResult.PROFIT_LOSS);
     }
 
     public PfcCalculationResult calculate(CalculationRequest calcRequest) {
@@ -79,6 +91,19 @@ public class CalculationProvider {
         });
 
         calcRequest.getCalcResults().forEach((calcResult) -> {
+
+           /* int index = calculationResult.indexOf(calcResult);
+            if (index != -1) {
+                for (int i = 0; i < index; i++) {
+                    Calculator calculator = CalculationResolver.getCalculator(
+                            calculationResult.get(i).getName());
+                    calculator.calculate(
+                            portfolioComponent,
+                            market,
+                            calcRequest.getEvalDate().getTime());
+                }
+            }*/
+
             Calculator calculator = CalculationResolver.getCalculator(calcResult.getName());
             calculator.calculate(portfolioComponent, market, calcRequest.getEvalDate().getTime());
         });

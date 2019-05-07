@@ -43,7 +43,7 @@ public class InstrumentCalculatorResolver {
      * @return by given Instrument class key returns corresponding instrument
      * calculator.
      */
-    public InstrumentCalculator getInstrumentCalculator(Class<? extends Instrument> instrumentClass) {
+    public static InstrumentCalculator getInstrumentCalculator(Class<? extends Instrument> instrumentClass) {
         return instrumentCalculators.get(instrumentClass);
     }
 }

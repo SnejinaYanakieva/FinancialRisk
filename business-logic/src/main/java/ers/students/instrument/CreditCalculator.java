@@ -5,11 +5,14 @@
  */
 package ers.students.instrument;
 
+import ers.students.instruments.Credit;
 import ers.students.instruments.Instrument;
 import ers.students.market.Market;
-import ers.students.portfolio.Position;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,6 +21,8 @@ import java.util.Map;
  * @author Irina
  */
 public class CreditCalculator implements InstrumentCalculator {
+
+    Map<Calendar, Double> amortizationPayments = new HashMap<>();
 
     /**
      * Calculates the discounted value of all incomes.
@@ -29,7 +34,7 @@ public class CreditCalculator implements InstrumentCalculator {
      * @return present value
      */
     @Override
-    public double calculatePresentValue(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
+    public double calculatePresentValue(Instrument instrument, double positionVolume, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -42,8 +47,23 @@ public class CreditCalculator implements InstrumentCalculator {
      * @param evalDate date of calculation
      */
     @Override
-    public void buildCashFlow(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void buildCashFlow(Instrument instrument, double positionVolume, Market market, Date evalDate) {
+        Credit credit = (Credit) instrument;
+
+        Date issueDate = credit.getIssueDate();
+        Date maturityDate = credit.getMaturityDate();
+
+        // 
+        int life = maturityDate.getYear() - issueDate.getYear();
+        List<String> errors = new ArrayList<>();
+
+        calculateAmortizationPayments(
+                credit,
+                life,
+                positionVolume,
+                issueDate,
+                maturityDate,
+                errors);
     }
 
     /**
@@ -61,7 +81,7 @@ public class CreditCalculator implements InstrumentCalculator {
      */
     @Override
     public Map<Calendar, Double> getAmortizationPayments() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return amortizationPayments;
     }
 
     /**
@@ -73,8 +93,41 @@ public class CreditCalculator implements InstrumentCalculator {
      * @return profit/loss
      */
     @Override
-    public double calculateProfitLoss(Instrument instrument, Position positionVolume, Market market, Date evalDate) {
+    public double calculateProfitLoss(Instrument instrument, double positionVolume, Market market, Date evalDate) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    private void calculateAmortizationPayments(Credit credit, int life, double volume, Date issueDate, Date maturityDate, List<String> errors) {
+        int period = credit.getAmortitationFrequency().getPeriod();
+
+        if (period > life) {
+            errors.add("Period cannot be more than life.");
+        }
+
+        int numberPayments = 0;
+        if (credit.getAmortitationFrequency().getType() == Calendar.YEAR) {
+            numberPayments = life / period;
+        } else {
+            int months = 12 / credit.getAmortitationFrequency().getPeriod();
+            numberPayments = life * months;
+        }
+
+        double amountPayments = volume / numberPayments;
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(issueDate);
+
+        for (int i = 1; i <= numberPayments; i++) {
+
+            cal.add(credit.getAmortitationFrequency().getType(), period);
+
+            Date date = cal.getTime();
+
+            if (date.after(maturityDate)) {
+                continue;
+            }
+
+            amortizationPayments.put(cal, amountPayments);
+        }
     }
 
 }

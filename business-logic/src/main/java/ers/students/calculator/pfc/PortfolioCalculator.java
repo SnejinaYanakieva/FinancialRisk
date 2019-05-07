@@ -7,13 +7,10 @@ package ers.students.calculator.pfc;
 
 import ers.students.calculator.CashFlowCalculator;
 import ers.students.calculator.PositionVolumeCalculator;
-import ers.students.calculator.PresentValueCalculator;
-import ers.students.calculator.ProfitLossCalculator;
 import java.util.Date;
 
 import ers.students.market.Market;
 import ers.students.portfolio.component.CashFlowResult;
-import ers.students.portfolio.component.DoubleResult;
 import ers.students.portfolio.component.DoubleResult;
 import ers.students.portfolio.component.PortfolioComponent;
 import ers.students.portfolio.component.PortfolioPfc;

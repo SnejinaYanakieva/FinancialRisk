@@ -19,13 +19,13 @@ import java.util.Map;
  */
 public interface InstrumentCalculator {
 
-    double calculatePresentValue(Instrument instrument, Position positionVolume, Market market, Date evalDate);
+    double calculatePresentValue(Instrument instrument, double positionVolume, Market market, Date evalDate);
 
-    void buildCashFlow(Instrument instrument, Position positionVolume, Market market, Date evalDate);
+    void buildCashFlow(Instrument instrument, double positionVolume, Market market, Date evalDate);
 
     Map<Calendar, Double> getInvestmentPayments();
 
     Map<Calendar, Double> getAmortizationPayments();
 
-    double calculateProfitLoss(Instrument instrument, Position positionVolume, Market market, Date evalDate);
+    double calculateProfitLoss(Instrument instrument, double positionVolume, Market market, Date evalDate);
 }
