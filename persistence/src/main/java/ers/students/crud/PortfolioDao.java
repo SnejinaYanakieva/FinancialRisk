@@ -24,9 +24,9 @@ public class PortfolioDao extends AbstractSearchingDao<Portfolio> {
 
     private final String INSERT = "INSERT INTO Portfolio VALUES (?, ?, ?)";
     private final String UPDATE = "UPDATE Portfolio SET name=?, currency=? WHERE id=?";
-    private final String LOAD_BY_ID = "SELECT * FROM Instrument WHERE id=?";
-    private final String LOAD_ALL = "SELECT * FROM ?";
-    private final String SEARCH_BY_NAME = "SELECT * FROM ? WHERE name=?";
+    private final String LOAD_BY_ID = "SELECT * FROM Portfolio WHERE id=?";
+    private final String LOAD_ALL = "SELECT * FROM Portfolio";
+    private final String SEARCH_BY_NAME = "SELECT * FROM Portfolio WHERE name=?";
 
     public PortfolioDao(PersistentStore ps) {
         super(ps);
@@ -47,8 +47,8 @@ public class PortfolioDao extends AbstractSearchingDao<Portfolio> {
     public void save(Portfolio portfolio) throws SQLException {
         try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(INSERT)) {
             prepStatement.setString(1, portfolio.getId());
-            prepStatement.setString(1, portfolio.getName());
-            prepStatement.setString(1, portfolio.getCurrency().toString());
+            prepStatement.setString(2, portfolio.getName());
+            prepStatement.setString(3, portfolio.getCurrency().toString());
 
             prepStatement.executeUpdate();
             prepStatement.close();
@@ -90,9 +90,9 @@ public class PortfolioDao extends AbstractSearchingDao<Portfolio> {
             ResultSet resultSet = prepStatement.executeQuery();
 
             if (resultSet.next()) {
-                portfolio.setId(resultSet.getString("id"));
-                portfolio.setName(resultSet.getString("name"));
-                portfolio.setCurrency(Currency.valueOf(resultSet.getString("currency")));
+                portfolio.setId(resultSet.getString(1));
+                portfolio.setName(resultSet.getString(2));
+                portfolio.setCurrency(Currency.valueOf(resultSet.getString(3)));
             }
 
             resultSet.close();
@@ -115,7 +115,7 @@ public class PortfolioDao extends AbstractSearchingDao<Portfolio> {
         try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(LOAD_ALL)) {
             ResultSet resultSet = prepStatement.executeQuery();
 
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 portfolio = new Portfolio();
 
                 portfolio.setId(resultSet.getString("id"));
@@ -148,12 +148,12 @@ public class PortfolioDao extends AbstractSearchingDao<Portfolio> {
             prepStatement.setString(1, name);
             ResultSet resultSet = prepStatement.executeQuery();
 
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 portfolio = new Portfolio();
 
-                portfolio.setId(resultSet.getString("id"));
-                portfolio.setName(resultSet.getString("name"));
-                portfolio.setCurrency(Currency.valueOf(resultSet.getString("currency")));
+                portfolio.setId(resultSet.getString(1));
+                portfolio.setName(resultSet.getString(2));
+                portfolio.setCurrency(Currency.valueOf(resultSet.getString(3)));
 
                 portfolioList.add(portfolio);
             }
