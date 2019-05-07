@@ -22,7 +22,6 @@ import junit.framework.TestCase;
 public class PortfolioDaoTest extends TestCase {
 
     private final PersistentStore jdbcPersistentStore = new JdbcPersistentStore("jdbc:hsqldb:mem:/DBTesting/dbtest", "SA", "");
-    //private final PersistentStore jdbcPersistentStore = new JdbcPersistentStore("jdbc:hsqldb:file:/DBTesting2/dbtest", "SA", "");
 
     public PortfolioDaoTest(String testName) {
         super(testName);
@@ -47,6 +46,7 @@ public class PortfolioDaoTest extends TestCase {
      */
     public void testGetTableName() {
         System.out.println("getTableName");
+        
         PortfolioDao instance = new PortfolioDao(jdbcPersistentStore);
         String expResult = "Portfolio";
         String result = instance.getTableName();
@@ -60,25 +60,26 @@ public class PortfolioDaoTest extends TestCase {
      */
     public void testSave() throws Exception {
         System.out.println("save");
+        
+        Portfolio result = new Portfolio();
         Portfolio portfolio = new Portfolio("port1", "portname", Currency.BGN);
         PortfolioDao instance = new PortfolioDao(this.jdbcPersistentStore);
+        
         this.jdbcPersistentStore.startTransaction();
         instance.save(portfolio);
         this.jdbcPersistentStore.commitTransaction();
 
-        String resultId = "";
-        String resultName = "";
         String select = "SELECT * FROM Portfolio WHERE id='port1'";
         Statement statement = this.jdbcPersistentStore.getConnection().createStatement();
         ResultSet res = statement.executeQuery(select);
 
         if (res.next()) {
-            resultId = res.getString(1);
-            resultName = res.getString(2);
+            result.setId(res.getString(1));
+            result.setName(res.getString(2));
+            result.setCurrency(Currency.valueOf(res.getString(3)));
         }
 
-        assertEquals("port1", resultId);
-        assertEquals("portname", resultName);
+        assertEquals(portfolio, result);
     }
 
     /**
@@ -88,28 +89,28 @@ public class PortfolioDaoTest extends TestCase {
      */
     public void testUpdate() throws Exception {
         System.out.println("update");
+        
+        Portfolio result = new Portfolio();
         Portfolio portfolioOld = new Portfolio("port", "name", Currency.AUD);
         Portfolio portfolioUpdate = new Portfolio("port", "name2", Currency.AUD);
         PortfolioDao instance = new PortfolioDao(jdbcPersistentStore);
+        
         this.jdbcPersistentStore.startTransaction();
         instance.save(portfolioOld);
         instance.update(portfolioUpdate);
         this.jdbcPersistentStore.commitTransaction();
-
-        String resultId = "";
-        String resultName = "";
 
         String select = "SELECT * FROM Portfolio WHERE id='port'";
         Statement statement = this.jdbcPersistentStore.getConnection().createStatement();
         ResultSet res = statement.executeQuery(select);
 
         if (res.next()) {
-            resultId = res.getString(1);
-            resultName = res.getString(2);
+            result.setId(res.getString(1));
+            result.setName(res.getString(2));
+            result.setCurrency(Currency.valueOf(res.getString(3)));
         }
 
-        assertEquals("port", resultId);
-        assertEquals("name2", resultName);
+        assertEquals(portfolioUpdate, result);
     }
 
     /**
@@ -119,10 +120,11 @@ public class PortfolioDaoTest extends TestCase {
      */
     public void testLoadById() throws Exception {
         System.out.println("loadById");
+        
         Portfolio portfolio = new Portfolio("port3", "name3", Currency.AUD);
-
         Portfolio result;
         PortfolioDao instance = new PortfolioDao(this.jdbcPersistentStore);
+        
         this.jdbcPersistentStore.startTransaction();
         instance.save(portfolio);
         result = instance.loadById("port3");
@@ -138,25 +140,25 @@ public class PortfolioDaoTest extends TestCase {
      */
     public void testLoadAll() throws Exception {
         System.out.println("loadAll");
-        
+
         Portfolio portfolio = new Portfolio("id5", "portfolio5", Currency.BGN);
         Portfolio portfolio2 = new Portfolio("id6", "portfolio5", Currency.GBP);
-        
+
         PortfolioDao instance = new PortfolioDao(this.jdbcPersistentStore);
         List<Portfolio> expResult = new ArrayList<>();
         expResult.add(portfolio);
         expResult.add(portfolio2);
-        
+
         this.jdbcPersistentStore.startTransaction();
         String delete = "DELETE FROM Portfolio";
         Statement statement = this.jdbcPersistentStore.getConnection().createStatement();
         statement.executeUpdate(delete);
-        
+
         instance.save(portfolio);
         instance.save(portfolio2);
         List<Portfolio> result = instance.loadAll();
         this.jdbcPersistentStore.commitTransaction();
-        
+
         assertEquals(expResult, result);
     }
 
@@ -175,7 +177,7 @@ public class PortfolioDaoTest extends TestCase {
         String name = "portname3";
         PortfolioDao instance = new PortfolioDao(this.jdbcPersistentStore);
         List<Portfolio> expResult = new ArrayList<>();
-        
+
         expResult.add(portfolio2);
         expResult.add(portfolio3);
         expResult.add(portfolio);
@@ -187,8 +189,6 @@ public class PortfolioDaoTest extends TestCase {
         List<Portfolio> result = instance.searchByName(name);
         this.jdbcPersistentStore.commitTransaction();
 
-        int size = result.size();
-        //assertEquals(3,size);
         assertEquals(expResult, result);
     }
 }
