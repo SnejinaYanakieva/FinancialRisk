@@ -90,9 +90,9 @@ public class PortfolioDao extends AbstractSearchingDao<Portfolio> {
             ResultSet resultSet = prepStatement.executeQuery();
 
             if (resultSet.next()) {
-                portfolio.setId(resultSet.getString(1));
-                portfolio.setName(resultSet.getString(2));
-                portfolio.setCurrency(Currency.valueOf(resultSet.getString(3)));
+                portfolio.setId(resultSet.getString("id"));
+                portfolio.setName(resultSet.getString("name"));
+                portfolio.setCurrency(Currency.valueOf(resultSet.getString("currency")));
             }
 
             resultSet.close();
@@ -151,9 +151,9 @@ public class PortfolioDao extends AbstractSearchingDao<Portfolio> {
             while (resultSet.next()) {
                 portfolio = new Portfolio();
 
-                portfolio.setId(resultSet.getString(1));
-                portfolio.setName(resultSet.getString(2));
-                portfolio.setCurrency(Currency.valueOf(resultSet.getString(3)));
+                portfolio.setId(resultSet.getString("id"));
+                portfolio.setName(resultSet.getString("name"));
+                portfolio.setCurrency(Currency.valueOf(resultSet.getString("currency")));
 
                 portfolioList.add(portfolio);
             }

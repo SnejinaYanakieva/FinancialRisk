@@ -55,6 +55,8 @@ public class InstrumentDao extends AbstractSearchingDao<Instrument> {
             prepStatement.setString(4, instrument.getCurrency().toString());
             prepStatement.setDate(5, (Date) instrument.getIssueDate());
             prepStatement.setDate(6, (Date) instrument.getMaturityDate());
+            
+            //prepStatement.setDouble(7, (Date) instrument.)
         }
     }
 
@@ -66,7 +68,7 @@ public class InstrumentDao extends AbstractSearchingDao<Instrument> {
      */
     @Override
     public void update(Instrument instrument) throws SQLException {
-        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(INSERT)) {
+        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(UPDATE)) {
             // type, interest_rate, interest_frequency, amortization_frequency
 
             prepStatement.setString(2, instrument.getIsin());
@@ -156,7 +158,7 @@ public class InstrumentDao extends AbstractSearchingDao<Instrument> {
         List<Instrument> instrumentList = new ArrayList<>();
         Instrument instrument;
 
-        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(LOAD_ALL)) {
+        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(SEARCH_BY_NAME)) {
             prepStatement.setString(1, name);
             ResultSet resultSet = prepStatement.executeQuery();
 
