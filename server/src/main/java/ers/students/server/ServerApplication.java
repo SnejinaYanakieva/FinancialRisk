@@ -9,10 +9,25 @@ package ers.students.server;
  *
  * @author Viktor
  */
-
 public class ServerApplication {
-      public static void main(String args[]) throws Exception {
-          JaxrsServerFactoryBean bean = new JaxrsServerFactoryBean();
-          bean.Build();
-      }
+
+    public static void main(String args[]) throws Exception {
+        
+        JaxrsServerFactoryBean bean = new JaxrsServerFactoryBean();
+        
+        for (int i = 0; i < args.length; i++) {
+            if(args[i].equals("start")){
+                System.out.println("Starting..");
+                bean.Build();
+                System.out.println("Started..");
+            }
+            else if(args[i].equals("stop")){
+                bean.serverStop();
+                System.out.println("Stopped..");
+            }
+            else{
+                System.out.println("Unknown command!");
+            }
+        }
+    }
 }
