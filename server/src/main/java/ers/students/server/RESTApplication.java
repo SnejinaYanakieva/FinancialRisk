@@ -5,8 +5,14 @@
  */
 package ers.students.server;
 
+import ers.students.fxquote.FxQuoteRestServiceImpl;
+import ers.students.instrument.InstrumentRestServiceImpl;
 import ers.students.persistentStore.PersistentStore;
+import ers.students.portfolio.PortfolioRestServiceImpl;
+import ers.students.position.PositionRestServiceImpl;
 import ers.students.registry.ProviderRegistry;
+import ers.students.transaction.TransactionRestServiceImpl;
+import ers.students.yieldcurve.YieldCurveRestServiceImpl;
 import java.util.HashSet;
 import java.util.Set;
 import javax.ws.rs.ApplicationPath;
@@ -16,7 +22,7 @@ import javax.ws.rs.core.Application;
  *
  * @author martinstoynov
  */
-@ApplicationPath("/network-management")
+
 public class RESTApplication extends Application {
 
     private Set<Object> singletons = new HashSet<Object>();
@@ -24,14 +30,17 @@ public class RESTApplication extends Application {
     private ProviderRegistry registry;
 
     public RESTApplication(PersistentStore store) {
+        
         ProviderRegistry.createInstance(store);
+        
         registry = ProviderRegistry.getInstance();
-        singletons.add(registry.getFxQuoteProvider());
-        singletons.add(registry.getInstrumentProvider());
-        singletons.add(registry.getPortfolioProvider());
-        singletons.add(registry.getPositionProvider());
-        singletons.add(registry.getTransactionProvider());
-        singletons.add(registry.getYieldCurveProvider());        
+        
+        singletons.add(new FxQuoteRestServiceImpl(registry));
+        singletons.add(new InstrumentRestServiceImpl(registry));
+        singletons.add(new PortfolioRestServiceImpl(registry));
+        singletons.add(new PositionRestServiceImpl(registry));
+        singletons.add(new TransactionRestServiceImpl(registry));
+        singletons.add(new YieldCurveRestServiceImpl(registry));        
     }
 
     @Override

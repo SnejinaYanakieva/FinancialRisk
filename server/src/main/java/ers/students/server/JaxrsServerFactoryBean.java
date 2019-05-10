@@ -5,13 +5,12 @@
  */
 package ers.students.server;
 
+import ers.students.persistentStore.PersistentStore;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
-import ers.students.factory.ResponseFactory;
-import ers.students.fxquote.FxQuoteRestServiceImpl;
-import org.apache.cxf.binding.BindingFactoryManager;
 import org.apache.cxf.endpoint.Server;
 import org.apache.cxf.jaxrs.JAXRSBindingFactory;
 import org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider;
+import org.apache.cxf.jaxrs.utils.ResourceUtils;
 
 /**
  *
@@ -20,12 +19,19 @@ import org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider;
 //Bean ? info and why ,
 public class JaxrsServerFactoryBean {
 
+    //private Connector connector = Connector.getInstance();
+    private Connector connector = Connector.getInstance();
+    
+    private RESTApplication application;
     public Server server;
-    private final JAXRSServerFactoryBean sf = new JAXRSServerFactoryBean();
-    private BindingFactoryManager manager = sf.getBus().getExtension(BindingFactoryManager.class);
-    private JAXRSBindingFactory factory = new JAXRSBindingFactory();
+    private final JAXRSServerFactoryBean sf;
+    private final JAXRSBindingFactory factory = new JAXRSBindingFactory();
+    
     
     public JaxrsServerFactoryBean() {
+        PersistentStore store = connector.getPersistentStore();
+        application = new RESTApplication(store);
+        sf = ResourceUtils.createApplication(application, false);
     }
 
     public void setResourceClass(Class Resourse) {
@@ -54,8 +60,7 @@ public class JaxrsServerFactoryBean {
 
     public void Build() {
 
-        factory.setBus(sf.getBus());
-        manager.registerBindingFactory(JAXRSBindingFactory.JAXRS_BINDING_ID, factory);
+        setAddressDef();
         server = sf.create();
         server.start();
         

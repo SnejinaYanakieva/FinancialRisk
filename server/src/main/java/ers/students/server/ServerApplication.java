@@ -9,10 +9,10 @@ package ers.students.server;
  *
  * @author Viktor
  */
-//main
+
 public class ServerApplication {
       public static void main(String args[]) throws Exception {
-          
-          
+          JaxrsServerFactoryBean bean = new JaxrsServerFactoryBean();
+          bean.Build();
       }
 }
