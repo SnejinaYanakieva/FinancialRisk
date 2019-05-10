@@ -13,7 +13,7 @@ public class RestfulServer {
   
         
         //Otdeleni ,object  server ,i da addna serviceite, votdelni metodi da sa vs  
-
+/*
 JAXRSServerFactoryBean sf = new JAXRSServerFactoryBean();
 sf.setResourceClasses(ResponseFactory.class,FxQuoteRestServiceImpl.class);
 sf.setResourceProvider(ResponseFactory.class, new SingletonResourceProvider(ResponseFactory.getInstance()));
@@ -24,6 +24,6 @@ factory.setBus(sf.getBus());
 manager.registerBindingFactory(JAXRSBindingFactory.JAXRS_BINDING_ID, factory);
 sf.create();
 }
-
+*/
 }
 
