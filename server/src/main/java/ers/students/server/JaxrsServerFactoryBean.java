@@ -16,7 +16,6 @@ import org.apache.cxf.jaxrs.utils.ResourceUtils;
  *
  * @author Viktor
  */
-//Bean ? info and why ,
 public class JaxrsServerFactoryBean {
 
     //private Connector connector = Connector.getInstance();
@@ -58,7 +57,7 @@ public class JaxrsServerFactoryBean {
         
     }
 
-    public void Build() {
+    public void start() {
 
         setAddressDef();
         server = sf.create();
@@ -66,7 +65,7 @@ public class JaxrsServerFactoryBean {
         
     }
 
-    public void serverStop() {
+    public void stop() {
         if (server != null) {
             server.stop();
         }

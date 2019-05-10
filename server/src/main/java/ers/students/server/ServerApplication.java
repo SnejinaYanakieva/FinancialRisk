@@ -18,11 +18,11 @@ public class ServerApplication {
         for (int i = 0; i < args.length; i++) {
             if(args[i].equals("start")){
                 System.out.println("Starting..");
-                bean.Build();
+                bean.start();
                 System.out.println("Started..");
             }
             else if(args[i].equals("stop")){
-                bean.serverStop();
+                bean.stop();
                 System.out.println("Stopped..");
             }
             else{
