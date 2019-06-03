@@ -68,7 +68,7 @@ public class PositionDao extends AbstractSearchingDao<Position> {
      */
     @Override
     public void update(Position position) throws SQLException {
-        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(INSERT)) {
+        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(UPDATE)) {
 
             prepStatement.setString(1, position.getName());
             prepStatement.setString(2, position.getShortSide());
@@ -161,7 +161,7 @@ public class PositionDao extends AbstractSearchingDao<Position> {
         List<Position> positionList = new ArrayList<>();
         Position position;
 
-        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(LOAD_ALL)) {
+        try (PreparedStatement prepStatement = super.getPersistentStore().getConnection().prepareStatement(SEARCH_BY_NAME)) {
             prepStatement.setString(1, name);
             ResultSet resultSet = prepStatement.executeQuery();
 

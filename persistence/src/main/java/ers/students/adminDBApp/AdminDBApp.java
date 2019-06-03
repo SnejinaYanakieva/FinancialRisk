@@ -30,8 +30,7 @@ public class AdminDBApp {
         String user = "SA";
         String pass = "admin";
         initJDBCPersistentStore(url, user, pass);
-        
-        
+                
         try {
             persistentStore.startTransaction();
             persistentStore.createDB();

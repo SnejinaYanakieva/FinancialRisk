@@ -191,4 +191,5 @@ public class PortfolioDaoTest extends TestCase {
 
         assertEquals(expResult, result);
     }
+    
 }
