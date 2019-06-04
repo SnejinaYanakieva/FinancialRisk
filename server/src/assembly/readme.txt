@@ -11,9 +11,21 @@
 
 ## Usage
 - Open terminal and type:
-	cd ${project.basedir}/server
-	mvn -q clean compile exec:java -Dexec.mainClass="ers.students.server.ServerApplication" -Dexec.args="start"
-	mvn -q clean compile exec:java -Dexec.mainClass="ers.students.server.ServerApplication" -Dexec.args="stop"
+	cd ${project.basedir}/server/src/assembly
+		bash start_server.sh
+		bash stop_server.sh
+	or
 
+	cd ${project.basedir}/server
+		mvn -q clean compile exec:java -Dexec.mainClass="ers.students.server.ServerApplication" -Dexec.args="start"
+		mvn -q clean compile exec:java -Dexec.mainClass="ers.students.server.ServerApplication" -Dexec.args="stop"
+
+## Credits
+- Snejina Yanakieva: Project architect
+- Gergana Kuleva: Project architect
+- Irina Ivanova: Business logic
+- Ayhan Abilov: Persistence store
+- Martin Stoynov: Endpoint & Server
+- Viktor Radev: Data model & Server
 
 

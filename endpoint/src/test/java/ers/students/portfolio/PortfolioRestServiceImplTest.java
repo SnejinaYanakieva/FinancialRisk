@@ -7,8 +7,6 @@ package ers.students.portfolio;
 
 import ers.students.persistentStore.PersistentStore;
 import ers.students.registry.ProviderRegistry;
-import ers.students.util.Currency;
-import ers.students.utils.ErroneousPersistenceStore;
 import ers.students.utils.ErroneousPortfolioDao;
 import ers.students.utils.SuccessfulPersistenceStore;
 import ers.students.utils.SuccessfulPortfolioDao;
@@ -95,23 +93,4 @@ public class PortfolioRestServiceImplTest extends TestCase {
         response = service.deleteById(null);
         assertEquals(404,response.getStatus());
     }
-    
-    /*
-    public void testLoadAll(){
-        response = service.loadAll();
-        assertEquals(404,response.getStatus());
-    }
-    
-    public void testSearchByNameError(){
-      //  setUpForError();
-        response = service.searchByName("");
-        assertEquals(404,response.getStatus());
-    }
-    
-    private void setUpForError() {
-        persistentStore = new ErroneousPersistenceStore();
-        ProviderRegistry.createInstance(persistentStore);
-        registry = ProviderRegistry.getInstance();
-        service = new PortfolioRestServiceImpl(registry);
-    }*/
 }
